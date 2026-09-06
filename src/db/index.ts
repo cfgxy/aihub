@@ -26,7 +26,16 @@ export function getDb() {
 
 export function seedDatabase(db = getDb()) {
   const count = Number((db.prepare("SELECT COUNT(*) AS count FROM resource_types").get() as { count: number }).count);
-  if (count > 0) return;
+  if (count > 0) {
+    const workBuddy = resourceSeeds.find((resource) => resource.slug === "workbuddy");
+    if (workBuddy) {
+      db.prepare(`UPDATE resources SET summary=?, description=?, tags=?, official_url=?, source_url=?, updated_at=CURRENT_TIMESTAMP
+        WHERE slug='workbuddy' AND official_url='https://www.workbuddy.com/'`).run(
+        workBuddy.summary, workBuddy.description, JSON.stringify(workBuddy.tags), workBuddy.officialUrl, workBuddy.sourceUrl,
+      );
+    }
+    return;
+  }
 
   db.exec("BEGIN");
   try {

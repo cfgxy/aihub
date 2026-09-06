@@ -32,7 +32,10 @@ try {
   await search.fill("豆包");
   await search.press("Enter");
   await desktop.getByRole("heading", { name: /“豆包” 的搜索结果/ }).waitFor();
-  await desktop.getByRole("link", { name: /豆包/ }).click();
+  await desktop.locator('a.resource-card[href="/r/doubao"]').click();
+  await desktop.getByRole("heading", { name: "核心能力" }).waitFor();
+  const visualLoaded = await desktop.locator(".detail-visual img").evaluate((image) => image.complete && image.naturalWidth > 0);
+  if (!visualLoaded) throw new Error("动态版详情图片未加载");
   const external = desktop.getByRole("link", { name: /前往官方下载/ });
   if ((await external.getAttribute("rel")) !== "noopener nofollow") throw new Error("外链 rel 不符合要求");
 

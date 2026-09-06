@@ -34,6 +34,9 @@ try {
   if (searchResults !== 1) throw new Error(`Pages 搜索过滤结果错误：${searchResults}`);
   await desktop.getByRole("link", { name: /豆包/ }).click();
   await desktop.waitForURL(/\/aihub\/r\/doubao\/$/);
+  await desktop.getByRole("heading", { name: "核心能力" }).waitFor();
+  const visualLoaded = await desktop.locator(".detail-visual img").evaluate((image) => image.complete && image.naturalWidth > 0);
+  if (!visualLoaded) throw new Error("Pages 详情图片未加载");
   const external = desktop.getByRole("link", { name: /前往官方下载/ });
   if ((await external.getAttribute("rel")) !== "noopener nofollow") throw new Error("Pages 外链 rel 不符合要求");
 

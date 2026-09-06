@@ -51,10 +51,10 @@ export const resourceSeeds = [
   },
   {
     name: "WorkBuddy", slug: "workbuddy", type: "app", category: "official-apps",
-    summary: "面向工作场景的 AI 助手，帮助处理知识、内容与日常生产力任务。",
-    description: "WorkBuddy 聚焦 AI 办公与协作体验，具体能力请以官方页面为准。",
-    tags: ["官方出品", "Web"],
-    officialUrl: "https://www.workbuddy.com/", sourceUrl: "https://www.workbuddy.com/",
+    summary: "腾讯推出的全场景 AI 办公工作台，可规划并交付文档、表格、演示和设计等成果。",
+    description: "Tencent WorkBuddy 面向职场用户提供多智能体协作能力，将自然语言需求转化为可继续编辑的办公成果。",
+    tags: ["官方出品", "Windows", "macOS", "中文支持"],
+    officialUrl: "https://www.workbuddy.ai/", sourceUrl: "https://www.workbuddy.ai/docs/zh/workbuddy/Overview",
   },
   {
     name: "Multica", slug: "multica", type: "app", category: "companion-tools",

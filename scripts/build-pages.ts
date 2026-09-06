@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { categorySeeds, resourceSeeds, typeSeeds } from "../src/db/seed-data";
+import { getResourceProfile } from "../src/lib/resource-profiles";
 
 const output = path.resolve(process.cwd(), "dist-pages");
 const repository = process.env.GITHUB_REPOSITORY?.split("/")[1] || "aihub";
@@ -90,10 +91,14 @@ fs.writeFileSync(path.join(output, "index.html"), home);
 
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
+  const profile = getResourceProfile(resource.slug);
   const actionLabel = resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档";
   const acquisition = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
-  const content = `<div class="container detail"><a class="back" href="../../">← 返回资源目录</a><header><span class="letter-mark large">${escapeHtml(resource.name.slice(0, 1))}</span><div><div class="detail-title"><h1>${escapeHtml(resource.name)}</h1>${resource.tags.slice(0, 4).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div><p>${escapeHtml(resource.summary)}</p></div></header>
-<div class="detail-grid"><div><section class="panel"><span class="eyebrow">获取资源</span>${acquisition}<p>将跳转至 ${hostname(target)}。本站不托管安装包，请遵循目标站点条款。</p><small>来源：${hostname(target)} · 信息以官方页面为准</small></section><section class="panel copy"><h2>资源简介</h2><p>${escapeHtml(resource.description)}</p></section></div>
+  const overview = profile ? profile.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("") : `<p>${escapeHtml(resource.description)}</p>`;
+  const editorial = profile ? `<h3>核心能力</h3><ul class="feature-list">${profile.highlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join("")}</ul><h3>适合谁</h3><p>${escapeHtml(profile.bestFor)}</p>` : "";
+  const visual = profile ? `<figure class="detail-visual"><img src="../../${profile.image.replace(/^\//, "")}" alt="${escapeHtml(profile.imageAlt)}"><figcaption>图片来源：<a href="${escapeHtml(profile.imageSource)}" target="_blank" rel="noopener nofollow">官方页面 / 来源仓库</a></figcaption></figure>` : "";
+  const content = `<div class="container detail"><a class="back" href="../../">← 返回资源目录</a><header><span class="letter-mark large">${escapeHtml(resource.name.slice(0, 1))}</span><div><div class="detail-title"><h1>${escapeHtml(resource.name)}</h1>${resource.tags.slice(0, 4).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div><p>${escapeHtml(resource.summary)}</p></div></header>${visual}
+<div class="detail-grid"><div><section class="panel"><span class="eyebrow">获取资源</span>${acquisition}<p>将跳转至 ${hostname(target)}。本站不托管安装包，请遵循目标站点条款。</p><small>来源：${hostname(target)} · 信息以官方页面为准</small></section><section class="panel copy"><h2>资源简介</h2>${overview}${editorial}</section></div>
 <aside class="panel"><h2>资源信息</h2><dl><dt>资源类型</dt><dd>${resource.typeName}</dd><dt>主分类</dt><dd>${resource.categoryName}</dd><dt>属性标签</dt><dd>${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join(" ")}</dd></dl></aside></div></div>`;
   const directory = path.join(output, "r", resource.slug);
   fs.mkdirSync(directory, { recursive: true });
@@ -103,4 +108,5 @@ for (const resource of resources) {
 fs.writeFileSync(path.join(output, "404.html"), shell("页面不存在", `<div class="container missing"><h1>页面不存在或资源已下架</h1><p><a class="primary-link" href="${basePath}">返回首页</a></p></div>`, basePath));
 fs.writeFileSync(path.join(output, ".nojekyll"), "");
 fs.copyFileSync(path.resolve(process.cwd(), "src/pages-static/pages.css"), path.join(output, "assets", "pages.css"));
+fs.cpSync(path.resolve(process.cwd(), "public/media"), path.join(output, "media"), { recursive: true });
 console.log(`GitHub Pages 静态站已生成：${output}`);
