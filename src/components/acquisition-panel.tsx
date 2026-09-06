@@ -1,0 +1,24 @@
+import type { Resource } from "@/lib/types";
+import { hostname } from "@/lib/content";
+import { CopyBlock } from "./copy-block";
+import { ExternalLink } from "./external-link";
+
+export function AcquisitionPanel({ resource }: { resource: Resource }) {
+  const target = resource.sourceUrl || resource.officialUrl;
+  return <section className="acquisition-panel">
+    <div className="section-kicker">获取资源</div>
+    {resource.typeKey === "app" && <ExternalLink href={resource.officialUrl} className="primary-link">前往官方下载</ExternalLink>}
+    {resource.typeKey === "skill" && <>
+      <ExternalLink href={target} className="primary-link">获取技能包</ExternalLink>
+      <CopyBlock label="安装说明" value={resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。"} />
+    </>}
+    {resource.typeKey === "mcp" && <>
+      {resource.sourceUrl && <ExternalLink href={resource.sourceUrl} className="primary-link">查看文档</ExternalLink>}
+      <CopyBlock label="MCP 配置" value={resource.configText || "请在管理页补充该 MCP 的配置 JSON。"} />
+      {resource.installGuide && <CopyBlock label="安装命令" value={resource.installGuide} />}
+    </>}
+    <p className="external-note">将跳转至 {hostname(target)}。本站不托管安装包，请遵循目标站点条款。</p>
+    <p className="source-note">来源：{hostname(target)} · 信息以官方页面为准</p>
+  </section>;
+}
+
