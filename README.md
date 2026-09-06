@@ -22,9 +22,17 @@ npm run build
 npm run start
 npm run probe
 npm run test:browser
+npm run build:pages
+npm run check:pages
 ```
 
 `test:browser` 使用本机 Playwright Chromium，验证桌面与移动布局、搜索、详情、外链、管理登录、CRUD 和 SKILL 复制动作，并清理临时验收数据。
+
+## GitHub Pages
+
+公开地址：<https://cfgxy.github.io/aihub/>
+
+`main` 分支每次 push 都会触发 `.github/workflows/deploy-pages.yml`，从 `src/db/seed-data.ts` 生成静态公开站并自动发布到 GitHub Pages。本地 SQLite 管理后台不进入 Pages；更新线上条目时修改种子数据并提交即可。
 
 ## 数据与安全
 
