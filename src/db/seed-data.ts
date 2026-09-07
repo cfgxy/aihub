@@ -77,4 +77,12 @@ export const resourceSeeds = [
     tags: ["社区出品", "Windows", "macOS", "Linux", "开源"],
     officialUrl: "https://github.com/farion1231/cc-switch", sourceUrl: "https://github.com/farion1231/cc-switch",
   },
+  {
+    name: "AI Toolbox", slug: "ai-toolbox", type: "app", category: "companion-tools",
+    summary: "统一管理 ChatGPT、Gemini、Claude、Grok 会话的浏览器扩展，支持跨助手搜索、归档整理与多格式导出。",
+    description: "AI Toolbox 是面向多 AI 助手用户的 Chromium 扩展，把 ChatGPT、Gemini、Claude、Grok 的历史会话集中检索与沉淀。",
+    tags: ["社区出品", "浏览器扩展", "会话管理", "知识管理", "免费增值"],
+    officialUrl: "https://www.ai-toolbox.co/",
+    sourceUrl: "https://chromewebstore.google.com/detail/ai-toolbox-folders-prompt/jlalnhjkfiogoeonamcnngdndjbneina",
+  },
 ];

@@ -34,6 +34,7 @@ export function seedDatabase(db = getDb()) {
         workBuddy.summary, workBuddy.description, JSON.stringify(workBuddy.tags), workBuddy.officialUrl, workBuddy.sourceUrl,
       );
     }
+    backfillSeeds(db);
     return;
   }
 
@@ -56,6 +57,39 @@ export function seedDatabase(db = getDb()) {
     const categories = db.prepare(`SELECT c.id, c.slug, t.key AS type_key FROM categories c
       JOIN resource_types t ON t.id = c.type_id`).all() as Array<{ id: number; slug: string; type_key: string }>;
     for (const resource of resourceSeeds) {
+      const type = types.find((item) => item.key === resource.type);
+      const category = categories.find((item) => item.type_key === resource.type && item.slug === resource.category);
+      if (!type || !category) throw new Error(`种子归属不存在：${resource.slug}`);
+      insertResource.run(resource.name, resource.slug, type.id, category.id, resource.summary, resource.description,
+        JSON.stringify(resource.tags), resource.officialUrl, resource.sourceUrl);
+    }
+    db.exec("COMMIT");
+  } catch (error) {
+    db.exec("ROLLBACK");
+    throw error;
+  }
+}
+
+/**
+ * 已初始化的数据库补入后续新增的种子条目。
+ * 只按 slug 插入缺失项，不更新也不删除既有记录，避免覆盖管理后台改过的内容。
+ */
+function backfillSeeds(db: DatabaseSync) {
+  const existing = new Set((db.prepare("SELECT slug FROM resources").all() as Array<{ slug: string }>)
+    .map((row) => row.slug));
+  const missing = resourceSeeds.filter((resource) => !existing.has(resource.slug));
+  if (!missing.length) return;
+
+  const types = db.prepare("SELECT id, key FROM resource_types").all() as Array<{ id: number; key: string }>;
+  const categories = db.prepare(`SELECT c.id, c.slug, t.key AS type_key FROM categories c
+    JOIN resource_types t ON t.id = c.type_id`).all() as Array<{ id: number; slug: string; type_key: string }>;
+  const insertResource = db.prepare(`INSERT INTO resources
+    (name, slug, type_id, category_id, summary, description, tags, official_url, source_url, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'published')`);
+
+  db.exec("BEGIN");
+  try {
+    for (const resource of missing) {
       const type = types.find((item) => item.key === resource.type);
       const category = categories.find((item) => item.type_key === resource.type && item.slug === resource.category);
       if (!type || !category) throw new Error(`种子归属不存在：${resource.slug}`);

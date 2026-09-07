@@ -85,6 +85,22 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     highlights: ["多种 AI 编程客户端配置切换", "Windows、macOS 与 Linux 桌面支持", "开源且可本地管理配置"],
     bestFor: "同时使用多个 AI 编程客户端或服务端点，需要频繁切换本地配置的开发者。",
   },
+  "ai-toolbox": {
+    image: "/media/ai-toolbox.png",
+    imageAlt: "AI Toolbox 跨助手会话统一检索与多格式导出示意",
+    imageSource: "https://www.ai-toolbox.co/",
+    overview: [
+      "AI Toolbox 是一款 Chromium 内核浏览器扩展（Chrome、Edge、Brave、Opera、Arc），把 ChatGPT、Gemini、Claude、Grok 四个助手的历史会话集中到一处管理。它支持跨助手统一搜索、文件夹与子文件夹归档、置顶与书签，并可将对话导出为 Markdown、PDF、JSON 或 TXT，Markdown 附带 YAML frontmatter，便于导入 Obsidian 等知识库。",
+      "扩展需要读取各 AI 站点的会话内容，其中可能包含敏感对话；官网口径为本地优先存储、同步加密并符合 GDPR，但这些均为官方声明，未经第三方审计。产品为商业闭源，未见公开源码仓库，无法独立审计数据流向；功能依赖各平台页面结构，平台改版可能导致临时失效。免费版限制为 2 个文件夹、2 条提示词、每次查询 5 条搜索结果、2 个书签且仅支持 TXT 导出；Premium 月付 $9.99 起、All Access 终身 $199，价格与评分为 2026年09月07日 官网口径，请以官方页面为准。",
+    ],
+    highlights: [
+      "跨 ChatGPT、Gemini、Claude、Grok 统一搜索历史会话",
+      "文件夹归档、置顶、智能标签与消息书签整理对话",
+      "Markdown / PDF / JSON / TXT 多格式导出，支持批量打包",
+      "内置提示词库与提示词链，固化重复使用的流程",
+    ],
+    bestFor: "跨多个 AI 助手工作、需要统一检索历史会话并把对话沉淀为可导出知识资产的重度用户与内容创作者。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
