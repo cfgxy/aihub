@@ -47,6 +47,19 @@ describe("AI Toolbox 条目入库（RUYI-97）", () => {
     expect(profile!.imageSource).toMatch(/^https:\/\//);
   });
 
+  it("公开正文不含正文交付件的 internal 附录内容", () => {
+    const profile = getResourceProfile("ai-toolbox")!;
+    const published = [
+      seed!.name, seed!.summary, seed!.description, ...seed!.tags,
+      ...profile.overview, ...profile.highlights, profile.bestFor, profile.imageAlt,
+    ].join(" ");
+
+    // 以下均为 aitoolbox3-detail.json 的 internal 段口径，不得进入公开详情页。
+    for (const leak of ["内部口径", "待确认", "未核实", "候选卡", "Product Hunt 徽章", "badge-ai-toolbox"]) {
+      expect(published, `公开正文泄露 internal 附录内容：${leak}`).not.toContain(leak);
+    }
+  });
+
   it("不托管安装包，来源链接均为外部官方渠道", () => {
     const profile = getResourceProfile("ai-toolbox")!;
     for (const url of [seed!.officialUrl, seed!.sourceUrl, profile.imageSource]) {
