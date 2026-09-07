@@ -1,8 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { resourceSeeds } from "@/db/seed-data";
 
 const testDb = path.resolve(process.cwd(), "data/test-aihub.db");
+const companionToolCount = resourceSeeds.filter(
+  (resource) => resource.type === "app" && resource.category === "companion-tools",
+).length;
 
 describe("资源仓储", () => {
   beforeEach(async () => {
@@ -16,16 +20,16 @@ describe("资源仓储", () => {
     resetDbForTests();
     fs.rmSync(testDb, { force: true });
   });
-  it("初始化三种资源类型和七个种子条目", async () => {
+  it("初始化三种资源类型和全部种子条目", async () => {
     const { listResources, listTypes } = await import("@/lib/repository");
     expect(listTypes().map((item) => item.key)).toEqual(["app", "skill", "mcp"]);
-    expect(listResources()).toHaveLength(7);
+    expect(listResources()).toHaveLength(resourceSeeds.length);
   });
   it("按关键词、类型和分类筛选", async () => {
     const { listResources } = await import("@/lib/repository");
     expect(listResources({ query: "豆包" }).map((item) => item.slug)).toEqual(["doubao"]);
     expect(listResources({ typeKey: "skill" })).toEqual([]);
-    expect(listResources({ typeKey: "app", categorySlug: "companion-tools" })).toHaveLength(3);
+    expect(listResources({ typeKey: "app", categorySlug: "companion-tools" })).toHaveLength(companionToolCount);
   });
   it("草稿默认不会出现在公开查询中", async () => {
     const { listCategories, listResources, listTypes, saveResource } = await import("@/lib/repository");

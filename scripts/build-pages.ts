@@ -74,17 +74,20 @@ const sections = typeSeeds.map((type) => {
 <div class="chip-row"><button class="active" type="button" data-category-filter="">全部</button>${chips}</div><div class="resource-grid">${contents}</div></section>`;
 }).join("");
 
+const totalLabel = `${resources.length} 个精选条目`;
+
 const homeScript = `
++const TOTAL_LABEL=${JSON.stringify(totalLabel)};
 +const search=document.querySelector('#search-input');
 +const count=document.querySelector('#result-count');
-+function apply(){const q=search.value.trim().toLowerCase();let visible=0;document.querySelectorAll('[data-type-section]').forEach(section=>{const category=section.querySelector('[data-category-filter].active').dataset.categoryFilter;section.querySelectorAll('[data-resource]').forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(!category||card.dataset.category===category);card.hidden=!show;if(show)visible++})});count.textContent=(q?visible+' 项匹配':'7 个精选条目');document.querySelector('#no-results').hidden=visible>0||!q}
++function apply(){const q=search.value.trim().toLowerCase();let visible=0;document.querySelectorAll('[data-type-section]').forEach(section=>{const category=section.querySelector('[data-category-filter].active').dataset.categoryFilter;section.querySelectorAll('[data-resource]').forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(!category||card.dataset.category===category);card.hidden=!show;if(show)visible++})});count.textContent=(q?visible+' 项匹配':TOTAL_LABEL);document.querySelector('#no-results').hidden=visible>0||!q}
 +search.addEventListener('input',apply);document.querySelector('#clear-search').addEventListener('click',()=>{search.value='';apply();search.focus()});
 +document.querySelectorAll('[data-type-section]').forEach(section=>section.querySelectorAll('[data-category-filter]').forEach(button=>button.addEventListener('click',()=>{section.querySelectorAll('[data-category-filter]').forEach(item=>item.classList.toggle('active',item===button));apply()})));
 +`.replace(/^\+/gm, "");
 
 const home = shell("首页", `<section class="hero"><div class="container hero-inner"><span class="eyebrow">精选、可信、直达来源</span><h1>找到真正好用的 AI 资源</h1><p>收录应用、SKILL 与 MCP。少走弯路，直接抵达官方获取方式。</p>
 <div class="search-box" id="search"><span>⌕</span><input id="search-input" aria-label="搜索资源" placeholder="搜索应用、SKILL、MCP…"><button type="button" id="clear-search">清除</button></div>
-<div class="stats"><strong>3</strong> 类资源　<strong id="result-count">7 个精选条目</strong>　持续更新</div></div></section>
+<div class="stats"><strong>3</strong> 类资源　<strong id="result-count">${totalLabel}</strong>　持续更新</div></div></section>
 <div class="container type-tabs">${typeSeeds.map((type) => `<a href="#type-${type.key}">${type.name}</a>`).join("")}</div>
 <div class="container sections"><div id="no-results" class="no-results" hidden>没有找到相关资源，请更换关键词。</div>${sections}</div>`, "./", homeScript);
 fs.writeFileSync(path.join(output, "index.html"), home);
