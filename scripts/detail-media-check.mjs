@@ -67,6 +67,19 @@ async function checkInstall(page, url, label) {
   console.log(`PASS ${label}安装命令复制块与复制行为`);
 }
 
+/** 高风险条目：CTA 必须中性，且详情页不得出现安装复制块。 */
+async function checkGmail(page, url, label) {
+  await page.goto(url, { waitUntil: "networkidle" });
+  const cta = (await page.locator(".primary-link").first().innerText()).trim();
+  if (!cta.startsWith("查看来源仓库")) throw new Error(`${label} Gmail Creator Pro CTA 错误：${cta}`);
+  if (await page.locator(".copy-section").count()) throw new Error(`${label} 高风险条目出现安装复制块`);
+  const body = await page.locator("body").innerText();
+  for (const banned of ["前往官方下载", "明令禁止", "npx "]) {
+    if (body.includes(banned)) throw new Error(`${label} Gmail Creator Pro 出现禁止内容：${banned}`);
+  }
+  console.log(`PASS ${label} Gmail Creator Pro CTA 与内容边界`);
+}
+
 try {
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await checkDetail(desktop, `${dynamicBase}/r/ai-research-skills`, "动态版详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/dynamic-desktop.png` : undefined);
@@ -79,6 +92,14 @@ try {
 
   await checkInstall(desktop, `${dynamicBase}/r/ai-research-skills`, "动态版");
 
+  await checkDetail(desktop, `${dynamicBase}/r/gmail-creator-pro`, "动态版 Gmail 详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/gmail-dynamic-desktop.png` : undefined);
+  await checkGmail(desktop, `${dynamicBase}/r/gmail-creator-pro`, "动态版");
+
+  // 新增 app 分类「其他」导航可达。
+  await desktop.goto(`${dynamicBase}/t/app/c/others`, { waitUntil: "networkidle" });
+  await desktop.getByRole("link", { name: /Gmail Creator Pro/ }).first().waitFor();
+  console.log("PASS 动态版「其他」分类列表页可达");
+
   const mobile = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true });
   await checkDetail(mobile, `${dynamicBase}/r/ai-research-skills`, "动态版移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/dynamic-mobile.png` : undefined);
 
@@ -86,6 +107,8 @@ try {
   await checkDetail(pages, `${pagesBase}r/ai-research-skills/`, "Pages 详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/pages-desktop.png` : undefined);
   await checkInstall(pages, `${pagesBase}r/ai-research-skills/`, "Pages 版");
   await checkNoFeature(pages, `${pagesBase}r/claude/`, "Pages 既有资源");
+  await checkDetail(pages, `${pagesBase}r/gmail-creator-pro/`, "Pages Gmail 详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/gmail-pages-desktop.png` : undefined);
+  await checkGmail(pages, `${pagesBase}r/gmail-creator-pro/`, "Pages 版");
 
   // 应用类资源没有安装命令，两版都不得因此出现空复制块。
   for (const [url, label] of [[`${dynamicBase}/r/doubao`, "动态版"], [`${pagesBase}r/doubao/`, "Pages 版"]]) {
@@ -96,6 +119,8 @@ try {
 
   const pagesMobile = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true });
   await checkDetail(pagesMobile, `${pagesBase}r/ai-research-skills/`, "Pages 移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/pages-mobile.png` : undefined);
+  await checkDetail(pagesMobile, `${pagesBase}r/gmail-creator-pro/`, "Pages Gmail 移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/gmail-pages-mobile.png` : undefined);
+  await checkDetail(mobile, `${dynamicBase}/r/gmail-creator-pro`, "动态版 Gmail 移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/gmail-dynamic-mobile.png` : undefined);
 
   console.log("PASS RUYI-111 详情页原创图注、Feature 图位、既有行为不回归");
 } finally {

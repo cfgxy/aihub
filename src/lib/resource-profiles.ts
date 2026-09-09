@@ -8,6 +8,8 @@ export type ResourceProfile = {
   /** 可选的详情内容区插图，落在「核心能力」标题前；不配置则不渲染图位。 */
   featureImage?: string;
   featureImageAlt?: string;
+  /** 覆盖详情页「获取资源」的按钮文案；不配置则按资源类型使用默认文案。 */
+  actionLabel?: string;
   overview: string[];
   highlights: string[];
   bestFor: string;
@@ -124,6 +126,25 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
       "MIT 开源，与 Orchestra Research 平台自动同步、可一键加入项目",
     ],
     bestFor: "需要把文献综述、实验调参与论文写作交给 AI 编码代理推进的 AI 研究者与机器学习工程团队。",
+  },
+  "gmail-creator-pro": {
+    image: "/media/gmail-creator-pro-hero.png",
+    imageAlt: "Gmail Creator Pro 原创插图：账号自动化队列与风险警示，标注非 Google 官方工具",
+    imageCredit: "插图：AIHub 原创设计",
+    featureImage: "/media/gmail-creator-pro-feature.png",
+    featureImageAlt: "Gmail Creator Pro 原创插图：自动化队列指向风险边界卡，标注谨慎使用与未经独立安全审计",
+    // 高风险条目不使用 app 默认的「前往官方下载」，避免读作站点推荐下载。
+    actionLabel: "查看来源仓库",
+    overview: [
+      "Gmail Creator Pro（仓库 ShadowHackrs/gmail-account-creator）是署名「Shadow Hacker」的第三方工具，源码在 GitHub 公开可见，但附带专有许可证，不属于开源软件。仓库自述：可批量自动注册 Gmail 账号，提供「高级反检测系统」「手机验证绕过」（集成第三方接码服务）与代理集成等能力，并附界面截图与演示视频。上述能力描述均为仓库自述，本站未独立验证，收录不代表推荐。",
+      "该仓库自述的功能涉及账号自动化与验证规避，可能违反 Google 服务条款：若用于创建虚假账号、规避 Google 的系统或保护措施，或为滥用目的创建、使用多个账号，Google 条款明确禁止此类行为并可能停用相关账号；Google 同时说明，拥有多个账号本身（如个人与工作账号）并不违规。相关行为在部分法域还可能触及反垃圾信息与计算机滥用类法律边界。该工具分发渠道可信度有限，同类工具存在凭据窃取与恶意软件的品类性风险，本站未对代码做独立安全审计。其专有许可证仅允许个人非商业、教育与测试评估用途，禁止复制、修改与再分发，并明确要求不得用于任何非法或未经授权的用途。本站收录仅作风险提示与来源指引，不提供安装或使用指导。",
+    ],
+    highlights: [
+      "仓库自述：批量自动注册 Gmail 账号——账号自动化可能违反 Google 条款，相关账号可能被 Google 检测并停用",
+      "仓库自述：反检测、代理集成与经第三方接码服务规避手机验证等规避类能力——本站均未独立验证",
+      "源码公开可见但为专有许可，禁止修改与再分发；本站未做独立安全审计",
+    ],
+    bestFor: "本站未核实到明确的合法适用场景；任何账号自动化注册用途都应先评估 Google 服务条款、账号资产风险与当地法律约束。",
   },
 };
 

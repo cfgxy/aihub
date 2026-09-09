@@ -11,6 +11,7 @@ const required = [
   "r/codex-plus-plus/index.html",
   "r/ai-toolbox/index.html",
   "r/ai-research-skills/index.html",
+  "r/gmail-creator-pro/index.html",
   "media/doubao-cover.png",
   "media/claude.jpg",
   "media/workbuddy.png",
@@ -18,6 +19,8 @@ const required = [
   "media/ai-toolbox.png",
   "media/ai-research-skills-hero.png",
   "media/ai-research-skills-feature.png",
+  "media/gmail-creator-pro-hero.png",
+  "media/gmail-creator-pro-feature.png",
 ];
 
 for (const file of required) {
@@ -27,7 +30,7 @@ for (const file of required) {
 }
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
-for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCSwitch", "AI Toolbox", "AI Research Skills", "data-resource", "search-input"]) {
+for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCSwitch", "AI Toolbox", "AI Research Skills", "Gmail Creator Pro", "data-resource", "search-input"]) {
   if (!home.includes(value)) throw new Error(`首页缺少：${value}`);
 }
 
@@ -67,8 +70,23 @@ for (const value of ["98 个", "23 个", "2026年09月09日", "GitHub 仓库最�
 // 应用类资源没有安装命令，不得因此产生空复制块。
 const doubao = fs.readFileSync(path.join(root, "r/doubao/index.html"), "utf8");
 if (doubao.includes("copy-section")) throw new Error("应用类详情页出现不应存在的复制块");
-// Feature 图位是本条资源专属，其余详情页不得因此出现空图位。
-for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => name !== "ai-research-skills")) {
+const gmail = fs.readFileSync(path.join(root, "r/gmail-creator-pro/index.html"), "utf8");
+for (const value of [
+  "detail-visual", "detail-feature", "核心能力", "media/gmail-creator-pro-hero.png",
+  "media/gmail-creator-pro-feature.png", "插图：AIHub 原创设计", "查看来源仓库",
+  "专有许可", "可能违反 Google", "收录不代表推荐",
+]) {
+  if (!gmail.includes(value)) throw new Error(`Gmail Creator Pro 详情页缺少完整内容：${value}`);
+}
+// 高风险条目不得出现操作性指导、安装入口或站点背书。
+for (const banned of ["copy-section", "前往官方下载", "明令禁止", "npx ", "git clone", "5sim"]) {
+  if (gmail.includes(banned)) throw new Error(`Gmail Creator Pro 详情页出现禁止内容：${banned}`);
+}
+if (gmail.includes("图片来源：")) throw new Error("Gmail Creator Pro 原创插图出现外部图片来源图注");
+
+// Feature 图位是原创插图条目专属，其余详情页不得因此出现空图位。
+const originalArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
+for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !originalArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
   if (html.includes("detail-feature")) throw new Error(`${slug} 出现不应存在的 Feature 图位`);
   if (!html.includes("图片来源：")) throw new Error(`${slug} 丢失外部图片来源图注`);

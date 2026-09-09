@@ -93,20 +93,23 @@ describe("AI Research Skills 条目入库（RUYI-111）", () => {
   });
 });
 
+/** 使用原创插图（imageCredit）而非外部来源图注的条目。 */
+const originalArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
+
 describe("既有资源的图注与图位行为不回归", () => {
   it("其余资源仍使用外部来源图注，且不出现原创图注字段", () => {
     for (const [slug, profile] of Object.entries(resourceProfiles)) {
-      if (slug === "ai-research-skills") continue;
+      if (originalArtSlugs.includes(slug)) continue;
       expect(profile.imageSource, `${slug} 丢失外部来源`).toMatch(/^https:\/\//);
       expect(profile.imageCredit, `${slug} 不应有原创图注`).toBeUndefined();
     }
   });
 
-  it("Feature 图位仅本条资源配置，其他资源不产生空图位", () => {
+  it("Feature 图位仅原创插图条目配置，其他资源不产生空图位", () => {
     const withFeature = Object.entries(resourceProfiles)
       .filter(([, profile]) => profile.featureImage)
       .map(([slug]) => slug);
-    expect(withFeature).toEqual(["ai-research-skills"]);
+    expect(withFeature.sort()).toEqual([...originalArtSlugs].sort());
   });
 
   it("每个 profile 的图注要么有外部来源要么有原创说明，不留空图注", () => {

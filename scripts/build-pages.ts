@@ -105,7 +105,9 @@ function copyBlock(id: string, label: string, value: string) {
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
   const profile = getResourceProfile(resource.slug);
-  const actionLabel = resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档";
+  // profile.actionLabel 覆盖类型默认文案，与动态版 AcquisitionPanel 同口径。
+  const actionLabel = profile?.actionLabel
+    || (resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档");
   const link = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
   const install = resource.type === "skill"
     ? copyBlock("install-guide", "安装说明", resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。")

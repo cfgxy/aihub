@@ -8,6 +8,7 @@ export const categorySeeds = {
   app: [
     ["官方应用", "official-apps", "AI 厂商官方出品的完整产品"],
     ["辅助工具", "companion-tools", "围绕 AI 使用、切换与管理的第三方工具"],
+    ["其他", "others", "不归入上述类目的第三方应用条目"],
   ],
   skill: [
     ["文档与办公", "docs-office", "文档创建、编辑与办公流程"],
@@ -108,5 +109,13 @@ export const resourceSeeds: ResourceSeed[] = [
     officialUrl: "https://www.orchestra-research.com/ai-research-skills",
     sourceUrl: "https://github.com/Orchestra-Research/AI-research-SKILLs",
     installGuide: "npx @orchestra-research/ai-research-skills",
+  },
+  {
+    name: "Gmail Creator Pro", slug: "gmail-creator-pro", type: "app", category: "others",
+    summary: "第三方发布的批量 Gmail 账号自动注册工具，源码公开但许可证为专有；自述功能涉及账号自动化与验证规避，可能违反 Google 条款，风险显著。",
+    description: "仓库自述可自动批量注册 Gmail 账号并绕过手机验证；本站未独立审计该工具，仅作风险提示性收录，不提供使用指导。",
+    tags: ["第三方出品", "高风险", "条款风险", "专有许可", "未独立审计"],
+    officialUrl: "https://github.com/ShadowHackrs/gmail-account-creator",
+    sourceUrl: "https://github.com/ShadowHackrs/gmail-account-creator",
   },
 ];
