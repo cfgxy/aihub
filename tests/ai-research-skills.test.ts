@@ -42,8 +42,22 @@ describe("AI Research Skills 条目入库（RUYI-111）", () => {
 
     const body = `${profile!.overview.join(" ")} ${profile!.highlights.join(" ")} ${profile!.bestFor}`;
     expect(body, "正文缺少技能与分类口径").toMatch(/98 个研究技能|98 个技能/);
+    expect(body, "正文缺少 23 分类口径").toContain("23 个");
     expect(body, "正文缺少许可证口径").toContain("MIT");
-    expect(body, "正文缺少风险提示").toMatch(/许可证|安装行为|旧口径/);
+    expect(body, "正文缺少风险提示").toMatch(/许可证|安装行为/);
+    expect(body, "正文缺少采集日期").toContain("2026年09月09日");
+    expect(body, "正文缺少以官方仓库为准的稳定提示").toMatch(/GitHub 仓库最新说明为准/);
+  });
+
+  it("公开正文不出现官网旧口径数字与纠错过程", () => {
+    const profile = getResourceProfile("ai-research-skills")!;
+    const published = [
+      seed!.name, seed!.summary, seed!.description, ...seed!.tags,
+      ...profile.overview, ...profile.highlights, profile.bestFor, profile.imageAlt, profile.featureImageAlt!,
+    ].join(" ");
+    for (const stale of ["86 个", "86个", "22 分类", "22 个分类", "旧口径"]) {
+      expect(published, `公开正文出现已定稿禁止的旧口径：${stale}`).not.toContain(stale);
+    }
   });
 
   it("不写入未经核实的动态数字与未知项", () => {

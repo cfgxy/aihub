@@ -115,7 +115,7 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     featureImageAlt: "AI Research Skills 原创插图：编码 Agent 编排六类研究技能并汇入论文产出",
     overview: [
       "AI Research Skills（仓库 Orchestra-Research/AI-research-SKILLs）是 Orchestra Research 维护的开源 AI 研究技能库，为 Claude Code、Codex、Gemini CLI 等 AI 编码代理提供覆盖 23 个方向的 98 个研究技能，贯穿文献调研、想法生成、实验执行到论文写作的完整研究生命周期。autoresearch 编排技能以双环架构自主推进整个研究流程，按需路由到微调、分布式训练、推理优化、可解释性等具体领域技能；vLLM、Megatron-LM、TRL、TransformerLens 等框架技能的内容沉淀自官方文档、真实 GitHub issue 与生产级工作流。",
-      "技能库以 MIT 许可证开源，官方页面未提供付费计划；技能引用的第三方框架（如 vLLM、Megatron-LM）沿用各自许可证，商用前需逐一核查。仓库最近一次代码更新为 2026-06-16（v1.7.2），官网页面技能数仍为旧口径（86 个 / 22 分类），采用时建议以 GitHub 仓库为准并关注更新节奏。技能是知识包而非可运行软件，实际效果取决于所搭配的模型与代理；安装器会将技能写入 ~/.orchestra/skills/ 并在已检测到的编码代理目录建立链接，敏感环境部署前应先审阅安装行为。技能与分类数为 2026年09月09日 官方仓库口径。",
+      "技能库以 MIT 许可证开源，官方页面未提供付费计划；技能引用的第三方框架（如 vLLM、Megatron-LM）沿用各自许可证，商用前需逐一核查。仓库最近一次代码更新为 2026-06-16（v1.7.2）。技能是知识包而非可运行软件，实际效果取决于所搭配的模型与代理；安装器会将技能写入 ~/.orchestra/skills/ 并在已检测到的编码代理目录建立链接，敏感环境部署前应先审阅安装行为。技能数与分类数为 2026年09月09日 官方仓库口径，请以 GitHub 仓库最新说明为准。",
     ],
     highlights: [
       "98 个技能覆盖「想法→论文」研究全流程，23 个分类可全装、按类装或单装",

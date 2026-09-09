@@ -49,6 +49,24 @@ async function checkNoFeature(page, url, label) {
   console.log(`PASS ${label} 图注与图位未回归`);
 }
 
+const INSTALL_COMMAND = "npx @orchestra-research/ai-research-skills";
+
+/** SKILL 的核心获取路径：安装命令必须可见，且复制按钮真的把命令写进剪贴板。 */
+async function checkInstall(page, url, label) {
+  await page.goto(url, { waitUntil: "networkidle" });
+  const block = page.locator(".copy-section").filter({ hasText: INSTALL_COMMAND });
+  if (!(await block.count())) throw new Error(`${label} 详情页缺少官方安装命令复制块`);
+  const text = (await block.locator("code").first().innerText()).trim();
+  if (text !== INSTALL_COMMAND) throw new Error(`${label} 安装命令文本错误：${text}`);
+
+  await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
+  await block.getByRole("button", { name: "复制" }).click();
+  await page.waitForFunction(() => document.querySelector(".copy-section button").textContent.includes("已复制"));
+  const clipboard = await page.evaluate(() => navigator.clipboard.readText());
+  if (clipboard.trim() !== INSTALL_COMMAND) throw new Error(`${label} 复制内容错误：${clipboard}`);
+  console.log(`PASS ${label}安装命令复制块与复制行为`);
+}
+
 try {
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await checkDetail(desktop, `${dynamicBase}/r/ai-research-skills`, "动态版详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/dynamic-desktop.png` : undefined);
@@ -59,18 +77,22 @@ try {
   await desktop.getByRole("link", { name: /AI Research Skills/ }).first().waitFor();
   console.log("PASS 动态版新分类列表页可达");
 
-  // SKILL 安装命令复制块。
-  await desktop.goto(`${dynamicBase}/r/ai-research-skills`, { waitUntil: "networkidle" });
-  const install = await desktop.locator(".copy-block, pre, code").filter({ hasText: "npx @orchestra-research/ai-research-skills" }).count();
-  if (!install) throw new Error("详情页缺少官方安装命令复制块");
-  console.log("PASS 动态版安装命令复制块");
+  await checkInstall(desktop, `${dynamicBase}/r/ai-research-skills`, "动态版");
 
   const mobile = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true });
   await checkDetail(mobile, `${dynamicBase}/r/ai-research-skills`, "动态版移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/dynamic-mobile.png` : undefined);
 
   const pages = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await checkDetail(pages, `${pagesBase}r/ai-research-skills/`, "Pages 详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/pages-desktop.png` : undefined);
+  await checkInstall(pages, `${pagesBase}r/ai-research-skills/`, "Pages 版");
   await checkNoFeature(pages, `${pagesBase}r/claude/`, "Pages 既有资源");
+
+  // 应用类资源没有安装命令，两版都不得因此出现空复制块。
+  for (const [url, label] of [[`${dynamicBase}/r/doubao`, "动态版"], [`${pagesBase}r/doubao/`, "Pages 版"]]) {
+    await pages.goto(url, { waitUntil: "networkidle" });
+    if (await pages.locator(".copy-section").count()) throw new Error(`${label} 应用详情页出现不应存在的复制块`);
+  }
+  console.log("PASS 应用类详情页无空复制块");
 
   const pagesMobile = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true });
   await checkDetail(pagesMobile, `${pagesBase}r/ai-research-skills/`, "Pages 移动详情", process.env.SHOT_DIR ? `${process.env.SHOT_DIR}/pages-mobile.png` : undefined);

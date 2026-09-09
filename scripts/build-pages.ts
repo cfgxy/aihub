@@ -92,11 +92,27 @@ const home = shell("首页", `<section class="hero"><div class="container hero-i
 <div class="container sections"><div id="no-results" class="no-results" hidden>没有找到相关资源，请更换关键词。</div>${sections}</div>`, "./", homeScript);
 fs.writeFileSync(path.join(output, "index.html"), home);
 
+/** 静态页没有 React，复制按钮用一段内联脚本实现，语义与动态版 CopyBlock 一致。 */
+const copyScript = `
++document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copy);const text=code.textContent;try{await navigator.clipboard.writeText(text)}catch(e){const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);document.execCommand('copy')}button.textContent='已复制 ✓';setTimeout(()=>{button.textContent='复制'},2000)}));
++`.replace(/^\+/gm, "");
+
+/** SKILL / MCP 详情页的可复制安装说明，取种子的官方安装命令；与动态版 AcquisitionPanel 同口径。 */
+function copyBlock(id: string, label: string, value: string) {
+  return `<div class="copy-section"><div class="copy-heading"><span>${escapeHtml(label)}</span><button type="button" data-copy="${id}">复制</button></div><pre><code id="${id}">${escapeHtml(value)}</code></pre></div>`;
+}
+
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
   const profile = getResourceProfile(resource.slug);
   const actionLabel = resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档";
-  const acquisition = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
+  const link = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
+  const install = resource.type === "skill"
+    ? copyBlock("install-guide", "安装说明", resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。")
+    : resource.type === "mcp" && resource.installGuide
+      ? copyBlock("install-guide", "安装命令", resource.installGuide)
+      : "";
+  const acquisition = `${link}${install}`;
   const overview = profile ? profile.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("") : `<p>${escapeHtml(resource.description)}</p>`;
   const feature = profile?.featureImage
     ? `<figure class="detail-feature"><img src="../../${profile.featureImage.replace(/^\//, "")}" alt="${escapeHtml(profile.featureImageAlt || "")}"><figcaption>${escapeHtml(profile.imageCredit || "")}</figcaption></figure>`
@@ -111,7 +127,7 @@ for (const resource of resources) {
 <aside class="panel"><h2>资源信息</h2><dl><dt>资源类型</dt><dd>${resource.typeName}</dd><dt>主分类</dt><dd>${resource.categoryName}</dd><dt>属性标签</dt><dd>${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join(" ")}</dd></dl></aside></div></div>`;
   const directory = path.join(output, "r", resource.slug);
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, "index.html"), shell(resource.name, content, "../../"));
+  fs.writeFileSync(path.join(directory, "index.html"), shell(resource.name, content, "../../", install ? copyScript : ""));
 }
 
 fs.writeFileSync(path.join(output, "404.html"), shell("页面不存在", `<div class="container missing"><h1>页面不存在或资源已下架</h1><p><a class="primary-link" href="${basePath}">返回首页</a></p></div>`, basePath));
