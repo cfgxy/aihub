@@ -95,8 +95,18 @@ fs.writeFileSync(path.join(output, "index.html"), home);
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
   const profile = getResourceProfile(resource.slug);
-  const actionLabel = resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档";
-  const acquisition = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
+  // 获取入口与动态站 src/components/acquisition-panel.tsx 同语义：
+  // app 前往官网，skill 走来源包（缺来源时回退官网），mcp 指向文档且无来源时不渲染按钮。
+  const action = resource.type === "app"
+    ? { label: "前往官方下载", href: resource.officialUrl }
+    : resource.type === "skill"
+      ? { label: "获取技能包", href: target }
+      : resource.sourceUrl
+        ? { label: "查看文档", href: resource.sourceUrl }
+        : undefined;
+  const acquisition = action
+    ? `<a class="primary-link" href="${escapeHtml(action.href)}" target="_blank" rel="noopener nofollow">${action.label} ↗</a>`
+    : "";
   const overview = profile ? profile.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("") : `<p>${escapeHtml(resource.description)}</p>`;
   const editorial = profile ? `<h3>核心能力</h3><ul class="feature-list">${profile.highlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join("")}</ul><h3>适合谁</h3><p>${escapeHtml(profile.bestFor)}</p>` : "";
   const visual = profile ? `<figure class="detail-visual"><img src="../../${profile.image.replace(/^\//, "")}" alt="${escapeHtml(profile.imageAlt)}"><figcaption>图片来源：<a href="${escapeHtml(profile.imageSource)}" target="_blank" rel="noopener nofollow">官方页面 / 来源仓库</a></figcaption></figure>` : "";
