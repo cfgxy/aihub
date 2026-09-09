@@ -24,7 +24,10 @@ npm run probe
 npm run test:browser
 npm run build:pages
 npm run check:pages
+npm run test:detail-media
 ```
+
+`test:detail-media` 同时验证动态版与 Pages 版详情页的插图加载、原创图注、可选 Feature 图位落位以及既有资源图注不回归，需先启动 `npm run start` 与本地 Pages 静态服务（默认 `http://127.0.0.1:4320/aihub/`，可用 `PAGES_URL` 覆盖）；设置 `SHOT_DIR` 时额外输出整页截图。
 
 `test:browser` 使用本机 Playwright Chromium，验证桌面与移动布局、搜索、详情、外链、管理登录、CRUD 和 SKILL 复制动作，并清理临时验收数据。
 

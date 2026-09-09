@@ -8,6 +8,7 @@ export const categorySeeds = {
   app: [
     ["官方应用", "official-apps", "AI 厂商官方出品的完整产品"],
     ["辅助工具", "companion-tools", "围绕 AI 使用、切换与管理的第三方工具"],
+    ["其他", "others", "不归入上述类目的第三方应用条目"],
   ],
   skill: [
     ["文档与办公", "docs-office", "文档创建、编辑与办公流程"],
@@ -16,6 +17,7 @@ export const categorySeeds = {
     ["数据分析", "data-analysis", "结构化数据处理与可视化"],
     ["企业与协作", "enterprise-collaboration", "组织沟通与团队协作"],
     ["自动化与集成", "automation-integration", "工作流编排与跨系统集成"],
+    ["AI 研究工作流", "ai-research-workflow", "文献调研、实验与论文写作的研究流程技能"],
   ],
   mcp: [
     ["搜索与网页", "search-web", "网页搜索、抓取与浏览"],
@@ -27,7 +29,21 @@ export const categorySeeds = {
   ],
 } as const;
 
-export const resourceSeeds = [
+/** 种子条目；`installGuide` 仅 SKILL / MCP 等需要复制安装命令的条目填写。 */
+export type ResourceSeed = {
+  name: string;
+  slug: string;
+  type: string;
+  category: string;
+  summary: string;
+  description: string;
+  tags: string[];
+  officialUrl: string;
+  sourceUrl: string;
+  installGuide?: string;
+};
+
+export const resourceSeeds: ResourceSeed[] = [
   {
     name: "豆包", slug: "doubao", type: "app", category: "official-apps",
     summary: "字节跳动推出的 AI 助手，支持对话、创作、学习和多模态能力。",
@@ -84,6 +100,23 @@ export const resourceSeeds = [
     tags: ["社区出品", "浏览器扩展", "会话管理", "知识管理", "免费增值"],
     officialUrl: "https://www.ai-toolbox.co/",
     sourceUrl: "https://chromewebstore.google.com/detail/ai-toolbox-folders-prompt/jlalnhjkfiogoeonamcnngdndjbneina",
+  },
+  {
+    name: "AI Research Skills", slug: "ai-research-skills", type: "skill", category: "ai-research-workflow",
+    summary: "Orchestra Research 维护的开源 AI 研究技能库，让编码 Agent 自主完成从文献调研到论文写作的全流程。",
+    description: "内置 98 个研究技能与 autoresearch 编排层，一条 npx 命令即可装入 Claude Code、Codex、Gemini CLI 等编码代理。",
+    tags: ["社区出品", "开源", "Claude Code", "Codex", "Gemini CLI", "研究工作流"],
+    officialUrl: "https://www.orchestra-research.com/ai-research-skills",
+    sourceUrl: "https://github.com/Orchestra-Research/AI-research-SKILLs",
+    installGuide: "npx @orchestra-research/ai-research-skills",
+  },
+  {
+    name: "Gmail Creator Pro", slug: "gmail-creator-pro", type: "app", category: "others",
+    summary: "第三方发布的批量 Gmail 账号自动注册工具，源码公开但许可证为专有；自述功能涉及账号自动化与验证规避，可能违反 Google 条款，风险显著。",
+    description: "仓库自述可自动批量注册 Gmail 账号并绕过手机验证；本站未独立审计该工具，仅作风险提示性收录，不提供使用指导。",
+    tags: ["第三方出品", "高风险", "条款风险", "专有许可", "未独立审计"],
+    officialUrl: "https://github.com/ShadowHackrs/gmail-account-creator",
+    sourceUrl: "https://github.com/ShadowHackrs/gmail-account-creator",
   },
   {
     name: "Kilo Code", slug: "kilo-code", type: "app", category: "companion-tools",

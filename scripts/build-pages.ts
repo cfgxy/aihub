@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { categorySeeds, resourceSeeds, typeSeeds } from "../src/db/seed-data";
@@ -92,34 +93,73 @@ const home = shell("首页", `<section class="hero"><div class="container hero-i
 <div class="container sections"><div id="no-results" class="no-results" hidden>没有找到相关资源，请更换关键词。</div>${sections}</div>`, "./", homeScript);
 fs.writeFileSync(path.join(output, "index.html"), home);
 
+/** 静态页没有 React，复制按钮用一段内联脚本实现，语义与动态版 CopyBlock 一致。 */
+const copyScript = `
++document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copy);const text=code.textContent;try{await navigator.clipboard.writeText(text)}catch(e){const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);document.execCommand('copy')}button.textContent='已复制 ✓';setTimeout(()=>{button.textContent='复制'},2000)}));
++`.replace(/^\+/gm, "");
+
+/** SKILL / MCP 详情页的可复制安装说明，取种子的官方安装命令；与动态版 AcquisitionPanel 同口径。 */
+function copyBlock(id: string, label: string, value: string) {
+  return `<div class="copy-section"><div class="copy-heading"><span>${escapeHtml(label)}</span><button type="button" data-copy="${id}">复制</button></div><pre><code id="${id}">${escapeHtml(value)}</code></pre></div>`;
+}
+
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
   const profile = getResourceProfile(resource.slug);
   // 获取入口与动态站 src/components/acquisition-panel.tsx 同语义：
   // app 前往官网，skill 走来源包（缺来源时回退官网），mcp 指向文档且无来源时不渲染按钮。
+  // profile.actionLabel 仅覆盖按钮文案，不改变上述跳转目标语义。
   const action = resource.type === "app"
-    ? { label: "前往官方下载", href: resource.officialUrl }
+    ? { label: profile?.actionLabel || "前往官方下载", href: resource.officialUrl }
     : resource.type === "skill"
-      ? { label: "获取技能包", href: target }
+      ? { label: profile?.actionLabel || "获取技能包", href: target }
       : resource.sourceUrl
-        ? { label: "查看文档", href: resource.sourceUrl }
+        ? { label: profile?.actionLabel || "查看文档", href: resource.sourceUrl }
         : undefined;
-  const acquisition = action
+  const link = action
     ? `<a class="primary-link" href="${escapeHtml(action.href)}" target="_blank" rel="noopener nofollow">${action.label} ↗</a>`
     : "";
+  const install = resource.type === "skill"
+    ? copyBlock("install-guide", "安装说明", resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。")
+    : resource.type === "mcp" && resource.installGuide
+      ? copyBlock("install-guide", "安装命令", resource.installGuide)
+      : "";
+  const acquisition = `${link}${install}`;
   const overview = profile ? profile.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("") : `<p>${escapeHtml(resource.description)}</p>`;
-  const editorial = profile ? `<h3>核心能力</h3><ul class="feature-list">${profile.highlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join("")}</ul><h3>适合谁</h3><p>${escapeHtml(profile.bestFor)}</p>` : "";
-  const visual = profile ? `<figure class="detail-visual"><img src="../../${profile.image.replace(/^\//, "")}" alt="${escapeHtml(profile.imageAlt)}"><figcaption>图片来源：<a href="${escapeHtml(profile.imageSource)}" target="_blank" rel="noopener nofollow">官方页面 / 来源仓库</a></figcaption></figure>` : "";
+  const feature = profile?.featureImage
+    ? `<figure class="detail-feature"><img src="../../${profile.featureImage.replace(/^\//, "")}" alt="${escapeHtml(profile.featureImageAlt || "")}"><figcaption>${escapeHtml(profile.imageCredit || "")}</figcaption></figure>`
+    : "";
+  const editorial = profile ? `${feature}<h3>核心能力</h3><ul class="feature-list">${profile.highlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join("")}</ul><h3>适合谁</h3><p>${escapeHtml(profile.bestFor)}</p>` : "";
+  const caption = profile?.imageSource
+    ? `图片来源：<a href="${escapeHtml(profile.imageSource)}" target="_blank" rel="noopener nofollow">官方页面 / 来源仓库</a>`
+    : escapeHtml(profile?.imageCredit || "");
+  const visual = profile ? `<figure class="detail-visual"><img src="../../${profile.image.replace(/^\//, "")}" alt="${escapeHtml(profile.imageAlt)}"><figcaption>${caption}</figcaption></figure>` : "";
   const content = `<div class="container detail"><a class="back" href="../../">← 返回资源目录</a><header><span class="letter-mark large">${escapeHtml(resource.name.slice(0, 1))}</span><div><div class="detail-title"><h1>${escapeHtml(resource.name)}</h1>${resource.tags.slice(0, 4).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div><p>${escapeHtml(resource.summary)}</p></div></header>${visual}
 <div class="detail-grid"><div><section class="panel"><span class="eyebrow">获取资源</span>${acquisition}<p>将跳转至 ${hostname(target)}。本站不托管安装包，请遵循目标站点条款。</p><small>来源：${hostname(target)} · 信息以官方页面为准</small></section><section class="panel copy"><h2>资源简介</h2>${overview}${editorial}</section></div>
 <aside class="panel"><h2>资源信息</h2><dl><dt>资源类型</dt><dd>${resource.typeName}</dd><dt>主分类</dt><dd>${resource.categoryName}</dd><dt>属性标签</dt><dd>${resource.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join(" ")}</dd></dl></aside></div></div>`;
   const directory = path.join(output, "r", resource.slug);
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, "index.html"), shell(resource.name, content, "../../"));
+  fs.writeFileSync(path.join(directory, "index.html"), shell(resource.name, content, "../../", install ? copyScript : ""));
 }
 
 fs.writeFileSync(path.join(output, "404.html"), shell("页面不存在", `<div class="container missing"><h1>页面不存在或资源已下架</h1><p><a class="primary-link" href="${basePath}">返回首页</a></p></div>`, basePath));
 fs.writeFileSync(path.join(output, ".nojekyll"), "");
 fs.copyFileSync(path.resolve(process.cwd(), "src/pages-static/pages.css"), path.join(output, "assets", "pages.css"));
 fs.cpSync(path.resolve(process.cwd(), "public/media"), path.join(output, "media"), { recursive: true });
+
+// 来源标识：让交付包脱离文件名与外部记录也能追溯到确切的构建来源提交。
+const git = (args: string[]) => execFileSync("git", args, { encoding: "utf8" }).trim();
+const dirty = git(["status", "--porcelain", "--untracked-files=no"]) ? "-dirty" : "";
+const sources = [
+  "# AIHub GitHub Pages 产物来源标识（由 scripts/build-pages.ts 自动生成，请勿手工编辑）",
+  `source_repository: ${process.env.GITHUB_REPOSITORY || git(["remote", "get-url", "origin"])}`,
+  `source_branch: ${git(["rev-parse", "--symbolic-full-name", "HEAD"])}`,
+  `source_git_sha: ${git(["rev-parse", "HEAD"])}${dirty}`,
+  `source_commit_time: ${git(["log", "-1", "--format=%cI"])}`,
+  `built_at: ${new Date().toISOString()}`,
+  "generator: scripts/build-pages.ts",
+  `resource_count: ${resourceSeeds.length}`,
+  "",
+].join("\n");
+fs.writeFileSync(path.join(output, "SOURCES.txt"), sources);
 console.log(`GitHub Pages 静态站已生成：${output}`);

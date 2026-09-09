@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 import { resourceSeeds } from "@/db/seed-data";
+import { getResourceProfile } from "@/lib/resource-profiles";
 
 const root = process.cwd();
 const output = path.resolve(root, "dist-pages");
@@ -10,11 +11,13 @@ const output = path.resolve(root, "dist-pages");
 /**
  * 静态 Pages 的获取入口必须与动态站 src/components/acquisition-panel.tsx 同语义：
  * app 用 officialUrl，skill 用 sourceUrl || officialUrl，mcp 用 sourceUrl（无则不渲染按钮）。
+ * 文案默认按类型取，profile.actionLabel 可覆盖（两端同口径），但不改变上述跳转目标。
  */
 function expectedAcquisition(resource: (typeof resourceSeeds)[number]) {
-  if (resource.type === "app") return { label: "前往官方下载", href: resource.officialUrl };
-  if (resource.type === "skill") return { label: "获取技能包", href: resource.sourceUrl || resource.officialUrl };
-  return resource.sourceUrl ? { label: "查看文档", href: resource.sourceUrl } : undefined;
+  const label = getResourceProfile(resource.slug)?.actionLabel;
+  if (resource.type === "app") return { label: label || "前往官方下载", href: resource.officialUrl };
+  if (resource.type === "skill") return { label: label || "获取技能包", href: resource.sourceUrl || resource.officialUrl };
+  return resource.sourceUrl ? { label: label || "查看文档", href: resource.sourceUrl } : undefined;
 }
 
 /** 取详情页「获取资源」面板内的主操作锚点，返回文案与原始 href。 */

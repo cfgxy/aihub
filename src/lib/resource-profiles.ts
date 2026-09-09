@@ -1,7 +1,15 @@
 export type ResourceProfile = {
   image: string;
   imageAlt: string;
-  imageSource: string;
+  /** 外部来源图片的出处链接；原创插图不填，改用 imageCredit。 */
+  imageSource?: string;
+  /** 原创插图的图注文案，与 imageSource 二选一。 */
+  imageCredit?: string;
+  /** 可选的详情内容区插图，落在「核心能力」标题前；不配置则不渲染图位。 */
+  featureImage?: string;
+  featureImageAlt?: string;
+  /** 覆盖详情页「获取资源」的按钮文案；不配置则按资源类型使用默认文案。 */
+  actionLabel?: string;
   overview: string[];
   highlights: string[];
   bestFor: string;
@@ -100,6 +108,43 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
       "内置提示词库与提示词链，固化重复使用的流程",
     ],
     bestFor: "跨多个 AI 助手工作、需要统一检索历史会话并把对话沉淀为可导出知识资产的重度用户与内容创作者。",
+  },
+  "ai-research-skills": {
+    image: "/media/ai-research-skills-hero.png",
+    imageAlt: "AI Research Skills 原创插图：文献综述→实验验证→论文产出流程",
+    imageCredit: "插图：AIHub 原创设计",
+    featureImage: "/media/ai-research-skills-feature.png",
+    featureImageAlt: "AI Research Skills 原创插图：编码 Agent 编排六类研究技能并汇入论文产出",
+    overview: [
+      "AI Research Skills（仓库 Orchestra-Research/AI-research-SKILLs）是 Orchestra Research 维护的开源 AI 研究技能库，为 Claude Code、Codex、Gemini CLI 等 AI 编码代理提供覆盖 23 个方向的 98 个研究技能，贯穿文献调研、想法生成、实验执行到论文写作的完整研究生命周期。autoresearch 编排技能以双环架构自主推进整个研究流程，按需路由到微调、分布式训练、推理优化、可解释性等具体领域技能；vLLM、Megatron-LM、TRL、TransformerLens 等框架技能的内容沉淀自官方文档、真实 GitHub issue 与生产级工作流。",
+      "技能库以 MIT 许可证开源，官方页面未提供付费计划；技能引用的第三方框架（如 vLLM、Megatron-LM）沿用各自许可证，商用前需逐一核查。仓库最近一次代码更新为 2026-06-16（v1.7.2）。技能是知识包而非可运行软件，实际效果取决于所搭配的模型与代理；安装器会将技能写入 ~/.orchestra/skills/ 并在已检测到的编码代理目录建立链接，敏感环境部署前应先审阅安装行为。技能数与分类数为 2026年09月09日 官方仓库口径，请以 GitHub 仓库最新说明为准。",
+    ],
+    highlights: [
+      "98 个技能覆盖「想法→论文」研究全流程，23 个分类可全装、按类装或单装",
+      "autoresearch 编排层以双环架构自主推进文献调研、实验与论文写作",
+      "一条 npx 命令装入 Claude Code、Codex、Gemini CLI 等多种编码代理，自动检测已装代理",
+      "MIT 开源，与 Orchestra Research 平台自动同步、可一键加入项目",
+    ],
+    bestFor: "需要把文献综述、实验调参与论文写作交给 AI 编码代理推进的 AI 研究者与机器学习工程团队。",
+  },
+  "gmail-creator-pro": {
+    image: "/media/gmail-creator-pro-hero.png",
+    imageAlt: "Gmail Creator Pro 原创插图：账号自动化队列与风险警示，标注非 Google 官方工具",
+    imageCredit: "插图：AIHub 原创设计",
+    featureImage: "/media/gmail-creator-pro-feature.png",
+    featureImageAlt: "Gmail Creator Pro 原创插图：自动化队列指向风险边界卡，标注谨慎使用与未经独立安全审计",
+    // 高风险条目不使用 app 默认的「前往官方下载」，避免读作站点推荐下载。
+    actionLabel: "查看来源仓库",
+    overview: [
+      "Gmail Creator Pro（仓库 ShadowHackrs/gmail-account-creator）是署名「Shadow Hacker」的第三方工具，源码在 GitHub 公开可见，但附带专有许可证，不属于开源软件。仓库自述：可批量自动注册 Gmail 账号，提供「高级反检测系统」「手机验证绕过」（集成第三方接码服务）与代理集成等能力，并附界面截图与演示视频。上述能力描述均为仓库自述，本站未独立验证，收录不代表推荐。",
+      "该仓库自述的功能涉及账号自动化与验证规避，可能违反 Google 服务条款：若用于创建虚假账号、规避 Google 的系统或保护措施，或为滥用目的创建、使用多个账号，Google 条款明确禁止此类行为并可能停用相关账号；Google 同时说明，拥有多个账号本身（如个人与工作账号）并不违规。相关行为在部分法域还可能触及反垃圾信息与计算机滥用类法律边界。该工具分发渠道可信度有限，同类工具存在凭据窃取与恶意软件的品类性风险，本站未对代码做独立安全审计。其专有许可证仅允许个人非商业、教育与测试评估用途，禁止复制、修改与再分发，并明确要求不得用于任何非法或未经授权的用途。本站收录仅作风险提示与来源指引，不提供安装或使用指导。",
+    ],
+    highlights: [
+      "仓库自述：批量自动注册 Gmail 账号——账号自动化可能违反 Google 条款，相关账号可能被 Google 检测并停用",
+      "仓库自述：反检测、代理集成与经第三方接码服务规避手机验证等规避类能力——本站均未独立验证",
+      "源码公开可见但为专有许可，禁止修改与再分发；本站未做独立安全审计",
+    ],
+    bestFor: "本站未核实到明确的合法适用场景；任何账号自动化注册用途都应先评估 Google 服务条款、账号资产风险与当地法律约束。",
   },
   "kilo-code": {
     image: "/media/kilo-code.png",
