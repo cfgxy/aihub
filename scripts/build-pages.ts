@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { categorySeeds, resourceSeeds, typeSeeds } from "../src/db/seed-data";
@@ -136,4 +137,20 @@ fs.writeFileSync(path.join(output, "404.html"), shell("页面不存在", `<div c
 fs.writeFileSync(path.join(output, ".nojekyll"), "");
 fs.copyFileSync(path.resolve(process.cwd(), "src/pages-static/pages.css"), path.join(output, "assets", "pages.css"));
 fs.cpSync(path.resolve(process.cwd(), "public/media"), path.join(output, "media"), { recursive: true });
+
+// 来源标识：让交付包脱离文件名与外部记录也能追溯到确切的构建来源提交。
+const git = (args: string[]) => execFileSync("git", args, { encoding: "utf8" }).trim();
+const dirty = git(["status", "--porcelain", "--untracked-files=no"]) ? "-dirty" : "";
+const sources = [
+  "# AIHub GitHub Pages 产物来源标识（由 scripts/build-pages.ts 自动生成，请勿手工编辑）",
+  `source_repository: ${process.env.GITHUB_REPOSITORY || git(["remote", "get-url", "origin"])}`,
+  `source_branch: ${git(["rev-parse", "--symbolic-full-name", "HEAD"])}`,
+  `source_git_sha: ${git(["rev-parse", "HEAD"])}${dirty}`,
+  `source_commit_time: ${git(["log", "-1", "--format=%cI"])}`,
+  `built_at: ${new Date().toISOString()}`,
+  "generator: scripts/build-pages.ts",
+  `resource_count: ${resourceSeeds.length}`,
+  "",
+].join("\n");
+fs.writeFileSync(path.join(output, "SOURCES.txt"), sources);
 console.log(`GitHub Pages 静态站已生成：${output}`);

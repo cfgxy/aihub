@@ -6,6 +6,7 @@ const required = [
   "index.html",
   "404.html",
   ".nojekyll",
+  "SOURCES.txt",
   "assets/pages.css",
   "r/doubao/index.html",
   "r/codex-plus-plus/index.html",
@@ -28,6 +29,15 @@ for (const file of required) {
     throw new Error(`Pages 产物缺失：${file}`);
   }
 }
+
+// 交付包必须自证来源：SOURCES.txt 记录完整 40 位 Git SHA，脱离文件名与外部记录也可追溯。
+const sources = fs.readFileSync(path.join(root, "SOURCES.txt"), "utf8");
+const sourceSha = sources.match(/^source_git_sha: ([0-9a-f]{40})$/m);
+if (!sourceSha) throw new Error("SOURCES.txt 缺少完整 40 位 source_git_sha");
+for (const key of ["source_repository:", "source_branch:", "built_at:", "generator:"]) {
+  if (!sources.includes(key)) throw new Error(`SOURCES.txt 缺少字段：${key}`);
+}
+if (sources.includes("-dirty")) throw new Error("SOURCES.txt 记录的来源工作区不干净，产物不可追溯");
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCSwitch", "AI Toolbox", "AI Research Skills", "Gmail Creator Pro", "data-resource", "search-input"]) {
