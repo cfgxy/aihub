@@ -146,6 +146,66 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "本站未核实到明确的合法适用场景；任何账号自动化注册用途都应先评估 Google 服务条款、账号资产风险与当地法律约束。",
   },
+  "kilo-code": {
+    image: "/media/kilo-code.png",
+    imageAlt: "Kilo Code 同一智能体贯通 IDE、CLI 与云端的多入口示意",
+    imageSource: "https://kilo.ai/",
+    overview: [
+      "Kilo Code 是开源的 agentic 编程平台，同一个智能体可在 VS Code/OpenVSX、JetBrains 系 IDE（IntelliJ IDEA、PyCharm、WebStorm）、CLI、Cloud Agents、Slack 与 Code Reviewer 等入口之间共用。它支持自有 API key 与本地模型，官网宣称接入 500+ 模型且按厂商原价零加价转付（kilo.ai，2026年09月08日 抓取）。",
+      "许可证需要分开理解：客户端源码以 MIT 许可证开源，官方强调 prompt、上下文窗口与决策过程可审计；而 Gateway 与 Cloud 等商业化后端为 source-available，并非完全开源，无法完整自审计。官网另标注 Kilo 已被 Anaconda 收购，产品后续走向需持续关注；重度 agent 使用场景下 token 开销较大，接入前应评估成本。",
+    ],
+    highlights: [
+      "一个智能体覆盖 VS Code、JetBrains、CLI、Cloud 与 Slack 多入口",
+      "500+ 模型接入并按厂商原价零加价，支持自有 API key 与本地模型",
+      "客户端 MIT 开源，prompt 与上下文过程可审计",
+    ],
+    bestFor: "希望在单一开源客户端内跨模型、跨 IDE 开展 agentic 编程，并关注成本透明与过程可审计的开发者与工程团队。",
+  },
+  almanac: {
+    image: "/media/almanac.png",
+    imageAlt: "Almanac 连接企业工具自动编译并持续更新知识 wiki 的示意",
+    imageSource: "https://usealmanac.com/",
+    overview: [
+      "Almanac 是面向企业的知识 agent，官网自述为「自更新的 wiki」。它连接 Gmail、Slack 等公司工具后自动学习人员、客户与项目信息，编译成自维护的企业知识库，并把这份 wiki 作为执行任务前的阅读上下文。agent 自带独立的浏览器、文件与登录环境，因此也能操作没有官方集成的工具，用户可在 Slack 频道或 iMessage 中直接派活并接收回报（官网，2026年09月08日 抓取）。",
+      "产品为闭源 SaaS 且处于早期阶段（官网标注 Backed by Y Combinator）。定价未公开——官网虽有 Pricing 入口，当前页面无公开价格、主 CTA 为 Join waitlist；SLA、数据合规与隐私细节官方同样未披露，保持未知待官方披露，不作推定。使用它需要接入企业整套工具与账号，数据接入面较大，企业应自行评估数据边界。另需说明：外部候选材料曾提到常驻 Slack/Teams，官网当前仅展示 Slack 与 iMessage 交互，Teams 支持未获官方证实。",
+    ],
+    highlights: [
+      "连接公司工具自动编译并持续更新企业 wiki",
+      "agent 自带独立浏览器与登录环境，可操作无官方集成的工具",
+      "经 Slack 或 iMessage 派发任务并回报结果",
+    ],
+    bestFor: "知识散落在多个 SaaS 工具、希望知识库免人工维护，并需要在 IM 中随时派活的运营、销售与客户成功团队。",
+  },
+  "shuohao-skills": {
+    image: "/media/shuohao-skills.png",
+    imageAlt: "shuohao-skills 中文短剧制作五段技能链示意",
+    imageSource: "https://github.com/eternityspring/shuohao-skills",
+    overview: [
+      "shuohao-skills 是面向中文微短剧创作的垂直 Agent Skills 合集，把短剧前期制作拆成一条完整技能链：拆角色（人物小传 / character bible）→ 改编大纲 → 场景与道具设定（art bible）→ 剧本写作 → 切分镜。技能以 Agent Skills 形态发布，可在 Claude Code、Codex 等兼容的 agent 中直接调用（仓库 README，2026年09月08日 实查）。",
+      "项目开源免费，采用 Apache-2.0 许可证（GitHub API 2026年09月08日 实查：3,126 stars，2026年08月06日 创建、2026年08月26日 最近推送）。需要注意的是最近一次推送后未见新提交，活跃度有所放缓；仓库为个人单点维护，最终创作质量仍取决于底层模型能力，社区尚无统一评测基准。仓库 API 标注的项目主页站点内容未经核验，未作为事实来源引用。",
+    ],
+    highlights: [
+      "覆盖拆角色、排大纲、场景道具、写剧本、切分镜的全流程技能链",
+      "以 Agent Skills 形态发布，可在 Claude Code、Codex 等 agent 中调用",
+      "Apache-2.0 开源免费，面向中文短剧创作生态",
+    ],
+    bestFor: "希望用 agent 把短剧前期制作流水线化的中文微短剧创作者、编剧与内容团队。",
+  },
+  "x64dbg-mcp-server": {
+    image: "/media/x64dbg-mcp-server.png",
+    imageAlt: "x64dbg 调试器与 LLM agent 经 MCP 协议桥接的抽象示意",
+    imageSource: "https://github.com/duty1g/x64dbg-mcp-server",
+    overview: [
+      "x64dbg-mcp-server 以原生插件形态嵌入 x64dbg，经 HTTP 把调试器能力封装为 MCP（Model Context Protocol）工具供 AI 助手调用，能力清单包括断点设置、单步执行、内存读取与寄存器转储等。项目基于 Zig 构建、零第三方依赖，开源免费并采用 MIT 许可证（GitHub API 2026年09月08日 实查：1,913 stars，2026年08月22日 创建、2026年09月02日 最近推送）。",
+      "这是典型的双刃工具：同一套能力既服务于恶意软件分析、漏洞研究等正当场景，也可能被用于恶意目的，使用者必须自行确保操作处于合法授权范围并符合当地法律法规。本站只作能力说明，不提供任何操作教程。项目仅覆盖 Windows / x64dbg 生态，不适用其他调试器或平台；README 中的官方免责与合规声明未逐字核验，合规边界以项目官方声明与当地法律为准。",
+    ],
+    highlights: [
+      "原生插件运行于 x64dbg，经 HTTP 暴露 MCP 接口",
+      "断点、单步、内存读取、寄存器转储等能力开放给 LLM agent",
+      "基于 Zig 构建、零第三方依赖，MIT 开源",
+    ],
+    bestFor: "在合法授权前提下从事恶意软件分析、漏洞研究与软件逆向，并希望在 x64dbg 工作流中引入 AI 助手的安全研究者。",
+  },
 };
 
 export function getResourceProfile(slug: string) {

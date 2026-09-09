@@ -106,10 +106,19 @@ function copyBlock(id: string, label: string, value: string) {
 for (const resource of resources) {
   const target = resource.sourceUrl || resource.officialUrl;
   const profile = getResourceProfile(resource.slug);
-  // profile.actionLabel 覆盖类型默认文案，与动态版 AcquisitionPanel 同口径。
-  const actionLabel = profile?.actionLabel
-    || (resource.type === "app" ? "前往官方下载" : resource.type === "skill" ? "获取技能包" : "查看文档");
-  const link = `<a class="primary-link" href="${escapeHtml(target)}" target="_blank" rel="noopener nofollow">${actionLabel} ↗</a>`;
+  // 获取入口与动态站 src/components/acquisition-panel.tsx 同语义：
+  // app 前往官网，skill 走来源包（缺来源时回退官网），mcp 指向文档且无来源时不渲染按钮。
+  // profile.actionLabel 仅覆盖按钮文案，不改变上述跳转目标语义。
+  const action = resource.type === "app"
+    ? { label: profile?.actionLabel || "前往官方下载", href: resource.officialUrl }
+    : resource.type === "skill"
+      ? { label: profile?.actionLabel || "获取技能包", href: target }
+      : resource.sourceUrl
+        ? { label: profile?.actionLabel || "查看文档", href: resource.sourceUrl }
+        : undefined;
+  const link = action
+    ? `<a class="primary-link" href="${escapeHtml(action.href)}" target="_blank" rel="noopener nofollow">${action.label} ↗</a>`
+    : "";
   const install = resource.type === "skill"
     ? copyBlock("install-guide", "安装说明", resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。")
     : resource.type === "mcp" && resource.installGuide
