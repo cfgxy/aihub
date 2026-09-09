@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <!-- AI-research-SKILLs 原创内容区插图：编码 Agent 经总线编排研究技能，汇入论文产出 · 与 Hero 同一套 AIHub token -->
+  <defs>
+    <pattern id="fdots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#c7d2fe" opacity="0.5"/>
+    </pattern>
+    <filter id="fcardShadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dy="4" result="off"/>
+      <feColorMatrix in="off" type="matrix" values="0 0 0 0 0.059  0 0 0 0 0.09  0 0 0 0 0.165  0 0 0 0.10 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="farrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1.5 1 L10.5 6 L1.5 11 Z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <rect width="1200" height="675" fill="url(#fdots)"/>
+  <circle cx="1120" cy="60" r="170" fill="#eef2ff" opacity="0.55"/>
+  <circle cx="60" cy="640" r="150" fill="#eef2ff" opacity="0.5"/>
+
+  <!-- 顶部 kicker（呼应站点 section-kicker 样式） -->
+  <text x="64" y="76" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" letter-spacing="5" fill="#4f46e5">AI RESEARCH WORKFLOW</text>
+
+  <!-- 左：编码 Agent 终端 -->
+  <g transform="translate(64,208)" filter="url(#fcardShadow)">
+    <rect width="340" height="260" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <!-- 标题栏 -->
+    <path d="M0 14 C 0 6.3, 6.3 0, 14 0 H 326 C 333.7 0, 340 6.3, 340 14 V 46 H 0 Z" fill="#111827"/>
+    <circle cx="24" cy="23" r="4.5" fill="#64748b"/>
+    <circle cx="40" cy="23" r="4.5" fill="#64748b"/>
+    <circle cx="56" cy="23" r="4.5" fill="#64748b"/>
+    <!-- Agent 徽标 -->
+    <g transform="translate(288,10)">
+      <rect width="36" height="26" rx="7" fill="#4f46e5"/>
+      <rect x="7" y="7" width="22" height="12" rx="3.5" fill="#eef2ff"/>
+      <circle cx="13" cy="13" r="2.2" fill="#4f46e5"/>
+      <circle cx="23" cy="13" r="2.2" fill="#4f46e5"/>
+      <line x1="18" y1="0" x2="18" y2="-6" stroke="#4f46e5" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="18" cy="-8" r="2.6" fill="#4f46e5"/>
+    </g>
+    <!-- 终端内容 -->
+    <g transform="translate(26,74)">
+      <text font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="700" fill="#4f46e5">&gt;</text>
+      <text x="18" y="0" font-family="DejaVu Sans Mono, monospace" font-size="21" fill="#475569">load research skills</text>
+      <!-- 技能包 chip -->
+      <g transform="translate(0,26)">
+        <rect width="216" height="38" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+        <!-- 技能组四点网格 -->
+        <g fill="#4f46e5">
+          <rect x="12" y="12" width="6" height="6" rx="2"/>
+          <rect x="21" y="12" width="6" height="6" rx="2"/>
+          <rect x="12" y="21" width="6" height="6" rx="2"/>
+          <rect x="21" y="21" width="6" height="6" rx="2"/>
+        </g>
+        <text x="36" y="25" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" fill="#3730a3">research suite</text>
+      </g>
+      <!-- 正文条 -->
+      <g fill="#e2e8f0">
+        <rect x="0" y="86" width="252" height="10" rx="5"/>
+        <rect x="0" y="108" width="204" height="10" rx="5"/>
+        <rect x="0" y="130" width="168" height="10" rx="5"/>
+      </g>
+      <!-- 光标 -->
+      <rect x="18" y="158" width="13" height="24" fill="#4f46e5"/>
+    </g>
+    <!-- 智能火花 -->
+    <g transform="translate(322,-20)" fill="#6d28d9">
+      <path d="M0 -14 L 4 -4 L 14 0 L 4 4 L 0 14 L -4 4 L -14 0 L -4 -4 Z"/>
+    </g>
+  </g>
+
+  <!-- 中：技能总线 -->
+  <!-- 干线 -->
+  <line x1="404" y1="338" x2="916" y2="338" stroke="#818cf8" stroke-width="3.5" marker-end="url(#farrow)"/>
+  <!-- 上排三块支线 -->
+  <g stroke="#c7d2fe" stroke-width="3">
+    <line x1="520" y1="188" x2="520" y2="338"/>
+    <line x1="640" y1="188" x2="640" y2="338"/>
+    <line x1="760" y1="188" x2="760" y2="338"/>
+  </g>
+  <!-- 下排三块支线 -->
+  <g stroke="#c7d2fe" stroke-width="3">
+    <line x1="520" y1="338" x2="520" y2="490"/>
+    <line x1="640" y1="338" x2="640" y2="490"/>
+    <line x1="760" y1="338" x2="760" y2="490"/>
+  </g>
+  <!-- 总线节点 -->
+  <g fill="#4f46e5">
+    <circle cx="520" cy="338" r="4.5"/>
+    <circle cx="640" cy="338" r="4.5"/>
+    <circle cx="760" cy="338" r="4.5"/>
+  </g>
+
+  <!-- 上排技能块 -->
+  <g filter="url(#fcardShadow)">
+    <g transform="translate(476,96)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 书本 -->
+      <g stroke="#4f46e5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(23,25)">
+        <path d="M0 12 C 6 8, 14 8, 21 12 V 42 C 14 38, 6 38, 0 42 Z"/>
+        <path d="M21 12 C 27 8, 35 8, 42 12 V 42 C 35 38, 27 38, 21 42"/>
+        <line x1="21" y1="13" x2="21" y2="42"/>
+      </g>
+    </g>
+    <g transform="translate(596,96)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 锥形瓶 -->
+      <g transform="translate(23,22)">
+        <g stroke="#4f46e5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 0 V 22 L 2 48 C -1 55, 3 61, 10 61 H 32 C 39 61, 43 55, 40 48 L 28 22 V 0"/>
+          <line x1="8" y1="0" x2="34" y2="0"/>
+        </g>
+        <path d="M8 38 L 2 48 C -1 55, 3 61, 10 61 H 32 C 39 61, 43 55, 40 48 L 34 38 Z" fill="#a5b4fc"/>
+      </g>
+    </g>
+    <g transform="translate(716,96)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 图表 -->
+      <g stroke="#4f46e5" stroke-width="3" fill="none" stroke-linecap="round" transform="translate(23,25)">
+        <path d="M0 42 H 42"/>
+        <line x1="8" y1="36" x2="8" y2="24"/>
+        <line x1="19" y1="36" x2="19" y2="14"/>
+        <line x1="30" y1="36" x2="30" y2="30"/>
+        <path d="M2 12 L 14 5 L 24 10 L 38 2" stroke="#6d28d9"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 下排技能块 -->
+  <g filter="url(#fcardShadow)">
+    <g transform="translate(476,490)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 代码 -->
+      <g stroke="#6d28d9" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(23,27)">
+        <path d="M14 8 L 2 22 L 14 36"/>
+        <path d="M28 8 L 40 22 L 28 36"/>
+      </g>
+    </g>
+    <g transform="translate(596,490)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 数据节点 -->
+      <g stroke="#4f46e5" stroke-width="2.8" fill="none" stroke-linecap="round" transform="translate(23,23)">
+        <ellipse cx="21" cy="8" rx="14" ry="6"/>
+        <path d="M7 8 V 36 C 7 40, 13 43, 21 43 C 29 43, 35 40, 35 36 V 8"/>
+        <path d="M7 22 C 7 26, 13 29, 21 29 C 29 29, 35 26, 35 22"/>
+      </g>
+    </g>
+    <g transform="translate(716,490)">
+      <rect width="88" height="92" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+      <!-- 文档笔 -->
+      <g transform="translate(23,25)">
+        <rect x="0" y="4" width="30" height="38" rx="5" fill="none" stroke="#4f46e5" stroke-width="3"/>
+        <g stroke="#cbd5e1" stroke-width="3" stroke-linecap="round">
+          <line x1="6" y1="14" x2="24" y2="14"/>
+          <line x1="6" y1="22" x2="20" y2="22"/>
+          <line x1="6" y1="30" x2="24" y2="30"/>
+        </g>
+        <g transform="translate(28,18) rotate(45)">
+          <rect x="-4" y="-16" width="8" height="22" rx="2.4" fill="#6d28d9"/>
+          <path d="M-4 6 L 0 14 L 4 6 Z" fill="#6d28d9"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 右：论文产出卡 -->
+  <g transform="translate(926,187)" filter="url(#fcardShadow)">
+    <rect width="220" height="302" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <g transform="translate(52,66)">
+      <!-- 论文 -->
+      <rect x="0" y="0" width="116" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2.4"/>
+      <g stroke="#cbd5e1" stroke-width="4" stroke-linecap="round">
+        <line x1="18" y1="26" x2="98" y2="26"/>
+        <line x1="18" y1="48" x2="90" y2="48"/>
+        <line x1="18" y1="70" x2="98" y2="70"/>
+        <line x1="18" y1="92" x2="98" y2="92"/>
+        <line x1="18" y1="114" x2="76" y2="114"/>
+      </g>
+      <!-- 笔 -->
+      <g transform="translate(62,64) rotate(45)">
+        <rect x="-7" y="-56" width="14" height="66" rx="4" fill="#6d28d9"/>
+        <path d="M-7 10 L 0 30 L 7 10 Z" fill="#6d28d9"/>
+        <rect x="-7" y="-60" width="14" height="10" rx="3" fill="#4f46e5"/>
+      </g>
+      <!-- 通过标记（压右上角） -->
+      <g transform="translate(106,-4)">
+        <circle r="19" fill="#ecfdf5" stroke="#047857" stroke-width="3"/>
+        <path d="M-8 1 L -2 8 L 9 -6" stroke="#047857" stroke-width="4.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 左下点缀 -->
+  <g transform="translate(64,618)" stroke="#c7d2fe" stroke-width="3" stroke-linecap="round" fill="none">
+    <line x1="0" y1="0" x2="30" y2="0"/>
+    <line x1="40" y1="0" x2="70" y2="0"/>
+    <line x1="80" y1="0" x2="110" y2="0"/>
+  </g>
+</svg>

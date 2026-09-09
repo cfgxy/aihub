@@ -10,11 +10,14 @@ const required = [
   "r/doubao/index.html",
   "r/codex-plus-plus/index.html",
   "r/ai-toolbox/index.html",
+  "r/ai-research-skills/index.html",
   "media/doubao-cover.png",
   "media/claude.jpg",
   "media/workbuddy.png",
   "media/ccswitch.png",
   "media/ai-toolbox.png",
+  "media/ai-research-skills-hero.png",
+  "media/ai-research-skills-feature.png",
 ];
 
 for (const file of required) {
@@ -24,7 +27,7 @@ for (const file of required) {
 }
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
-for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCSwitch", "AI Toolbox", "data-resource", "search-input"]) {
+for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCSwitch", "AI Toolbox", "AI Research Skills", "data-resource", "search-input"]) {
   if (!home.includes(value)) throw new Error(`首页缺少：${value}`);
 }
 
@@ -43,5 +46,20 @@ for (const value of ["detail-visual", "核心能力", "适合谁", "ai-toolbox.c
   if (!aiToolbox.includes(value)) throw new Error(`AI Toolbox 详情页缺少完整内容：${value}`);
 }
 if (aiToolbox.includes("3.0")) throw new Error("AI Toolbox 详情页出现无官方依据的版本号 3.0");
+
+const research = fs.readFileSync(path.join(root, "r/ai-research-skills/index.html"), "utf8");
+for (const value of ["detail-visual", "detail-feature", "核心能力", "media/ai-research-skills-hero.png", "media/ai-research-skills-feature.png", "插图：AIHub 原创设计"]) {
+  if (!research.includes(value)) throw new Error(`AI Research Skills 详情页缺少完整内容：${value}`);
+}
+// 原创插图不得生成「官方页面 / 来源仓库」这类不存在的外部图片来源。
+if (research.includes("图片来源：")) throw new Error("原创插图详情页出现外部图片来源图注");
+// Feature 图位是本条资源专属，其余详情页不得因此出现空图位。
+for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => name !== "ai-research-skills")) {
+  const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
+  if (html.includes("detail-feature")) throw new Error(`${slug} 出现不应存在的 Feature 图位`);
+  if (!html.includes("图片来源：")) throw new Error(`${slug} 丢失外部图片来源图注`);
+}
+if (/<img src="[^"]*"[^>]*>/.test(research) === false) throw new Error("AI Research Skills 详情页图片标签缺失");
+if (research.includes('src="../../"') || research.includes('alt=""')) throw new Error("AI Research Skills 详情页存在空图位或空替代文本");
 
 console.log(`PASS GitHub Pages 产物结构、${cardCount} 个种子、详情图片与完整正文校验`);

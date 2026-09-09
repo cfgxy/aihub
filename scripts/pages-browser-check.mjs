@@ -26,7 +26,8 @@ try {
   const appSection = desktop.locator('[data-type-section="app"]');
   await appSection.getByRole("button", { name: "辅助工具" }).click();
   await desktop.getByLabel("搜索资源").fill("Codex");
-  const combinedResults = await desktop.locator("[data-resource]:not([hidden])").count();
+  // 分类筛选按 section 生效，断言只看被筛选的应用区，避免其他类型命中同一关键词时误判。
+  const combinedResults = await appSection.locator("[data-resource]:not([hidden])").count();
   if (combinedResults !== 1) throw new Error(`Pages 组合筛选结果错误：${combinedResults}`);
   await appSection.getByRole("button", { name: "全部" }).click();
   await desktop.getByLabel("搜索资源").fill("豆包");

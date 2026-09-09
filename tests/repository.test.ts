@@ -28,7 +28,8 @@ describe("资源仓储", () => {
   it("按关键词、类型和分类筛选", async () => {
     const { listResources } = await import("@/lib/repository");
     expect(listResources({ query: "豆包" }).map((item) => item.slug)).toEqual(["doubao"]);
-    expect(listResources({ typeKey: "skill" })).toEqual([]);
+    expect(listResources({ typeKey: "skill" }).map((item) => item.slug).sort())
+      .toEqual(resourceSeeds.filter((resource) => resource.type === "skill").map((resource) => resource.slug).sort());
     expect(listResources({ typeKey: "app", categorySlug: "companion-tools" })).toHaveLength(companionToolCount);
   });
   it("草稿默认不会出现在公开查询中", async () => {

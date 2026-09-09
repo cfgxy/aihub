@@ -12,6 +12,7 @@
     "build:pages": "tsx scripts/build-pages.ts",
     "check:pages": "node scripts/check-pages.mjs",
     "test:pages-browser": "node scripts/pages-browser-check.mjs",
+    "test:detail-media": "node scripts/detail-media-check.mjs",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:rollback": "tsx src/db/migrate.ts --down",
     "db:seed": "tsx src/db/seed.ts",
