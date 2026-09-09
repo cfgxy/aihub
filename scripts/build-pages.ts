@@ -71,7 +71,7 @@ const sections = typeSeeds.map((type) => {
     ? typeResources.map(card).join("")
     : `<div class="empty">该类型收录整理中，敬请期待。</div>`;
 
-  return `<section class="type-section" id="type-${type.key}" data-type-section="${type.key}"><div class="section-heading"><div><span>${escapeHtml(type.description)}</span><h2>${type.name} <small>${typeResources.length} 项</small></h2></div></div>
+  return `<section class="type-section" id="type-${type.key}" data-type-section="${type.key}"><div class="section-heading"><div><span>${escapeHtml(type.description)}</span><h2>${type.name} <small data-section-count>${typeResources.length} 项</small></h2></div></div>
 <div class="chip-row"><button class="active" type="button" data-category-filter="">全部</button>${chips}</div><div class="resource-grid">${contents}</div></section>`;
 }).join("");
 
@@ -81,7 +81,7 @@ const homeScript = `
 +const TOTAL_LABEL=${JSON.stringify(totalLabel)};
 +const search=document.querySelector('#search-input');
 +const count=document.querySelector('#result-count');
-+function apply(){const q=search.value.trim().toLowerCase();let visible=0;document.querySelectorAll('[data-type-section]').forEach(section=>{const category=section.querySelector('[data-category-filter].active').dataset.categoryFilter;section.querySelectorAll('[data-resource]').forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(!category||card.dataset.category===category);card.hidden=!show;if(show)visible++})});count.textContent=(q?visible+' 项匹配':TOTAL_LABEL);document.querySelector('#no-results').hidden=visible>0||!q}
++function apply(){const q=search.value.trim().toLowerCase();let visible=0;document.querySelectorAll('[data-type-section]').forEach(section=>{const category=section.querySelector('[data-category-filter].active').dataset.categoryFilter;let sectionVisible=0;section.querySelectorAll('[data-resource]').forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(!category||card.dataset.category===category);card.hidden=!show;if(show){visible++;sectionVisible++}});const sectionCount=section.querySelector('[data-section-count]');if(sectionCount)sectionCount.textContent=sectionVisible+' 项'});count.textContent=(q?visible+' 项匹配':TOTAL_LABEL);document.querySelector('#no-results').hidden=visible>0||!q}
 +search.addEventListener('input',apply);document.querySelector('#clear-search').addEventListener('click',()=>{search.value='';apply();search.focus()});
 +document.querySelectorAll('[data-type-section]').forEach(section=>section.querySelectorAll('[data-category-filter]').forEach(button=>button.addEventListener('click',()=>{section.querySelectorAll('[data-category-filter]').forEach(item=>item.classList.toggle('active',item===button));apply()})));
 +`.replace(/^\+/gm, "");

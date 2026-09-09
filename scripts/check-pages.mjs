@@ -44,6 +44,14 @@ for (const value of ["豆包", "Codex++", "Claude", "WorkBuddy", "Multica", "CCS
   if (!home.includes(value)) throw new Error(`首页缺少：${value}`);
 }
 
+// RUYI-120：分类筛选靠 card.hidden 生效，样式表必须让 [hidden] 压过 .resource-card 的 display，
+// 否则属性设了卡片仍然渲染，分类切换在页面上看不出任何变化。
+const pagesCss = fs.readFileSync(path.join(root, "assets/pages.css"), "utf8");
+if (!/\[hidden\]\{display:none!important\}/.test(pagesCss)) {
+  throw new Error("pages.css 缺少 [hidden] 隐藏规则，分类与搜索筛选不会生效");
+}
+if (!home.includes("data-section-count")) throw new Error("首页分类计数缺少 data-section-count 挂点");
+
 // 详情页数量以首页实际渲染的资源卡片为准，新增条目时无需同步改这里的硬编码数字。
 const cardCount = home.match(/<a class="resource-card"/g).length;
 const details = fs.readdirSync(path.join(root, "r"));
