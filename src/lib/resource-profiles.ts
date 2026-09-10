@@ -206,6 +206,38 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "在合法授权前提下从事恶意软件分析、漏洞研究与软件逆向，并希望在 x64dbg 工作流中引入 AI 助手的安全研究者。",
   },
+  "papergraph-mcp": {
+    image: "/media/papergraph-mcp.png",
+    imageAlt: "PaperGraph MCP 原创插图：数学论文中的证据高亮经证据链汇聚为以定理结论（QED 方块）为中心的阅读图谱，右下角为本地工作区数据库图标",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "PaperGraph MCP 把数学论文变成 AI agent 可用的「证据优先」阅读地图。加载一篇论文后，它会生成首屏概览：主结果候选、论文结构、证明路径证据与外部阅读风险；结论抽取针对定理式结果，证明证据附带证明局部引用、来源切片与依赖诊断，每条证据都可回溯到论文原文位置。",
+      "围绕精读流程，它提供阅读队列、阅读会话、checkpoint 与笔记管理，多天间断的深度阅读可以随时恢复进度；遇到指向外部文献的引用时，它只生成可审阅的导入计划，不会自动爬取下载。全部阅读状态保存在本地 SQLite 工作区文件中。",
+      "边界与依赖需要了解：远程下载仅通过 arXiv 固定 e-print endpoint 构造（不接受任意 URL），arXiv 的可达性是在线加载论文的前提，受限网络环境可能无法使用该路径；PDF 抽取对原生数字 PDF 效果最佳，扫描件/OCR 文件的证据可能稀疏，解析器并非完整 TeX 引擎。它不验证证明正确性、不做语义定理匹配、不猜测隐藏数学依赖。项目以 MIT 许可证开源，README 未提及账号或 API key 要求；抽取质量本站未独立评测。项目较新（2026年09月02日 创建、2026年09月09日 最近推送，2026年09月10日 实查），README 未写明最低 Python/uv 版本与官方支持的操作系统清单。",
+    ],
+    highlights: [
+      "论文加载即生成证据优先的阅读地图（主结果、结构与证明路径）",
+      "定理结论抽取与证明证据链追踪，证据可回溯原文切片",
+      "阅读队列、会话与笔记管理，状态保存在本地 SQLite 工作区",
+    ],
+    bestFor: "需要系统精读数学/计算机论文、希望 AI 辅助定位结论与证明证据链的研究者与研究生。",
+  },
+  "computer-use-mcp": {
+    image: "/media/computer-use-mcp.png",
+    imageAlt: "computer-use-mcp 原创插图：光标在层叠桌面窗口中点击控件，虚线权限边界与盾牌提示高权限操作，左侧为控件树与跨平台图标",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "computer-use-mcp 让 AI agent 通过 MCP 协议控制真实电脑：发现已安装或运行中的应用、截取窗口与缩放区域、读取无障碍控件树定位按钮与输入框，然后执行点击、填表、选菜单、输入文本、拖拽与快捷键等操作；窗口定位、焦点切换、剪贴板读写、显示器检查等桌面杂务，以及 macOS AppleScript/JXA、Windows PowerShell 应用脚本同样覆盖。",
+      "架构上，TypeScript 服务器负责工具请求、权限与取消，Rust 原生模块直连操作系统，经 Rust NAPI 进程内通信。npm 安装无需本地 Rust（从源码构建实时桌面能力才需要）；macOS 需授予辅助功能与屏幕录制权限，应用脚本可能还需自动化权限；Windows 需在已登录的桌面会话中运行，受保护/提权窗口需匹配权限，可能无法操作；Linux 需图形会话与 X11/Wayland 工具，无障碍支持依赖 AT-SPI，实际成熟度无独立评测。",
+      "权限边界必须正视：该工具提供完整的电脑控制面，README 原文明确桌面访问可以更改真实应用与文件，需要谨慎配置权限与目标应用。服务端内置工具权限与目标检查层；捆绑的 HTTP 服务仅监听本机回环地址，暴露远程端点必须由宿主自行配置认证。默认暴露 65 个工具（README 未逐项列出完整清单），可用 core、ax、scripting、windows-admin、full 五档 profile 收窄能力面，建议在专用或受控环境从最小 profile 起用；本站未独立审计其沙箱与隔离强度。项目以 MIT 许可证开源，README 页面标注版本 v7.2.0；运行 MCP 本体无需账号或 API key。",
+    ],
+    highlights: [
+      "截屏与无障碍控件读取，控件级点击、填表、拖拽与快捷键操作",
+      "macOS AppleScript/JXA 与 Windows PowerShell 应用脚本，窗口、焦点与剪贴板管理",
+      "默认 65 个工具、五档 profile 收窄权限，Rust NAPI 进程内高性能运行",
+    ],
+    bestFor: "需要给 AI agent 接入 Windows/macOS/Linux 真实桌面控制能力，并能在受控环境中评估高权限风险的开发者与自动化工程团队。",
+  },
 };
 
 export function getResourceProfile(slug: string) {

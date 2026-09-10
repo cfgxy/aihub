@@ -29,7 +29,10 @@ export const categorySeeds = {
   ],
 } as const;
 
-/** 种子条目；`installGuide` 仅 SKILL / MCP 等需要复制安装命令的条目填写。 */
+/**
+ * 种子条目；`installGuide` 仅 SKILL / MCP 等需要复制安装命令的条目填写。
+ * `configText` 仅 MCP 条目填写，取自官方 README 的客户端配置 JSON。
+ */
 export type ResourceSeed = {
   name: string;
   slug: string;
@@ -41,6 +44,7 @@ export type ResourceSeed = {
   officialUrl: string;
   sourceUrl: string;
   installGuide?: string;
+  configText?: string;
 };
 
 export const resourceSeeds: ResourceSeed[] = [
@@ -147,5 +151,39 @@ export const resourceSeeds: ResourceSeed[] = [
     tags: ["社区出品", "开源", "MCP", "调试", "逆向工程", "Windows"],
     officialUrl: "https://github.com/duty1g/x64dbg-mcp-server",
     sourceUrl: "https://github.com/duty1g/x64dbg-mcp-server",
+  },
+  {
+    name: "PaperGraph MCP", slug: "papergraph-mcp", type: "mcp", category: "ai-knowledge",
+    summary: "把数学论文转成证据锚定阅读地图的 MCP 服务器：抽取定理结论、追踪证明证据链并规划精读，阅读状态保存在本地工作区。",
+    description: "PaperGraph MCP 面向 AI agent 与研究者，把数学论文解析为以证据为锚的阅读地图：加载论文即生成主结果候选、论文结构与证明路径证据的概览，支持定理式结论抽取、证明证据链追踪与阅读会话管理；外部引用整理为可审阅的导入计划，而非自动下载。阅读状态保存在本地 SQLite 工作区，本地上传的 PDF 不离开本机。",
+    tags: ["社区出品", "开源", "MCP", "数学论文", "文献阅读", "本地工作区"],
+    officialUrl: "https://github.com/lotchuazzz-crypto/papergraph-mcp",
+    sourceUrl: "https://github.com/lotchuazzz-crypto/papergraph-mcp",
+    installGuide: "uvx --from git+https://github.com/lotchuazzz-crypto/papergraph-mcp.git@v0.10.0 papergraph-mcp",
+    configText: `{
+  "mcpServers": {
+    "papergraph": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/lotchuazzz-crypto/papergraph-mcp.git@v0.10.0", "papergraph-mcp"]
+    }
+  }
+}`,
+  },
+  {
+    name: "computer-use-mcp", slug: "computer-use-mcp", type: "mcp", category: "development-code",
+    summary: "Rust 构建的电脑控制 MCP 服务器：让 AI agent 截屏、点击、键入并脚本化操作 Windows、macOS 与 Linux 桌面应用。",
+    description: "computer-use-mcp 以 TypeScript MCP 服务器加 Rust 原生模块（Rust NAPI 进程内运行）的架构提供桌面控制能力：截屏与界面读取、控件级点击与表单填写、剪贴板与窗口管理，以及 macOS AppleScript/JXA、Windows PowerShell 应用脚本。npm 包已捆绑三平台 x64/arm64 原生模块，默认暴露 65 个工具，可用 profile 收窄权限。该工具让 agent 获得完整的电脑控制面，权限与目标应用必须显式配置，建议在受控环境中使用。",
+    tags: ["社区出品", "开源", "MCP", "桌面自动化", "Windows", "macOS", "Linux"],
+    officialUrl: "https://github.com/zavora-ai/computer-use-mcp",
+    sourceUrl: "https://github.com/zavora-ai/computer-use-mcp",
+    installGuide: "npx -y @zavora-ai/computer-use-mcp",
+    configText: `{
+  "mcpServers": {
+    "computer-use": {
+      "command": "npx",
+      "args": ["-y", "@zavora-ai/computer-use-mcp"]
+    }
+  }
+}`,
   },
 ];

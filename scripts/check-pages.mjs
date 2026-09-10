@@ -22,6 +22,10 @@ const required = [
   "media/ai-research-skills-feature.png",
   "media/gmail-creator-pro-hero.png",
   "media/gmail-creator-pro-feature.png",
+  "r/papergraph-mcp/index.html",
+  "r/computer-use-mcp/index.html",
+  "media/papergraph-mcp.png",
+  "media/computer-use-mcp.png",
 ];
 
 for (const file of required) {
@@ -102,12 +106,47 @@ for (const banned of ["copy-section", "前往官方下载", "明令禁止", "npx
 }
 if (gmail.includes("图片来源：")) throw new Error("Gmail Creator Pro 原创插图出现外部图片来源图注");
 
-// Feature 图位是原创插图条目专属，其余详情页不得因此出现空图位。
-const originalArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
-for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !originalArtSlugs.includes(name))) {
+// RUYI-124：两条 MCP 详情页必须同时给出官方 README 口径的配置 JSON 与安装命令，并保留权限/依赖口径。
+const mcpEntries = [
+  {
+    slug: "papergraph-mcp",
+    server: "&quot;papergraph&quot;",
+    install: "uvx --from git+https://github.com/lotchuazzz-crypto/papergraph-mcp.git@v0.10.0 papergraph-mcp",
+    mustInclude: ["arXiv", "SQLite", "MIT"],
+  },
+  {
+    slug: "computer-use-mcp",
+    server: "&quot;computer-use&quot;",
+    install: "npx -y @zavora-ai/computer-use-mcp",
+    mustInclude: ["权限", "profile", "回环地址"],
+  },
+];
+for (const entry of mcpEntries) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "插图：AIHub 原创设计",
+    "MCP 配置", "安装命令", entry.server, entry.install,
+    'data-copy="mcp-config"', 'data-copy="install-guide"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 原创插图出现外部图片来源图注`);
+  if (html.includes("请在管理页补充")) throw new Error(`${entry.slug} 出现面向管理员的占位配置文案`);
+}
+// 未录入配置的既有 MCP 不得因此产生空配置块。
+const x64dbg = fs.readFileSync(path.join(root, "r/x64dbg-mcp-server/index.html"), "utf8");
+if (x64dbg.includes("MCP 配置")) throw new Error("x64dbg-mcp-server 出现不应存在的 MCP 配置块");
+
+// Feature 图位是双图原创插图条目专属，其余详情页不得因此出现空图位。
+const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
+// 原创插图条目用 imageCredit 图注，不得生成外部图片来源。
+const originalArtSlugs = [...featureArtSlugs, ...mcpEntries.map((entry) => entry.slug)];
+for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
   if (html.includes("detail-feature")) throw new Error(`${slug} 出现不应存在的 Feature 图位`);
-  if (!html.includes("图片来源：")) throw new Error(`${slug} 丢失外部图片来源图注`);
+  if (!originalArtSlugs.includes(slug) && !html.includes("图片来源：")) {
+    throw new Error(`${slug} 丢失外部图片来源图注`);
+  }
 }
 if (/<img src="[^"]*"[^>]*>/.test(research) === false) throw new Error("AI Research Skills 详情页图片标签缺失");
 if (research.includes('src="../../"') || research.includes('alt=""')) throw new Error("AI Research Skills 详情页存在空图位或空替代文本");

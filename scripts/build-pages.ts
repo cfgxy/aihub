@@ -119,10 +119,12 @@ for (const resource of resources) {
   const link = action
     ? `<a class="primary-link" href="${escapeHtml(action.href)}" target="_blank" rel="noopener nofollow">${action.label} ↗</a>`
     : "";
+  // MCP 详情先渲染配置 JSON 再渲染安装命令，与动态版 AcquisitionPanel 顺序一致；
+  // 两者都缺时不产生空复制块。
   const install = resource.type === "skill"
     ? copyBlock("install-guide", "安装说明", resource.installGuide || "下载技能包，将完整目录放入 Agent 的 skills 目录后重新加载。")
-    : resource.type === "mcp" && resource.installGuide
-      ? copyBlock("install-guide", "安装命令", resource.installGuide)
+    : resource.type === "mcp"
+      ? `${resource.configText ? copyBlock("mcp-config", "MCP 配置", resource.configText) : ""}${resource.installGuide ? copyBlock("install-guide", "安装命令", resource.installGuide) : ""}`
       : "";
   const acquisition = `${link}${install}`;
   const overview = profile ? profile.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("") : `<p>${escapeHtml(resource.description)}</p>`;
