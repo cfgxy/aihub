@@ -18,6 +18,8 @@ function createLegacyDatabase() {
   const db = new DatabaseSync(testDb);
   db.exec("PRAGMA foreign_keys = ON;");
   db.exec(upSql);
+  // 逐条 INSERT 各自 fsync 会让构造耗时随种子条数线性增长，用事务包裹一次落盘。
+  db.exec("BEGIN");
 
   const insertType = db.prepare("INSERT INTO resource_types (key, name, description, sort, accent) VALUES (?, ?, ?, ?, ?)");
   for (const type of typeSeeds) insertType.run(type.key, type.name, type.description, type.sort, type.accent);
@@ -47,6 +49,7 @@ function createLegacyDatabase() {
   insertResource.run("站长自建条目", "operator-custom", appType.id, appCategory.id, "管理后台手工录入的条目。", "",
     "[]", "https://example.com/", "");
   db.prepare("UPDATE resources SET summary = ? WHERE slug = 'doubao'").run("站长改写过的豆包摘要");
+  db.exec("COMMIT");
   db.close();
 }
 

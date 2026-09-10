@@ -17,7 +17,8 @@ export function AcquisitionPanel({ resource }: { resource: Resource }) {
     </>}
     {resource.typeKey === "mcp" && <>
       {resource.sourceUrl && <ExternalLink href={resource.sourceUrl} className="primary-link">查看文档</ExternalLink>}
-      <CopyBlock label="MCP 配置" value={resource.configText || "请在管理页补充该 MCP 的配置 JSON。"} />
+      {/* 未录入配置的 MCP 不渲染空复制块，避免公开目录出现面向管理员的占位文案。 */}
+      {resource.configText && <CopyBlock label="MCP 配置" value={resource.configText} />}
       {resource.installGuide && <CopyBlock label="安装命令" value={resource.installGuide} />}
     </>}
     <p className="external-note">将跳转至 {hostname(target)}。本站不托管安装包，请遵循目标站点条款。</p>
