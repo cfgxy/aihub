@@ -1,12 +1,13 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { categorySeeds, resourceSeeds } from "@/db/seed-data";
 import { getResourceProfile } from "@/lib/resource-profiles";
 
 const root = process.cwd();
-const output = path.resolve(root, "dist-pages");
+// 与 tests/pages-acquisition-link.test.ts 并行执行，各自构建独立目录，避免互相清空产物。
+const output = path.resolve(root, "dist-pages-ruyi124");
 
 /** RUYI-124 本批入库的 2 条 MCP，字段口径以 Owner 批准范围与已定稿正文交付件为准。 */
 const expected = [
@@ -124,8 +125,12 @@ describe("每日 AI 新资源入库（RUYI-124）", () => {
 
 describe("静态 Pages 与动态版的 MCP 获取语义一致（RUYI-124）", () => {
   beforeAll(() => {
-    execFileSync("npx", ["tsx", "scripts/build-pages.ts"], { cwd: root, stdio: "pipe" });
+    execFileSync("npx", ["tsx", "scripts/build-pages.ts"], {
+      cwd: root, stdio: "pipe", env: { ...process.env, PAGES_OUT_DIR: path.basename(output) },
+    });
   }, 120_000);
+
+  afterAll(() => fs.rmSync(output, { recursive: true, force: true }));
 
   const readDetail = (slug: string) => fs.readFileSync(path.join(output, "r", slug, "index.html"), "utf8");
 
@@ -155,7 +160,7 @@ describe("静态 Pages 与动态版的 MCP 获取语义一致（RUYI-124）", ()
     expect(html).not.toContain("请在管理页补充");
   });
 
-  it("首页收录 9 条资源且新条目可被检索到", () => {
+  it("首页收录全部种子资源且新条目可被检索到", () => {
     const home = fs.readFileSync(path.join(output, "index.html"), "utf8");
     expect(home.match(/<a class="resource-card"/g)!.length).toBe(resourceSeeds.length);
     for (const item of expected) {

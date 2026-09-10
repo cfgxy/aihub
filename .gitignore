@@ -5,5 +5,6 @@ node_modules/
 data/
 coverage/
 dist-pages/
+dist-pages-ruyi124/
 *.log
 tsconfig.tsbuildinfo

@@ -4,7 +4,8 @@ import path from "node:path";
 import { categorySeeds, resourceSeeds, typeSeeds } from "../src/db/seed-data";
 import { getResourceProfile } from "../src/lib/resource-profiles";
 
-const output = path.resolve(process.cwd(), "dist-pages");
+// 并行的测试各自构建一份产物，用 PAGES_OUT_DIR 指定独立目录避免互相清空 dist-pages。
+const output = path.resolve(process.cwd(), process.env.PAGES_OUT_DIR || "dist-pages");
 const repository = process.env.GITHUB_REPOSITORY?.split("/")[1] || "aihub";
 const basePath = process.env.PAGES_BASE_PATH || `/${repository}/`;
 
