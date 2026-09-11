@@ -186,4 +186,40 @@ export const resourceSeeds: ResourceSeed[] = [
   }
 }`,
   },
+  {
+    name: "anything2explainer", slug: "anything2explainer", type: "skill", category: "creative-design",
+    summary: "开源 Agent 技能「话题进、解说视频出」：为 Claude Code 与 Codex 把任意主题变成带配音字幕的黑底动效讲解视频，全代码逐帧绘制，中英双语。",
+    description: "anything2explainer 用 Remotion 4 以代码逐帧绘制 1280×720 讲解视频，覆盖调研、旁白、分镜、并行构建与量化 QC 的 9 阶段流水线，中英双语配音可替换；工具包采用 PolyForm Noncommercial 非商业许可。",
+    tags: ["社区出品", "开源", "SKILL", "Claude Code", "Codex", "Remotion", "视频生成", "中英双语", "非商业许可"],
+    officialUrl: "https://github.com/Vincentwei1021/anything2explainer",
+    sourceUrl: "https://github.com/Vincentwei1021/anything2explainer",
+    installGuide: `git clone https://github.com/Vincentwei1021/anything2explainer.git
+ln -s "$PWD/anything2explainer" ~/.claude/skills/anything2explainer`,
+  },
+  {
+    name: "short-video-generator-AI", slug: "short-video-generator-ai", type: "app", category: "others",
+    summary: "开源短视频切片工具：粘贴 YouTube 链接，自动转写、按传播潜力挑出高光片段并产出 9:16 竖屏成片，可选 AI 钩子开场。",
+    description: "short-video-generator-AI（README 自述名 AI shorts generator）在本地用 faster-whisper 转写，再由 LLM 给候选片段打分排序并渲染竖屏成片，提供 CLI 与本地网页两种形态；二次剪辑他人视频存在版权合规风险，仅限自有或已授权素材。",
+    tags: ["社区出品", "开源", "视频切片", "YouTube", "字幕", "竖屏", "自媒体", "MIT"],
+    officialUrl: "https://github.com/Colafornia/short-video-generator-AI",
+    sourceUrl: "https://github.com/Colafornia/short-video-generator-AI",
+  },
+  {
+    name: "tokentab", slug: "tokentab", type: "app", category: "companion-tools",
+    summary: "读取 Claude Code、Codex、Gemini CLI 本地会话日志的命令行工具，按模型、项目、日期与工作类型汇总 token 用量与成本。",
+    description: "tokentab 直接解析各 CLI 留在本地的会话日志统计 token，成本按内置手工费率表离线计算，缓存读写单独拆算；另带 localhost 网页仪表盘。项目自述完全本地运行、不需要账号与 API key，该表述为 README 自述，本站未独立验证。",
+    tags: ["社区出品", "开源", "CLI", "成本统计", "Claude Code", "Codex", "Gemini CLI", "本地运行", "MIT"],
+    officialUrl: "https://github.com/crwdla/tokentab",
+    sourceUrl: "https://github.com/crwdla/tokentab",
+  },
+  {
+    name: "Bang Motion", slug: "bang-motion", type: "skill", category: "creative-design",
+    summary: "浏览器动效图形 Agent 技能：让 AI 产出片头、promo、动态字幕与讲解动画，成品为双击即播的单个 index.html，内置反「PPT 感」结构检查。",
+    description: "Bang Motion 遵循开放 Agent Skills 规范，把职业动效设计师的硬标准写成 agent 可自查的结构规则与菜单化风格选项，产出自包含的单文件网页动画，并支持配音同步与确定性逐帧导出；以 MIT 许可证开源。",
+    tags: ["社区出品", "开源", "SKILL", "动效设计", "动画", "片头", "动态字幕", "Claude Code", "MIT"],
+    officialUrl: "https://github.com/bangtutorial/bang-motion",
+    sourceUrl: "https://github.com/bangtutorial/bang-motion",
+    installGuide: `/plugin marketplace add bangtutorial/bang-motion
+/plugin install bang-motion@bang-motion`,
+  },
 ];

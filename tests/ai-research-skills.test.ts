@@ -93,8 +93,11 @@ describe("AI Research Skills 条目入库（RUYI-111）", () => {
   });
 });
 
-/** 使用原创插图（imageCredit）而非外部来源图注的条目；RUYI-124 起新增两条 MCP。 */
-const originalArtSlugs = ["ai-research-skills", "gmail-creator-pro", "papergraph-mcp", "computer-use-mcp"];
+/** 使用原创插图（imageCredit）而非外部来源图注的条目；RUYI-124 起新增两条 MCP，RUYI-125 再增四条。 */
+const originalArtSlugs = [
+  "ai-research-skills", "gmail-creator-pro", "papergraph-mcp", "computer-use-mcp",
+  "anything2explainer", "short-video-generator-ai", "tokentab", "bang-motion",
+];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
 

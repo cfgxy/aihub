@@ -238,6 +238,70 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "需要给 AI agent 接入 Windows/macOS/Linux 真实桌面控制能力，并能在受控环境中评估高权限风险的开发者与自动化工程团队。",
   },
+  anything2explainer: {
+    image: "/media/anything2explainer.png",
+    imageAlt: "anything2explainer 原创插图：黑底动效成片形态示意，白色线稿主体配紫色点缀，带白字黑边字幕、顶部胶囊 HUD 与底部章节进度条",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "anything2explainer 是面向 Claude Code 与 Codex 的开源技能，自述定位为「话题进、解说视频出」：输入一个主题或一篇文章，产出 1280×720 的 H.264 MP4 讲解视频，含同步配音、逐词对齐字幕、章节卡、顶部 HUD 与底部章节进度条。与生成式视频模型不同，它的每一帧都由 Remotion 4（React + TypeScript）代码绘制——无素材拼贴、无生成视频、不取用他人画面；成片中的事实要求逐条回溯到调研文档的来源 URL，时间轴为确定性输出（同输入同画面）。",
+      "工作流程为 9 阶段流水线：脚手架、带来源调研、配音与逐帧时间轴、分镜、覆盖层与图元、前 30 秒试点、并行构建（每个镜头由独立 agent 写一个 Remotion 组件）、渲染与量化指标、逐章 QC 修复，全程设 4 个用户检查点。README 给出的参考量级为：3–5 分钟成片约 8 个并行构建 agent、约 2 小时挂钟时间、约 2 GB 磁盘，CPU 渲染无需 GPU。配音中英双语分轨：中文默认 edge-tts 云端语音，英文默认本地 kokoro-82m 模型，也可自带 TTS 或成品音频。",
+      "使用前需注意许可与边界：工具包采用 PolyForm Noncommercial 1.0.0，仅限非商业使用，商用需事先获得作者授权（用它做出的视频归用户所有）。依赖 Node ≥18、ffmpeg 与 Python 3，脚本在 macOS 开发验证、Linux 可用、Windows 未测试；并行构建建议预留约 5 GB 空闲磁盘，旁白配音后文案即冻结、改词需整体重新对时；仅支持 1280×720 横屏，不支持竖屏。以上能力均为 README 自述（2026年09月11日 实查），成片质量与耗时本站未独立验证。",
+    ],
+    highlights: [
+      "全代码帧绘制：Remotion 4 模板与图元/光照库输出含字幕、章节进度条与 HUD 的可复现 MP4",
+      "多 agent 端到端流水线：调研→旁白→分镜→并行构建→量化 QC 的 9 阶段协议与 4 个检查点",
+      "中英双语可替换配音：默认 edge-tts（中）与本地 kokoro-82m（英），支持自带 TTS 或成品音频",
+    ],
+    bestFor: "需要把概念、论文或产品讲清楚的科普作者、课程开发者与技术布道者，以及习惯在 Claude Code / Codex 内工作的开发者（非商业用途）。",
+  },
+  "short-video-generator-ai": {
+    image: "/media/short-video-generator-ai.png",
+    imageAlt: "short-video-generator-AI 原创插图：长视频经转写与高光打分切成多段 9:16 竖屏成片的切片流程示意，画面中的数字为示意样例",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "short-video-generator-AI（README 自述名 AI shorts generator）是免费开源的 Python 命令行/本地网页工具，用途是把 YouTube 长视频自动切成可直接发布的竖屏短视频：粘贴链接后自动下载源片、在本地用 faster-whisper 完成转写，再由 LLM 按传播框架（开场钩子、情绪峰值、观点爆点、冲突、金句等）给候选片段打 0–100 分并排序，去重后选出前 N 段渲染成 9:16 成片，可在片头加一句 AI 生成的 hook。README 自述定位为切片类 SaaS 的免费替代，输出不带水印。",
+      "除 CLI 外还提供本地网页版（server.py 加静态前端），可批量排队并可视化调整参数；也支持直接传入本地视频文件路径，用 --language 指定语言（含中文）。LLM 供应商经 .env 配置 OpenAI / Gemini / MuAPI 三选一（Gemini 有每日限额的免费档），转写不依赖所选 LLM，另提供 API 供自有项目调用。安装需 Python 3.10+ 并自备 LLM API key，调用费用以各供应商为准。",
+      "合规与边界必须先看清：下载并二次剪辑他人视频存在版权合规风险，仅限自有内容或已获授权素材，本站不提供规避指导。高光排序为 LLM 的主观判断，无独立评测数据；无水印等卖点为 README 自述，成片质量本站未实测。项目 2026年09月08日 建仓（GitHub API 2026年09月11日 实查：217 stars / 80 forks），发布时间短、社区规模尚小。",
+    ],
+    highlights: [
+      "高光自动挑选：LLM 按传播力框架对转写文本打 0–100 分排序，自动去重选出 Top-N 片段",
+      "一键竖屏成片：链接或本地文件进、9:16 出，可选 AI hook 开场与 360–1080 分辨率",
+      "CLI 与本地网页双形态：本地 faster-whisper 转写，LLM 供应商可换并提供 API",
+    ],
+    bestFor: "需要把长视频素材切片分发的自媒体运营者与内容创作者，且素材限于自有内容或已获授权来源。",
+  },
+  tokentab: {
+    image: "/media/tokentab.png",
+    imageAlt: "tokentab 原创插图：Claude Code、Codex、Gemini CLI 三处会话日志汇入一张终端成本账单表格，表内数字为示意样例",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "tokentab 是开源命令行工具，读取 Claude Code、Codex、Gemini CLI 留在本地的会话日志，把 token 用量与成本按模型、项目、日期和工作类型汇总成报表。默认显示最近 7 天，可切换今天、本月、全部历史、自定义窗口或单一工具/项目，也可用 --json 输出供其他程序处理。项目自述完全本地运行：不要账号、不要 API key、数据不出机器——该表述为 README 自述，本站未独立验证。",
+      "数字口径上，token 直接取自官方日志记录，不做猜测；成本按一张手工维护的官方费率表（美元/百万 token）离线计算。README 解释这是有意取舍：宁可轻微过期，也不在厂商改模型名时崩溃；模型名模糊匹配，未命中时显示 $0.00 并明确提示而非静默按免费计；缓存读写单独拆算，避免对同批 token 重复计费。另带本地网页仪表盘（-web，localhost:4747），把同样数字排成月度账单版式，每次请求实时读盘、只绑定 localhost、不拉 CDN 字体。",
+      "已知边界：活动类型（编码、调试、重构、测试等）是基于所用工具与首条消息措辞的确定性启发式分类，README 明说「是提示，不是结论」；费率表需要人工维护，新模型或改名后可能出现 $0.00 占位；Cursor 支持为未完成占位；上游会话日志格式变化可能导致解析失效。项目以 MIT 许可证开源，唯一第三方依赖为 rich，2026年09月07日 建仓（GitHub API 2026年09月11日 实查：189 stars / 67 forks）。",
+    ],
+    highlights: [
+      "多 CLI 会话成本汇总：识别 Claude Code、Codex、Gemini CLI 日志，按模型/项目/日期/活动类型拆分",
+      "不联网的成本核算：token 取自官方日志，价格用内置手工费率表，缓存拆算避免重复计费",
+      "CLI 加本地网页仪表盘：多种时间窗口、--json 机器可读、-web 打开 localhost 月度账单视图",
+    ],
+    bestFor: "同时使用多个编码 agent、需要按模型与项目核算 AI 编程成本的重度用户与开发团队。",
+  },
+  "bang-motion": {
+    image: "/media/bang-motion.png",
+    imageAlt: "Bang Motion 原创插图：单个 index.html 双击即播的 16:9 网页动效画面示意，含运动主体、下三分之一条与动态字幕排版",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Bang Motion 是遵循开放 Agent Skills 规范的技能包（同时以 Claude Code 插件分发），让编码 agent 在浏览器里做「动效图形」而非幻灯片：产品片头、promo、栏目片花与频道片头、动态字幕排版、下三分之一条与讲解动画。成品是自包含的单个 index.html，双击即播、自动播放加循环、无播放器界面；观看需联网加载 GSAP 与字体（CDN），离线演示会缺样式。",
+      "它把职业动效设计师的硬标准写成 agent 可自查的结构规则：连续世界、会运动的镜头、跨场景延续的主体、数字活在场景里，并配反 slide 禁令（无淡出换场、每秒有运动、文字层级不超过 2 层、至少两种转场且其一有真实纵深）。防止千篇一律是核心设计：风格从主题与品牌色出发（必填 style brief），agent 容易偷懒之处全部改成菜单——8 种风格方向、11 种背景运动、6 种背景表面、9 种转场、6 种高亮形状，并规定同一选择不得跨项目重复；讲解动画另提供 5 种风格模板。",
+      "配音工作流为 agent 交稿本、用户录制或生成音频后回传、时间轴按人声重排（无 ffmpeg 时可用浏览器端停顿检测）；时间轴为确定性输出，可逐帧导出 PNG 再合成 MP4（需自备 Node + puppeteer + ffmpeg，可选）。项目以 MIT 许可证开源（© 2026 Bang Tutorial），2026年09月05日 建仓、2026年09月06日 之后未再 push（GitHub API 2026年09月11日 实查：130 stars / 20 forks），此处仅陈述采集事实、不外推维护状态。动效审美偏好主观，规则约束的是结构而非品味，实际效果本站未实测。",
+    ],
+    highlights: [
+      "反幻灯片动效生成：结构规则加风格模板产出单文件 index.html 的片头、promo、片花与动态字幕",
+      "风格多样性机制：必填 style brief 与菜单化的风格/背景运动/表面/转场/高亮选项，跨项目不重复",
+      "配音同步与确定性导出：稿本→音频回传→按人声重排时间轴，可选逐帧导出 MP4",
+    ],
+    bestFor: "做产品 promo、开场动画与动态排版的开发者和独立创作者，尤其是使用 Claude Code、Codex、Gemini CLI 或 Cursor 的 agent 用户。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
