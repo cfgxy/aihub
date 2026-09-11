@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow2" cx="71%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g2screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- base -->
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow2)"/>
+
+  <!-- badge -->
+  <rect x="64" y="58" width="152" height="30" rx="15" fill="rgba(249,115,22,0.13)" stroke="rgba(251,146,60,0.45)" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#FB923C" letter-spacing="1">应用 · 其他 · 开源</text>
+
+  <!-- title (two lines) -->
+  <text x="64" y="167" font-family="Noto Sans CJK SC" font-weight="900" font-size="44" fill="#F5F7FA">short-video-</text>
+  <text x="64" y="221" font-family="Noto Sans CJK SC" font-weight="900" font-size="44" fill="#F5F7FA">generator-AI</text>
+
+  <!-- subtitle -->
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">链接进、竖屏短视频出 ——</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">自动转写 × 高光打分 × 9:16 成片</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- features -->
+  <circle cx="71" cy="380" r="9" fill="#F97316" opacity="0.15"/>
+  <circle cx="71" cy="380" r="4.5" fill="#FB923C"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">本地 faster-whisper 语音转写</text>
+
+  <circle cx="71" cy="428" r="9" fill="#F97316" opacity="0.15"/>
+  <circle cx="71" cy="428" r="4.5" fill="#FB923C"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">LLM 传播力打分 0–100 · 自动去重选高光</text>
+
+  <circle cx="71" cy="476" r="9" fill="#F97316" opacity="0.15"/>
+  <circle cx="71" cy="476" r="4.5" fill="#FB923C"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">9:16 竖屏成片 · 可选 AI 钩子开场</text>
+
+  <!-- source -->
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/Colafornia/short-video-generator-AI · 2026-09-11</text>
+
+  <!-- ============ right stage ============ -->
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#FB923C" letter-spacing="1.5">链接进 · 高光挑选 · 竖屏出</text>
+
+  <!-- col A: link card -->
+  <rect x="584" y="150" width="160" height="88" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <circle cx="620" cy="182" r="16" fill="rgba(251,146,60,0.12)" stroke="#FB923C" stroke-width="2"/>
+  <polygon points="615,174 615,190 628,182" fill="#FB923C"/>
+  <text x="644" y="179" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#E7EAF0">粘贴视频链接</text>
+  <text x="644" y="197" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11" fill="#8A93A3">YouTube / 本地文件</text>
+
+  <!-- arrow down -->
+  <line x1="664" y1="246" x2="664" y2="262" stroke="#FB923C" stroke-width="1.8" opacity="0.7"/>
+  <polygon points="659,260 669,260 664,268" fill="#FB923C" opacity="0.7"/>
+
+  <!-- transcript card -->
+  <rect x="584" y="276" width="160" height="106" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <text x="600" y="300" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12" fill="#E7EAF0">本地转写</text>
+  <rect x="600" y="312" width="128" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
+  <rect x="600" y="326" width="112" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
+  <rect x="600" y="340" width="120" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
+  <text x="600" y="368" font-family="Noto Sans CJK SC" font-weight="bold" font-size="11" fill="#4ADE80">✓ faster-whisper 完成</text>
+
+  <!-- arrow A -> B -->
+  <line x1="754" y1="300" x2="770" y2="300" stroke="#FB923C" stroke-width="1.8" opacity="0.7"/>
+  <polygon points="768,295 768,305 777,300" fill="#FB923C" opacity="0.7"/>
+
+  <!-- col B: score card -->
+  <rect x="786" y="150" width="166" height="232" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <text x="802" y="176" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#E7EAF0">传播力打分</text>
+  <text x="802" y="193" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">LLM 按传播框架 · 0–100</text>
+
+  <rect x="802" y="206" width="134" height="46" rx="8" fill="rgba(251,146,60,0.10)" stroke="rgba(251,146,60,0.35)" stroke-width="1"/>
+  <rect x="812" y="218" width="76" height="6" rx="3" fill="rgba(255,255,255,0.28)"/>
+  <rect x="812" y="232" width="58" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="916" cy="229" r="14" fill="#FB923C"/>
+  <text x="916" y="233.5" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="12.5" fill="#0D0F14">92</text>
+
+  <rect x="802" y="262" width="134" height="46" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <rect x="812" y="274" width="70" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+  <rect x="812" y="288" width="62" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+  <circle cx="916" cy="285" r="14" fill="none" stroke="#FB923C" stroke-width="1.6"/>
+  <text x="916" y="289.5" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="12.5" fill="#FDBA74">87</text>
+
+  <rect x="802" y="318" width="134" height="46" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <rect x="812" y="330" width="64" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
+  <rect x="812" y="344" width="52" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <circle cx="916" cy="341" r="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.6"/>
+  <text x="916" y="345.5" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="12.5" fill="#9AA3B2">74</text>
+
+  <text x="802" y="374" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">去重后选 Top-N 片段</text>
+
+  <!-- arrow B -> C -->
+  <line x1="960" y1="300" x2="976" y2="300" stroke="#FB923C" stroke-width="1.8" opacity="0.7"/>
+  <polygon points="974,295 974,305 983,300" fill="#FB923C" opacity="0.7"/>
+
+  <!-- col C: 9:16 phone -->
+  <rect x="992" y="148" width="150" height="267" rx="20" fill="#05070C" stroke="rgba(251,146,60,0.45)" stroke-width="1.8"/>
+  <rect x="1042" y="158" width="50" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/>
+  <rect x="1006" y="176" width="122" height="24" rx="12" fill="rgba(251,146,60,0.16)" stroke="rgba(251,146,60,0.40)" stroke-width="1"/>
+  <text x="1067" y="192.5" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="11" fill="#FDBA74">AI 钩子开场</text>
+  <rect x="1006" y="212" width="122" height="130" rx="6" fill="url(#g2screen)"/>
+  <circle cx="1067" cy="272" r="20" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+  <polygon points="1061,262 1061,282 1078,272" fill="rgba(255,255,255,0.85)"/>
+  <rect x="1012" y="318" width="110" height="16" rx="4" fill="rgba(0,0,0,0.55)"/>
+  <rect x="1030" y="323.5" width="74" height="5" rx="2.5" fill="rgba(255,255,255,0.75)"/>
+  <rect x="1012" y="352" width="122" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+  <rect x="1012" y="366" width="90" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+  <rect x="1012" y="392" width="50" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+
+  <text x="854" y="470" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6F7683">切片流程示意 · 链接 → 本地转写 → 高光打分 → 9:16 竖屏成片</text>
+</svg>

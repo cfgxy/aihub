@@ -26,6 +26,14 @@ const required = [
   "r/computer-use-mcp/index.html",
   "media/papergraph-mcp.png",
   "media/computer-use-mcp.png",
+  "r/anything2explainer/index.html",
+  "r/short-video-generator-ai/index.html",
+  "r/tokentab/index.html",
+  "r/bang-motion/index.html",
+  "media/anything2explainer.png",
+  "media/short-video-generator-ai.png",
+  "media/tokentab.png",
+  "media/bang-motion.png",
 ];
 
 for (const file of required) {
@@ -137,10 +145,56 @@ for (const entry of mcpEntries) {
 const x64dbg = fs.readFileSync(path.join(root, "r/x64dbg-mcp-server/index.html"), "utf8");
 if (x64dbg.includes("MCP 配置")) throw new Error("x64dbg-mcp-server 出现不应存在的 MCP 配置块");
 
+// RUYI-125：本批 4 条为原创插图的 SKILL / 应用条目，必须保留许可、版权与自述限定，并与资源类型匹配获取入口。
+const dailyEntries125 = [
+  {
+    slug: "anything2explainer",
+    install: "ln -s &quot;$PWD/anything2explainer&quot; ~/.claude/skills/anything2explainer",
+    mustInclude: ["PolyForm", "非商业", "Remotion", "1280×720"],
+  },
+  {
+    slug: "short-video-generator-ai",
+    install: null,
+    mustInclude: ["版权", "已获授权", "faster-whisper", "9:16"],
+  },
+  {
+    slug: "tokentab",
+    install: null,
+    mustInclude: ["自述", "费率表", "Claude Code", "MIT"],
+  },
+  {
+    slug: "bang-motion",
+    install: "/plugin install bang-motion@bang-motion",
+    mustInclude: ["GSAP", "2026年09月06日", "MIT", "index.html"],
+  },
+];
+for (const entry of dailyEntries125) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "插图：AIHub 原创设计",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 原创插图出现外部图片来源图注`);
+  if (html.includes("MCP 配置")) throw new Error(`${entry.slug} 非 MCP 条目出现 MCP 配置块`);
+  // 应用类没有官方安装命令，不得产生空复制块；SKILL 必须给出 README 原文命令。
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // Feature 图位是双图原创插图条目专属，其余详情页不得因此出现空图位。
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
 // 原创插图条目用 imageCredit 图注，不得生成外部图片来源。
-const originalArtSlugs = [...featureArtSlugs, ...mcpEntries.map((entry) => entry.slug)];
+const originalArtSlugs = [
+  ...featureArtSlugs,
+  ...mcpEntries.map((entry) => entry.slug),
+  ...dailyEntries125.map((entry) => entry.slug),
+];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
   if (html.includes("detail-feature")) throw new Error(`${slug} 出现不应存在的 Feature 图位`);

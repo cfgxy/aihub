@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow4a" cx="66%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#FACC15" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FACC15" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow4b" cx="90%" cy="30%" r="35%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g4ball" cx="38%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </radialGradient>
+    <clipPath id="c4view"><rect x="597" y="157" width="522" height="282"/></clipPath>
+  </defs>
+
+  <!-- base -->
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow4a)"/>
+  <rect width="1200" height="600" fill="url(#glow4b)"/>
+
+  <!-- badge -->
+  <rect x="64" y="58" width="226" height="30" rx="15" fill="rgba(250,204,21,0.10)" stroke="rgba(250,204,21,0.40)" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#FACC15" letter-spacing="1">SKILL · 创意与设计 · 开源</text>
+
+  <!-- title -->
+  <text x="64" y="205" font-family="Noto Sans CJK SC" font-weight="900" font-size="58" fill="#F5F7FA">Bang Motion</text>
+
+  <!-- subtitle -->
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">浏览器里的动效图形 Agent 技能</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">片头 · promo · 动态字幕 · 单文件即播</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- features -->
+  <circle cx="71" cy="380" r="9" fill="#FACC15" opacity="0.12"/>
+  <circle cx="71" cy="380" r="4.5" fill="#FACC15"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">单文件 index.html · 双击即播</text>
+
+  <circle cx="71" cy="428" r="9" fill="#FACC15" opacity="0.12"/>
+  <circle cx="71" cy="428" r="4.5" fill="#FACC15"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">16:9 自动播放循环 · 网页动画</text>
+
+  <circle cx="71" cy="476" r="9" fill="#FACC15" opacity="0.12"/>
+  <circle cx="71" cy="476" r="4.5" fill="#FACC15"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">反 "PPT 感" 结构自查 · 5 种讲解风格</text>
+
+  <!-- source -->
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/bangtutorial/bang-motion · 2026-09-11</text>
+
+  <!-- ============ right stage ============ -->
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#FACC15" letter-spacing="1.5">浏览器动效图形 · 双击即播</text>
+
+  <!-- browser window -->
+  <rect x="596" y="120" width="524" height="320" rx="14" fill="#0A0D13" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <rect x="612" y="130" width="150" height="22" rx="6" fill="rgba(255,255,255,0.07)"/>
+  <circle cx="626" cy="141" r="4" fill="#FACC15"/>
+  <text x="636" y="145" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#C9D1DC">index.html</text>
+  <circle cx="1076" cy="141" r="4" fill="rgba(255,255,255,0.20)"/>
+  <circle cx="1092" cy="141" r="4" fill="rgba(255,255,255,0.20)"/>
+  <circle cx="1108" cy="141" r="4" fill="rgba(255,255,255,0.20)"/>
+  <line x1="597" y1="157" x2="1119" y2="157" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <g clip-path="url(#c4view)">
+    <rect x="597" y="157" width="522" height="282" fill="#07090E"/>
+
+    <!-- motion trajectory -->
+    <line x1="668" y1="240" x2="828" y2="240" stroke="rgba(250,204,21,0.35)" stroke-width="2" stroke-dasharray="3 9"/>
+    <!-- ghost trail -->
+    <circle cx="700" cy="240" r="40" fill="none" stroke="#FACC15" stroke-width="2" opacity="0.10"/>
+    <circle cx="758" cy="240" r="46" fill="none" stroke="#FACC15" stroke-width="2" opacity="0.17"/>
+    <circle cx="818" cy="240" r="52" fill="none" stroke="#FACC15" stroke-width="2" opacity="0.26"/>
+    <!-- main ball -->
+    <circle cx="900" cy="240" r="56" fill="url(#g4ball)"/>
+    <circle cx="882" cy="222" r="16" fill="rgba(255,255,255,0.30)"/>
+
+    <!-- floating shapes -->
+    <rect x="668" y="176" width="34" height="34" rx="8" fill="#38BDF8" opacity="0.9" transform="rotate(-12 685 193)"/>
+    <polygon points="1004,168 1030,168 1017,190" fill="#A78BFA" opacity="0.85"/>
+
+    <!-- lower-third caption bar -->
+    <rect x="640" y="322" width="336" height="54" rx="10" fill="rgba(250,204,21,0.12)" stroke="rgba(250,204,21,0.35)" stroke-width="1"/>
+    <rect x="642" y="327" width="4" height="44" rx="2" fill="#FACC15"/>
+    <text x="662" y="345" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#FFFFFF">片头 · promo · 动态字幕</text>
+    <text x="662" y="364" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11" fill="#C9D1DC">连续世界 · 会运动的镜头</text>
+
+    <!-- timeline -->
+    <line x1="640" y1="411" x2="1080" y2="411" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="706" y1="405" x2="706" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="772" y1="405" x2="772" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="838" y1="405" x2="838" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="904" y1="405" x2="904" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="970" y1="405" x2="970" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="1036" y1="405" x2="1036" y2="417" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+    <line x1="900" y1="400" x2="900" y2="422" stroke="#FACC15" stroke-width="2.5"/>
+    <circle cx="900" cy="400" r="4" fill="#FACC15"/>
+    <!-- loop icon -->
+    <path d="M1096,405 a7.5,7.5 0 1 0 7.5,7.5" fill="none" stroke="#9AA3B2" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="1092,404 1101,402 1097,410" fill="#9AA3B2"/>
+  </g>
+
+  <text x="854" y="470" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6F7683">成片形态示意 · 单文件 index.html · 16:9 自动播放循环</text>
+</svg>
