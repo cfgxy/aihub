@@ -11,19 +11,37 @@ const dynamicBase = process.env.AIHUB_URL || "http://127.0.0.1:4310";
 const pagesBase = process.env.PAGES_URL || "http://127.0.0.1:4321/aihub/";
 const browser = await chromium.launch({ executablePath, headless: true, args: ["--disable-gpu"] });
 
-/** RUYI-124 两条 MCP 的验收终点：配置与安装命令都能复制，插图与原创图注正确。 */
+/** 已入库 MCP 的验收终点：配置与安装命令都能复制，插图与原创图注正确。 */
 const entries = [
   {
     slug: "papergraph-mcp",
     name: "PaperGraph MCP",
+    category: "ai-knowledge",
     install: "uvx --from git+https://github.com/lotchuazzz-crypto/papergraph-mcp.git@v0.10.0 papergraph-mcp",
     configKeyword: '"papergraph"',
   },
   {
     slug: "computer-use-mcp",
     name: "computer-use-mcp",
+    category: "development-code",
     install: "npx -y @zavora-ai/computer-use-mcp",
     configKeyword: '"computer-use"',
+  },
+  {
+    slug: "loadster-mcp",
+    name: "Loadster MCP",
+    category: "cloud-infrastructure",
+    install: `/plugin marketplace add loadster/loadster-mcp
+/plugin install loadster@loadster
+claude mcp add --transport http loadster https://api.loadster.com/mcp`,
+    configKeyword: '"loadster"',
+  },
+  {
+    slug: "agentphone-mcp",
+    name: "AgentPhone MCP",
+    category: "office-collaboration",
+    install: "npx -y agentphone-mcp",
+    configKeyword: '"agentphone"',
   },
 ];
 
@@ -94,23 +112,23 @@ try {
   await checkNoConfigBlock(desktop, `${dynamicBase}/r/x64dbg-mcp-server`, "动态版");
   await checkNoConfigBlock(desktop, `${pagesBase}r/x64dbg-mcp-server/`, "Pages 版");
 
-  // 目录与分类筛选：两条新资源在 MCP 区块及各自分类下可达。
+  // 目录与分类筛选：目标资源在 MCP 区块及各自分类下可达。
   for (const [url, label] of [[dynamicBase, "动态版"], [pagesBase, "Pages 版"]]) {
     await desktop.goto(url, { waitUntil: "networkidle" });
     for (const entry of entries) {
       // 动态版与静态版的卡片挂点不同，统一按详情页链接判定收录。
       await desktop.locator(`a[href$="${entry.slug}"], a[href$="${entry.slug}/"]`).first().waitFor();
     }
-    console.log(`PASS ${label} 首页收录两条新 MCP`);
+    console.log(`PASS ${label} 首页收录全部目标 MCP`);
   }
 
-  await desktop.goto(`${dynamicBase}/t/mcp/c/ai-knowledge`, { waitUntil: "networkidle" });
-  await desktop.getByRole("link", { name: /PaperGraph MCP/ }).first().waitFor();
-  await desktop.goto(`${dynamicBase}/t/mcp/c/development-code`, { waitUntil: "networkidle" });
-  await desktop.getByRole("link", { name: /computer-use-mcp/ }).first().waitFor();
+  for (const entry of entries) {
+    await desktop.goto(`${dynamicBase}/t/mcp/c/${entry.category}`, { waitUntil: "networkidle" });
+    await desktop.getByRole("link", { name: entry.name }).first().waitFor();
+  }
   console.log("PASS 动态版分类列表页可达");
 
-  console.log("PASS RUYI-124 两条 MCP 详情、复制块、插图与目录可达性");
+  console.log("PASS MCP 详情、复制块、插图与目录可达性");
 } finally {
   await browser.close();
 }

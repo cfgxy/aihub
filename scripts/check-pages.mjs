@@ -128,9 +128,24 @@ const mcpEntries = [
     install: "npx -y @zavora-ai/computer-use-mcp",
     mustInclude: ["权限", "profile", "回环地址"],
   },
+  {
+    slug: "loadster-mcp",
+    server: "&quot;loadster&quot;",
+    install: "/plugin install loadster@loadster",
+    mustInclude: ["不能启动/停止完整压测", "已获授权的目标", "Fuel"],
+  },
+  {
+    slug: "agentphone-mcp",
+    server: "&quot;agentphone&quot;",
+    install: "npx -y agentphone-mcp",
+    mustInclude: ["定价未知", "录音披露", "热度未知"],
+  },
 ];
 for (const entry of mcpEntries) {
   const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
   for (const value of [
     "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "插图：AIHub 原创设计",
     "MCP 配置", "安装命令", entry.server, entry.install,
@@ -187,6 +202,38 @@ for (const entry of dailyEntries125) {
   }
 }
 
+// RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
+const dailyEntries127 = [
+  { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
+  { slug: "ponytail", install: "/plugin install ponytail@ponytail", mustInclude: ["YAGNI", "作者侧报告", "未经独立复核"] },
+  { slug: "voicestudio", install: null, mustInclude: ["CC-BY-NC", "声音肖像权利", "AGPL-3.0"] },
+  { slug: "video-use", install: "cd ~/Developer/video-use &amp;&amp; uv sync", mustInclude: ["ElevenLabs", "API Key", "已授权内容"] },
+  { slug: "atlas", install: null, mustInclude: [".atlas/sessions.db", "成熟度待观察", "macOS"] },
+  { slug: "patent-disclosure-skill", install: "python -m pip install -r .claude/skills/patent-disclosure-skill/requirements.txt", mustInclude: ["专利代理师复核", "公开数据库覆盖度", "MIT"] },
+  { slug: "firecrawl-skill", install: "npx skills add firecrawl/skills", mustInclude: ["许可证未知", "robots", "API Key"] },
+  { slug: "sie", install: null, mustInclude: ["匿名遥测", "SIE_TELEMETRY_DISABLED=1", "GPU"] },
+];
+for (const entry of dailyEntries127) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "插图：AIHub 原创设计",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 原创插图出现外部图片来源图注`);
+  if (html.includes("MCP 配置")) throw new Error(`${entry.slug} 非 MCP 条目出现 MCP 配置块`);
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // Feature 图位是双图原创插图条目专属，其余详情页不得因此出现空图位。
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
 // 原创插图条目用 imageCredit 图注，不得生成外部图片来源。
@@ -194,6 +241,7 @@ const originalArtSlugs = [
   ...featureArtSlugs,
   ...mcpEntries.map((entry) => entry.slug),
   ...dailyEntries125.map((entry) => entry.slug),
+  ...dailyEntries127.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

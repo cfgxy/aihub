@@ -302,6 +302,166 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "做产品 promo、开场动画与动态排版的开发者和独立创作者，尤其是使用 Claude Code、Codex、Gemini CLI 或 Cursor 的 agent 用户。",
   },
+  "hermes-agent": {
+    image: "/media/hermes-agent.png",
+    imageAlt: "Hermes Agent 原创插图：多平台消息经抽象网关汇入自托管智能体核心，完成的任务经验沉淀为技能并进入本地记忆",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Hermes Agent 是 Nous Research 官方推出的自托管个人 AI 智能体（Python，MIT 开源），口号「与你一起成长的智能体」：复杂任务完成后自动把经验沉淀为可复用技能，并在后续使用中持续改进；记忆由 Agent 自治维护，会话历史支持全文检索（FTS5）与 LLM 摘要。模型接入与厂商无关，官方称从 5 美元档 VPS 到 GPU 集群均可运行。",
+      "它通过单一网关进程接入 Telegram、Discord、Slack、WhatsApp、Signal 与 CLI，内置 cron 定时任务、可并行的子智能体、7 种终端后端（本地、Docker、SSH、Singularity、Modal、Daytona、Vercel Sandbox），并兼容 agentskills.io 开放技能标准。自托管意味着消息网关的 Token 与消息权限须由使用者自行管控。",
+      "自托管暴露消息网关，Token/消息权限须自行管控；高热度仓库存在仿冒风险，须认准 NousResearch 官方组织；09-07 版本发布证据沿用候选期快照，未逐版本复核。",
+    ],
+    highlights: [
+      "从经验自动创建并改进技能的自学习闭环",
+      "单一网关接入 Telegram/Discord/Slack/WhatsApp/Signal/CLI",
+      "跨会话记忆、会话全文检索与内置 cron 调度",
+    ],
+    bestFor: "想私有化部署个人 AI 助手、愿意自行管理服务器与消息权限的开发者与极客用户。",
+  },
+  ponytail: {
+    image: "/media/ponytail.png",
+    imageAlt: "Ponytail 原创插图：决策小球沿 7 级 YAGNI 阶梯逐级下行，最终抵达「最小实现」代码卡",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Ponytail 把一位「能不写就不写」的资深工程师决策风格写成 Agent 可执行规则（MIT 开源）：理解任务后按 7 级阶梯逐级检查——需要存在吗（YAGNI，跳过）→ 代码库已有（复用）→ 标准库有（用标准库）→ 平台原生有（用原生）→ 依赖已装（用依赖）→ 一行能写（就一行）→ 都不满足才写「最小可用实现」。作者明确「懒而不疏忽」：信任边界校验、数据安全、无障碍等底线永不裁剪。",
+      "通过各 Agent 的插件市场或规则文件接入 Claude Code、Codex、Copilot CLI、Gemini CLI、Cursor、Windsurf、Hermes 等 20 余种载体，提供 lite/full/ultra/off 强度档位与 review、audit、debt、gain 等子命令。README 自述在小样本对照中平均减少约 54% 代码量——该数据为作者侧报告（无头 Claude Code 会话，n=4、12 个任务），未经独立复核，表述时须保留「作者自述」属性。",
+      "收益数据为作者侧小样本报告，未经独立复核；强约束「最小实现」风格未必适配所有团队规范，需按档位调节。",
+    ],
+    highlights: [
+      "7 级 YAGNI 决策阶梯抑制过度设计",
+      "一次接入覆盖 Claude Code/Codex/Gemini CLI 等主流编码 Agent",
+      "lite/full/ultra/off 档位与 review、audit 等配套子命令",
+    ],
+    bestFor: "被编码 Agent 的过度工程产出困扰、希望控制代码量与审查负担的个人开发者与团队。",
+  },
+  voicestudio: {
+    image: "/media/voicestudio.png",
+    imageAlt: "VoiceStudio 原创插图：本地语音工作台的三轨波形与麦克风输入，右下角为本地离线标识",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "VoiceStudio（曾名 OmniVoice-Studio，AGPL-3.0 开源）定位「开源自托管的 ElevenLabs 替代」：零样本语音克隆（官方建议 5–15 秒参考音频）、按年龄/口音/风格描述的声音设计、视频配音（转写→翻译→合成→导出）、系统级听写、转写与多角色有声书（EPUB/PDF 导入、.m4b 导出）全部在本机完成；集成 16 个 TTS 与 11 个 ASR 引擎，TTS 语言目录约 646 种（实际覆盖取决于所选引擎）。",
+      "技术形态为 Tauri v2 桌面壳 + FastAPI 本地服务（localhost:3900）+ SQLite，支持 CUDA/Apple MPS/MLX/ROCm/CPU，并提供 OpenAI 兼容本地 API 与 MCP 服务器；README 明确本地工作流「无账号、无 API Key、无用量计量」。应用本体 AGPL-3.0（作者另售商业授权），下载的模型沿用各自上游条款——默认 OmniVoice 权重为 CC-BY-NC，商用集成需分别核对。",
+      "语音克隆涉及声音肖像权利，须在取得授权后对目标声音使用；AGPL-3.0 对商用集成有传染性约束；默认模型权重 CC-BY-NC 含非商业条款；各语言实际覆盖度未逐一验证。",
+    ],
+    highlights: [
+      "零样本语音克隆与声音设计，全流程本地离线运行",
+      "克隆/配音/转写/听写/有声书一体，内置 16 TTS + 11 ASR 引擎与约 646 种语言目录",
+      "OpenAI 兼容本地 API 与 MCP 服务器，本地工作流无需账号或 API Key",
+    ],
+    bestFor: "需要隐私优先、本地化语音生产的播客与有声书创作者、配音本地化团队及开发者。",
+  },
+  "video-use": {
+    image: "/media/video-use.png",
+    imageAlt: "video-use 原创插图：素材文件夹经转写、剪辑决策、渲染、自检四步流水线产出 final.mp4",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "video-use 来自 browser-use 官方组织（MIT 开源），把「用编码 Agent 剪视频」工程化为一条流水线：转写 → 打包 → LLM 推理 → 生成 EDL 剪辑决策单 → 渲染 → 逐切点自检（最多 3 轮修正重渲）。它能剪掉口头语与废镜头、按段自动调色、每次剪切加 30ms 音频淡入淡出防爆音、烧录大写字幕，并以 HyperFrames/Remotion/Manim/PIL 并行子智能体生成叠片动画。",
+      "核心设计是「LLM 不观看视频，而是阅读视频」：靠约 12KB 的转写文本与按需生成的 timeline_view 时间线截图做剪辑决策；转写使用 ElevenLabs Scribe（词级时间戳、说话人分离），因此需配置 ELEVENLABS_API_KEY——转写环节为云服务并产生相应费用。支持 Claude Code、Codex、Hermes、OpenClaw 等一切有 shell 权限的 Agent；依赖本地 ffmpeg（必需）与 yt-dlp（可选）。",
+      "转写环节依赖 ElevenLabs API Key（云依赖与费用，候选期未标注，本次据官方 README 补充）；长视频本地算力与磁盘占用高；剪辑结果需人工复核；配合 yt-dlp 获取素材须注意版权，仅限自有或已授权内容。",
+    ],
+    highlights: [
+      "素材入目录、对话式产出 final.mp4 的完整剪辑流水线（转写→EDL→渲染→自检）",
+      "自动去口头语、分段调色、字幕烧录与多引擎叠片动画",
+      "支持 Claude Code/Codex/Hermes 等任意有 shell 的编码 Agent",
+    ],
+    bestFor: "熟悉编码 Agent、想用对话方式完成口播与发布类视频粗剪的内容创作者与开发者。",
+  },
+  atlas: {
+    image: "/media/atlas.png",
+    imageAlt: "Atlas 原创插图：时间线上的会话 checkpoint 锚点与提交节点双向关联，左上为桌面窗口",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Atlas（Tauri + Rust，MIT 开源）自称「给编码 Agent 用的源码管理」：每个 Agent 会话自动产生 checkpoint，把产出的 commit 与引发它的提示词、工具调用和推理过程关联；commit 被 amend/rebase 后按 patch-id 重新对位。会话记录存于本机 `.atlas/sessions.db`（SQLite、默认 gitignore，README 自述写入时清除密钥），可选中任一 checkpoint 直接与它对话。",
+      "应用完全离线、无需账号，内置编辑器、Git、终端、知识库、浏览器等工作区；多个 Agent 经 ACP 协议并行运行（Claude Code、Codex，及 Cursor、OpenCode、Kilo Code 等 ACP 注册代理）并共享本地嵌入向量记忆（HNSW 检索），中途切换 Agent 不丢上下文。当前官方分发仅支持 macOS（tryatlas.cc 提供 .dmg），Linux/Windows 未经官方测试；项目较新，成熟度待观察。",
+      "项目新（09-12 快照 3.3k 星）、成熟度待观察；仅官方支持 macOS；会话数据（提示词/推理）落盘 `.atlas/` 本地目录，「写入时清除密钥」为 README 自述、未经独立审计，敏感项目使用前自行评估。",
+    ],
+    highlights: [
+      "Agent 运行级 checkpoint：commit 与会话、提示词、工具调用双向关联，rebase/amend 后可重新对位",
+      "多 Agent 并行与共享记忆（本地嵌入 + HNSW），切换 Agent 不丢上下文",
+      "离线运行无需账号，编辑器/Git/终端/知识库一体化工作区",
+    ],
+    bestFor: "同时运行多个编码 Agent、需要追溯「这行改动来自哪次会话」的个人开发者与小团队。",
+  },
+  "patent-disclosure-skill": {
+    image: "/media/patent-disclosure-skill.png",
+    imageAlt: "patent-disclosure-skill 原创插图：交底书文稿配合检索放大镜与带编号引线的部件附图",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "这是一套面向中国专利实务的中文 Agent 技能（MIT 开源，兼容 agentskills.io 规范），把专利工作拆成 8 个子技能：交底书编写、申请文件、案卷会稿、专利通俗解读、专利地图、审查答复辅助、著录检索与政策简报，覆盖发明、实用新型、外观设计三类文书；流程串联「挖掘专利点 → 查新 → 脱敏 → 撰写 → 版本迭代」，并支持外观线条图、实用新型部件编号图与 CAD 轴测附图生成。",
+      "官方安装面向 Claude Code 与 Cursor：把仓库克隆进 `.claude/skills/`（Cursor 为 `~/.cursor/skills/`），前置 Python 3.9+ 与本地 Chrome/Edge（用于查新与附图渲染），依赖经 `pip install -r requirements.txt` 安装；CNIPA 检索、CAD 附图等为可选组件按需安装。README 强调「缺事实就问、绝不瞎编」；但专利文书法律效力要求高，AI 产出必须经专利代理师复核，查新覆盖度受公开数据库限制。",
+      "AI 生成文书不当然具备法律效力，提交前须经专利代理师复核；查新结论受公开数据库覆盖度限制；仓库页面未见法律免责声明，使用边界由使用者把握。",
+    ],
+    highlights: [
+      "8 个子技能覆盖挖掘→查新→脱敏→交底书→审查答复全流程",
+      "发明/实用新型/外观三类文书与附图（线条图/部件图/CAD 轴测）生成",
+      "专利通俗解读、著录检索与政策简报等延伸能力",
+    ],
+    bestFor: "想把工程创新整理为专利交底书的工程师与研究者，以及需要快速读懂竞争专利的团队。",
+  },
+  "firecrawl-skill": {
+    image: "/media/firecrawl-skill.png",
+    imageAlt: "Firecrawl Skill 原创插图：网页内容经漏斗抽取为结构化键值数据",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Firecrawl（主仓库约 17.9 万星）官方发布的 Skill 与 CLI 把其「网页上下文 API」接进编码 Agent：`scrape`（含 `--schema` 结构化提取、截图、页面动作）、`search`（网页/新闻/图片）、`crawl`、`map`、`research`/`developer` 索引、`interact`（Playwright 浏览器会话）、`monitor`（站点变更监控）等命令；官方提供 `npx skills add firecrawl/skills` 一步装入 Claude Code、Codex、Cursor、Windsurf、OpenCode、Hermes 等 Agent。",
+      "默认走 Firecrawl 云端（api.firecrawl.dev），凭 FIRECRAWL_API_KEY 或浏览器登录，按 credits 计量（内置 `credit-usage` 命令）；也可用 `--api-url` 指向自建实例（非默认地址自动跳过认证）。需注意：`firecrawl/cli` 仓库截至 09-12 未标注开源许可证（GitHub API license 字段为 null），主仓库 firecrawl 为 AGPL-3.0——许可证未知须如实保留，商用集成前向官方确认。",
+      "cli 仓库许可证未知（09-12 核实：官方仓库未标注）；云服务需 API Key 并产生用量成本；抓取须遵守目标站点 robots 与版权要求；自建实例的部署维护由使用者承担。",
+    ],
+    highlights: [
+      "scrape/crawl/search/map 一站式网页上下文获取，支持 --schema 结构化提取与 monitor 站点监控",
+      "npx skills add firecrawl/skills 一步接入 Claude Code/Codex/Cursor 等主流 Agent",
+      "云端按 credits 计量与自建实例（--api-url）双模式",
+    ],
+    bestFor: "需要给编码 Agent 接入实时网页数据与结构化抓取的开发者、数据与增长团队。",
+  },
+  sie: {
+    image: "/media/sie.png",
+    imageAlt: "SIE 原创插图：多类模型节点汇入统一的 OpenAI 兼容端点，再分发到多个 Agent",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "SIE（superlinked 出品，Apache-2.0）把 Agent 任务背后的模型收敛到一个自托管推理服务器：`/v1/embeddings`、`/v1/chat/completions`、`/v1/completions`、`/v1/responses` 等 OpenAI 兼容端点统一提供检索嵌入与重排（bge-m3、splade-v3、colbertv2、qwen3-reranker）、文档转 Markdown 与 OCR（lightonocr、glm-ocr、mineru、paddleocr-vl、docling）、结构化抽取/NER（gliner2 等）、内容安全（granite-guardian-2b）与生成（qwen3.6-27b），SDK 暴露 encode/score/extract/generate，支持 100+ 模型按需加载与 LRU 驻留，可与 LangChain、LlamaIndex、Chroma、Qdrant 等集成。",
+      "部署按「bundle」拆分 Docker 镜像，依赖不兼容的模型家族天然隔离；本机 `pip install \"sie-server[local]\"` 即可起步，生产侧提供 Helm 图表、网关负载均衡、KEDA 缩容至零与主流云 Terraform 模块。注意：服务端默认开启匿名遥测（版本/系统/GPU 型号），可用 `SIE_TELEMETRY_DISABLED=1` 关闭，隐私敏感部署应显式禁用。",
+      "依赖不兼容的模型家族需拆分独立镜像，本地 GPU/内存要求较高；服务端默认开启匿名遥测（可关闭）；各任务最优模型选择需按业务自行评测，本站不作推荐。",
+    ],
+    highlights: [
+      "嵌入、重排、OCR、结构化抽取、内容安全与生成统一为 OpenAI 兼容 API",
+      "100+ 模型按需加载与 LRU 驻留，一套服务多 Agent 共享",
+      "本机 pip 起步，生产级 Helm/KEDA/Terraform 配套",
+    ],
+    bestFor: "为多个 Agent 应用自建检索与文档理解基础设施的工程团队。",
+  },
+  "loadster-mcp": {
+    image: "/media/loadster-mcp.png",
+    imageAlt: "Loadster MCP 原创插图：Agent 经权限边界与云端压测平台双向通信，产出仪表与柱状报告",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Loadster 是云端负载测试与合成监控平台；其官方 MCP 服务器为托管服务（Streamable HTTP，端点 `https://api.loadster.com/mcp`，服务端源码未公开，GitHub 仓库提供各客户端接入配置与 Claude Code 插件）。Agent 可创建/试放压测脚本（支持 HTTP 与浏览器/Playwright 脚本类型）、管理场景与数据集、配置监控并读取报告。",
+      "平台刻意收窄了 Agent 权限边界：不能启动/停止完整压测、不能启用监控、不能管理通知策略与计费，仅开放「单机器人试放」与脚本/场景/数据集读写。认证走 OAuth 2.1 浏览器授权，或在控制台 Settings → AI Agents → MCP Tokens 生成 Bearer Token（仅显示一次，以创建者身份在其团队内生效）。定价按 Fuel 用量积分：注册赠 50 单位，月订阅 $77–$797，按量付费 $97 起，监控套餐 $29/月起（09-12 官网核实，以官网实时为准）。",
+      "依赖商业云账号与付费额度，超出免费额度的用量按 Fuel 计费；压测必须只针对自有或已获授权的目标；MCP 服务端闭源，仓库仅为配置与元数据。",
+    ],
+    highlights: [
+      "Agent 直接编写/试放压测脚本、管理场景与数据集、读取压测与监控报告",
+      "Streamable HTTP 托管端点，OAuth 2.1 或 MCP Token 接入 Claude Code/Codex/Cursor 等客户端",
+      "平台侧硬性权限边界：完整压测启停、计费等不对 Agent 开放",
+    ],
+    bestFor: "需要 Agent 化性能测试与合成监控的 QA 与后端团队（Loadster 付费用户）。",
+  },
+  "agentphone-mcp": {
+    image: "/media/agentphone-mcp.png",
+    imageAlt: "AgentPhone MCP 原创插图：抽象手机与短信线程、语音通话波弧及工具集点阵，全部内容占位化",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "AgentPhone MCP（MIT 开源，基于 mcp-use 框架）让 MCP 客户端获得真实通信能力，共 28 个工具：购买与管理美国/加拿大号码、收发短信（支持媒体与线程回复）、外呼（`make_call` 经 webhook 驱动，或 `make_conversation_call` 内置 AI 对话无需自建 webhook）、呼入处理、自定义语音与系统提示词的通话 Agent，以及用量与账单查询。",
+      "接入提供三种方式：远端 Streamable HTTP（`https://mcp.agentphone.ai/mcp`，OAuth 或 Bearer API Key）、本地 stdio（`npx -y agentphone-mcp` + AGENTPHONE_API_KEY 环境变量）、自托管 HTTP。所有通话经 AgentPhone API；README 未公布费率，需注册 agentphone.ai 后按用量计费，具体定价未知。须特别提示：README 未包含外呼合规、受话方同意或录音披露等声明，此类能力天然涉及通信费用、骚扰/滥用与声音授权风险，仅应在合法合规并取得授权的前提下使用。",
+      "外呼涉及通信费用与骚扰/滥用合规风险，README 无合规、同意与录音披露声明；声音与号码使用须取得授权；证据链目前仅官方仓库单一来源，热度未知；运营主体在仓库披露有限；定价未知。",
+    ],
+    highlights: [
+      "28 个工具覆盖购号、短信、外呼（含内置 AI 对话通话）与呼入 webhook",
+      "远端 Streamable HTTP / 本地 stdio / 自托管三种接入，OAuth 或 API Key 认证",
+      "自定义语音与系统提示词的通话 Agent 及用量账单查询",
+    ],
+    bestFor: "构建电话客服、外呼提醒与语音自动化，且自行承担通信合规责任的开发团队。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
