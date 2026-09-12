@@ -43,8 +43,8 @@ export function seedDatabase(db = getDb()) {
     const insertType = db.prepare("INSERT INTO resource_types (key, name, description, sort, accent) VALUES (?, ?, ?, ?, ?)");
     const insertCategory = db.prepare("INSERT INTO categories (type_id, name, slug, description, sort) VALUES (?, ?, ?, ?, ?)");
     const insertResource = db.prepare(`INSERT INTO resources
-      (name, slug, type_id, category_id, summary, description, tags, official_url, source_url, install_guide, config_text, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published')`);
+      (name, slug, type_id, category_id, summary, description, tags, official_url, source_url, install_guide, config_text, status, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', COALESCE(?, CURRENT_TIMESTAMP))`);
 
     for (const type of typeSeeds) {
       insertType.run(type.key, type.name, type.description, type.sort, type.accent);
@@ -62,7 +62,7 @@ export function seedDatabase(db = getDb()) {
       if (!type || !category) throw new Error(`种子归属不存在：${resource.slug}`);
       insertResource.run(resource.name, resource.slug, type.id, category.id, resource.summary, resource.description,
         JSON.stringify(resource.tags), resource.officialUrl, resource.sourceUrl, resource.installGuide || "",
-        resource.configText || "");
+        resource.configText || "", resource.updatedAt || null);
     }
     db.exec("COMMIT");
   } catch (error) {
@@ -87,8 +87,8 @@ function backfillSeeds(db: DatabaseSync) {
   const categories = db.prepare(`SELECT c.id, c.slug, t.key AS type_key FROM categories c
     JOIN resource_types t ON t.id = c.type_id`).all() as Array<{ id: number; slug: string; type_key: string }>;
   const insertResource = db.prepare(`INSERT INTO resources
-    (name, slug, type_id, category_id, summary, description, tags, official_url, source_url, install_guide, config_text, status)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published')`);
+    (name, slug, type_id, category_id, summary, description, tags, official_url, source_url, install_guide, config_text, status, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', COALESCE(?, CURRENT_TIMESTAMP))`);
 
   db.exec("BEGIN");
   try {
@@ -98,7 +98,7 @@ function backfillSeeds(db: DatabaseSync) {
       if (!type || !category) throw new Error(`种子归属不存在：${resource.slug}`);
       insertResource.run(resource.name, resource.slug, type.id, category.id, resource.summary, resource.description,
         JSON.stringify(resource.tags), resource.officialUrl, resource.sourceUrl, resource.installGuide || "",
-        resource.configText || "");
+        resource.configText || "", resource.updatedAt || null);
     }
     db.exec("COMMIT");
   } catch (error) {

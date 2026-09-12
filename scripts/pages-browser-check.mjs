@@ -31,7 +31,7 @@ try {
   const sectionCount = () => appSection.locator(".section-heading small").innerText();
   const totalApps = await visibleCards();
   if (await sectionCount() !== `${totalApps} 项`) throw new Error(`Pages 初始分类计数错误：${await sectionCount()}`);
-  for (const [category, expected] of [["官方应用", 4], ["辅助工具", 6], ["其他", 1]]) {
+  for (const [category, expected] of [["官方应用", 5], ["辅助工具", 9], ["其他", 3]]) {
     await appSection.getByRole("button", { name: category }).click();
     const active = await appSection.locator("[data-category-filter].active").allInnerTexts();
     if (active.length !== 1 || active[0] !== category) throw new Error(`Pages 分类选中态错误：${active.join("/")}`);
@@ -47,7 +47,7 @@ try {
   await desktop.getByLabel("搜索资源").fill("Codex");
   // 分类筛选按 section 生效，断言只看被筛选的应用区，避免其他类型命中同一关键词时误判。
   const combinedResults = await visibleCards();
-  if (combinedResults !== 1) throw new Error(`Pages 组合筛选结果错误：${combinedResults}`);
+  if (combinedResults !== 2) throw new Error(`Pages 组合筛选结果错误：${combinedResults}`);
   await appSection.getByRole("button", { name: "全部" }).click();
   await desktop.getByLabel("搜索资源").fill("豆包");
   const searchResults = await desktop.locator("[data-resource]").evaluateAll(
