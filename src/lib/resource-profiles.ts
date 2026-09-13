@@ -462,6 +462,66 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "构建电话客服、外呼提醒与语音自动化，且自行承担通信合规责任的开发团队。",
   },
+  superpowers: {
+    image: "/media/superpowers.png",
+    imageAlt: "Superpowers 原创插图：brainstorming、writing-plans、executing-plans 技能卡片汇入技能链工作流窗口，test-driven-development 执行中并显示 RED→GREEN→REFACTOR 循环",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Superpowers（MIT 开源）官方定位「An agentic skills framework & software development methodology」，把资深工程师的工作习惯拆成可组合技能：写码前先头脑风暴并落设计文档，经 git worktree 建隔离工作区，把工作拆成 2–5 分钟颗粒度的任务，逐任务派发全新子代理并做「规格合规 + 代码质量」两阶段审查，全程强制测试驱动开发（先写失败测试再写最小实现），分支完成后验证测试并提供 merge/PR/清理选项。README 强调这些是「强制工作流，不是建议」——Agent 在每个任务前自动检查应使用的技能，并称按此运行的 Agent「自主连续工作数小时不偏离计划并不罕见」。",
+      "它是当前 Agent 技能生态中规模最大的方法论技能集之一（285,712★，2026-09-13 快照），官方适配 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot CLI、Devin CLI 等 14 种编码 Agent；技能库另含 systematic-debugging（四阶段根因调试）、verification-before-completion 等专项技能。须知：工作流约束较强（强制 TDD、计划先行），团队需适应期，且主要面向编码场景；brainstorming 的可选视觉功能默认从官网加载 Prime Radiant logo（README 称不含项目、提示词或 Agent 信息），设 SUPERPOWERS_DISABLE_TELEMETRY 可关闭；企业商业服务定价未公开。",
+    ],
+    highlights: [
+      "头脑风暴 → 设计文档 → 计划拆解 → 子代理执行与双阶段审查的全链路强制工作流",
+      "强制 RED-GREEN-REFACTOR 循环，TDD 与完成前验证内建",
+      "一套技能官方适配 Claude Code/Codex/Cursor 等 14 种编码 Agent",
+    ],
+    bestFor: "日常使用 Claude Code/Codex 等编码 Agent、希望把团队工程规范固化进 Agent 工作流的开发者与技术负责人。",
+  },
+  "i-have-adhd": {
+    image: "/media/i-have-adhd.png",
+    imageAlt: "i-have-adhd 原创插图：同一问题的 Before 长篇大论与 After 动作先行双栏对比，编号步骤以具体下一步收尾",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "i-have-adhd（MIT 开源）解决单一大痛点：编码 Agent 总把答案埋进长篇大论。它用 10 条输出规则改造 Agent 的回答方式——先给出下一步动作、多步任务编号、以一个具体的下一步结尾、抑制跑题、每轮重述当前状态、给以分钟计的具体时间估算（而不是「一会儿」）、列表不超过 5 项、无开场白、无复述、无客套结尾。官方副标语注明「No ADHD diagnosis needed!」——它是给所有人用的「结论先行」输出规范，灵感来自《The Adult ADHD Tool Kit》（J. Russell Ramsay & Anthony L. Rostain），并被改编为 LLM 的响应方式而非人类日程管理。",
+      "安装零门槛：把一句话粘给任意 CLI Agent 即可完成；仓库同时提供 Claude、Codex、Cursor、OpenCode、Gemini、Kimi、Qwen 等多端适配与 AGENTS.md 通用接入。想调整规则，Fork 后编辑 SKILL.md 再按 INSTALL.md 换源安装。热度：43,206★（2026-09-13 快照），GitHub Trending 日榜单日 +3,463。须知：效果为主观体验类主张，无独立验证；简短指令式输出可能与需要详细推理过程的团队偏好冲突，按需取用。",
+    ],
+    highlights: [
+      "「动作先行」输出规则集：先给下一步动作、步骤编号、列表 ≤5 项、零客套",
+      "每轮重述当前状态并给出以分钟计的时间估算，进展可见",
+      "一段提示词即可安装，覆盖 Claude/Codex/Cursor/Gemini/Kimi/Qwen 等，Fork SKILL.md 可自定义规则",
+    ],
+    bestFor: "所有被 Agent 长输出淹没、希望结论先行的编码 Agent 用户，无需 ADHD 诊断。",
+  },
+  mathmodelagent: {
+    image: "/media/mathmodelagent.png",
+    imageAlt: "MathModelAgent 原创插图：赛题输入经建模手、代码手、论文手流水线产出 res.pdf，9 步自动验收逐项通过并自动匹配赛事模板",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "MathModelAgent（代码公开、可自部署）是专为数学建模竞赛设计的多智能体系统：「建模手、代码手、论文手」分工协作，自动完成问题分析、数学建模、代码编写、纠错与论文撰写，最终产出一份已排好版的完整论文。排版基于 Typst，内置 17 套竞赛论文模板（覆盖国赛、华数杯、华为杯、美赛 MCM/ICM 等），并配套含模型选择决策树与评分标准的建模知识库。",
+      "工程完成度是其亮点：Code Interpreter 支持本地 Jupyter 与云端 E2B/Daytona；经 litellm 接入任意模型且每个智能体可配置不同 LLM；通过 Tavily API 联网搜索真实数据；ChromaDB + Rerank 检索建模方法与代码模板；关键节点提供 HIL 人机协作审批（confirm/edit/regenerate/ask/skip/abort），另有四层容错与 9 步自动验收（文本泄漏检测→数值校验→Typst 编译→PDF 检查）。使用入口：桌面版（macOS/Windows）、在线托管版（mathmodel.top）、Docker 一键部署，或作为技能安装。须知：仓库未标注标准开源许可证，仅有「个人免费使用，请勿商业用途，商业用途联系作者」声明，商用集成前必须联系作者确认授权；作者免责声明明确「AI 生成仅供参考，目前水平直接参加国赛获奖是不可能的」，直接提交 AI 产出存在学术诚信风险；项目自述仍处实验迭代阶段；托管版定价未公示。",
+    ],
+    highlights: [
+      "多智能体端到端论文流水线：分析 → 建模 → 编码 → 纠错 → 排版成稿，17 套竞赛模板",
+      "建模知识库 + Tavily 联网数据：决策树式模型选择、代码模板 RAG 检索",
+      "HIL 关键节点审批、9 步自动验收与四层容错，多模型可配",
+    ],
+    bestFor: "数学建模竞赛参赛学生与相关教学场景，以及对多智能体工作流设计感兴趣的开发者。",
+  },
+  "pascal-editor": {
+    image: "/media/pascal-editor.png",
+    imageAlt: "Pascal Editor 原创插图：楼层爆炸视图与 AI Agent 面板并置，展示 pascal mcp connect、本地连接免账号与官方技能 pascal-3d、furniture-fit",
+    imageCredit: "插图：AIHub 原创设计",
+    overview: [
+      "Pascal Editor（MIT 开源）是基于 React Three Fiber 与 WebGPU 构建的 3D 建筑编辑器，浏览器打开即用，也可通过 CLI 安装为本地持久化服务。场景按「Site → Building → Level → Wall/Slab/Ceiling/Roof/Zone → Item」节点层级组织，墙体系统支持斜接与 CSG 开洞，配有空间碰撞检测、放置校验与 50 步撤销/重做，项目数据存储在本机；官网定位「Free Open-Source 3D Building Editor」，口号「Turn your property into a living digital twin」，另提供配套 iOS 应用 Pascal Capture。",
+      "差异化在「为 Agent 而建」：CLI 启动编辑器的同时拉起一个带认证的本地 MCP 服务（npx @pascal-app/cli editor），也可用 pascal mcp connect 单独连接托管端点（editor.pascal.app/api/mcp），AI Agent 因此可直接查询和修改 3D 场景；官方提供 pascal-3d 与 furniture-fit 两个 Agent 技能，一条命令装进 Claude Code/Codex。本地连接器无需 Pascal 账号或 API key；npm 生态提供 core/viewer/editor/nodes/mcp/cli 及 ifc-converter（IFC 转换）等包，并有插件系统扩展节点类型。须知：垂直领域（建筑/3D）受众较窄；每个 CLI 服务仅允许一个活跃 Agent 客户端（多实例需不同 PASCAL_HOME 目录）；官网 AI 构建功能标注消耗 AI credits（定价未公示，未知）；支持的文件格式清单未在 README 列明。",
+    ],
+    highlights: [
+      "浏览器/CLI 双形态 3D 建筑编辑：参数化墙体（斜接、CSG 开洞）、碰撞校验、50 步撤销/重做",
+      "MCP 打通人机同台协作：本地或托管端点让 Agent 查询/修改场景，官方技能一键装进 Claude Code/Codex",
+      "本地优先与可扩展：数据存本机、IFC 转换包、节点与面板插件系统",
+    ],
+    bestFor: "建筑/空间设计师与房产数字化从业者，以及想用 Agent 驱动 3D 场景的开发者。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
