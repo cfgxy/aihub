@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow" cx="71%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- base -->
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+
+  <!-- badge -->
+  <rect x="64" y="58" width="208" height="30" rx="15" fill="rgba(245,158,11,0.12)" stroke="rgba(251,191,36,0.45)" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#FBBF24" letter-spacing="1">SKILL · 编程开发 · 开源</text>
+
+  <!-- title -->
+  <text x="64" y="205" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="54" fill="#F5F7FA">i-have-adhd</text>
+
+  <!-- subtitle -->
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">让编码 Agent 不再把答案埋进长篇大论</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">行动先行 · 步骤编号 · 免除 Hope this helps</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- features -->
+  <circle cx="71" cy="380" r="9" fill="#F59E0B" opacity="0.15"/>
+  <circle cx="71" cy="380" r="4.5" fill="#FBBF24"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">10 条输出规则 · 列表封顶 5 项</text>
+
+  <circle cx="71" cy="428" r="9" fill="#F59E0B" opacity="0.15"/>
+  <circle cx="71" cy="428" r="4.5" fill="#FBBF24"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">先给下一步动作 · 多步任务自动编号</text>
+
+  <circle cx="71" cy="476" r="9" fill="#F59E0B" opacity="0.15"/>
+  <circle cx="71" cy="476" r="4.5" fill="#FBBF24"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">一段提示词即可安装 · 规则可 Fork 定制</text>
+
+  <!-- source -->
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/ayghri/i-have-adhd · 2026-09-13</text>
+
+  <!-- ============ right stage ============ -->
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#FBBF24" letter-spacing="1.5">同一个问题 · 两种回答</text>
+
+  <!-- BEFORE window -->
+  <rect x="584" y="124" width="552" height="140" rx="14" fill="rgba(8,10,14,0.92)" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/>
+  <rect x="602" y="140" width="132" height="22" rx="11" fill="rgba(255,255,255,0.05)"/>
+  <text x="614" y="155" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11" fill="#8A93A3">BEFORE · 长篇大论</text>
+  <text x="602" y="184" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#8A93A3">"Great question! Let me think about this…"</text>
+  <rect x="602" y="198" width="500" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
+  <rect x="602" y="214" width="464" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="602" y="230" width="486" height="8" rx="4" fill="rgba(255,255,255,0.04)"/>
+  <text x="602" y="254" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11" fill="#6B7683">"Hope this helps! Let me know if you want to dig deeper."</text>
+
+  <!-- transform chevron -->
+  <path d="M842,272 l12,12 l12,-12" fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="878" y="266" width="106" height="24" rx="12" fill="rgba(245,158,11,0.12)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+  <text x="931" y="282" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="11" fill="#FBBF24">i-have-adhd</text>
+
+  <!-- AFTER window -->
+  <rect x="584" y="300" width="552" height="176" rx="14" fill="rgba(8,10,14,0.92)" stroke="rgba(251,191,36,0.35)" stroke-width="1.5"/>
+  <rect x="602" y="316" width="126" height="22" rx="11" fill="rgba(245,158,11,0.12)"/>
+  <text x="614" y="331" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="11" fill="#FBBF24">AFTER · 行动先行</text>
+  <text x="602" y="362" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="bold" font-size="12" fill="#FBBF24">$ npm install jsonwebtoken@latest</text>
+  <text x="602" y="390" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#CBD2DC">1. Open src/auth.ts</text>
+  <text x="602" y="412" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#CBD2DC">2. Replace verifyToken (lines 42–58)</text>
+  <text x="602" y="434" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#CBD2DC">3. Run npm test -- auth.spec.ts</text>
+  <text x="602" y="460" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11" fill="#8A93A3">Next: paste the first failing line if any test fails.</text>
+
+  <text x="854" y="512" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6F7683">示例摘自官方 README · 10 条规则全文见 SKILL.md</text>
+</svg>

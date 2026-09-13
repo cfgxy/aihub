@@ -213,6 +213,35 @@ const dailyEntries127 = [
   { slug: "firecrawl-skill", install: "npx skills add firecrawl/skills", mustInclude: ["许可证未知", "robots", "API Key"] },
   { slug: "sie", install: null, mustInclude: ["匿名遥测", "SIE_TELEMETRY_DISABLED=1", "GPU"] },
 ];
+
+// RUYI-137：本批 2 条 SKILL 与 2 条应用共用原创主图，须保留事实边界及对应获取入口。
+const dailyEntries137 = [
+  { slug: "superpowers", install: "/plugin install superpowers@claude-plugins-official", mustInclude: ["285,712★", "SUPERPOWERS_DISABLE_TELEMETRY", "RED-GREEN-REFACTOR"] },
+  { slug: "i-have-adhd", install: "Install the i-have-adhd skill/plugin from https://github.com/ayghri/i-have-adhd, refer to the repo&#39;s AGENTS.md for instructions.", mustInclude: ["10 条输出规则", "No ADHD diagnosis needed", "43,206★"] },
+  { slug: "mathmodelagent", install: null, mustInclude: ["请勿商业用途", "学术诚信风险", "17 套竞赛论文模板"] },
+  { slug: "pascal-editor", install: null, mustInclude: ["pascal mcp connect", "AI credits", "IFC"] },
+];
+for (const entry of dailyEntries137) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "插图：AIHub 原创设计",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 原创插图出现外部图片来源图注`);
+  if (html.includes("MCP 配置")) throw new Error(`${entry.slug} 非 MCP 条目出现 MCP 配置块`);
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 for (const entry of dailyEntries127) {
   const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
   if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
@@ -242,6 +271,7 @@ const originalArtSlugs = [
   ...mcpEntries.map((entry) => entry.slug),
   ...dailyEntries125.map((entry) => entry.slug),
   ...dailyEntries127.map((entry) => entry.slug),
+  ...dailyEntries137.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

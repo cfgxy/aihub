@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow" cx="71%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- base -->
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+
+  <!-- badge -->
+  <rect x="64" y="58" width="196" height="30" rx="15" fill="rgba(56,189,248,0.12)" stroke="rgba(125,211,252,0.45)" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#7DD3FC" letter-spacing="1">应用 · 其他 · 代码公开</text>
+
+  <!-- title -->
+  <text x="64" y="205" font-family="Noto Sans CJK SC" font-weight="900" font-size="56" fill="#F5F7FA">MathModelAgent</text>
+
+  <!-- subtitle -->
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">专为数学建模设计的多智能体流水线</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">自动分析 · 建模 · 代码求解 · 论文排版</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- features -->
+  <circle cx="71" cy="380" r="9" fill="#38BDF8" opacity="0.15"/>
+  <circle cx="71" cy="380" r="4.5" fill="#7DD3FC"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">建模手 · 代码手 · 论文手 分工协作</text>
+
+  <circle cx="71" cy="428" r="9" fill="#38BDF8" opacity="0.15"/>
+  <circle cx="71" cy="428" r="4.5" fill="#7DD3FC"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">17 套 Typst 赛事模板 · 自动匹配赛事类型</text>
+
+  <circle cx="71" cy="476" r="9" fill="#38BDF8" opacity="0.15"/>
+  <circle cx="71" cy="476" r="4.5" fill="#7DD3FC"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">9 步自动验收 · 代码保存为可编辑 notebook</text>
+
+  <!-- source -->
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/jihe520/MathModelAgent · 2026-09-13</text>
+
+  <!-- ============ right stage ============ -->
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#7DD3FC" letter-spacing="1.5">多智能体建模流水线</text>
+
+  <!-- pipeline chips -->
+  <rect x="584" y="140" width="120" height="64" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <text x="644" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#E7EAF0">赛题输入</text>
+  <text x="644" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">题目 / 数据</text>
+
+  <rect x="728" y="140" width="120" height="64" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(125,211,252,0.30)" stroke-width="1"/>
+  <text x="788" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#7DD3FC">建模手</text>
+  <text x="788" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">模型选择决策</text>
+
+  <rect x="872" y="140" width="120" height="64" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(125,211,252,0.30)" stroke-width="1"/>
+  <text x="932" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#7DD3FC">代码手</text>
+  <text x="932" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">Jupyter 求解</text>
+
+  <rect x="1016" y="140" width="120" height="64" rx="12" fill="rgba(255,255,255,0.045)" stroke="rgba(125,211,252,0.30)" stroke-width="1"/>
+  <text x="1076" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#7DD3FC">论文手</text>
+  <text x="1076" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">Typst 排版</text>
+
+  <!-- arrows -->
+  <path d="M708,172 h14 m-5,-4 l5,4 l-5,4" fill="none" stroke="#7DD3FC" stroke-width="1.6" opacity="0.6"/>
+  <path d="M852,172 h14 m-5,-4 l5,4 l-5,4" fill="none" stroke="#7DD3FC" stroke-width="1.6" opacity="0.6"/>
+  <path d="M996,172 h14 m-5,-4 l5,4 l-5,4" fill="none" stroke="#7DD3FC" stroke-width="1.6" opacity="0.6"/>
+
+  <!-- output window -->
+  <rect x="584" y="240" width="552" height="212" rx="14" fill="rgba(8,10,14,0.92)" stroke="rgba(125,211,252,0.35)" stroke-width="1.5"/>
+  <circle cx="604" cy="257" r="5" fill="#FF5F57"/><circle cx="620" cy="257" r="5" fill="#FEBC2E"/><circle cx="636" cy="257" r="5" fill="#28C840"/>
+  <text x="654" y="261.5" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#9AA3B2">res.pdf · 论文产出</text>
+  <text x="1118" y="261.5" text-anchor="end" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11.5" fill="#9AA3B2">9 步自动验收</text>
+  <line x1="585" y1="272" x2="1135" y2="272" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <text x="604" y="300" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="300" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11.5" fill="#CBD2DC">文本泄漏检测</text>
+  <text x="1118" y="300" text-anchor="end" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">通过</text>
+
+  <text x="604" y="328" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="328" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11.5" fill="#CBD2DC">数值一致性校验</text>
+  <text x="1118" y="328" text-anchor="end" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">通过</text>
+
+  <text x="604" y="356" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="356" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="11.5" fill="#CBD2DC">Typst 编译</text>
+  <text x="1118" y="356" text-anchor="end" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">通过</text>
+
+  <text x="604" y="384" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-weight="normal" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="384" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11.5" fill="#CBD2DC">PDF 可视化检查</text>
+  <text x="1118" y="384" text-anchor="end" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">通过</text>
+
+  <rect x="602" y="400" width="516" height="32" rx="6" fill="rgba(56,189,248,0.08)" stroke="rgba(125,211,252,0.30)" stroke-width="1"/>
+  <text x="614" y="421" font-family="Noto Sans CJK SC" font-weight="normal" font-size="11.5" fill="#7DD3FC">模板自动匹配 · 国赛 / 华数杯 / 华为杯 / MCM / ICM</text>
+
+  <text x="854" y="486" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6F7683">流水线示意 · 智能体分工与验收步骤来自官方 README</text>
+</svg>
