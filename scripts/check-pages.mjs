@@ -202,6 +202,47 @@ for (const entry of dailyEntries125) {
   }
 }
 
+// RUYI-142：本批 4 条应用 / 3 条 SKILL / 3 条 MCP 使用官方视觉合成的编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries142 = [
+  { slug: "scroll-craft", install: "/plugin install nateherk-design", mustInclude: ["仅在 Windows", "KIE_AI_API_KEY", "8 种互斥", "指纹闸门"] },
+  { slug: "chat-on-steroids", install: null, mustInclude: ["apply_patch", "SHA256SUMS", "OpenAI 服务条款", "fail-closed"] },
+  { slug: "voicemem", install: null, mustInclude: ["arXiv:2608.26005", "官方自报", "LoCoMo 91.2%", "未经独立复核"] },
+  { slug: "agent-memory", install: null, mustInclude: ["零知识损失", "跨宿主", "PyPI 尚无发布", "okf-agent-memory"] },
+  { slug: "headcount", install: "/plugin install security@headcount", mustInclude: ["department:skill", "reviewer-class", "16 个部门", "口径不一致"] },
+  { slug: "doop", install: null, mustInclude: ["AGPL-3.0", "Doop Agent", "内嵌 Postgres", "限流或封号"] },
+  { slug: "open-seo-mcp-skills", install: "claude plugin install open-seo-mcp-skills@ryze", mustInclude: ["Ryze 连接器", "DataForSEO", "8 项技能", "可持续性未知"] },
+  { slug: "lemmalog", install: "claude mcp add lemmalog", mustInclude: ["why()", "provenance", "Datalog", "官方自报"] },
+  { slug: "openreality", install: "claude mcp add openreality", mustInclude: ["41 个 MCP 工具", "VGGT-SLAM", "CC BY-NC 4.0", "LeRobot/GR00T"] },
+  { slug: "shim-mcp", install: "wp shim-mcp serve", mustInclude: ["56 项能力", "Abilities API", "wp shim-mcp serve", "逐对象权限复查"] },
+];
+const mcpWithConfig142 = ["openreality"];
+for (const entry of dailyEntries142) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig142.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -272,6 +313,7 @@ const originalArtSlugs = [
   ...dailyEntries125.map((entry) => entry.slug),
   ...dailyEntries127.map((entry) => entry.slug),
   ...dailyEntries137.map((entry) => entry.slug),
+  ...dailyEntries142.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

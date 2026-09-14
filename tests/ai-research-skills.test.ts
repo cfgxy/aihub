@@ -93,13 +93,14 @@ describe("AI Research Skills 条目入库（RUYI-111）", () => {
   });
 });
 
-/** 使用原创插图（imageCredit）而非外部来源图注的条目；RUYI-127 新增十条资源，RUYI-137 新增四条资源。 */
+/** 使用 imageCredit 图注（原创插图或官方视觉合成卡片）而非外部来源图注的条目；RUYI-127 新增十条资源，RUYI-137 新增四条资源，RUYI-142 新增十条资源。 */
 const originalArtSlugs = [
   "ai-research-skills", "gmail-creator-pro", "papergraph-mcp", "computer-use-mcp",
   "anything2explainer", "short-video-generator-ai", "tokentab", "bang-motion",
   "hermes-agent", "ponytail", "voicestudio", "video-use", "atlas",
   "patent-disclosure-skill", "firecrawl-skill", "sie", "loadster-mcp", "agentphone-mcp",
   "superpowers", "i-have-adhd", "mathmodelagent", "pascal-editor",
+  "scroll-craft", "chat-on-steroids", "voicemem", "agent-memory", "headcount", "doop", "open-seo-mcp-skills", "lemmalog", "openreality", "shim-mcp",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
@@ -113,11 +114,15 @@ describe("既有资源的图注与图位行为不回归", () => {
     }
   });
 
-  it("原创插图条目一律用原创图注，不声明外部图片来源", () => {
+  it("原创插图与官方视觉合成条目一律用 AIHub 图注，不声明外部图片来源", () => {
+    const aihubCredits = [
+      "插图：AIHub 原创设计",
+      "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    ];
     for (const slug of originalArtSlugs) {
       const profile = resourceProfiles[slug];
       expect(profile, `${slug} 缺少详情正文`).toBeDefined();
-      expect(profile.imageCredit, `${slug} 缺少原创图注`).toBe("插图：AIHub 原创设计");
+      expect(aihubCredits, `${slug} 缺少 AIHub 图注`).toContain(profile.imageCredit);
       expect(profile.imageSource, `${slug} 不得声明外部来源`).toBeUndefined();
     }
   });

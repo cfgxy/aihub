@@ -522,6 +522,157 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "建筑/空间设计师与房产数字化从业者，以及想用 Agent 驱动 3D 场景的开发者。",
   },
+  "scroll-craft": {
+    image: "/media/scroll-craft.png",
+    imageAlt: "scroll-craft 精选卡片：官方范例站点实景配深色版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "scroll-craft（MIT 开源）是一套给编码 Agent 用的网页设计技能：交给 Codex、Claude Code 等能读指令、改文件、跑命令、检查浏览器的 Agent，它按一套明确设计标准产出「滚动驱动」的高端网页，自带设计工作流、参考资料、引擎与自动化验证工具，v0.3.0 起沉淀「十个已验收站点标准」（AI Automation Society、PERKFORM、Glaido 等）。它针对 AI 生成网页的两个常见极端——要么平庸保守毫无记忆点，要么堆满浮夸动效却保不住正文可读性；官方拒绝清单点名特性卡片网格、渐变文字、AI 紫渐变等套路。",
+      "它设 8 种互斥「页面语法」（电影式一镜到底、章节式编辑排版、连续世界等），强制每个站点发明一处独有的 signature move 交互，并用「指纹闸门」要求新构建在语法、导航、首屏、收尾等 6 个维度中至少 4 个不同于历史作品；页面完成后由 headless 浏览器逐滚动位置自检死滚动、按合成页面逐行实测对比度与视频解码卡死，输出 contact sheet。须知：官方声明仅在 Windows 上完整跑过（macOS/Linux 提供路径覆盖但无实际构建记录）；生成式视频素材有真实开销，用自己的照片与素材则免费，可选 AI 素材生成需自备 KIE_AI_API_KEY。",
+    ],
+    highlights: [
+      "8 种互斥页面语法 + 指纹闸门：每个站点至少 4/6 维度不同于自己的历史作品",
+      "headless 浏览器逐滚动位置自检死滚动、逐行对比度与视频解码卡死",
+      "情绪曲线先行、单峰原则、45–75ch 排版与明确拒绝清单的工艺底线",
+    ],
+    bestFor: "前端开发者、独立开发者与设计工程师，想让编码 Agent 产出有记忆点的滚动叙事型站点。",
+  },
+  "chat-on-steroids": {
+    image: "/media/chat-on-steroids.png",
+    imageAlt: "Chat On Steroids 精选卡片：GitHub 官方仓库主视觉配深色版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Chat On Steroids（MIT 开源）给 ChatGPT 装上「手脚」：桌面聊天工作台加本地 MCP server，让网页版 ChatGPT 会话直接读写你批准的本地文件夹、执行终端命令、给代码打补丁。Core 工具集移植自 OpenAI Codex CLI 的工具契约（apply_patch、exec_command、write_stdin 等），模型天然熟悉用法；多文件补丁写入前先预检，命令作为真实进程运行，支持交互式 stdin 与后台结果收集，所有工具调用与真实结果在本地留痕。",
+      "它支持多 worker 协作：主会话最多编排 8 个 worker 会话（默认 2 个），worker 就是用户自己浏览器里的普通 ChatGPT 会话，全程可见、可再次唤醒；会话过长时用 Compact & Resume 生成交接简报、开新会话续作。权限模型是「你就是边界」：只有批准的文件夹可见，每项能力独立开关，read-only 一键总闸，身份校验 fail-closed。官方提供 Windows/macOS/Linux、x64/ARM64 安装包（GitHub Releases，附 SHA256SUMS 校验文件）。须知：命令以普通用户权限运行、非 OS 沙箱；配套扩展观察 ChatGPT 网页界面并自动开标签页，属非公开自动化 API，与 OpenAI 服务条款的兼容性需用户自行确认（README 明示）；构建未签名/未公证；当前模型选择器依赖英文界面。",
+    ],
+    highlights: [
+      "Codex 级工具面：真实文件补丁、交互式终端与后台进程，批准文件夹边界 + 逐项能力开关",
+      "全部工具调用本地留痕，Compact & Resume 跨会话交接，Goal/Loop 自动跟进任务",
+      "主会话编排最多 8 个 worker，身份校验 fail-closed，read-only 一键总闸",
+    ],
+    bestFor: "重度 ChatGPT 订阅用户与本地自动化爱好者，想在 ChatGPT 会话里直接操作本地项目。",
+  },
+  "voicemem": {
+    image: "/media/voicemem.png",
+    imageAlt: "VoiceMem 精选卡片：官方「流式双脑」架构图配深色版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "VoiceMem（Apache-2.0 开源，官方声明永久保持全部开源）是面向实时语音 Agent 的长期记忆系统，核心是「流式双脑」架构：左脑用 Schema 与实体组织事实记忆，右脑用长短期情绪归因与跨实体节点管理人格、情绪与关系——不只记住「用户说过什么」，也记住「用户是谁、有什么感受」。整条流水线是流式的：用户还在说话时即完成音频分段、转写、记忆提取并写入记忆图；查询先路由再排序，只把 Top-K 条记忆注入上下文，配合 0–300 ms 投机预取，官方称几乎不增加延迟。",
+      "项目带完整研究配套：arXiv 技术报告（arXiv:2608.26005）、HuggingFace 开源模型系列（Qwen2.5-Omni、Qwen3-Omni、Step-Audio2-Mini 微调版）、ChatMem-400K 数据集与可复现评测；记忆检索完全在本地运行，仅写入时的信息提取调用 OpenAI API。官方自报基准：LoCoMo 91.2%（对比 Mem0 61.68%，仅需 Top-5 条记忆）、响应 134 ms（对比 Mem0 1,440 ms）、每次约 430 个记忆 token（对比 Mem0 6,956）。须知：研究型项目，工程化成熟度未知；评测数字为官方自报、未经独立复核；基线采集时最后 push 为 2026-09-05，其后暂无新提交。",
+    ],
+    highlights: [
+      "流式双脑记忆：左脑事实（Schema/实体）+ 右脑人格情绪，说话过程中即完成检索",
+      "官方自报响应 134 ms、每次约 430 记忆 token，0–300 ms 投机预取",
+      "arXiv 报告 + HuggingFace 模型系列 + ChatMem-400K 数据集，评测可复现",
+    ],
+    bestFor: "语音 Agent 开发者与语音交互研究者，需要低延迟、带人格情绪的长期语音记忆。",
+  },
+  "agent-memory": {
+    image: "/media/agent-memory.png",
+    imageAlt: "agent-memory 精选卡片：GitHub 官方仓库主视觉配深色版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "agent-memory（MIT 开源，v0.1.0）解决一个具体问题：Agent 关掉会话就忘掉一切。它是本地优先的长期记忆运行时：一个 store 里的 Markdown 文件是唯一事实源，旁边的 SQLite 索引只是随时可删的缓存——官方以测试保证 rm -rf .index/ 后重建零知识损失。Claude Code、Codex CLI 及一切能跑 shell 命令的宿主共享同一 store，官方验证过全部 9 个跨宿主读写配对：一个宿主写入的，另一个原样找到。",
+      "检索走「按路径回答，再按层级读」：recall 返回一行摘要 + 文件路径 + 锚点 + 得分的 L0 列表，Agent 按任务需要逐级展开（大纲 → 全文 → 原始材料），不把大段文本粘进上下文。写入在对话边界自动触发，不依赖 Agent 记得去存；sleep-time 整理按价值合并与遗忘，删除永远只以提案形式出现、需人工确认；库内不含任何 LLM 客户端，零 API key、零计费面。须知：早期版本，PyPI 尚无发布，需 Python 3.12+ 与 uv 从源码安装；官方自报对比数字为其写策略研究结论、未经独立复核；与既往提名的 okf-agent-memory（RUYI-105）为不同团队的同类项目，注意区分。",
+    ],
+    highlights: [
+      "Markdown 单一事实源 + 可重建索引：记忆可 grep、可 git、可迁移",
+      "跨宿主共享：Claude Code、Codex CLI 等经 mem CLI、mem-mcp、hook 读写同一 store",
+      "分层检索与治理：L0 列表按需展开；sleep-time 整理、删除需人工确认",
+    ],
+    bestFor: "多 Agent 重度用户与个人知识管理者，想要一份可查、可迁移、不锁平台的 Agent 记忆。",
+  },
+  "headcount": {
+    image: "/media/headcount.png",
+    imageAlt: "headcount 精选卡片：官方 org chart 页面实景配深色版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "headcount（MIT 开源）把 Claude Code 组织成一家公司：一名 chief executive 之下设 16 个部门（Technology、Security、Product、Marketing、Revenue、Finance、Legal & Risk 等）、共 172 项技能，把「写更好的 prompt」换成「给组织加一个部门」。每个部门是独立可安装的插件，项目只加载所需职能；技能以 department:skill 形式寻址（如 security:threat-modeling、finance:unit-economics），命名永不冲突。",
+      "部门按独占写入面划分，并在 .claude/agents/ 内附 agent charter，可作为 subagent 委派；Security 与 Legal & Risk 为 reviewer-class 部门，其阻塞性发现不可被被审部门推翻；CI 运行统一校验脚本防止本地与 CI 漂移。官方提供可搜索的交互式 org chart，USE-CASES 文档收录 11 个跨部门情境（SOC 2 评审、落地页转化诊断、招聘的财务判断等）。须知：全量安装 16 个部门易稀释模型上下文，官方建议按部门按需安装；README 由脚本生成，页面 About 区与正文存在 15+/125+ 与 16/172 的口径不一致，照录待作者统一；基线采集时最后 push 为 2026-09-03。",
+    ],
+    highlights: [
+      "16 部门/172 技能公司式组织，按需插件化安装，department:skill 寻址不冲突",
+      "reviewer-class 治理：Security 与 Legal & Risk 的阻塞发现不可被被审部门推翻",
+      "可搜索交互式 org chart + 11 个跨部门实战用例文档",
+    ],
+    bestFor: "Claude Code 重度用户与工程团队流程搭建者，想给 Agent 配一套带治理的职能组织。",
+  },
+  "doop": {
+    image: "/media/doop.png",
+    imageAlt: "doop 精选卡片：官方 OG 主视觉配深色版式，左侧 APP 徽章、一句话价值与 AGPL-3.0 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "doop（AGPL-3.0 开源）是 Paper.design 的开源替代：一张多人设计画布，人与 AI Agent 同台实时共创。画布上的每个 Frame 都是渲染真实 HTML 的沙箱画板——人在浏览器里编辑，Agent 通过内置 MCP server 流式「作画」，光标、presence、逐帧编辑指示、Agent 状态与活动流全员实时可见。",
+      "它内置一支「设计团队」：排队一张卡片或 @mention 一个角色，Doop Agent 自动开工；免费额度跑在服务器密钥上，之后接用户自己的 ChatGPT 订阅或 OpenAI key 继续运行，连接 Claude Code 等自有 MCP 客户端则完全跑在自己的订阅上。「设计记忆」把样例 Frame 与设计决策沉淀为所有 Agent 都遵守的持久风格规则。自托管一条命令（内嵌 Postgres，无外部服务依赖），画布默认私有、按画布分享，经 MCP OAuth 接入的 Agent 以其人类身份行动、继承其确切权限；不想自己跑可用官方云版 doop.design。须知：AGPL-3.0 对商用部署有传染性约束；云版定价、云版与自托管的功能差异官方未公示（未知）；README 提示经第三方服务器驱动 ChatGPT 订阅未获 OpenAI 条款认可，重度使用可能限流或封号（API key 路径为受支持替代）。",
+    ],
+    highlights: [
+      "人与 Agent 同画布实时共创：Frame 渲染真实 HTML，Agent 经 MCP 流式作画，全程可见",
+      "内置 Doop Agent + 设计记忆：卡片排队自动开工，样例与决策蒸馏为持久风格规则",
+      "一条命令自托管（内嵌 Postgres），默认私有、OAuth 鉴权、Agent 权限继承其人类",
+    ],
+    bestFor: "与 AI 协作的设计师、设计工程师与独立开发者，想要人机同台的实时设计画布。",
+  },
+  "open-seo-mcp-skills": {
+    image: "/media/open-seo-mcp-skills.png",
+    imageAlt: "Open SEO MCP Skills 精选卡片：GitHub 官方仓库主视觉配深色版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Open SEO MCP Skills（MIT 开源）反「开源 SEO 工具多为 DataForSEO 套壳」之道而行：排名读你真实的 Google Search Console、流量读你真实的 GA4（含 ChatGPT、Perplexity、Claude、Gemini 的 AI 引荐流量）、关键词量来自 Google Ads 关键词规划师；竞品关键词、外链与 SERP 走内置的 DataForSEO（经 Ryze 连接器，无需自管 key）；已付费的 Ahrefs/Semrush 也可接入。",
+      "共 8 项技能：站点审计（seo-audit）、关键词研究、排名追踪、竞品差距、外链检查、AI 可见度、内容简报，以及 seo-vs-ads——分析你正在为本可免费获得的自然排名点击付多少广告费。面向 Claude 设计：一条 MCP 命令连通数据，插件市场两步装技能，然后直接说「给我的站点跑一次 SEO 审计」。官方称工具无订阅、API 调用无加价。须知：站点数据经第三方 Ryze 云连接器中转，敏感站点数据外流需自行评估；「免费/无加价」承诺的可持续性未知；DataForSEO 数据按第三方计费。",
+    ],
+    highlights: [
+      "真实数据 SEO/GEO：GSC 真实排名、GA4 真实流量（含 AI 引荐），非 SERP 估算",
+      "8 项即用技能：审计、关键词、排名、竞品差距、外链、AI 可见度、内容简报、广告浪费分析",
+      "Claude 原生工作流：一条 MCP 命令 + 插件安装，自然语言直接派活",
+    ],
+    bestFor: "站长、独立开发者与增长从业者，想用自己的一手数据做 SEO 与 AI 搜索可见度。",
+  },
+  "lemmalog": {
+    image: "/media/lemmalog.png",
+    imageAlt: "Lemmalog 精选卡片：GitHub 官方仓库主视觉配深色版式，左侧 MCP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Lemmalog（MIT 开源）的论点：Agent 的记忆不该是「比向量库记得更好」，而应是一个演绎数据库——Agent 对自己知道什么建立可验证的模型，用规则机械地推理知识如何变化。基础事实在摄入边界由 LLM 抽取断言，此后一切确定性推导：闭包、时间投影、矛盾候选、相关性扩散；每条事实携带溯源（provenance）可一路指回源对话，每轮对话增量更新派生视图而非重新推导。",
+      "工程上同样较真：双时态字段、why() 证明树、置信度 × 溯源的半环注解、实体消解、半朴素增量求值，外加 450 个随机程序的差分测试与解析器 fuzz。交付形态覆盖 Rust crate、MCP server（stdio，12 个工具，支持 Claude Code / Kimi CLI）、REPL 与一个通用 Agent skill——把引擎当作任何长任务的「工作记忆」；仓内设计文档附已实现状态的诚实清单。官方自报基准：MemEval F1 0.487、LoCoMo F1 0.573（其榜单 10 系统中第 2）。须知：概念门槛高、需理解 Datalog 规则语法，面向开发者；基准数字为官方自报；基线采集时最后 push 为 2026-09-02，其后暂缓。",
+    ],
+    highlights: [
+      "可证明的记忆：why() 即出证明树，溯源直达源 episode；双时态支持「某时刻为真」查询",
+      "确定性推理 + 增量维护：分层 Datalog、否定即缺席、半朴素求值，每轮只算变化",
+      "三种接入：MCP server（12 工具）、REPL 与通用 Agent skill；450 程序差分测试护航",
+    ],
+    bestFor: "Agent 记忆系统开发者与程序化知识推理研究者，需要可解释、可证明的记忆引擎。",
+  },
+  "openreality": {
+    image: "/media/openreality.png",
+    imageAlt: "Open Reality 精选卡片：官方品牌 Hero 视觉配深色版式，左侧 MCP 徽章、一句话价值与 BSD-2-Clause 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Open Reality（BSD-2-Clause 开源）把「用手机拍段视频」变成「AI 能查询的 3D 场景」：上传一段普通手机视频，几分钟后得到一个持久 3D 场景，AI 助手可在其中测量距离与角度、规划路径、盘点物体、描述空间；它以 41 个 MCP 工具接入 Claude Code、Claude Desktop、Codex 与 Cursor，npm 包 openreality-mcp 即装即用。重建核心基于 MIT SPARK Lab 的 VGGT-SLAM 研究线。一个体现严谨度的细节：未校准前所有尺寸只报相对值，只有用真实距离校准后数字才允许被称作「米」；服务器的拒绝与不确定性标签会原样传达给 AI。",
+      "面向机器人场景：扫描可导出为 LeRobot/GR00T 风格训练数据集或 Isaac Sim 场景（托管服务提供）。全部工作流可自托管——自有 GPU 机器，或自己的 Modal 账号；另有内置离线模拟器，用 fixture 数据走通全流程，无账号、无 GPU 即可开发与演示。须知：生态尚小（86★，2026-09-14 快照）；3D 重建是 GPU 作业，自托管依赖 GPU 或付费算力；自托管服务器下载的 VGGT-1B 重建模型按 CC BY-NC 4.0 授权、仅限非商用，商用需改用官方托管服务或自行向模型权利方取得授权；托管服务定价页面未公示（未知）；server/ 与 core/ 目录为私有工作仓的手工同步镜像（各附 MIRROR.md 说明）。",
+    ],
+    highlights: [
+      "视频进、3D 场景出：手机视频数分钟生成持久场景，测量（校准前仅相对值）与路径规划",
+      "41 个 MCP 工具全暴露：Claude Code / Codex / Cursor 即装即用，离线模拟器零门槛",
+      "机器人训练数据导出：LeRobot/GR00T 数据集与 Isaac Sim 场景，全流程可自托管",
+    ],
+    bestFor: "机器人、3D 与空间计算开发者，想把现实空间变成 AI 可查询、可训练的数据。",
+  },
+  "shim-mcp": {
+    image: "/media/shim-mcp.png",
+    imageAlt: "Shim MCP 精选卡片：WordPress.org 官方插件图标配深色版式，左侧 MCP 徽章、一句话价值与 GPL-2.0 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Shim MCP（GPL-2.0-or-later 开源，已上架 WordPress.org 官方插件目录）是一个自包含的 WordPress MCP 服务器：装上插件，WordPress 站点即成为 MCP server，Claude Code、Claude Desktop、Cursor、Windsurf、Cline 等任何 MCP 客户端都能驱动——56 项能力覆盖文章、页面、媒体、用户、插件、菜单、小工具、评论、选项与系统管理。它刻意保持「适配器」定位：无伴随插件、无云中继、无账号、无遥测；能力全部注册在 WordPress 官方 Abilities API 上，其他插件注册的能力也会被自动暴露。",
+      "连接有两条路：本地 stdio 走 WP-CLI——wp shim-mcp serve 把服务器作为本地进程运行，没有 HTTP、没有端口、没有令牌，直接消除整条认证面；远程站点走 Streamable HTTP，在 Tools → Shim MCP 生成应用密码，逐调用做能力检查。安全设计：逐对象权限复查（持 edit_posts 不等于能改任何一篇具体文章），唯一危险的 wp-config.php 重写默认关闭、需显式 opt-in；还会检测竞争性 MCP 插件并告警。官方验证记录：WordPress 7.1 / PHP 8.5.9 下全 56 能力注册与完整增删改查回路，Plugin Check 0 错误 0 警告。须知：把站点写权限授予 AI 需谨慎管控（建议从本地 stdio 与受限账号起步）；星数低（46★，2026-09-14 快照），分发依赖 WordPress.org；作者自述功能完整但尚未在广泛主机环境运行过。",
+    ],
+    highlights: [
+      "一个插件 = 站点级 MCP server：56 项能力，无伴随插件、无中继、无账号、无遥测",
+      "双传输：WP-CLI 本地 stdio（零端口零令牌）与远程 Streamable HTTP（应用密码逐调用检查）",
+      "细粒度权限：逐对象能力复查，危险配置重写默认关闭，自动检测竞争 MCP 插件",
+    ],
+    bestFor: "WordPress 开发者与站长，想让 Claude Code/Cursor 直接、安全地驱动站点内容管理。",
+  },
+
 };
 
 export function getResourceProfile(slug: string) {
