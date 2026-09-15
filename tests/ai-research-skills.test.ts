@@ -101,6 +101,7 @@ const originalArtSlugs = [
   "patent-disclosure-skill", "firecrawl-skill", "sie", "loadster-mcp", "agentphone-mcp",
   "superpowers", "i-have-adhd", "mathmodelagent", "pascal-editor",
   "scroll-craft", "chat-on-steroids", "voicemem", "agent-memory", "headcount", "doop", "open-seo-mcp-skills", "lemmalog", "openreality", "shim-mcp",
+  "mirofish", "yue", "flowsint", "tradingagents",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];

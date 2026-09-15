@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow" cx="71%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#14C290" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#14C290" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+
+  <rect x="64" y="58" width="290" height="30" rx="15" fill="#14C290" fill-opacity="0.12" stroke="#4EDBB4" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#4EDBB4" letter-spacing="1">应用 · 金融多智能体 · Apache-2.0</text>
+
+  <text x="64" y="205" font-family="Noto Sans CJK SC" font-weight="900" font-size="56" fill="#F5F7FA">TradingAgents</text>
+
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">模拟真实交易公司分工的多智能体分析框架</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">分析师 → 多空辩论 → 交易 → 风控 → 组合经理</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="71" cy="380" r="9" fill="#14C290" opacity="0.15"/>
+  <circle cx="71" cy="380" r="4.5" fill="#4EDBB4"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">分析师团队：Fundamentals · Sentiment · News · Technical</text>
+  <circle cx="71" cy="428" r="9" fill="#14C290" opacity="0.15"/>
+  <circle cx="71" cy="428" r="4.5" fill="#4EDBB4"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">多空研究员结构化辩论 · LangGraph 全流程编排</text>
+  <circle cx="71" cy="476" r="9" fill="#14C290" opacity="0.15"/>
+  <circle cx="71" cy="476" r="4.5" fill="#4EDBB4"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">ta.propagate(&quot;NVDA&quot;, &quot;2026-01-15&quot;) 一行发起分析</text>
+
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/TauricResearch/TradingAgents · arXiv:2412.20138 · 2026-09-15</text>
+
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#4EDBB4" letter-spacing="1.5">交易公司式智能体组织</text>
+  <text x="584" y="132" font-family="Noto Sans CJK SC" font-size="10.5" fill="#4EDBB4" letter-spacing="1">ANALYST TEAM · 分析师团队并行研判</text>
+  <rect x="584" y="140" width="120" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.045" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="644.0" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#E7EAF0">Fundamentals</text>
+  <text x="644.0" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">基本面</text>
+  <rect x="728" y="140" width="120" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.045" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="788.0" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#E7EAF0">Sentiment</text>
+  <text x="788.0" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">情绪面</text>
+  <rect x="872" y="140" width="120" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.045" stroke="#4EDBB4" stroke-opacity="0.30" stroke-width="1"/>
+  <text x="932.0" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#4EDBB4">News</text>
+  <text x="932.0" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">新闻面</text>
+  <rect x="1016" y="140" width="120" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.045" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="1076.0" y="168" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#E7EAF0">Technical</text>
+  <text x="1076.0" y="188" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="normal" font-size="10.5" fill="#8A93A3">技术面</text>
+  <rect x="584" y="240" width="552" height="212" rx="14" fill="#080A0E" fill-opacity="0.92" stroke="#4EDBB4" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="604" cy="257" r="5" fill="#FF5F57"/><circle cx="620" cy="257" r="5" fill="#FEBC2E"/><circle cx="636" cy="257" r="5" fill="#28C840"/>
+  <text x="654" y="261.5" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="11.5" fill="#9AA3B2">TradingAgentsGraph · LangGraph</text>
+  <text x="1118" y="261.5" text-anchor="end" font-family="Noto Sans CJK SC" font-size="11.5" fill="#9AA3B2">研究框架示意</text>
+  <line x1="585" y1="272" x2="1135" y2="272" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="1118" y="300" text-anchor="end" font-family="Noto Sans CJK SC" font-size="10.5" fill="#8A93A3">Researcher Team</text>
+  <text x="604" y="300" font-family="Noto Sans CJK SC" font-size="11" fill="#4EDBB4">▸</text>
+  <text x="622" y="300" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Bullish ⇄ Bearish 研究员结构化辩论</text>
+  <text x="604" y="328" font-family="Noto Sans CJK SC" font-size="11" fill="#4EDBB4">▸</text>
+  <text x="622" y="328" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Trader Agent 决定交易时机与规模</text>
+  <text x="604" y="356" font-family="Noto Sans CJK SC" font-size="11" fill="#4EDBB4">▸</text>
+  <text x="622" y="356" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Risk Management 评估波动与流动性</text>
+  <text x="604" y="384" font-family="Noto Sans CJK SC" font-size="11" fill="#4EDBB4">▸</text>
+  <text x="622" y="384" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Portfolio Manager 批准 / 拒绝提案</text>
+  <text x="1118" y="412" text-anchor="end" font-family="Noto Sans CJK SC" font-size="10.5" fill="#8A93A3">CLI: tradingagents</text>
+  <text x="604" y="412" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="11" fill="#9AA3B2">ta.propagate(&quot;NVDA&quot;, &quot;2026-01-15&quot;)</text>
+  <rect x="584" y="470" width="552" height="36" rx="10" fill="#FBBF24" fill-opacity="0.07" stroke="#FBBF24" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="860" y="493" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12" fill="#FDE68A">⚠ 研究用途框架 · 输出不可作投资依据（README: for research purposes）</text>
+
+</svg>

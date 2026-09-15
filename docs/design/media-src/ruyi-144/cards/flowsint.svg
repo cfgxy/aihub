@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="glow" cx="71%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#F35822" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#F35822" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="#0D0F14"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+
+  <rect x="64" y="58" width="262" height="30" rx="15" fill="#F35822" fill-opacity="0.12" stroke="#F98B63" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="80" y="78" font-family="Noto Sans CJK SC" font-weight="bold" font-size="13.5" fill="#F98B63" letter-spacing="1">应用 · 调查分析 · Apache-2.0</text>
+
+  <text x="64" y="205" font-family="Noto Sans CJK SC" font-weight="900" font-size="56" fill="#F5F7FA">flowsint</text>
+
+  <text x="64" y="292" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">开源可视化图调查平台 · 关系图谱驱动情报分析</text>
+  <text x="64" y="324" font-family="Noto Sans CJK SC" font-weight="medium" font-size="20" fill="#AEB6C2">面向网络安全分析师与调查人员的 OSINT 工作台</text>
+
+  <line x1="64" y1="348" x2="540" y2="348" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="71" cy="380" r="9" fill="#F35822" opacity="0.15"/>
+  <circle cx="71" cy="380" r="4.5" fill="#F98B63"/>
+  <text x="88" y="386" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">14 类实体建图：Domain · IP · Email · Wallet 等</text>
+  <circle cx="71" cy="428" r="9" fill="#F35822" opacity="0.15"/>
+  <circle cx="71" cy="428" r="4.5" fill="#F98B63"/>
+  <text x="88" y="434" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">自动 Enricher：WHOIS · Subdomain · Breaches</text>
+  <circle cx="71" cy="476" r="9" fill="#F35822" opacity="0.15"/>
+  <circle cx="71" cy="476" r="4.5" fill="#F98B63"/>
+  <text x="88" y="482" font-family="Noto Sans CJK SC" font-weight="normal" font-size="16.5" fill="#D3D8E0">数千节点无卡顿渲染 · API 实时事件流</text>
+
+  <text x="64" y="540" font-family="Noto Sans CJK SC" font-weight="normal" font-size="12" fill="#6B7683">来源 github.com/reconurge/flowsint · 2026-09-15</text>
+
+  <text x="854" y="98" text-anchor="middle" font-family="Noto Sans CJK SC" font-weight="bold" font-size="12.5" fill="#F98B63" letter-spacing="1.5">实体关系图谱调查</text>
+  <line x1="600" y1="168" x2="706" y2="150" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="706" y1="150" x2="800" y2="176" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="600" y1="168" x2="890" y2="150" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="890" y1="150" x2="988" y2="172" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="664" y1="216" x2="988" y2="172" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="988" y1="172" x2="1046" y2="220" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.2"/>
+  <rect x="568" y="155" width="63" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.16" stroke="#F98B63" stroke-opacity="0.85" stroke-width="1.1"/>
+  <text x="600" y="172" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">Domain</text>
+  <rect x="691" y="137" width="30" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="706" y="154" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">IP</text>
+  <rect x="781" y="163" width="39" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="800" y="180" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">ASN</text>
+  <rect x="854" y="137" width="71" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="890" y="154" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">Website</text>
+  <rect x="960" y="159" width="55" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="988" y="176" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">Email</text>
+  <rect x="608" y="203" width="112" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="664" y="220" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">Organization</text>
+  <rect x="1014" y="207" width="63" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.1"/>
+  <text x="1046" y="224" text-anchor="middle" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="10.5" fill="#E7EAF0">Wallet</text>
+  <text x="1118" y="140" text-anchor="end" font-family="Noto Sans CJK SC" font-size="10" fill="#8A93A3">实体类型示意 · 共 14 类</text>
+  <rect x="584" y="240" width="552" height="212" rx="14" fill="#080A0E" fill-opacity="0.92" stroke="#F98B63" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="604" cy="257" r="5" fill="#FF5F57"/><circle cx="620" cy="257" r="5" fill="#FEBC2E"/><circle cx="636" cy="257" r="5" fill="#28C840"/>
+  <text x="654" y="261.5" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="11.5" fill="#9AA3B2">flowsint-app · :5173</text>
+  <text x="1118" y="261.5" text-anchor="end" font-family="Noto Sans CJK SC" font-size="11.5" fill="#9AA3B2">功能示意</text>
+  <line x1="585" y1="272" x2="1135" y2="272" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="604" y="300" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="11" fill="#9AA3B2">$ make prod   # 或 docker compose -f docker-compose.prod.yml up -d</text>
+  <text x="604" y="328" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="328" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Neo4j 图数据库 · FastAPI 后端 · 实时事件流</text>
+  <text x="604" y="356" font-family="Liberation Mono, DejaVu Sans Mono, monospace" font-size="12" fill="#34D399">✓</text>
+  <text x="624" y="356" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">Enrichers：WHOIS · Subdomain Discovery · Breaches</text>
+  <text x="604" y="384" font-family="Noto Sans CJK SC" font-size="11" fill="#F98B63">▸</text>
+  <text x="622" y="384" font-family="Noto Sans CJK SC" font-size="11.5" fill="#CBD2DC">点选实体自动富化 · 数千节点无卡顿渲染</text>
+  <text x="604" y="412" font-family="Noto Sans CJK SC" font-size="11" fill="#8A93A3">首次使用 localhost:5173/register 注册</text>
+
+</svg>
