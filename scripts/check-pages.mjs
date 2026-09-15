@@ -215,6 +215,12 @@ const dailyEntries142 = [
   { slug: "openreality", install: "claude mcp add openreality", mustInclude: ["41 个 MCP 工具", "VGGT-SLAM", "CC BY-NC 4.0", "LeRobot/GR00T"] },
   { slug: "shim-mcp", install: "wp shim-mcp serve", mustInclude: ["56 项能力", "Abilities API", "wp shim-mcp serve", "逐对象权限复查"] },
 ];
+const dailyEntries144 = [
+  { slug: "mirofish", install: null, mustInclude: ["OASIS", "ReportAgent", "输出不可作为投资或重大决策依据"] },
+  { slug: "yue", install: null, mustInclude: ["symbolic plan", "SheetSage2", "CC BY-NC 4.0"] },
+  { slug: "flowsint", install: null, mustInclude: ["Maigret", "ETHICS.md", "数据合规使用责任在使用方"] },
+  { slug: "tradingagents", install: null, mustInclude: ["输出不可作投资依据", "arXiv:2412.20138", "模拟交易所"] },
+];
 const mcpWithConfig142 = ["openreality"];
 for (const entry of dailyEntries142) {
   const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
@@ -314,6 +320,7 @@ const originalArtSlugs = [
   ...dailyEntries127.map((entry) => entry.slug),
   ...dailyEntries137.map((entry) => entry.slug),
   ...dailyEntries142.map((entry) => entry.slug),
+  ...dailyEntries144.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
