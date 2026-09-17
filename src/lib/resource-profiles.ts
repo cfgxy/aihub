@@ -723,7 +723,7 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
     overview: [
       "graphify 把代码库连同其文档、SQL schema、配置和 PDF 转成「可查询的知识图谱」，口号是查图谱而不是 grep 文件。它刻意与 RAG 划清界限：无嵌入、无向量库，基于本地确定性 AST 解析构建真实图谱（约 40 种语言、37 个 tree-sitter 语法），每条边都标注 EXTRACTED（源码显式）或 INFERRED（推断）以便溯源；官方引用 LOCOMO 基准 recall@10 0.497（对比 mem0 的 0.048），且建图不消耗 LLM 额度（以上为官方宣称数据）。",
-      "输入面很宽：除代码外还支持 Markdown/HTML/RST/YAML 文档、SQL schema 与在线 PostgreSQL、PDF、图片、音视频、YouTube/URL、Terraform/HCL、MCP 配置、包清单、Office 与 Google Workspace 文件。查询接口有 query（自然语言）、path（实体间最短路）、explain（节点深挖），产出 graph.html 交互图谱、GRAPH_REPORT.md 与 graph.json；本地优先，代码解析不出机器，仅文档/媒体语义加工用到 LLM。README 声明 Apache-2.0 与 MIT 双许可；托管平台处于公开发布前 early access、企业版免费试用「即将推出」，均无公开定价 → 定价：未知。须知：索引涉密代码时的部署方式与数据边界需使用方自查。",
+      "输入面很宽：除代码外还支持 Markdown/HTML/RST/YAML 文档、SQL schema 与在线 PostgreSQL、PDF、图片、音视频、YouTube/URL、Terraform/HCL、MCP server 配置文件、包清单、Office 与 Google Workspace 文件。查询接口有 query（自然语言）、path（实体间最短路）、explain（节点深挖），产出 graph.html 交互图谱、GRAPH_REPORT.md 与 graph.json；本地优先，代码解析不出机器，仅文档/媒体语义加工用到 LLM。README 声明 Apache-2.0 与 MIT 双许可；托管平台处于公开发布前 early access、企业版免费试用「即将推出」，均无公开定价 → 定价：未知。须知：索引涉密代码时的部署方式与数据边界需使用方自查。",
     ],
     highlights: [
       "多源知识图谱：代码（约 40 语言）+ 文档/SQL/PDF/音视频统一建图，每条边可溯源",
