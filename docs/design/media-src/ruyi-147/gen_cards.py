@@ -15,7 +15,7 @@ SNAP = "2026-09-16"
 PRODUCTS = [
     dict(slug="openclaw", name="OpenClaw", type="APP", color="#E04030",
          tagline="「真正替你干活」的开源个人 AI 助理，跨 OS/平台执行真实任务",
-         license="自定义", license_note="（细节未知）", stars="389,766", domain="openclaw.ai",
+         license="MIT", license_note="", stars="389,766", domain="openclaw.ai",
          visual=("openclaw_banner_dark.png", "contain-dark", "#050507", "官方品牌横幅（仓库 docs/assets/openclaw-banner-dark.png）")),
     dict(slug="pi", name="pi", type="APP", color="#6C9BD2",
          tagline="统一 LLM API、agent 循环、TUI 与编码 agent CLI 的轻量工具箱",
@@ -27,11 +27,13 @@ PRODUCTS = [
          visual=("og_texttocad.png", "contain-dark", "#0F0E17", "官网主视觉（texttocad.dev）")),
     dict(slug="graphify", name="Graphify", type="APP", color="#21A05B",
          tagline="把代码库、文档、SQL schema、PDF 转成可查询知识库",
-         license="Apache-2.0", license_note="", stars="116,988", domain="graphify.com",
+         license="Apache-2.0 + MIT 双许可", license_note="", stars="116,988", domain="graphify.com",
+         meta_wrap=True,
          visual=("graphify_hero.png", "cover", "#101521", "官方 Demo：代码库知识图谱可视化（仓库 docs/graph-hero.png）")),
     dict(slug="serena", name="serena", type="MCP", color="#DFA050",
          tagline="为编码 agent 提供语义级代码检索与编辑能力",
          license="GPL-3.0+", license_note="（SolidLSP 为 MIT）", stars="29,399", domain="oraios.github.io/serena",
+         meta_wrap=True,
          visual=("serena_block_diagram.svg", "contain", "#FFFFFF", "官方架构图（仓库 resources/serena-block-diagram.svg）")),
     dict(slug="openresearch", name="OpenResearch", type="APP", color="#A22C3C",
          tagline="把编码 agent 变成研究 agent，自动检索与产出研究材料",
@@ -61,6 +63,7 @@ h1 {{ font-size:46px; line-height:1.15; font-weight:800; margin-top:22px; letter
 .domain {{ font-size:17px; color:#8B93A7; margin-top:10px; font-weight:500; }}
 .tagline {{ font-size:21.5px; line-height:1.62; color:#C9D0DE; margin-top:26px; font-weight:400; }}
 .meta {{ margin-top:auto; display:flex; gap:18px; font-size:14.5px; color:#8B93A7; white-space:nowrap; }}
+.meta.wrap {{ flex-wrap:wrap; row-gap:6px; }}
 .meta b {{ color:#E6EAF2; font-weight:600; }}
 .meta small {{ font-size:11.5px; }}
 .right {{ flex:1; position:relative; }}
@@ -84,7 +87,7 @@ h1 {{ font-size:46px; line-height:1.15; font-weight:800; margin-top:22px; letter
     <h1>{name}</h1>
     <div class="domain">{domain}</div>
     <div class="tagline">{tagline}</div>
-    <div class="meta"><span>开源协议 <b>{license}</b>{license_note}</span><span>GitHub Stars <b>{stars}</b><span style="font-size:12px">（{snap} 快照）</span></span></div>
+    <div class="meta{metawrap}"><span>开源协议 <b>{license}</b>{license_note}</span><span>GitHub Stars <b>{stars}</b><span style="font-size:12px">（{snap} 快照）</span></span></div>
   </div>
   <div class="right">
     <div class="vis">{imgtag}</div>
@@ -110,6 +113,7 @@ def build(p):
     html = TPL.format(color=p["color"], typ=TYPE_LABEL[p["type"]], name=p["name"],
                       domain=p["domain"], tagline=p["tagline"], license=p["license"],
                       license_note=p.get("license_note", ""), stars=p["stars"],
+                      metawrap=" wrap" if p.get("meta_wrap") else "",
                       snap=SNAP, imgtag=imgtag, cap=cap, visbg=visbg, opos=opos)
     hp = OUT / f"{p['slug']}.html"
     hp.write_text(html, encoding="utf-8")

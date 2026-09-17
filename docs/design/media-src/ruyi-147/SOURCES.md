@@ -21,10 +21,12 @@
 | 5 | serena | 官方架构图（AI Client ↔ MCP Server ↔ Language Intelligence/SolidLSP） | GitHub 仓库 `oraios/serena` resources/serena-block-diagram.svg | 官方矢量架构图，原样嵌入（白底 contain）；与 VoiceMem 期同类用法 |
 | 6 | OpenResearch | 官网首页实景（Autoresearch on your machine + 实验面板） | `openresearch.sh` 首屏截图（无头 Chromium，2026-09-16） | 官方站点实景截图；复现命令：`headless_shell --screenshot --window-size=1440,1000 https://openresearch.sh`，截图中「复制代码」为站点自带中文 UI |
 
-## 设计阶段补充核实（与报批基线的关系）
+## 设计阶段补充核实（含 2026-09-18 收口裁定更新）
 
-- **serena 许可证**：报批基线为「许可证自定义（细节未知）」。设计采集中经官方 README 徽章与 LICENSE 文件核实为**按组件许可：SolidLSP 为 MIT，Serena 应用主体为 GPL-3.0-or-later**。卡面标注「GPL-3.0+（SolidLSP 为 MIT）」；已在本期交付评论中向白小巡提出基线补充，请文案侧同步采用。
-- **OpenClaw 许可证**：GitHub API license 字段为 NOASSERTION（自定义），与基线「自定义（细节未知）」一致，卡面标注「自定义（细节未知）」。
+- **OpenClaw 许可证（2026-09-18 更正为 MIT）**：初版按报批基线标「自定义（细节未知）」；经仓库 LICENSE 文件（「MIT License, Copyright (c) 2026 OpenClaw Foundation」）与 README License 章节核实为 **MIT**（白小巡收口裁定，本设计同日独立复核一致）。卡面已改标「MIT」。
+- **Graphify 许可证（2026-09-18 更正为双许可）**：经 v8 根目录核实同时存在 LICENSE（Apache 2.0）与 LICENSE-MIT（MIT）两个文件（白小巡收口裁定，本设计同日独立复核一致）。卡面已改标「Apache-2.0 + MIT 双许可」。
+- **serena 许可证（口径经收口确认）**：报批基线为「许可证自定义（细节未知）」。经官方 README 徽章与 LICENSE 文件核实为**按组件许可：SolidLSP 为 MIT，Serena 应用主体为 GPL-3.0-or-later**。卡面标注「GPL-3.0+（SolidLSP 为 MIT）」，收口复核确认口径正确、维持不变。
+- **版式微调（2026-09-18）**：底部 meta 行启用 flex 换行（仅 serena、graphify 两卡），消除 serena 快照日期被右侧白底架构图边缘遮挡的问题；graphify 许可证文字加长后同源风险一并预防。其余 4 卡版式与初版完全一致。
 - **OpenResearch 官网**：GitHub API homepage 字段为 `openresearch.sh`（属报批基线证据源「GitHub API 仓库数据」范围），卡面域名采用 openresearch.sh；pi 无官网字段，卡面域名沿用基线官方链接 github.com/earendil-works/pi。
 - 主题色取自各产品官方视觉：OpenClaw 红 #E04030、pi 蓝 #6C9BD2、text-to-cad 紫 #A78BFA、Graphify 绿 #21A05B、serena 橙 #DFA050、OpenResearch 绯红 #A22C3C。
 
