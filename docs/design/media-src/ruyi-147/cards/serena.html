@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1200px; height:630px; background:#0B0E14; color:#fff;
+       font-family:'Noto Sans CJK SC','Noto Sans CJK','WenQuanYi Micro Hei',sans-serif;
+       overflow:hidden; position:relative; }
+.glow { position:absolute; width:760px; height:760px; right:-220px; top:-320px;
+        background:radial-gradient(circle, #DFA05026 0%, transparent 62%); }
+.glow2 { position:absolute; width:520px; height:520px; left:-180px; bottom:-260px;
+         background:radial-gradient(circle, #DFA0501A 0%, transparent 60%); }
+.wrap { position:relative; display:flex; height:472px; padding:56px 56px 0 56px; gap:44px; }
+.left { width:420px; flex:none; display:flex; flex-direction:column; }
+.badge { display:inline-flex; align-self:flex-start; align-items:center; gap:8px;
+         border:1.5px solid #DFA050; color:#DFA050; font-size:17px; font-weight:700;
+         letter-spacing:2px; padding:5px 14px; border-radius:999px; }
+.badge::before { content:''; width:7px; height:7px; border-radius:50%; background:#DFA050; }
+h1 { font-size:46px; line-height:1.15; font-weight:800; margin-top:22px; letter-spacing:.2px; }
+.domain { font-size:17px; color:#8B93A7; margin-top:10px; font-weight:500; }
+.tagline { font-size:21.5px; line-height:1.62; color:#C9D0DE; margin-top:26px; font-weight:400; }
+.meta { margin-top:auto; display:flex; gap:18px; font-size:14.5px; color:#8B93A7; white-space:nowrap; }
+.meta.wrap { flex-wrap:wrap; row-gap:6px; }
+.meta b { color:#E6EAF2; font-weight:600; }
+.meta small { font-size:11.5px; }
+.right { flex:1; position:relative; }
+.vis { position:absolute; inset:0; border-radius:18px; overflow:hidden;
+       border:1px solid #ffffff1F; background:#FFFFFF; display:flex; align-items:center; justify-content:center; }
+.vis img.cover { width:100%; height:100%; object-fit:cover; }
+.vis img.cover-pos { width:100%; height:100%; object-fit:cover; object-position:center; }
+.vis img.contain { max-width:100%; max-height:100%; object-fit:contain; padding:18px; }
+.vis img.contain-dark { max-width:100%; max-height:100%; object-fit:contain; padding:24px; }
+.cap { position:absolute; right:0; bottom:-30px; font-size:13.5px; color:#6B7280; text-align:right; }
+.foot { position:absolute; left:56px; right:56px; bottom:0; height:66px;
+        border-top:1px solid #ffffff14; display:flex; align-items:center; justify-content:space-between; }
+.foot .brand { font-size:17px; font-weight:700; letter-spacing:.5px; }
+.foot .brand span { color:#DFA050; }
+.foot .note { font-size:14px; color:#6B7280; }
+</style></head><body>
+<div class="glow"></div><div class="glow2"></div>
+<div class="wrap">
+  <div class="left">
+    <span class="badge">MCP</span>
+    <h1>serena</h1>
+    <div class="domain">oraios.github.io/serena</div>
+    <div class="tagline">为编码 agent 提供语义级代码检索与编辑能力</div>
+    <div class="meta wrap"><span>开源协议 <b>GPL-3.0+</b>（SolidLSP 为 MIT）</span><span>GitHub Stars <b>29,399</b><span style="font-size:12px">（2026-09-16 快照）</span></span></div>
+  </div>
+  <div class="right">
+    <div class="vis"><img class="contain" src="file:///home/guxy/multica_workspaces/ruyigongfan-018667473993/ruyi-147-42342bc3c27b/workdir/ruyi147_design/raw/serena_block_diagram.svg"></div>
+    <div class="cap">官方架构图（仓库 resources/serena-block-diagram.svg）</div>
+  </div>
+</div>
+<div class="foot">
+  <div class="brand">AIHub <span>·</span> 编辑精选</div>
+  <div class="note">AI 工具 · 应用 · SKILL · MCP 目录 ｜ 2026-09-16</div>
+</div>
+</body></html>

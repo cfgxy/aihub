@@ -672,6 +672,96 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "WordPress 开发者与站长，想让 Claude Code/Cursor 直接、安全地驱动站点内容管理。",
   },
+  "openclaw": {
+    image: "/media/openclaw.png",
+    imageAlt: "OpenClaw 精选卡片：官方龙虾品牌横幅配深色版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenClaw 是一个跑在用户自己电脑上的开源个人 AI 助理，通过你已经在用的聊天渠道直接对话——Discord、iMessage、Slack、Teams、Telegram、WhatsApp 等 20+ 渠道，官方口号「The AI that really does things. Any OS. Any Platform.」。它强调「真正替你干活」之外的数据主权：状态、记忆和凭据都保存在用户自己的硬件上，遥测只做每日版本检查、功能统计需主动选择加入且可关闭。",
+      "项目按 MIT 许可证开源（© OpenClaw Foundation），官方声明无付费档、无托管服务、无代币，由捐赠资助、独立 501(c)(3) 基金会治理。架构上由本地 Gateway 控制面统一管理会话、工具、事件与渠道连接，配套 Control UI 仪表盘、CLI 与 TUI 客户端，原生应用覆盖 macOS、iOS、Android、Windows、Linux；模型侧支持可插拔 harness（Claude、Codex、本地模型等以插件接入），工具/技能/插件体系配插件 SDK 与 ClawHub 市场。须知：定位为执行真实操作，涉及系统级权限授予，权限边界需使用方自行评估；GitHub open issues 约 7,403（2026-09-16 快照）。",
+    ],
+    highlights: [
+      "全平台随身助理：五大桌面/移动 OS 原生应用 + 20+ 聊天渠道接入",
+      "本地优先数据主权：状态、记忆、凭据留在用户硬件，遥测最小化可关闭",
+      "可扩展执行体系：可插拔模型 harness + 技能/插件 SDK + ClawHub 市场，含发送者配对与沙箱机制",
+    ],
+    bestFor: "想要跨设备、能真实执行任务的个人 AI 助理的技术用户与开发者；亦支持小团队共享部署。",
+  },
+  "pi": {
+    image: "/media/pi.png",
+    imageAlt: "pi 精选卡片：官网 OG 主视觉配深色版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "pi 是 earendil-works 的 agent harness 项目集，用一套 TypeScript 包覆盖从模型调用到终端交互的完整链路：`pi-ai` 提供统一多供应商 LLM API（OpenAI、Anthropic、Google 等），`pi-agent-core` 提供带工具调用与状态管理的 agent 运行时，`pi-tui` 提供差分渲染的终端 UI 库，`pi-coding-agent` 则是开箱即用的交互式编码 agent CLI。定位是「可组装的轻量工具箱」，与完整产品型编码代理形成形态差异。",
+      "工程化配套完整：`chord` 提供服务组合运行时（服务、复制状态、RPC、插件），`pi-telemetry` 提供供应商中立的遥测契约、参考适配器与一致性测试。分发上支持 npm 安装或独立二进制；隔离方案可走 Docker、Gondolin micro-VM 或 OpenShell 沙箱。项目还倡导共享真实 agent 会话数据（Hugging Face 有会话数据集）替代「玩具基准」来改进 agent。MIT 开源、免费；官方托管/云服务定价仓库未载明（未知），使用需自备模型 API 凭据、调用费用由用户承担。",
+    ],
+    highlights: [
+      "统一多供应商 LLM API：一套接口接 OpenAI、Anthropic、Google 等",
+      "完整 agent 链路组件：agent 运行时、TUI 库、编码 agent CLI，可单独取用或自由组合",
+      "工程化与隔离配套：遥测契约与服务组合运行时，Docker/微虚拟机/沙箱多档隔离",
+    ],
+    bestFor: "自建 agent 与 CLI 工具的开发者、编码 agent 与终端重度用户。",
+  },
+  "text-to-cad": {
+    image: "/media/text-to-cad.png",
+    imageAlt: "text-to-cad 精选卡片：官网 CAD 技能齿轮主视觉配深色版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "text-to-cad 自述为「a library of agent skills for CAD, CAE and CAM」——给 AI 编码 agent 配上一整套机械设计的动手能力：从自然语言或图片请求生成与编辑 CAD 模型（输出 STEP，可导出 STL/3MF/GLB），本地浏览器预览模型，再到检索现货标准件（step.parts 技能可查螺丝、轴承、电机、连接器等 STEP 件）与出 2D 图纸（DXF），覆盖「文字 → 可制造」的完整链路。",
+      "技能清单共 11 项，并延伸到机器人与制造执行：URDF/SRDF/SDF 技能覆盖机器人结构文件（连杆、关节、限位、惯性、网格）与仿真世界建模；DfAM Check 按工艺度量网格可打印性（壁厚、悬垂、支撑量、打印朝向）；G-code 技能调用真实切片器 CLI 产出打印机档位的 FDM 文件；Bambu Labs 技能可干跑并启动本地打印任务。接入上为 Codex（0.142.0+）、Claude Code、Grok Build 提供原生插件，其余 agent 走通用 Skills CLI，本地优先。MIT 开源、免费，本地运行不依赖托管服务，官网服务定价未载明（未知）。须知：生成结果用于实际制造前需专业校核。",
+    ],
+    highlights: [
+      "文字/图片 → CAD：生成与编辑模型，STEP 输出、STL/3MF/GLB 导出与本地预览",
+      "机器人与仿真配套：URDF/SRDF/SDF 技能生成机器人描述与仿真世界文件",
+      "直通制造：DfAM 可打印性检查、真实切片器 G-code、Bambu Labs 打印下发与现货标准件检索",
+    ],
+    bestFor: "机械/硬件工程师、机器人开发者与创客（据仓库主题与功能推断）。",
+  },
+  "graphify": {
+    image: "/media/graphify.png",
+    imageAlt: "Graphify 精选卡片：官方 Demo 知识图谱截图配深色版式，左侧 APP 徽章、一句话价值与 Apache-2.0 + MIT 双许可",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "graphify 把代码库连同其文档、SQL schema、配置和 PDF 转成「可查询的知识图谱」，口号是查图谱而不是 grep 文件。它刻意与 RAG 划清界限：无嵌入、无向量库，基于本地确定性 AST 解析构建真实图谱（约 40 种语言、37 个 tree-sitter 语法），每条边都标注 EXTRACTED（源码显式）或 INFERRED（推断）以便溯源；官方引用 LOCOMO 基准 recall@10 0.497（对比 mem0 的 0.048），且建图不消耗 LLM 额度（以上为官方宣称数据）。",
+      "输入面很宽：除代码外还支持 Markdown/HTML/RST/YAML 文档、SQL schema 与在线 PostgreSQL、PDF、图片、音视频、YouTube/URL、Terraform/HCL、MCP server 配置文件、包清单、Office 与 Google Workspace 文件。查询接口有 query（自然语言）、path（实体间最短路）、explain（节点深挖），产出 graph.html 交互图谱、GRAPH_REPORT.md 与 graph.json；本地优先，代码解析不出机器，仅文档/媒体语义加工用到 LLM。README 声明 Apache-2.0 与 MIT 双许可；托管平台处于公开发布前 early access、企业版免费试用「即将推出」，均无公开定价 → 定价：未知。须知：索引涉密代码时的部署方式与数据边界需使用方自查。",
+    ],
+    highlights: [
+      "多源知识图谱：代码（约 40 语言）+ 文档/SQL/PDF/音视频统一建图，每条边可溯源",
+      "三种查询方式：自然语言 query、实体间 path、节点 explain，产物可提交仓库供全团队查询",
+      "AI 助手集成：graphify install 向 Claude Code、Cursor、Codex 等 20+ 助手注册技能，另有 MCP server 与 Neo4j/FalkorDB 推送",
+    ],
+    bestFor: "面对大型代码库与文档库的工程团队与新成员；需要项目全局上下文的 AI 编码助手用户。",
+  },
+  "serena": {
+    image: "/media/serena.png",
+    imageAlt: "serena 精选卡片：官方架构图配深色版式，左侧 MCP 徽章、一句话价值与 GPL-3.0+（SolidLSP 为 MIT）许可",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Serena 自称「The IDE for Your Coding Agent」——为编码 agent 提供 IDE 级语义能力的 MCP 工具包：在符号层面操作并利用代码的关系结构，而非行号或原始文本搜索这类低层概念。检索侧提供找符号、文件大纲、找引用、找声明、找实现、诊断检查等工具；编辑侧提供符号体替换、符号前后插入、安全删除等符号级编辑，官方称比整文件改写更不易错、更省 token，在更大更复杂的代码库上收益最明显。",
+      "生态适配广：LSP 支持 40+ 语言（Python、TypeScript、Java、Go、Rust 等）；终端侧接 Claude Code、Codex、OpenCode、Gemini-CLI，IDE 侧接 VSCode、Cursor 与 JetBrains 全家桶，桌面/Web 侧接 Claude Desktop、Codex App、OpenWebUI；另有跨会话/用户/项目共享知识的记忆系统与多层 YAML 配置。许可为按组件双许可：SolidLSP 组件 MIT，其余 GPL-3.0-or-later（组合分发按 GPL）；Serena 本体免费开源，JetBrains 插件为付费（提供免费试用）。须知：直接改写代码，须在版本控制保护下使用；组合分发的 GPL-3.0 义务请商用前自行核对。",
+    ],
+    highlights: [
+      "符号级语义检索：找符号/引用/声明/实现、文件大纲与诊断，超越文本搜索的代码理解",
+      "符号级安全编辑：符号体替换、按符号插入、安全删除，更不易错、更省 token",
+      "广泛集成与知识沉淀：40+ 语言 LSP，主流终端/IDE/Desktop 客户端全覆盖，跨会话记忆系统",
+    ],
+    bestFor: "在大型代码库上使用 agent 编程的开发者与团队。",
+  },
+  "openresearch": {
+    image: "/media/openresearch.png",
+    imageAlt: "OpenResearch 精选卡片：官网首页实景配深色版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenResearch 的口号是「Turn your coding agents into research agents」：一个 local-first 的研究工作区，把编码 agent 变成能做文献综述、提出假设、跑实验、产出研究材料的研究 agent，并支撑「提出想法 → 改代码 → 启动实验 → 检查证据 → 决定下一步」的自主研究循环（Autoresearch）。",
+      "工程化保障可复现：每个探索方向获得独立 agent 会话与隔离的 git worktree；实验组织为 git 原生的实验树，每次运行都有不可变的 commit 归档，日志、diff、文件、结果与产出物始终绑定在产生它们的工作上。运行面覆盖本地、SSH 及 Slurm、Kubernetes、Ray、Hugging Face Jobs、Modal、Tinker 等托管算力；底层 agent 支持 Claude Code、Codex、OpenCode、Cursor（按会话可选 harness 与模型）；本地 SQLite 存储，orx up 在 127.0.0.1:4791 起本地 web 仪表盘，并有 macOS 应用与 Windows beta 下载。MIT 开源、免费；官网提及注册账号可用托管算力（managed compute）但未列价格 → 定价：未知。须知：项目年轻（2026-09-16 快照 3,164★），研究结论需人工复核。",
+    ],
+    highlights: [
+      "编码 agent → 研究 agent：文献综述、假设、实验、研究产物全流程，支持 Claude Code/Codex/OpenCode/Cursor",
+      "并行探索与可复现实验：独立会话 + 隔离 worktree，git 实验树让每次运行可追溯",
+      "灵活算力、本地优先：本地/SSH/Slurm/K8s/Ray/多种托管算力可跑，数据留本地",
+    ],
+    bestFor: "学术与行业研究者、希望自动化文献与实验工作的研究型开发者（据产品形态推断）。",
+  },
 
 };
 
