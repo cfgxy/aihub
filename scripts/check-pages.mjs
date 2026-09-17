@@ -34,6 +34,18 @@ const required = [
   "media/short-video-generator-ai.png",
   "media/tokentab.png",
   "media/bang-motion.png",
+  "r/openclaw/index.html",
+  "r/pi/index.html",
+  "r/text-to-cad/index.html",
+  "r/graphify/index.html",
+  "r/serena/index.html",
+  "r/openresearch/index.html",
+  "media/openclaw.png",
+  "media/pi.png",
+  "media/text-to-cad.png",
+  "media/graphify.png",
+  "media/serena.png",
+  "media/openresearch.png",
 ];
 
 for (const file of required) {
@@ -243,6 +255,43 @@ for (const entry of dailyEntries142) {
   }
 }
 
+// RUYI-147：本批 4 条应用 / 1 条 SKILL / 1 条 MCP 使用官方视觉合成的编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries147 = [
+  { slug: "openclaw", install: null, mustInclude: ["MIT", "20+ 渠道", "系统级权限授予", "ClawHub"] },
+  { slug: "pi", install: null, mustInclude: ["pi-agent-core", "Docker", "Hugging Face", "API 凭据"] },
+  { slug: "text-to-cad", install: "npx skills add earthtojake/text-to-cad", mustInclude: ["STEP", "DfAM", "Bambu Labs", "专业校核"] },
+  { slug: "graphify", install: null, mustInclude: ["EXTRACTED", "tree-sitter", "官方宣称", "Apache-2.0 与 MIT 双许可"] },
+  { slug: "serena", install: "uv tool install -p 3.13 serena-agent", mustInclude: ["GPL-3.0-or-later", "SolidLSP", "JetBrains 插件为付费", "版本控制"] },
+  { slug: "openresearch", install: null, mustInclude: ["Autoresearch", "git worktree", "Slurm", "人工复核"] },
+];
+const mcpWithConfig147 = [];
+for (const entry of dailyEntries147) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig147.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -314,6 +363,7 @@ const originalArtSlugs = [
   ...dailyEntries127.map((entry) => entry.slug),
   ...dailyEntries137.map((entry) => entry.slug),
   ...dailyEntries142.map((entry) => entry.slug),
+  ...dailyEntries147.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
