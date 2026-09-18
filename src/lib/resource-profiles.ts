@@ -762,6 +762,66 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "学术与行业研究者、希望自动化文献与实验工作的研究型开发者（据产品形态推断）。",
   },
+  "hyperframes": {
+    image: "/media/hyperframes.png",
+    imageAlt: "HyperFrames 精选卡片：官方仓库 Social Preview 配深色版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "HyperFrames 是 HeyGen 官方开源的视频渲染框架，口号「Write HTML. Render video. Built for agents.」：把 HTML、CSS、媒体与可寻址（seekable）动画转换成确定性的 MP4 视频——同样的输入每次渲染结果一致，适合程序化批量生产。它既能本地用 CLI 驱动，也能作为 AI 编码 agent 的技能使用，还可充当托管类视频创作产品的渲染内核。",
+      "面向 agent 是它的核心设计：项目内置 20 个技能，由 /hyperframes 路由技能按需分发到 10 类创作工作流——产品发布视频、无脸讲解视频、PR 变更讲解、字幕嵌入、访谈包装、动效图形、音乐卡点视频、幻灯片等——覆盖「规划 → 写 HTML → 接线动画 → 加媒体 → lint → 预览 → 渲染」完整制作回路。README 表明技能可与 Claude Code、Cursor、Gemini CLI、Codex 等支持 skills 的编码 agent 协作；动画层支持 GSAP、Lottie、Three.js、Anime.js、CSS、WAAPI 等运行时。Apache-2.0 开源、免费；本地运行需 Node.js ≥22 与 FFmpeg，渲染效果未实测；托管云渲染的额度与收费方式：未知。",
+    ],
+    highlights: [
+      "HTML 转确定性 MP4：以网页技术为创作面，同样输入每次渲染一致，init/lint/check/preview/render 本地闭环",
+      "Agent 技能体系：路由 + 10 类创作工作流按需加载，主流编码 agent（Claude Code、Cursor、Codex 等）通用",
+      "媒体与渲染生态：内置 TTS、配乐、图像生成、转写、抠像等媒体技能，渲染出口支持本地、HeyGen 托管云与 AWS Lambda",
+    ],
+    bestFor: "让 agent 批量生成产品演示、讲解与短视频的前端开发者、内容创作者与自动化内容团队。",
+  },
+  "humanizer": {
+    image: "/media/humanizer.png",
+    imageAlt: "Humanizer 精选卡片：官方仓库 Social Preview 配深色版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Humanizer 是一个把「AI 味」文本改写成自然人事表达的 agent 技能，官方定义「rewrites AI-sounding text so it reads like a person wrote it, without changing what it says」——只改表达、不改事实。本体只是一个 Markdown 技能文件，任何支持 skills 标准的 agent 均可使用：Skills CLI 一条命令安装（npx skills add blader/humanizer --global），Claude Code 2.1.142+ 可走插件市场，Claude Desktop 可作为技能上传，调用口令 /humanizer。",
+      "它的方法论成体系：基于维基百科「Signs of AI writing」页面（WikiProject AI Cleanup 维护）整理出 25 类 AI 写作痕迹模式，按强度分五组——铺垫代替陈述、节奏套路化、夸大与借势权威、格式套路、对话残留——先逐条标记、再出改写稿、自查残余机器感、最后交定稿。改写中姓名、数字、日期、引用等事实细节缺失时会向写作者追问而非编造；支持「声线匹配」——贴 2–3 段本人写作样本，改写即跟随其节奏、用词、标点乃至刻意的小习惯；对文件操作时只改正文，不碰代码、数据、frontmatter 与链接目标。MIT 开源、免费；25 类模式与全部示例以英文写作为主，中文文本改写效果未知。",
+    ],
+    highlights: [
+      "25 类痕迹模式化改写：先标记后改写再自查，事实细节缺失即追问、不虚构",
+      "个人声线匹配：以本人写作样本校准节奏、用词、标点与个人小习惯",
+      "标准 skill 形态多端安装：Skills CLI / Claude Code 插件市场 / Claude Desktop，文件模式只动正文",
+    ],
+    bestFor: "用 AI 起草对外文字、在意「AI 味」的作者、运营与开发者。",
+  },
+  "openmaic": {
+    image: "/media/openmaic.png",
+    imageAlt: "OpenMAIC 精选卡片：官方品牌 Banner 视觉区配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenMAIC（Open Multi-Agent Interactive Classroom）是清华大学 MAIC 团队开源的 AI 课堂平台：把任意主题或文档变成可交互的沉浸式课堂，由多智能体编排生成幻灯片、测验、交互模拟与项目式学习（PBL）活动，交给会开口讲课、能在白板上画图写公式的 AI 老师与 AI 同学，与学习者实时讨论。技术栈为 Next.js + React + TypeScript + LangGraph，提供中英文双语 README 与 v1.0.0 中英文使用指南（飞书）。",
+      "2026-08-27 发布的 v1.0.0 新增 Pro 工作台：一段话描述需求，agent 即规划大纲、逐页构建并按反馈修订整门课程；支持上传文档、音频、视频或联网检索作为素材，会话服务器化、可中断续跑；内置 20 个课程技能（幻灯片、测验、交互件、PBL、图像、视频、语音、.pptx 导入）。架构保持中立：模型、媒体、搜索与存储后端均可自带替换。成品可导出可编辑 .pptx、交互 .html 或 MP4；OpenMAIC Skill 可接入 OpenClaw、Codex、DeepSeek、WorkBuddy 等工作台，从飞书、Slack、Telegram 等 20+ 消息应用或 IDE 直接生成课堂。MIT 开源（v0.3.0 起由 AGPL-3.0 重授权）、免费；多智能体系统部署偏重，本地部署需 Node.js ≥22.19、pnpm ≥10 并自备至少一个模型服务商 API key；托管 Demo（open.maic.chat）的额度与限制：未知。",
+    ],
+    highlights: [
+      "一键课堂生成：主题/文档进，AI 老师与 AI 同学实时授课讨论，支持白板与 TTS",
+      "v1.0.0 Agent 工作台：对话式规划—构建—修订课程，会话可中断续跑，内置 20 个课程技能",
+      "中立架构与多出口：模型/媒体/搜索/存储可自带替换，导出 .pptx、交互 HTML 与 MP4",
+    ],
+    bestFor: "需要沉浸式多智能体教学体验的教育者、课程开发者与教育技术团队。",
+  },
+  "context-mode": {
+    image: "/media/context-mode.png",
+    imageAlt: "Context Mode 精选卡片：官方 OG 主视觉配深色版式，左侧 APP 徽章、一句话价值与 ELv2 许可证",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Context Mode 定位「上下文问题的另一半」：MCP 工具调用会把原始数据整块倒进上下文窗口——一次网页快照、一批 issue、一份日志即可吃掉几十 KB，半小时后可用上下文所剩无几；而对话压缩（compact）又会让 agent 忘掉正在改的文件与进行中的任务。它以 MCP 服务器形态同时处理这四个侧面：沙箱化工具输出、会话连续性、以代码代替模型计算、以及不干预模型文风（README 引证激进简短提示会损害推理表现的研究）。",
+      "机制上：6 个沙箱工具（ctx_execute、ctx_batch_execute 等）把原始输出挡在上下文之外、只回传结果，官方称 315 KB 可降至 5.4 KB（削减 98%，官方口径，未实测）；文件编辑、git 操作、任务、报错与用户决策写入 SQLite 并建 FTS5 全文索引，压缩后按 BM25 检索只取相关片段支撑续跑——不续会话则数据立即删除；「Think in Code」范式要求 agent 写脚本处理数据、只把结果带进上下文，README 称一个脚本可替代十次工具调用。共 11 个 MCP 工具、官方称支持 17 个客户端；Claude Code（v1.0.33+）可从插件市场一键安装，亦可 claude mcp add context-mode -- npx -y context-mode 以纯 MCP 方式接入。免费使用、源码公开；许可证为 ELv2（Elastic License 2.0，source-available 自定义许可，GitHub API 标记 NOASSERTION），商用与托管服务条款需自行审阅；沙箱化可能损失细节感知，需按项目验证；README 所载节省比例为官方口径、未实测；托管 Insight 仪表盘的收费模式：未知。",
+    ],
+    highlights: [
+      "工具输出沙箱化：6 个沙箱工具把原始数据挡在上下文外只回传结果（官方称最高 98% 削减，未实测）",
+      "会话记忆与连续性：编辑/任务/报错/决策入 SQLite + FTS5 索引，压缩后按需检索续跑，不续即删",
+      "Think in Code 范式：11 个 MCP 工具引导 agent 以脚本代替模型计算，Claude Code 插件市场一键安装",
+    ],
+    bestFor: "长会话 AI 编码 agent（Claude Code、Codex 等）的重度用户与工程团队。",
+  },
 
 };
 

@@ -46,6 +46,14 @@ const required = [
   "media/graphify.png",
   "media/serena.png",
   "media/openresearch.png",
+  "r/hyperframes/index.html",
+  "r/humanizer/index.html",
+  "r/openmaic/index.html",
+  "r/context-mode/index.html",
+  "media/hyperframes.png",
+  "media/humanizer.png",
+  "media/openmaic.png",
+  "media/context-mode.png",
 ];
 
 for (const file of required) {
@@ -292,6 +300,41 @@ for (const entry of dailyEntries147) {
   }
 }
 
+// RUYI-156：本批 3 条应用 / 1 条 SKILL 使用官方视觉合成的编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries156 = [
+  { slug: "hyperframes", install: null, mustInclude: ["Apache-2.0", "FFmpeg", "确定性", "HeyGen"] },
+  { slug: "humanizer", install: "npx skills add blader/humanizer --global", mustInclude: ["MIT", "25 类", "声线匹配", "中文文本改写效果未知"] },
+  { slug: "openmaic", install: null, mustInclude: ["MIT", "多智能体", "PBL", "AGPL-3.0"] },
+  { slug: "context-mode", install: null, mustInclude: ["ELv2", "Elastic License 2.0", "官方口径", "沙箱"] },
+];
+const mcpWithConfig156 = [];
+for (const entry of dailyEntries156) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig156.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -364,6 +407,7 @@ const originalArtSlugs = [
   ...dailyEntries137.map((entry) => entry.slug),
   ...dailyEntries142.map((entry) => entry.slug),
   ...dailyEntries147.map((entry) => entry.slug),
+  ...dailyEntries156.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

@@ -102,6 +102,7 @@ const originalArtSlugs = [
   "superpowers", "i-have-adhd", "mathmodelagent", "pascal-editor",
   "scroll-craft", "chat-on-steroids", "voicemem", "agent-memory", "headcount", "doop", "open-seo-mcp-skills", "lemmalog", "openreality", "shim-mcp",
   "openclaw", "pi", "text-to-cad", "graphify", "serena", "openresearch",
+  "hyperframes", "humanizer", "openmaic", "context-mode",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
