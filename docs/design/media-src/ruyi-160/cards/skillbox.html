@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1200px; height:630px; background:#0B0E14; color:#fff;
+       font-family:'Noto Sans CJK SC','Noto Sans CJK','WenQuanYi Micro Hei',sans-serif;
+       overflow:hidden; position:relative; }
+.glow { position:absolute; width:760px; height:760px; right:-220px; top:-320px;
+        background:radial-gradient(circle, #A3E63526 0%, transparent 62%); }
+.glow2 { position:absolute; width:520px; height:520px; left:-180px; bottom:-260px;
+         background:radial-gradient(circle, #A3E6351A 0%, transparent 60%); }
+.wrap { position:relative; display:flex; height:472px; padding:56px 56px 0 56px; gap:44px; }
+.left { width:420px; flex:none; display:flex; flex-direction:column; }
+.badge { display:inline-flex; align-self:flex-start; align-items:center; gap:8px;
+         border:1.5px solid #A3E635; color:#A3E635; font-size:17px; font-weight:700;
+         letter-spacing:2px; padding:5px 14px; border-radius:999px; }
+.badge::before { content:''; width:7px; height:7px; border-radius:50%; background:#A3E635; }
+h1 { font-size:46px; line-height:1.15; font-weight:800; margin-top:22px; letter-spacing:.2px; }
+.domain { font-size:17px; color:#8B93A7; margin-top:10px; font-weight:500; }
+.tagline { font-size:21.5px; line-height:1.62; color:#C9D0DE; margin-top:26px; font-weight:400; }
+.meta { margin-top:auto; display:flex; gap:18px; font-size:14.5px; color:#8B93A7; white-space:nowrap; }
+.meta b { color:#E6EAF2; font-weight:600; }
+.meta small { font-size:11.5px; }
+.right { flex:1; position:relative; }
+.vis { position:absolute; inset:0; border-radius:18px; overflow:hidden;
+       border:1px solid #ffffff1F; background:#0D120C; display:flex; align-items:center; justify-content:center; }
+.vis img.cover { width:100%; height:100%; object-fit:cover; }
+.vis img.cover-right { width:100%; height:100%; object-fit:cover; object-position:92% center; }
+.vis img.cover-low { width:100%; height:100%; object-fit:cover; object-position:center 72%; }
+.vis img.contain { max-width:100%; max-height:100%; object-fit:contain; padding:18px; }
+.vis img.contain-dark { max-width:100%; max-height:100%; object-fit:contain; padding:24px; }
+.vis img.icon { width:210px; height:210px; border-radius:44px; box-shadow:0 24px 70px #A3E63559; }
+.cap { position:absolute; right:0; bottom:-30px; font-size:13.5px; color:#6B7280; text-align:right; }
+.foot { position:absolute; left:56px; right:56px; bottom:0; height:66px;
+        border-top:1px solid #ffffff14; display:flex; align-items:center; justify-content:space-between; }
+.foot .brand { font-size:17px; font-weight:700; letter-spacing:.5px; }
+.foot .brand span { color:#A3E635; }
+.foot .note { font-size:14px; color:#6B7280; }
+</style></head><body>
+<div class="glow"></div><div class="glow2"></div>
+<div class="wrap">
+  <div class="left">
+    <span class="badge">SKILL</span>
+    <h1>skillbox</h1>
+    <div class="domain">github.com/kitze/skillbox</div>
+    <div class="tagline">自托管、可版本化的 AI agent 技能库：MCP 接口、按客户端授权</div>
+    <div class="meta"><span>开源协议 <b>MIT</b></span><span>GitHub Stars <b>154</b><span style="font-size:12px">（2026-09-19 快照）</span></span></div>
+  </div>
+  <div class="right">
+    <div class="vis"><img class="cover" src="file:///home/guxy/multica_workspaces/ruyigongfan-018667473993/ruyi-160-c9d031ac0d01/workdir/assets/ruyi-160/raw/sb_og.jpg"></div>
+    <div class="cap">官方 Landing OG 主视觉（仓库 landing/assets/og.jpg）</div>
+  </div>
+</div>
+<div class="foot">
+  <div class="brand">AIHub <span>·</span> 编辑精选</div>
+  <div class="note">AI 工具 · 应用 · SKILL · MCP 目录 ｜ 2026-09-19</div>
+</div>
+</body></html>

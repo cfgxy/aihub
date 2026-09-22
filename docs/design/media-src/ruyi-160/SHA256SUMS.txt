@@ -1,0 +1,5 @@
+7989d28b49082eab5f6ec22990b9a7aa6cbe04506aa75cfcf0138d3f1b6905cf  cards/gongwen-gbt9704-skill.png
+2da5f7d71fadfa4a335f6816ffcbbd6931967b1b6883f2a10e4349789a1802e0  cards/jev-review.png
+9428c675b366d6aaa28f0edfa0dc08275da9c577f0b9536f0a68aec9fb204d3f  cards/motion-web.png
+e36312b6c08fe39a588a087ab181a7b38da1ac52d5c6a32a70ee1095be8337b6  cards/pcb-skill.png
+c6ab391b90a368ad29f84608a6613e2ef8f898dbd3d69727d86078115348cfca  cards/skillbox.png

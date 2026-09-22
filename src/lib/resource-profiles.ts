@@ -822,6 +822,81 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "长会话 AI 编码 agent（Claude Code、Codex 等）的重度用户与工程团队。",
   },
+  "gongwen-gbt9704-skill": {
+    image: "/media/gongwen-gbt9704-skill.png",
+    imageAlt: "gongwen-gbt9704-skill 精选卡片：官方 2.0 更新插图「预印红头纸套打」裁切配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "gongwen-gbt9704-skill 是一个面向中文公文写作场景的开源 SKILL：按国家标准 GB/T 9704-2012 生成可直接交付、可继续编辑的公文 DOCX，把公文格式从「手工对照国标逐项排版」变成「可生成、可检查」。A4 版心、字体、标题层级、文号、页码、附件、版记等版式要素由技能统一处理；普通稿不误用红头，正式发文支持预印红头纸套打或完整电子红头，并保留 Word/WPS 可更新目录。",
+      "按 README 的 2.0 更新说明，该版本重新核验了红头场景、首页预留、红线下标题间距、Word/WPS 标题样式、目录引用、特殊格式与跨平台安装，并完成 18 份 DOCX、37 个 PNG 页面与版头坐标量测；机构名称与文号走 --org、--doc-no 参数定位，正式版式会拒绝明显不符合年份、六角括号、顺序号和「号」规则的文号，letter/command/minutes 等特定格式使用对应生成分支。同一份规则可安装到 Codex、Claude Code、OpenCode、Trae Code、Kimi、TraeWork、WorkBuddy 和 ZCode。MIT 开源、免费；README 已置信息安全提醒——涉密与受限文件不得上传未授权的在线模型或公共仓库，公文涉密合规由用户按本单位规范自担，红头使用需符合本单位规范。",
+    ],
+    highlights: [
+      "国标版式开箱即得：A4 版心、文号、页码、红头套打按 GB/T 9704-2012 统一处理，生成可继续编辑的 DOCX",
+      "可生成也可检查：--org/--doc-no 参数定位要素，正式版式拒绝不符合规则的文号",
+      "一份规则多端安装：Codex、Claude Code、WorkBuddy、ZCode 等 8 个平台共用同一份排版规则",
+    ],
+    bestFor: "需要产出规范中文公文、红头文件的行政与文秘人员，以及用编码 agent 自动化公文写作的用户。",
+  },
+  "pcb-skill": {
+    image: "/media/pcb-skill.png",
+    imageAlt: "pcb-skill 精选卡片：原创全流程示意图（概念到下单止于支付页，依据官方 README 绘制）配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（原创示意图，依据官方 README 绘制）",
+    overview: [
+      "pcb-skill 是一个用 AI agent 驱动 EasyEDA Pro 的开源 SKILL，目标是把硬件想法一路推进到「可下单、可焊接、可点亮」的 PCB：从概念、原理图、选料，到布局、布线、验证，再到把采购推进到支付页，全流程由 agent 按阶段推进。",
+      "它不是 PCB 理论教程，而是一套门控：专门捕获理论管不住的实体错误——插座转向导致屏幕永远插不上、模块体下的电容、只存在于图纸层的禁布区、悄悄量测上一版固件的检查器——每条规则都来自真实板子上付过学费的案例（docs/case-study.md）。技能运行在 Claude Code（桌面版）或 Codex（桌面版）内，通过 MCP 驱动 EasyEDA Pro，并在用户已登录的浏览器里完成选料与下单准备；采购环节止步于支付页，付款始终由人工确认。安装时 SKILL.md 需与 references/、scripts/、setup/ 同目录落位（README 提醒只复制 skills/pcb/ 会得到缺失校验器的残缺技能），并要求按 setup/README.md 完成启动前检查。MIT 开源、免费；打样与元件费用由用户自担；依赖 EasyEDA Pro 与已登录浏览器环境。",
+    ],
+    highlights: [
+      "全流程门控校验：捕获理论管不住的实体错误，每条规则来自真实板子上付过学费的案例",
+      "agent 驱动 EasyEDA Pro：概念到下单全流程推进，采购止步支付页、付款人工确认",
+      "从硬件想法到可下单打样：配套 setup 启动前检查与实测案例库，交付前逐项校验",
+    ],
+    bestFor: "想用 AI agent 加速硬件打样的电子工程师与硬件创客，需自备 EasyEDA Pro 与编码 agent。",
+  },
+  "motion-web": {
+    image: "/media/motion-web.png",
+    imageAlt: "motion-web 精选卡片：官方案例「String Clock」实景配统一版式，左侧 SKILL 徽章、一句话价值与 CC BY-NC 4.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "motion-web 是一个前端动效 SKILL，主张「动效即材质」——把动效当作界面的一种材质来系统化生产，而非零散的手调动画。技能内置物理阻尼求解器，让动效参数具备物理依据，并配套排版规范输出一致的高手感动效方案；面向 Agent 与前端工程师，覆盖 vanilla Three.js / Canvas 2D / WebGL / CSS 技术栈。",
+      "它的工程质量保障是自动化验证：内置 7 大完整案例全部通过自动化 Headless 验证（README 标注 Cases 7/7 PASS），动效效果可被机器复核，并以 token 纪律约束生成成本。个人学习、学术研究与非商业展示可免费使用；许可证为 CC BY-NC 4.0（知识共享署名-非商业性使用 4.0 国际），禁止任何未经授权的商业集成、平台内置或营利性分发，商用授权或企业合作需联系作者；项目内嵌的第三方开源字体子集保留各自许可（SIL Open Font License）。纯前端动效技能，适用面相对较窄。",
+    ],
+    highlights: [
+      "动效即材质：物理阻尼求解器让动效参数有物理依据，排版规范保证方案一致性",
+      "7 大案例全部通过自动化 Headless 验证（README 标注 Cases 7/7 PASS），效果可机器复核",
+      "覆盖 Three.js / Canvas 2D / WebGL / CSS 多技术栈，token 纪律约束生成成本",
+    ],
+    bestFor: "追求物理感高级动效的前端工程师与创意开发者，仅限非商业场景使用。",
+  },
+  "skillbox": {
+    image: "/media/skillbox.png",
+    imageAlt: "skillbox 精选卡片：官方 Landing OG 主视觉配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "skillbox 是一个自托管、可版本化的 AI agent 技能库：把分散在多工具链（Claude Code、Codex、Cursor 等）中的技能资产集中起来统一管理，按版本沉淀、按需分发。它以基础设施形态提供能力：通过 MCP 接口对外服务，支持 scoped clients 按客户端授权，并提供带独立创建、更新、归档与提案权限的 Profiles。",
+      "部署形态为 Docker Compose 自托管（要求 Docker Engine/Desktop with Compose v2 与 Bash，无需宿主机 Bun/Node）：setup 一键生成含随机凭据的 .env（mode 0600、拒绝覆盖已有文件），start 后从本机端口以 SKILLBOX_ADMIN_TOKEN 登录；远程部署需自设 HTTPS origin 并配置 TLS 反向代理。获取侧校验每个路径、文件哈希、大小、可执行位与包校验和后原子写入，不执行代码、不安装依赖；集成凭据在 PostgreSQL 内以 AES-256-GCM 加密存储、不经设置 API 或浏览器包返回，更换管理令牌会使已存集成凭据不可读（README 提供轮换指引）。MIT 开源、免费自托管；项目上线时间短（2026-09-17 创建）、成熟度未知；可选的 Jev 推荐功能依赖第三方服务。",
+    ],
+    highlights: [
+      "自托管技能基础设施：MCP 接口 + scoped clients 按客户端授权，Profiles 分权管理",
+      "安全默认：凭据 AES-256-GCM 加密存储，获取侧哈希校验后原子写入，不执行代码",
+      "Docker Compose 一键部署：setup 生成随机凭据 .env，版本化沉淀多工具链技能资产",
+    ],
+    bestFor: "在多工具链间沉淀技能资产、需要自托管统一管理 AI agent 技能的团队与重度用户。",
+  },
+  "jev-review": {
+    image: "/media/jev-review.png",
+    imageAlt: "Jev Review 精选卡片：原创持续审查维度示意图（依据官方 README 绘制）配统一版式，左侧 MCP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（原创示意图，依据官方 README 绘制）",
+    overview: [
+      "Jev Review 是面向编码 agent 的持续软件质量审查 MCP：以本地优先、无托管后端的方式部署，通过标准 stdio 接口接入编码 agent 工作流，对代码质量做持续性把关，而非一次性的单点审查。",
+      "官方承诺「Your API key stays on your machine」——无托管后端、数据库、遥测服务或作者运营的代理，唯一远端请求是直达所配置的 Jev API。审查维度取自官方 README：Correctness（正确性）、Complexity（复杂度）、Changeability（可变更性）、Modularity（模块化）、Tests（测试）、Security（安全）等评分维度。客户端覆盖：Claude Code、Codex、Cursor 均可用 npx plugins add 一条命令安装（亦支持仅 MCP 的手动配置），OpenCode 走手动配置，运行需 Node.js 20+。它是 TypeSafe AI 于 2026-09-15 发布的 System One 决策模型 Jev（闭源早期访问、仅输出结构化决策）在代码质量场景的落地条目：MIT 开源、工具本身免费，但审查能力依赖闭源 Jev API（需自备 TypeSafe 控制台的 API key），调用费用未知；单作者项目、上线时间短（2026-09-17 创建）。",
+    ],
+    highlights: [
+      "持续质量审查：Correctness/Complexity/Modularity/Tests/Security 等维度持续把关",
+      "本地优先：无托管后端与遥测，API key 留在本机，stdio 标准接入",
+      "一条命令安装：Claude Code、Codex、Cursor 走 npx plugins add，OpenCode 手动配置",
+    ],
+    bestFor: "希望在 Claude Code、Codex、Cursor 中获得持续代码质量审查的开发者与工程团队。",
+  },
 
 };
 
