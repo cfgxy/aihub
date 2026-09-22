@@ -54,6 +54,16 @@ const required = [
   "media/humanizer.png",
   "media/openmaic.png",
   "media/context-mode.png",
+  "r/gongwen-gbt9704-skill/index.html",
+  "r/pcb-skill/index.html",
+  "r/motion-web/index.html",
+  "r/skillbox/index.html",
+  "r/jev-review/index.html",
+  "media/gongwen-gbt9704-skill.png",
+  "media/pcb-skill.png",
+  "media/motion-web.png",
+  "media/skillbox.png",
+  "media/jev-review.png",
 ];
 
 for (const file of required) {
@@ -335,6 +345,42 @@ for (const entry of dailyEntries156) {
   }
 }
 
+// RUYI-160：本批 4 条 SKILL 与 1 条 MCP（含配置块）使用编辑卡片，其中 2 张为原创示意图，须保留事实边界及对应获取入口。
+const dailyEntries160 = [
+  { slug: "gongwen-gbt9704-skill", install: "git clone https://github.com/mizzlelover/gongwen-gbt9704-skill.git", mustInclude: ["GB/T 9704", "--org", "涉密", "MIT"] },
+  { slug: "pcb-skill", install: "git clone https://github.com/daishuge/pcb-skill.git &amp;&amp; cd pcb-skill &amp;&amp; mkdir -p ~/.claude/skills/pcb &amp;&amp; cp -R skills/pcb/. scripts setup ~/.claude/skills/pcb/", mustInclude: ["EasyEDA Pro", "门控", "止步于支付页", "setup/README.md"] },
+  { slug: "motion-web", install: "git clone https://github.com/feitangyuan/motion-web.git ~/.claude/skills/motion-web", mustInclude: ["Cases 7/7 PASS", "CC BY-NC 4.0", "SIL Open Font License", "Headless"] },
+  { slug: "skillbox", install: "git clone https://github.com/kitze/skillbox.git &amp;&amp; cd skillbox &amp;&amp; bash scripts/skillbox.sh setup &amp;&amp; bash scripts/skillbox.sh start", mustInclude: ["AES-256-GCM", "SKILLBOX_ADMIN_TOKEN", "Docker Compose", "成熟度未知"] },
+  { slug: "jev-review", install: "npx plugins add NiazMorshed2007/jev-review --target claude-code", mustInclude: ["Correctness", "Node.js 20+", "System One", "本地优先"] },
+];
+const mcpWithConfig160 = ["jev-review"];
+for (const entry of dailyEntries160) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig160.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -408,6 +454,7 @@ const originalArtSlugs = [
   ...dailyEntries142.map((entry) => entry.slug),
   ...dailyEntries147.map((entry) => entry.slug),
   ...dailyEntries156.map((entry) => entry.slug),
+  ...dailyEntries160.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
