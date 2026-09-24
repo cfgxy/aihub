@@ -988,6 +988,156 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "用 AI 编码但担心质量下滑的个人开发者与团队。",
   },
+  "zcode": {
+    image: "/media/zcode.png",
+    imageAlt: "ZCode 精选卡片：官方 OG 主视觉（产品界面实景）配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "ZCode 是 Z.ai 官方出品的开源 AI 编程工作台，提供桌面应用与浏览器两种形态。它定位为完整的编程代理（coding agent）工作台，覆盖开发者的本地与云端编程场景，而不是单一的模型切换或配置工具。项目于 2026-09-20 创建，上线 2 天即收获 5,426 星（2026-09-22 快照值），热度上升显著。",
+      "在本站目录中，它与已收录的 Codex、Claude 形成同类对照——一线模型厂商官方开源的编程代理入口；与在库 CCSwitch（供应商切换器）定位不同。Apache-2.0 开源，Z.ai 官方维护；托管与商用定价未知，发布极新、成熟度未知，能力与路线图以官方仓库为准。",
+    ],
+    highlights: [
+      "桌面应用 + 浏览器双形态的编程工作台",
+      "覆盖本地与云端编程代理场景",
+      "Apache-2.0 开源，Z.ai 官方维护，面向 Z.ai（GLM）生态开发者",
+    ],
+    bestFor: "需要本地/云端编程代理工作台的开发者，尤其 Z.ai（GLM）生态用户。",
+  },
+  "cua": {
+    image: "/media/cua.png",
+    imageAlt: "Cua 精选卡片：官方黑白品牌图标配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Cua 为 AI 代理提供「可用的电脑」：以 computer-use 2.0 驱动的代理运行环境，配套跨操作系统虚拟机机队与评测基准。开发者可以基于它搭建、运行并评测 computer-use 代理。项目位列 GitHub Trending 日榜第 2（2026-09-22），累计 25,597 星、单日增长 +609（快照值）。",
+      "在本站目录中，已收录的 computer-use-mcp 是单点 MCP Server，而 Cua 是「框架 + 机队 + 基准」的完整方案，定位不同。MIT 开源，云服务定价未知；代理操作本机属高权限场景，使用前应评估权限边界。",
+    ],
+    highlights: [
+      "computer-use 2.0 驱动的「给 AI 代理的电脑」运行环境",
+      "跨操作系统虚拟机机队",
+      "computer-use 评测基准",
+    ],
+    bestFor: "搭建 computer-use 代理、需要跨 OS 虚拟机机队与评测基准的开发者与团队。",
+  },
+  "claude-financial-services": {
+    image: "/media/claude-financial-services.png",
+    imageAlt: "Claude for Financial Services 精选卡片：GitHub 官方 Social Preview 配统一版式，左侧 SKILL 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Anthropic 官方出品的金融工作流参考库，以 agents + skills 的形式覆盖投资银行、行业研究、私募股权与财富管理四类场景，供专业金融团队在 Claude 生态内搭建金融自动化工作流。项目位列 GitHub Trending 日榜第 6（2026-09-22），累计 35,715 星、单日增长 +425（快照值）。",
+      "支持两种接入方式：作为 Claude Cowork 插件安装，或经 Managed Agents API 集成。本站目录此前尚无金融领域 skill，本条填补该品类空白。Apache-2.0 开源，定价信息未知；输出仅供专业人士复核，非投资建议。",
+    ],
+    highlights: [
+      "覆盖投行、行研、PE、财富管理的金融工作流 agents+skills 参考库",
+      "Claude Cowork 插件 / Managed Agents API 双接入方式",
+      "Anthropic 官方出品，Apache-2.0 开源可扩展",
+    ],
+    bestFor: "投行、行研、私募与财富管理从业者及自动化团队。",
+  },
+  "agent-native": {
+    image: "/media/agent-native.png",
+    imageAlt: "Agent-Native 精选卡片：官方黑白 OG 主视觉配统一版式，左侧 APP 徽章、一句话价值与免费定价标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Builder.io 出品的面向代理式应用（agentic apps）的构建框架，帮助前端与全栈开发者把应用改造为代理可调用（agent-ready）的形态——让 AI 代理能够直接调用应用的能力，而不只是面向人类用户的界面。项目位列 GitHub Trending 日榜第 1（2026-09-22），累计 5,750 星、单日增长 +607（快照值）。",
+      "本站目录现有条目以终端侧代理工具为主，缺少「面向代理的应用框架」品类，本条填补该方向。当前免费，许可证未声明（截至 2026-09-22 快照），影响商用评估；能力边界以官方仓库与官网为准。",
+    ],
+    highlights: [
+      "面向代理式应用（agentic apps）的构建框架",
+      "把现有应用改造为代理可调用（agent-ready）形态",
+      "由 Builder.io 团队出品，当前免费",
+    ],
+    bestFor: "要把应用改造为代理可调用（agent-ready）的前端与全栈开发者。",
+  },
+  "autoclip": {
+    image: "/media/autoclip.png",
+    imageAlt: "AutoClip 精选卡片：官方 OG 主视觉（含官方 slogan「长视频的高光，自动剪出来」）配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "AutoClip 是一款桌面端 AI 视频剪辑工具，主打「长视频 → 高光片段」：自动把播客、直播等长视频切分成值得分享的片段，服务二创与切片场景。项目位列 GitHub Trending 日榜第 9（2026-09-22），累计 8,122 星、单日增长 +266（快照值）。",
+      "在库已收录 anything2explainer（讲解视频）与 short-video-generator-AI（短视频生成），AutoClip 的「长视频高光切片」场景与之互补，定位不同。MIT 开源；二创所用素材版权由用户自查。",
+    ],
+    highlights: [
+      "长视频自动切分高光分享片段",
+      "桌面端工具形态",
+      "MIT 开源",
+    ],
+    bestFor: "播客、直播、长视频创作者与二创剪辑者。",
+  },
+  "geo-sleuth": {
+    image: "/media/geo-sleuth.png",
+    imageAlt: "geo-sleuth 精选卡片：GitHub 官方 Social Preview 配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "geo-sleuth 是一个开源 OSINT Agent Skill：输入照片，定位其拍摄地，并把完整推理过程可视化展示——不只给出坐标结论，还呈现「怎么推出来的」。项目 2026-09-18 创建，截至 2026-09-22 已 233 星，且 09-21 仍有推送，处于活跃迭代期。",
+      "「照片地理定位 + 推理过程可视化」的组合在本站目录与历史候选中均无同类。MIT 开源；照片定位涉及个人隐私，须合规使用。",
+    ],
+    highlights: [
+      "照片拍摄地地理定位",
+      "推理过程可视化展示",
+      "Agent Skill 形态，MIT 开源",
+    ],
+    bestFor: "调研、事实核查与摄影地理分析爱好者（OSINT 场景）。",
+  },
+  "guizang-product-video-skill": {
+    image: "/media/guizang-product-video-skill.png",
+    imageAlt: "guizang-product-video-skill 精选卡片：GitHub 官方 Social Preview 配统一版式，左侧 SKILL 徽章、一句话价值与 AGPL-3.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "归藏（op7418）出品的 Agent Skill，思路是「复用真实产品」：直接复用产品真实的组件与设计语言，用代码生成软件更新宣传片，而非用虚构素材拼贴演示。项目 2026-09-18 创建，截至 2026-09-22 已 211 星。",
+      "支持 Claude Code 与 Codex 两种宿主环境。与在库视频类条目及历史候选 video-shotcraft 定位均不同，主打「复用真实产品 UI」的差异化路线。AGPL-3.0 开源，具传染性，集成前应评估合规影响；成片素材版权由用户自查。",
+    ],
+    highlights: [
+      "复用真实产品组件与设计语言生成宣传片",
+      "用代码产出软件更新宣传片",
+      "支持 Claude Code 与 Codex 双宿主",
+    ],
+    bestFor: "需要为软件更新快速产出宣传片的独立开发者与产品团队。",
+  },
+  "post-production-skill": {
+    image: "/media/post-production-skill.png",
+    imageAlt: "post-production-skill 精选卡片：GitHub 官方 Social Preview 配统一版式，左侧 SKILL 徽章、一句话价值与免费定价标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "post-production-skill 是一套视频后期提示词工程库：把创意素材改写为电影级视频提示词，覆盖 VFX、转场、三维 UI 与动态镜头等场景，面向以 Seedance 2.5 为目标模型的后期创作流程。项目 2026-09-19 创建，发布即获 231 星（截至 2026-09-22），中文社区热度较高。",
+      "「电影级 VFX / 三维 UI 提示词」方向为本站目录现有空白。当前免费，许可证未声明（截至 2026-09-22 快照）；与 Seedance 官方关系未知。",
+    ],
+    highlights: [
+      "把创意素材改写为电影级视频提示词",
+      "覆盖 VFX、转场、三维 UI、动态镜头",
+      "面向 Seedance 2.5 的提示词工程",
+    ],
+    bestFor: "使用 Seedance 2.5 做视频后期与特效提示词工程的创作者。",
+  },
+  "clipmivoai-tools": {
+    image: "/media/clipmivoai-tools.png",
+    imageAlt: "ClipmivoAI Tools 精选卡片：官方品牌分享图配统一版式，左侧 MCP 徽章、一句话价值与商业 API 定价标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "ClipmivoAI Tools 为同一 AI 视频生成 API 提供四种客户端接入形态——REST API、CLI、本地 MCP 与 Agent Skill，让开发者可以在脚本、终端或 Agent 工作流中以一致方式调用视频生成能力。项目 2026-09-14 创建，截至 2026-09-22 已 142 星，OpenAPI 文档齐备。",
+      "它是本期唯一合格的 MCP 类候选：「同一 API、四种接入形态」的组合在库内少见，适合要把视频生成嵌入 Agent 工作流的开发者。商业 API 按账号余额计费，具体定价未知；依赖第三方商业服务与账号，API key 须自行保管。",
+    ],
+    highlights: [
+      "同一视频生成 API 的四合一客户端（REST / CLI / 本地 MCP / Agent Skill）",
+      "本地 MCP 形态可直接接入 Agent 工作流",
+      "OpenAPI 文档齐备",
+    ],
+    bestFor: "要在 Agent 工作流中调用 AI 视频生成 API 的开发者。",
+  },
+  "open-glean": {
+    image: "/media/open-glean.png",
+    imageAlt: "Open Glean 精选卡片：官方 OG 主视觉配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Open Glean 是基于 Hydra DB 的开源自托管企业知识问答方案：连接企业应用、检索内部知识，并生成带来源引用的回答，定位为 Glean 的开源替代。项目 2026-09-17 创建，发布即获 557 星（截至 2026-09-22）。",
+      "「连接应用 + 检索 + 带引用回答」的能力组合为本站目录空白；与在库 OpenResearch（研究向）定位不同，Open Glean 面向企业内部知识场景。Apache-2.0 开源；项目极新，稳定性未知。",
+    ],
+    highlights: [
+      "开源自托管的企业知识问答（Glean 开源替代定位）",
+      "基于 Hydra DB 构建",
+      "连接应用 + 检索 + 回答带来源引用",
+    ],
+    bestFor: "想要自托管企业知识问答（Glean 开源替代）的中小团队。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
