@@ -898,6 +898,96 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     bestFor: "希望在 Claude Code、Codex、Cursor 中获得持续代码质量审查的开发者与工程团队。",
   },
 
+  "taste-skill": {
+    image: "/media/taste-skill.png",
+    imageAlt: "Taste Skill 精选卡片：官方 OG 词标「The Anti-Slop Frontend Framework for AI Agents」配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Taste Skill 是一套给 AI agent「好品味」的前端技能集，定位直截了当：阻止 agent 生成平庸、通用、千篇一律的界面。在用 AI 产出前端的场景里，功能跑通之后真正拉开差距的是审美与细节，这个项目把「设计品味」当作一种可注入 agent 的能力来交付。",
+      "核心能力覆盖三件事：在 agent 生成前端时施加反 slop 界面约束，以 SKILL 形式注入设计品味，并支持按具体项目的审美取向校准。官方提供独立网站 tasteskill.dev，安装走官方 README 给出的 npx skills add 命令。效果主观，需按项目调校；README 含 Kimi（Moonshot AI）赞助位，引用素材时注意识别性引用边界；具体技能清单与版本号以官方仓库 README 为准。MIT 开源、免费。",
+    ],
+    highlights: [
+      "反 slop 界面约束：在 agent 生成前端时阻止平庸、通用的界面产出",
+      "品味注入：以 SKILL 形式为 AI agent 提供前端设计品味",
+      "按项目校准：效果可与具体项目的审美取向对齐调校",
+    ],
+    bestFor: "前端开发者、用 agent 生成 UI 的团队与独立开发者。",
+  },
+  "world-monitor": {
+    image: "/media/world-monitor.png",
+    imageAlt: "World Monitor 精选卡片：官方世界变体仪表盘实景配统一版式，左侧 APP 徽章、一句话价值与 AGPL-3.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "World Monitor 是一个实时全球情报仪表盘，把 AI 新闻聚合、地缘监测与基础设施追踪放进同一个态势界面，一屏呈现。对需要每天跨多个信息源盯全球动态的人来说，它把「翻多处信息源」压缩成「看一块面板」。",
+      "项目处于活跃迭代期（2026-09-08 发布 v2.10.0），README 提供包括简体中文在内的多语言版本，官方站点为 worldmonitor.app。AGPL-3.0 开源、免费；AGPL-3.0 对商用集成有传染性，商用集成前需评估许可影响；AI 聚合内容的准确性与情报内容敏感性需自查；数据源清单与更新频率以官方仓库为准。",
+    ],
+    highlights: [
+      "AI 新闻聚合：聚合 AI 相关新闻，统一呈现",
+      "地缘监测：提供地缘态势的监测视图",
+      "基础设施追踪：三类动态在同一仪表盘中一屏呈现",
+    ],
+    bestFor: "研究分析、出海与地缘关注者、信息密集型从业者。",
+  },
+  "appllama-skills": {
+    image: "/media/appllama-skills.png",
+    imageAlt: "Appllama Skills 精选卡片：官方 OG 羊驼标识「Discover the designs that win.」配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Appllama Skills 是一套移动 App 构建 agent 技能，方法论来自对头部畅销应用的研究，目标是让 agent 真正会做移动应用。对想做移动端、但缺少成熟设计与工程范式的开发者来说，这类「对照优秀成品总结出的技能」是可直接复用的经验注入。官方站点为 appllama.io。",
+      "活跃度需如实提示：截至 2026-09-21 快照，最近一次推送为 2026-09-06，近两周无推送，活跃度偏弱。研究头部应用设计模式存在版权边界，需注意；技能数量与覆盖平台（iOS/Android 等）以官方仓库为准。安装走官方 README 的 npx skills add 命令。MIT 开源、免费。",
+    ],
+    highlights: [
+      "移动 App 构建：面向移动应用构建场景的 agent 技能集",
+      "畅销应用研究方法论：以对头部畅销应用的研究沉淀技能",
+      "MIT 开源：免费开源，可引入现有 agent 工作流",
+    ],
+    bestFor: "用 agent 开发移动应用的独立开发者与小团队。",
+  },
+  "ai-data-extractor": {
+    image: "/media/ai-data-extractor.png",
+    imageAlt: "AI Data Extractor 精选卡片：GitHub 官方 Social Preview 渲染配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "AI Data Extractor 做的事很聚焦：一键提取 Claude Code、Cursor、Windsurf、Aider、Cline/Roo 等 AI 编码工具的聊天历史。重度使用 AI 编码工具的用户，会话记录散落在各款工具中，想备份、迁移或做分析时缺少统一出口，这个项目补的就是这个出口。",
+      "项目很新（2026-09-11 建仓），官方入口为 GitHub 仓库。会话记录涉及隐私与敏感代码，导出后的保管责任在用户；代码公开可审计——对经手敏感会话数据的工具尤为重要。支持的操作系统与导出格式以官方仓库 README 为准。MIT 开源、免费。",
+    ],
+    highlights: [
+      "一键提取：支持 Claude Code、Cursor、Windsurf、Aider、Cline/Roo 等工具的聊天历史提取",
+      "多工具归集：分散在多款 AI 编码工具中的会话记录统一导出",
+      "MIT 开源：代码公开可审计，适合经手敏感会话数据的场景",
+    ],
+    bestFor: "想备份、迁移或分析自己 AI 会话数据的重度用户。",
+  },
+  "orcareplay": {
+    image: "/media/orcareplay.png",
+    imageAlt: "OrcaReplay 精选卡片：官方运行图谱卡片与 Logo 徽标配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OrcaReplay 给 agent 运行加上「时间旅行」：录制、回放、分叉、调试任意模型驱动的 agent 运行。agent 应用出问题时最难的是复现，有了运行录制，回放即是复现，分叉即可从既有运行派生新的调试路径——这类能力是 agent 工程化基建的新品类。",
+      "出品方为 OrcaRouter.ai 团队（出品方官网 orcarouter.ai），项目约 3 周大（截至 2026-09-21 快照）。名称辨析：与 stablyai 的桌面 ADE 产品 Orca 名称近似，但为不同团队、不同产品。录制内容可能含凭据/敏感数据，共享回放前需脱敏；支持的 agent 框架清单以官方仓库为准。Apache-2.0 开源、免费。",
+    ],
+    highlights: [
+      "录制：记录模型驱动的 agent 运行过程",
+      "回放与分叉：回放历史运行，并可从既有运行分叉出新的调试路径",
+      "模型无关调试：对任意模型驱动的 agent 运行进行调试",
+    ],
+    bestFor: "构建与运维 agent 应用的开发者、需要复现 bug 的工程团队。",
+  },
+  "gap-trap": {
+    image: "/media/gap-trap.png",
+    imageAlt: "Gap Trap 精选卡片：官方「网兜接代码块」Logo 配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Gap Trap 处理 vibe coding 的后遗问题：用仓库内规则与门控让 AI 写出的代码保持正确，按官方定位减少逐行人工 review 的依赖。AI 编码产能上来之后，质量保障往往成为新瓶颈，它把质量约束前置进仓库本身，而不是靠人事后逐行盯。文档站为 pliablepixels.github.io/gap-trap。",
+      "项目很新：2026-09-13 建仓，社区尚小（截至 2026-09-21 快照）。门控规则需按团队规范调整，具体规则条目与接入方式以官方文档站为准。安装走官方 README 的 npx skills add 命令。MIT 开源、免费。",
+    ],
+    highlights: [
+      "仓库内规则：把质量规则沉淀在仓库内，约束 AI 代码产出",
+      "自动化门控：让 AI 代码保持正确，按官方定位减少逐行人工 review 依赖",
+      "可定制：门控规则可按团队规范调整",
+    ],
+    bestFor: "用 AI 编码但担心质量下滑的个人开发者与团队。",
+  },
 };
 
 export function getResourceProfile(slug: string) {

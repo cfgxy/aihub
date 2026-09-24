@@ -103,7 +103,7 @@ const originalArtSlugs = [
   "scroll-craft", "chat-on-steroids", "voicemem", "agent-memory", "headcount", "doop", "open-seo-mcp-skills", "lemmalog", "openreality", "shim-mcp",
   "openclaw", "pi", "text-to-cad", "graphify", "serena", "openresearch",
   "hyperframes", "humanizer", "openmaic", "context-mode",
-  "gongwen-gbt9704-skill", "pcb-skill", "motion-web", "skillbox", "jev-review",
+  "gongwen-gbt9704-skill", "pcb-skill", "motion-web", "skillbox", "jev-review", "taste-skill", "world-monitor", "appllama-skills", "ai-data-extractor", "orcareplay", "gap-trap",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
