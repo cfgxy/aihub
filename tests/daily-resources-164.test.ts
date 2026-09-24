@@ -6,23 +6,24 @@ import { getResourceProfile } from "@/lib/resource-profiles";
 
 const root = process.cwd();
 
-/** RUYI-164 本批 6 条资源（Owner 2026-09-22 批准：taste-skill、world-monitor、appllama-skills、ai-data-extractor、orcareplay、gap-trap），字段口径以已验文案与编辑卡片映射为准。 */
+/** RUYI-164 本批 6 条资源（Owner 2026-09-22 批准：taste-skill、world-monitor、appllama-skills、ai-data-extractor、orcareplay、gap-trap），字段口径以已验文案与编辑卡片映射为准；taste-skill 字段于 2026-09-24 按 RUYI-168 期 Owner 终审裁决替换更新（RUYI-168 新增 3 条断言在 daily-resources-168）。 */
 const expected = [
   {
     slug: "taste-skill",
     name: "Taste Skill",
     type: "skill",
     category: "creative-design",
-    summary: "给 AI agent「好品味」的反 slop 前端技能集，阻止生成平庸通用的界面。",
-    tags: ["社区出品", "开源", "MIT", "SKILL", "前端设计", "反 slop", "设计品味", "UI 生成"],
+    summary: "给 AI 装「品味」，抑制模板化平庸输出。",
+    tags: ["社区出品", "开源", "MIT", "SKILL", "设计品味", "写作品味", "反 slop", "AI 味"],
     officialUrl: "https://github.com/Leonxlnx/taste-skill",
     sourceUrl: "https://github.com/Leonxlnx/taste-skill",
     installGuide: "npx skills add https://github.com/Leonxlnx/taste-skill",
     configText: undefined,
-    imageAlt: "Taste Skill 精选卡片：官方 OG 词标「The Anti-Slop Frontend Framework for AI Agents」配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    updatedAt: "2026-09-23",
+    imageAlt: "Taste Skill 精选卡片：官方渠道视觉配统一版式，左侧 SKILL 徽章与「创意与设计」分类标注、一句话价值与 MIT 许可证标注",
     imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
-    descriptionMustMatch: /反 slop/,
-    bodyMustMatch: [/Kimi（Moonshot AI）/, /tasteskill\.dev/, /按项目调校/],
+    descriptionMustMatch: /「AI 味」/,
+    bodyMustMatch: [/Humanizer/, /tasteskill\.dev/, /Kimi（Moonshot AI）/, /按项目调校/],
   },
   {
     slug: "world-monitor",
@@ -131,7 +132,7 @@ describe("RUYI-164 每日精选入库（6 条）", () => {
         expect(seed?.sourceUrl).toBe(item.sourceUrl);
         expect(seed?.installGuide).toBe(item.installGuide);
         expect(seed?.configText).toBe(item.configText);
-        expect(seed?.updatedAt).toBe("2026-09-21");
+        expect(seed?.updatedAt).toBe(item.updatedAt ?? "2026-09-21");
       });
 
       it("分类属于合法枚举", () => {

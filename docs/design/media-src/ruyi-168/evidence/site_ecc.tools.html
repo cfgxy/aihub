@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>ECC | The #1 agentic engineering toolkit</title>
+  <meta name="description" content="The operating layer for agent harnesses: skills, hooks, Plan Canvas, unified memory, compute workflows and AgentShield security across coding agents.">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="canonical" href="https://ecc.tools">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=ecc-mark">
+  <link rel="alternate icon" href="/favicon.ico?v=ecc-mark">
+  <link rel="shortcut icon" href="/favicon.ico?v=ecc-mark">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=ecc-mark">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.github.com">
+  <link rel="dns-prefetch" href="https://github.com">
+  <link rel="dns-prefetch" href="https://www.npmjs.com">
+  <link rel="dns-prefetch" href="https://api.npmjs.org">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <meta property="og:title" content="ECC | The #1 agentic engineering toolkit">
+  <meta property="og:description" content="The operating layer for agent harnesses: skills, hooks, Plan Canvas, unified memory, compute workflows and AgentShield security across coding agents.">
+  <meta property="og:image" content="https://ecc.tools/og.png?v=3f55054986bd">
+  <meta property="og:url" content="https://ecc.tools">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ECC">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ECC | The #1 agentic engineering toolkit">
+  <meta name="twitter:description" content="The operating layer for agent harnesses: skills, hooks, Plan Canvas, unified memory, compute workflows and AgentShield security across coding agents.">
+  <meta name="twitter:image" content="https://ecc.tools/og.png?v=3f55054986bd">
+  <meta name="twitter:site" content="@affaan">
+  <style>
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+  
+    
+    body {
+      font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+      line-height: 1.6;
+      color: #ffffff;
+      background: #0a0a12;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* Mesh gradient background effect */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: #0a0a12;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Subtle grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Main wrapper - full width, centered content */
+    .page-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container variants for different content widths */
+    .container {
+      width: 100%;
+      max-width: min(90vw, 1600px);
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .container-wide {
+      width: 100%;
+      max-width: min(94vw, 1800px);
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .container-prose {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .container-full {
+      width: 100%;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    /* Responsive padding for edge-to-edge on mobile */
+    @media (max-width: 480px) {
+      .container, .container-wide, .container-prose, .container-full {
+        padding-inline: clamp(0.75rem, 1.5vw, 1rem);
+      }
+    }
+
+    /* Typography hierarchy - fluid sizes */
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(1.85rem, 2.4vw + 0.5rem, 2.6rem); }
+    h2 { font-size: clamp(1.4rem, 1.6vw + 0.5rem, 1.85rem); }
+    h3 { font-size: clamp(1.2rem, 1.2vw + 0.25rem, 1.5rem); }
+    h4 { font-size: clamp(1.05rem, 1vw + 0.25rem, 1.25rem); }
+
+    p {
+      color: #c8c8e0;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+      line-height: 1.75;
+    }
+
+    a {
+      color: #E07856;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #f08a68;
+    }
+
+    code {
+      background: rgba(126, 231, 135, 0.1);
+      color: #7ee787;
+      padding: 0.15em 0.4em;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: #12121f;
+      border: 1px solid rgba(224, 120, 86, 0.12);
+      border-radius: 14px;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.875rem, 0.9vw + 0.4rem, 0.95rem);
+      line-height: 1.6;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    ul, ol {
+      margin-left: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    }
+
+    li {
+      color: #c8c8e0;
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    }
+
+    strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* Selection styling */
+    ::selection {
+      background: rgba(224, 120, 86, 0.4);
+      color: #ffffff;
+    }
+
+    /* Focus visible styling */
+    :focus-visible {
+      outline: 2px solid #E07856;
+      outline-offset: 2px;
+    }
+  
+    
+    /* Text utilities */
+    .text-primary { color: #ffffff; }
+    .text-secondary { color: #c8c8e0; }
+    .text-tertiary { color: #8888a8; }
+    .text-muted { color: #5a5a78; }
+    .text-accent { color: #E07856; }
+    .text-gold { color: #ffd700; }
+    .text-green { color: #7ee787; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: #e8713a;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Background utilities */
+    .bg-primary { background: #0a0a12; }
+    .bg-elevated { background: #12121f; }
+    .bg-subtle { background: rgba(18, 18, 31, 0.8); }
+    .bg-glass {
+      background: rgba(10, 10, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Layout utilities */
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-xs { gap: clamp(0.5rem, 1vw, 0.75rem); }
+    .gap-sm { gap: clamp(0.75rem, 1.5vw, 1rem); }
+    .gap-md { gap: clamp(1rem, 2vw, 1.5rem); }
+    .gap-lg { gap: clamp(1.25rem, 2vw, 1.75rem); }
+
+    /* Spacing utilities */
+    .mt-sm { margin-top: clamp(0.75rem, 1.5vw, 1rem); }
+    .mt-md { margin-top: clamp(1rem, 2vw, 1.5rem); }
+    .mt-lg { margin-top: clamp(1.25rem, 2vw, 1.75rem); }
+    .mt-xl { margin-top: clamp(1.75rem, 2.5vw, 2.25rem); }
+    .mb-sm { margin-bottom: clamp(0.75rem, 1.5vw, 1rem); }
+    .mb-md { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+    .mb-lg { margin-bottom: clamp(1.25rem, 2vw, 1.75rem); }
+    .mb-xl { margin-bottom: clamp(1.75rem, 2.5vw, 2.25rem); }
+
+    /* Section styles */
+    .section {
+      padding-block: clamp(1.75rem, 2.5vw, 2.25rem);
+    }
+
+    .section-lg {
+      padding-block: clamp(2rem, 3vw, 2.75rem);
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 1.6vw + 0.5rem, 1.85rem);
+      font-weight: 700;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      color: #8888a8;
+      font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+      line-height: 1.75;
+      max-width: 42ch;
+    }
+
+    .section-center {
+      text-align: center;
+    }
+
+    .section-center .section-subtitle {
+      margin-inline: auto;
+    }
+
+    /* Visually hidden (accessible) */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  
+    
+    /* Fade in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Staggered children animation */
+    .stagger-children > * {
+      opacity: 0;
+      animation: fadeIn 0.4s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+    .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+    .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+    .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+    .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+    .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  
+  </style>
+  
+<style>
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .header {
+      position: fixed;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 1280px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .2rem 0;
+      min-height: 56px;
+      font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: rgba(18, 18, 27, .72);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid #ffffff24;
+      border-radius: 14px;
+      transition: border-radius 160ms, box-shadow 160ms, background 160ms;
+    }
+
+    .header.is-scrolled {
+      background: rgba(18, 18, 27, .78);
+      border-color: #ffffff30;
+      box-shadow: 0 8px 24px #00000026;
+    }
+
+    [id] { scroll-margin-top: 100px; }
+    .header-spacer { height: 72px; flex-shrink: 0; }
+    .header-nav .github-count { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .4rem .65rem; border: 1px solid #ffffff25; border-radius: 8px; color: #eee8f0; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .github-count img { width: 17px; height: 17px; filter: invert(1); }
+
+    .header-install-link img { width: 17px; height: 17px; filter: invert(1); }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .header, .header.is-scrolled { background: #12121b; } }
+    @media (prefers-reduced-transparency: reduce) { .header, .header.is-scrolled { background: #12121b; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+    @media (prefers-reduced-motion: reduce) { .header { transition: none; } }
+
+    .header-inner {
+      width: 100%;
+      max-width: min(94vw, 1800px);
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #ffffff;
+      transition: opacity 0.15s ease;
+    }
+
+    .header-brand:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .header-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .header-brand svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .header-logo img, .header-logo .brand-mark-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .header-title {
+      font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: -0.02em;
+    }
+
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .header-subtitle {
+      color: #5a5a78;
+      font-size: clamp(0.75rem, 0.8vw + 0.3rem, 0.85rem);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .header-nav a {
+      color: #d4ccdf;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: clamp(0.875rem, 0.9vw + 0.4rem, 0.95rem);
+      transition: color 0.15s ease;
+      padding: 0.5rem 0;
+    }
+
+    .header-nav a:hover,
+    .header-nav a.active {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .header-nav a.active {
+      color: #f2b5a2;
+    }
+
+    .header-nav a:focus {
+      outline: none;
+    }
+
+    .header-nav a:focus-visible {
+      outline: 2px solid #E07856;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .header-nav .header-install-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      padding: .35rem .65rem;
+      min-height: 36px;
+      border-radius: 14px;
+      border: 1px solid rgba(224, 120, 86, 0.12);
+      background: rgba(224, 120, 86, 0.08);
+      color: #ffffff;
+    }
+
+    .header-nav .header-install-link:hover {
+      color: #ffffff;
+      border-color: rgba(224, 120, 86, 0.25);
+      background: rgba(224, 120, 86, 0.12);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile menu toggle - hamburger → X animation */
+    .header-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 0.5rem;
+      width: 44px;
+      height: 44px;
+      position: relative;
+    }
+
+    .header-menu-btn:focus {
+      outline: none;
+    }
+
+    .header-menu-btn:focus-visible {
+      outline: 2px solid #E07856;
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .header-menu-btn .bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      position: absolute;
+      left: 11px;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+
+    .header-menu-btn .bar:nth-child(1) { top: 14px; }
+    .header-menu-btn .bar:nth-child(2) { top: 21px; }
+    .header-menu-btn .bar:nth-child(3) { top: 28px; }
+
+    .header-menu-btn.open .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .header-menu-btn.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .header-menu-btn.open .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Collapse navigation earlier so laptop widths do not crowd the header */
+    @media (max-width: 1100px) {
+      .header-inner {
+        padding-inline: clamp(0.75rem, 1.5vw, 1rem);
+      }
+
+      .header-nav {
+        position: absolute;
+        top: calc(100% + 6px);
+        max-height: calc(100dvh - 84px);
+        overflow-y: auto;
+        border: 1px solid #ffffff24;
+        border-radius: 14px;
+        left: 0;
+        right: 0;
+        background: #12121b;
+        border-bottom: 1px solid rgba(224, 120, 86, 0.12);
+        flex-direction: column;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        gap: clamp(0.75rem, 1.5vw, 1rem);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.25s ease, opacity 0.15s ease, visibility 0.15s ease;
+      }
+
+      .header-nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .header-nav.header-nav-static {
+        position: static;
+        inset: auto;
+        flex-direction: row;
+        padding: 0;
+        gap: clamp(0.75rem, 1.5vw, 1rem);
+        background: transparent;
+        border-bottom: 0;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .header-nav a {
+        width: 100%;
+        padding: clamp(0.75rem, 1.5vw, 1rem);
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .header-nav.header-nav-static a {
+        width: auto;
+        padding: 0.5rem 0;
+      }
+
+      .header-nav .header-install-link {
+        padding: clamp(0.75rem, 1.5vw, 1rem);
+      }
+
+      .header-nav a:hover {
+        background: rgba(224, 120, 86, 0.08);
+      }
+
+      .header-menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-logo {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  
+    .footer {
+      padding: 2rem 0 1rem;
+      border-top: 1px solid rgba(224, 120, 86, 0.12);
+      color: #8888a8;
+      margin-top: auto;
+      contain: layout style;
+    }
+
+    .footer-inner {
+      width: 100%;
+      max-width: min(94vw, 1800px);
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .footer-brand .header-logo {
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(224, 120, 86, 0.18);
+    }
+
+    .footer-brand-copy {
+      color: #c8c8e0;
+      font-size: clamp(0.875rem, 0.9vw + 0.4rem, 0.95rem);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      max-width: 38rem;
+    }
+
+    .footer-section h4 {
+      color: #ffffff;
+      font-size: clamp(0.75rem, 0.8vw + 0.3rem, 0.85rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #8888a8;
+      text-decoration: none;
+      font-size: clamp(0.875rem, 0.9vw + 0.4rem, 0.95rem);
+      margin-bottom: 0.5rem;
+      transition: color 0.15s ease;
+    }
+
+    .footer-section a:hover {
+      color: #E07856;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(224, 120, 86, 0.12);
+    }
+
+    .footer-bottom p {
+      margin-bottom: 0.5rem;
+      font-size: clamp(0.875rem, 0.9vw + 0.4rem, 0.95rem);
+    }
+
+    .footer-bottom a {
+      color: #E07856;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-copyright {
+      color: #5a5a78;
+    }
+
+    /* Responsive footer grid */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-inner {
+        padding-inline: clamp(0.75rem, 1.5vw, 1rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-subtitle {
+        display: none;
+      }
+
+      .footer-brand {
+        justify-content: flex-start;
+      }
+
+      .footer-brand-copy {
+        text-align: left;
+        margin-inline: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        text-align: left;
+        gap: 1.25rem;
+      }
+
+      .footer-section {
+        padding-bottom: .5rem;
+        border-bottom: 0;
+      }
+
+      .footer-section:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+
+    .status-link { display: inline-flex; align-items: center; justify-content: center; }
+    .footer-section h4 { text-transform: none; letter-spacing: 0; font-size: .85rem; }
+    .footer-section a { line-height: 1.6; }
+  
+    .skip-to-content {
+      position: absolute;
+      top: clamp(0.75rem, 1.5vw, 1rem);
+      left: clamp(0.75rem, 1.5vw, 1rem);
+      z-index: 200;
+      padding: 0.7rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(224, 120, 86, 0.25);
+      background: #12121f;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      transform: translateY(-160%);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .skip-to-content:focus {
+      transform: translateY(0);
+      outline: none;
+    }
+
+    .skip-to-content:focus-visible {
+      box-shadow: 0 0 0 3px rgba(224, 120, 86, 0.3), 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+  
+    :root { --landing-accent:#e7afa2; --landing-paper:#f3eef0; --landing-ink:#0b0b14; --landing-muted:#bcb9c7; --landing-line:#ffffff1b; --landing-sans:'Exo 2',sans-serif; --landing-mono:'JetBrains Mono',monospace; }
+    body { background:var(--landing-ink); color:var(--landing-paper); font-family:var(--landing-sans); }
+    body::before,body::after { display:none; }
+    .page-wrapper,#main-content { min-width:0; width:100%; }
+    .conversion-section,.faq-item { scroll-margin-top:100px; }
+    .conversion-section { padding:clamp(2.5rem,5vw,4.25rem) clamp(1.25rem,4vw,3rem); }
+    .conversion-inner { width:100%; max-width:1180px; margin:0 auto; min-width:0; }
+    .section-heading { max-width:47rem; margin-bottom:1.8rem; }
+    .conversion-eyebrow,.diagram-label,.card-number,.product-type,.workflow-kind { color:var(--landing-accent); font:500 .85rem/1.6 var(--landing-sans); letter-spacing:.01em; }
+    .conversion-eyebrow { margin:0 0 .65rem; }
+    .conversion-section h1,.conversion-section h2 { color:var(--landing-paper); font-weight:600; letter-spacing:-.035em; text-wrap:balance; }
+    .conversion-section h1 { font-size:clamp(2.35rem,4.4vw,3.85rem); line-height:1.12; margin:0 0 1.4rem; }
+    .conversion-section h2 { font-size:clamp(1.75rem,3.1vw,2.6rem); line-height:1.2; margin:0; }
+    .conversion-section h3 { font:600 1.18rem/1.4 var(--landing-sans); color:var(--landing-paper); letter-spacing:-.015em; margin:0 0 .6rem; }
+    .conversion-section p { color:var(--landing-muted); line-height:1.75; }
+    .conversion-section a { text-underline-offset:.23em; }
+    .conversion-section a:hover { color:#f5c4b5; }
+    a:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid #f3bda7; outline-offset:4px; }
+    .hero-section { position:relative; isolation:isolate; overflow:hidden; background:#11131e; padding-top:2rem; padding-bottom:1.2rem; }
+    .hero-art { max-width:none; position:absolute; inset:0; z-index:-1; pointer-events:none; }
+    .hero-art img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    .hero-layout { min-height:340px; display:flex; align-items:center; }
+    .hero-content { min-width:0; max-width:650px; }
+    .hero-content h1 em { display:block; color:#ecc4b8; font-style:normal; }
+    .hero-section .conversion-eyebrow { color:#d4cfdb; }
+    .hero-copy { font-size:1.1rem; max-width:29rem; margin:0 0 1.55rem; }
+    .hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:.8rem; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:1.2rem; min-height:46px; padding:.8rem 1.15rem; border:1px solid #e8b8ad; border-radius:10px; background:#e9b4a5; color:#241716; font:600 .88rem/1.5 var(--landing-sans); text-decoration:none; transition:background 150ms,transform 150ms; }
+    .conversion-section .button:hover { background:#f2c8ba; color:#241716; text-decoration:none; }
+    .button.secondary { color:var(--landing-paper); background:#12121c8c; border-color:#ffffff40; }
+    .conversion-section .button.secondary:hover { background:#24232e; color:#fff; }
+    .text-link { color:var(--landing-paper); font-size:.85rem; font-weight:500; line-height:1.7; }
+    .install-block { margin-top:1.15rem; max-width:29rem; }
+    .install-block>.diagram-label { display:block; color:#c4bdcc; margin-bottom:.5rem; font-size:.77rem; }
+    .install-line { display:flex; align-items:center; gap:.65rem; background:#10111bdb; border:1px solid #ffffff25; border-radius:10px; padding:.15rem .75rem; min-height:46px; }
+    .install-line>span { color:var(--landing-accent); }
+    .install-line code { min-width:0; padding:0; background:none; color:#e7e0ee; font:.75rem/1.8 var(--landing-mono); overflow-wrap:anywhere; }
+    .copy-command { margin-left:auto; flex-shrink:0; min-height:44px; padding:.25rem .5rem; border:0; background:none; color:#ded7e5; font:.8rem var(--landing-sans); cursor:pointer; }
+    .copy-command[hidden] { display:none; }
+    .copy-status { display:block; min-height:1.2rem; font-size:.7rem; color:#c1b8c9; }
+    .copy-status:empty { min-height:0; }
+    .proof-line { margin:.4rem 0 0; font-size:.75rem; }
+    .proof-line a { color:#d4ceda; }.proof-line time { white-space:nowrap; }
+    .hero-tools { margin-top:1.3rem; padding:0; }
+    .hero-tools .tool-setup-label { color:#d4cfdb; font-size:.78rem; margin:0 0 .25rem; }
+    .ecc-affiliations { max-width:1180px; margin:1.6rem auto .5rem; }
+    .distribution { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:1rem; background:#11111b; border:1px solid #ffffff25; border-radius:12px; overflow:hidden; }
+    .distribution>a { padding:1rem 1.25rem; border-right:1px solid #ffffff25; color:#eee8f0; text-decoration:none; }
+    .distribution>a:first-child { padding-left:1.25rem; }.distribution>a:last-child { border:0; }
+    .distribution strong { display:block; font:600 clamp(1.5rem,2.6vw,2.15rem)/1.25 var(--landing-sans); letter-spacing:-.035em; color:#f4eff3; font-variant-numeric:tabular-nums; }
+    .distribution span { display:block; color:#c6bdcc; font-size:.74rem; margin-top:.3rem; }.distribution span span { display:inline; }
+    @media(max-width:600px) { .distribution { grid-template-columns:repeat(2,minmax(0,1fr)); }.distribution>a { padding:.8rem; }.distribution>a:first-child { padding-left:.8rem; }.distribution>a:nth-child(2) { border-right:0; }.distribution>a:nth-child(-n+2) { border-bottom:1px solid #ffffff25; } }
+    .demo-layout { display:grid; grid-template-columns:minmax(0,1.75fr) minmax(0,1fr); gap:2.5rem; align-items:center; }
+    .demo-frame { min-width:0; border:1px solid var(--landing-line); border-radius:16px; overflow:hidden; background:#0e0e16; box-shadow:0 20px 55px #0003; }
+    .demo-frame video { display:block; width:100%; aspect-ratio:16/9; object-fit:contain; background:#08090d; }
+    .demo-caption p { font-size:.95rem; margin-bottom:1rem; }.demo-caption h3 { font-size:1.45rem; }
+    .demo-caption .media-note { font-size:.8rem; padding-top:1.2rem; margin-top:1.3rem; border-top:1px solid var(--landing-line); }.media-note a { color:#d6c5d6; }
+    #layers { padding-top:1rem; }.workflow-links { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }
+    .workflow-links>a { text-decoration:none; padding:1.25rem 0; border-top:1px solid #ffffff35; display:flex; flex-direction:column; align-items:start; }
+    .workflow-links>a:hover { border-color:var(--landing-accent); }.workflow-kind { font-size:.78rem; margin-bottom:.6rem; }
+    .workflow-links p { font-size:.9rem; margin:0 0 .8rem; }.workflow-links .text-link { margin-top:auto; text-decoration:underline; }
+    #control-plane { background:#15151f; }
+    .product-stage { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; }
+    .product-feature { min-width:0; background:#1c1c28; border:1px solid #ffffff17; border-radius:18px; overflow:hidden; }
+    .product-feature .demo-frame { border:0; border-radius:0; box-shadow:none; }.product-feature video { aspect-ratio:8/5; }
+    .product-capture-link { display:block; background:#0b0c13; }
+    .product-capture-link img { display:block; width:100%; aspect-ratio:8/5; height:auto; object-fit:contain; }
+    .product-feature-copy { padding:1.4rem 1.6rem; }.product-feature-copy p { margin:0 0 .8rem; font-size:.9rem; }.product-feature-copy h3 { font-size:1.4rem; }
+    .product-feature-copy .product-type { color:#e6b0a5; font-size:.8rem; }.product-feature-copy small { display:block; color:#aaa6b8; font-size:.7rem; margin-top:.6rem; }
+    .memory-compute { display:grid; gap:1.5rem; }
+    .memory-feature { display:grid; grid-template-columns:1fr 1.1fr; gap:2.5rem; align-items:center; }.memory-feature p { max-width:35rem; margin-bottom:1rem; }
+    .product-command { padding:1.25rem; margin:0; border:1px solid var(--landing-line); border-radius:14px; background:#12121e; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .product-command code { color:#d8d1e5; background:none; font:.74rem/1.9 var(--landing-mono); padding:0; }
+    .compute-feature { display:flex; align-items:center; gap:2.5rem; border-top:1px solid var(--landing-line); padding:1.6rem 0 .1rem; }.compute-feature>img { width:125px; height:38px; object-fit:contain; flex-shrink:0; }.compute-feature h3 { font-size:1.1rem; }.compute-feature p { margin:0 0 .6rem; font-size:.9rem; }
+    .security-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:3rem; align-items:center; }.security-copy>p { font-size:1rem; margin:0 0 1.5rem; }
+    .light-section { background:#e4dfe8; color:#29232f; }.light-section h2,.light-section h3 { color:#29232f; }.light-section p { color:#5c5261; }.light-section .conversion-eyebrow,.light-section .card-number { color:#795064; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.3rem; }
+    .price-card { padding:1.5rem; border:1px solid #aaa0b05c; border-radius:16px; background:#efebf149; display:flex; flex-direction:column; align-items:start; }.price-card-featured { background:#f5f0f4; border-color:#a18b9e; }
+    .light-section .price-card .price { color:#29232f; }
+    .price-card h3 { margin:.7rem 0 1rem; font-size:1rem; }.price { font-size:2.7rem; line-height:1.2; letter-spacing:-.04em; display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem; margin-bottom:1rem; }.price span { font-size:.75rem; color:#635967; letter-spacing:0; }.price-contact { font-size:2rem; min-height:3.25rem; }
+    .price-card>p { font-size:.9rem; margin:0 0 1.5rem; }.price-card .button { margin-top:auto; }.light-section .button.secondary { color:#322735; background:transparent; border-color:#97899b; }.light-section .button.secondary:hover { background:#d8ccdd; color:#322735; }.light-section a:not(.button) { color:#76465d; }.light-section a:focus-visible { outline-color:#76465d; }.pricing-footnote { margin:1.25rem 0 0; font-size:.78rem; }
+    .community-intro { display:flex; justify-content:space-between; align-items:start; gap:2rem; margin-bottom:1.5rem; }.community-intro>p { max-width:38rem; font-size:.95rem; }.inline-links { display:flex; flex-wrap:wrap; gap:1rem; font-size:.85rem; }.inline-links a { color:var(--landing-paper); }
+    .developer-stories { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }.developer-stories figure { margin:0; padding:1.6rem; background:#1a1822; border:1px solid #ffffff13; border-radius:16px; display:flex; flex-direction:column; }.developer-stories blockquote { margin:0 0 1.5rem; font-size:1.05rem; line-height:1.65; color:#e6dfe9; }.developer-stories figcaption { margin-top:auto; }.developer-stories figcaption a { color:#e5b5a9; font-size:.85rem; }.developer-stories figcaption span { display:block; color:#aaa5b5; font-size:.73rem; line-height:1.6; margin-top:.3rem; }.developer-stories a>span { display:inline; color:inherit; }
+    .reviewer-avatar { float:left; width:36px; height:36px; border-radius:50%; margin:.1rem .7rem .2rem 0; }
+    .review-context { font-size:.76rem; margin:1rem 0; }.review-context a { color:#c9b2cc; }
+    .sponsors { padding:1.5rem 0; margin:1.5rem 0; border-top:1px solid var(--landing-line); border-bottom:1px solid var(--landing-line); }.sponsor-heading { display:flex; align-items:center; gap:1.5rem; justify-content:space-between; }.sponsor-heading p { margin:0; }.sponsor-partner-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); align-items:center; gap:1rem; width:100%; margin:.8rem 0; }.sponsor-partner-row a { display:flex; align-items:center; justify-content:center; min-height:104px; width:100%; border-radius:10px; }.sponsor-partner-row a:hover { background:#ffffff05; }.sponsor-partner-row img { width:72px; max-width:100%; height:72px; object-fit:contain; }.sponsor-partner-row img.sponsor-ito { width:112px; }.sponsor-partner-row img.sponsor-serpapi { width:150px; height:auto; }.past-sponsors { font-size:.72rem; margin:0; }
+    .talk-preview { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:2rem; margin:2.2rem 0; }.talk-preview-photo { display:block; border-radius:18px; overflow:hidden; }.talk-preview img { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:contain; background:#161721; }.talk-preview h3 { font-size:1.7rem; }.talk-preview p { margin-bottom:1rem; }
+    .coverage-band { border-top:1px solid var(--landing-line); padding-top:1.5rem; }.coverage-heading h3 { margin:.5rem 0 1rem; font-size:1.2rem; }.coverage-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 1.5rem; }.coverage-card { border-top:1px solid var(--landing-line); padding:.9rem 0; }.coverage-card a { color:#d8d3df; font-size:.83rem; line-height:1.5; }.coverage-card small,.coverage-proof small { display:block; color:#a8a2b1; font-size:.72rem; margin-top:.4rem; }.coverage-proof { display:grid; grid-template-columns:160px 1fr; gap:1.3rem; align-items:center; margin:1.5rem 0 0; }.coverage-proof img { display:block; width:100%; height:auto; border:1px solid var(--landing-line); border-radius:10px; }.coverage-proof h4 { margin:.4rem 0; font-size:1rem; color:#e5dfeb; }.coverage-proof p { font-size:.78rem; margin:0 0 .4rem; }.coverage-proof .diagram-label { font-size:.72rem; }.coverage-proof .text-link { font-size:.78rem; }
+    .faq-item { border-top:1px solid #ffffff24; padding:1.1rem 0; }.faq-item:last-child { border-bottom:1px solid #ffffff24; }.faq-item summary { display:flex; justify-content:space-between; gap:1rem; align-items:center; cursor:pointer; list-style:none; color:#eee7f0; font-size:1rem; font-weight:500; }.faq-item summary::-webkit-details-marker { display:none; }.faq-item summary span { color:var(--landing-accent); font-size:1.4rem; }.faq-item[open] summary span { transform:rotate(45deg); }.faq-answer { padding:1rem 2rem .3rem 0; max-width:55rem; }.faq-answer p { font-size:.92rem; margin-bottom:.75rem; }.faq-answer a { color:#e6d9e9; font-size:.85rem; }
+    .closing-cta { display:flex; justify-content:space-between; align-items:center; gap:2rem; margin-top:2rem; padding:1.5rem; background:#1c1825; border-radius:16px; }.closing-cta h3 { margin:.5rem 0 0; font-size:1.45rem; max-width:30rem; }.closing-cta p { margin:0; }.conversion-section:last-child { padding-bottom:2.5rem; }
+    @media(prefers-reduced-motion:no-preference) { .hero-content { animation:hero-enter 600ms ease-out both; } @keyframes hero-enter { from { opacity:.4; transform:translateY(12px); } to { opacity:1; transform:none; } } }
+    @media(max-width:1000px) { .hero-content { max-width:490px; }.hero-art img { object-position:65% center; }.demo-layout { gap:1.5rem; }.security-layout { gap:1.5rem; }.developer-stories { gap:1rem; }.developer-stories figure { padding:1.2rem; } }
+    @media(max-width:800px) { .hero-section { padding-top:2rem; }.hero-layout { min-height:0; }.hero-content { max-width:38rem; }.hero-section { display:flex; flex-direction:column; padding-bottom:1.25rem; }.hero-art { position:relative; inset:auto; order:4; height:250px; width:calc(100% + 2.5rem); margin:0 -1.25rem; z-index:0; mask-image:linear-gradient(transparent,#000 18%,#000 85%,transparent); }.hero-art img { object-position:95% center; }.hero-layout { order:1; }.hero-tools { order:5; margin-top:0; }.distribution { order:2; }.demo-layout,.memory-feature,.security-layout { grid-template-columns:1fr; gap:1.5rem; }.demo-caption { max-width:40rem; }.product-stage { gap:1rem; }.product-feature-copy { padding:1.2rem; }.product-feature-copy h3 { font-size:1.2rem; }.community-intro,.closing-cta { flex-direction:column; align-items:start; gap:1rem; }.pricing-grid,.developer-stories { grid-template-columns:1fr; }.price-card { display:grid; grid-template-columns:1fr auto; column-gap:1rem; }.price-card>.card-number,.price-card>h3,.price-card>p { grid-column:1; }.price-card .price { grid-column:2; grid-row:1/4; align-self:center; max-width:180px; }.price-card>.button { grid-column:1/-1; justify-self:start; }.price-card>p { max-width:36rem; }.developer-stories blockquote { margin-bottom:1rem; }.coverage-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.talk-preview { gap:1.5rem; }.talk-preview h3 { font-size:1.4rem; } }
+    @media(max-width:600px) { .product-stage,.workflow-links,.talk-preview { grid-template-columns:1fr; }.workflow-links { gap:.3rem; }.workflow-links>a { padding:1rem 0; }.workflow-links h3 { font-size:1.15rem; }.workflow-links p { margin-bottom:.5rem; }.compute-feature { align-items:start; flex-direction:column; gap:1rem; }.price-card { display:flex; }.price-card .price { max-width:none; }.price-card .button { width:100%; }.coverage-proof { grid-template-columns:1fr; }.coverage-proof img { max-width:220px; }.sponsor-heading { flex-wrap:wrap; gap:.5rem; }.sponsor-partner-row { grid-template-columns:repeat(3,minmax(0,1fr)); gap:.4rem; }.sponsor-partner-row a { min-height:80px; }.sponsor-partner-row img { width:52px; height:52px; }.sponsor-partner-row img.sponsor-serpapi { width:100px; }.hero-tools { padding:0; } }
+    @media(max-width:400px) { .hero-actions { width:100%; align-items:stretch; flex-direction:column; }.hero-actions .button { width:100%; }.install-line { padding-inline:.5rem; gap:.4rem; }.install-line code { font-size:.67rem; }.coverage-grid { grid-template-columns:1fr; }.closing-cta { padding:1.2rem; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
+  
+    .original-demo { min-width: 0; border: 1px solid #ffffff20; border-radius: 20px; overflow: hidden; background: #121920; }
+    .original-demo-cover { min-height: 320px; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1rem; background: radial-gradient(ellipse at 50% 15%,#53756735,transparent 75%); }
+    .original-demo-cover > img { width: 92px; height: 92px; object-fit: contain; border-radius: 22px; }
+    .original-demo-cover h3 { margin: .3rem 0; font-size: 1.45rem; color: #f2ecec; }
+    .original-demo-cover p { margin: 0; color: #c2c8ca; font-size: .9rem; }
+    .original-demo-cover .media-kicker { font-size: .78rem; color: #bdcfc6; }
+    .media-play { display: inline-flex; align-items: center; justify-content: center; gap: 1.5rem; min-height: 46px; padding: .7rem 1.2rem; border: 1px solid #c2d8cd; border-radius: 10px; background: #d7e4db; color: #17251f; font: 600 .9rem 'Exo 2',sans-serif; cursor: pointer; }
+    .media-play[hidden] { display: none; }
+    .media-source { margin: 0 !important; padding: .8rem 1.15rem; display: flex; justify-content: space-between; gap: .7rem; flex-wrap: wrap; background: #0b1118; font-size: .75rem !important; }
+    .media-source a { color: #d3dedb !important; }
+    .media-source span { color: #a8b6b4; }
+    .original-demo iframe { display: block; border: 0; width: 100%; aspect-ratio: 16 / 9; background: #090d11; }
+    .product-brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 1rem; }
+    .product-brand img { width: 48px; height: 48px; object-fit: contain; }
+    .product-brand p { margin: 0 !important; color: #e9dfeb; font-size: .95rem; }
+    @media(max-width:600px) { .original-demo-cover { min-height: 275px; padding: 1.5rem; } }
+  
+    .ecc-tool-logos { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; background: transparent; border: 0; border-radius: 0; color: #eee8f0; }
+    .ecc-tool-logos li { min-width: 0; padding: 0 .25rem; }
+    .ecc-tool-logos a { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: .35rem .2rem; color: #eee8f0; text-decoration: none; border-radius: 12px; }
+    .ecc-tool-logos a:hover { background: #ffffff10; color: #eee8f0; text-decoration: none; }
+    .ecc-tool-logos a:focus-visible { outline: 2px solid #755693; outline-offset: 2px; }
+    .ecc-tool-mark { height: 26px; display: flex; align-items: center; justify-content: center; width: 30px; max-width: 100%; margin-bottom: 0; background: #f4f1eb; border-radius: 6px; padding: 4px; }
+    .ecc-tool-mark:has(.ecc-tool-wordmark) { width: 70px; }
+    .ecc-tool-mark img { display: block; width: 20px; height: 20px; object-fit: contain; }
+    .ecc-tool-mark img.ecc-tool-wordmark { width: min(100%, 82px); height: auto; max-height: 20px; }
+    .ecc-tool-logos a > span:not(.ecc-tool-mark) { font-size: .77rem; font-weight: 500; }
+    .ecc-tool-logos small { display: none; color: #aaa4b4; font-size: .7rem; line-height: 1.5; text-align: center; }
+    @media (max-width: 1000px) { .ecc-tool-logos a { flex-direction: column; gap: .3rem; } }
+    @media (max-width: 800px) { .ecc-tool-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 600px) {
+      .ecc-tool-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: .15rem 0; border-radius: 0; }
+      .ecc-tool-logos li { padding: .2rem; }
+      .ecc-tool-logos a { padding: .3rem .1rem; gap: .3rem; }
+      .ecc-tool-mark { height: 28px; margin-bottom: .1rem; }
+      .ecc-tool-mark img { width: 20px; height: 20px; }
+      .ecc-tool-mark img.ecc-tool-wordmark { max-width: 80px; }
+      .ecc-tool-logos a > span:not(.ecc-tool-mark) { font-size: .72rem; }
+      .ecc-tool-logos small { font-size: .63rem; }
+    }
+  
+    .ecc-affiliations { padding: 1.6rem clamp(1rem, 3vw, 2.5rem); background: #17171d; color: #f4f1eb; border: 1px solid #34343e; border-radius: 18px; }
+    .ecc-affiliations h2 { margin: 0 0 1.2rem; color: #c7c5cf; text-align: center; font: inherit; font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+    .ecc-affiliation-list { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.6rem; list-style: none; padding: 0; margin: 0; }
+    .ecc-affiliation-list li { display: flex; align-items: center; justify-content: center; gap: .55rem; min-height: 38px; color: #f4f1eb; font-size: .85rem; font-weight: 600; white-space: nowrap; }
+    .ecc-affiliation-mark { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: 0 0 32px; background: #f4f1eb; border-radius: 7px; }
+    .ecc-affiliation-mark img { display: block; width: 22px; height: 22px; object-fit: contain; }
+    .ecc-affiliation-skydio img { display: block; width: 106px; height: auto; object-fit: contain; }
+    .ecc-affiliations-more { margin: .75rem 0 0; color: #c7c5cf; text-align: center; font-size: .8rem; }
+    .ecc-engineering-feedback { margin: 1.5rem 0 0; padding: clamp(1.3rem, 3vw, 2rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .45fr); gap: 2rem; align-items: center; background: #201c27; border: 1px solid #b594a138; border-radius: 16px; }
+    .ecc-engineering-feedback .ecc-feedback-eyebrow { color: #edbeaf; font-size: .78rem; margin: 0 0 .65rem; }
+    .ecc-engineering-feedback .ecc-feedback-context { color: #c8c1d0; font-size: .9rem; line-height: 1.6; margin: 0 0 1rem; }
+    .ecc-engineering-feedback blockquote { margin: 0; color: #f4eff3; font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 1.45; }
+    .ecc-engineering-feedback figcaption { display: flex; align-items: center; gap: .85rem; font-size: .85rem; line-height: 1.5; }
+    .ecc-engineering-feedback figcaption img { width: 36px; height: 36px; padding: 5px; background: #f4f1eb; border-radius: 7px; }
+    .ecc-engineering-feedback figcaption strong { display: block; color: #e8dfe9; font-size: .85rem; font-weight: 600; }
+    .ecc-engineering-feedback figcaption span { display: block; color: #bfb5c6; font-size: .75rem; margin-top: .3rem; }
+    @media(max-width:700px) { .ecc-engineering-feedback { grid-template-columns: 1fr; gap: 1.4rem; } }
+    .ecc-media { margin-top: clamp(2rem, 5vw, 4rem); padding: clamp(1.1rem, 3vw, 2rem); border-radius: 20px; background: #e9e3e8; color: #242128; scroll-margin-top: 110px; }
+    .ecc-media-heading { max-width: 660px; margin-bottom: 1.6rem; }
+    .ecc-media .ecc-media-eyebrow, .ecc-media .ecc-media-kicker { margin: 0 0 .6rem; color: #655668; font-size: .72rem; font-weight: 600; line-height: 1.5; letter-spacing: .065em; text-transform: uppercase; }
+    .ecc-media h2 { margin: 0 0 .8rem; color: #242128; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.15; letter-spacing: -.035em; }
+    .ecc-media-heading > p:last-child { margin: 0; color: #605b65; font-size: .98rem; line-height: 1.65; }
+    .ecc-media-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .ecc-media-feature { position: relative; display: flex; flex-direction: column; min-width: 0; border: 1px solid #d7d0c7; border-radius: 18px; overflow: hidden; background: #faf8f2; }
+    .ecc-media-feature-guide { border-top: 4px solid #23714e; }
+    .ecc-media-feature-review { border-top: 4px solid #715588; }
+    .ecc-media-masthead { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: .7rem; padding: 1.25rem 1.5rem; border-bottom: 1px solid #ddd6cd; }
+    .ecc-media-masthead > span:first-child { color: #242128; font-size: 1.15rem; font-weight: 700; letter-spacing: -.025em; }
+    .ecc-media .ecc-media-type { color: #605b65; font-size: .7rem; font-weight: 500; line-height: 1.5; }
+    .ecc-media-feature-body { padding: 1.5rem; flex: 1; }
+    .ecc-media-feature h3 { margin: 0 0 1rem; color: #242128; font-size: clamp(1.25rem, 1.9vw, 1.6rem); font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
+    .ecc-media-feature h3 a { color: inherit; text-decoration: none; }
+    .ecc-media-feature h3 a::after { content: ''; position: absolute; inset: 0; }
+    .ecc-media-feature h3 a:hover { text-decoration: underline; text-underline-offset: .15em; }
+    .ecc-media-feature:focus-within { outline: 3px solid #715588; outline-offset: 3px; }
+    .ecc-media-feature-body > p:last-child { margin: 0; color: #605b65; font-size: .9rem; line-height: 1.65; }
+    .ecc-media-feature footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; padding: 1rem 1.5rem; background: #efebe3; color: #605b65; font-size: .73rem; }
+    .ecc-media-feature footer > span { color: #44334e; font-weight: 600; }
+    .ecc-media-international { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 2.1fr); gap: 1.5rem; margin-top: 1rem; padding: 1.5rem; border: 1px solid #d7d0c7; border-radius: 14px; }
+    .ecc-media-international h3 { margin: 0 0 .65rem; font-size: 1rem; font-weight: 500; line-height: 1.7; }
+    .ecc-media-international h3 a { color: #242128; text-decoration: underline; text-decoration-color: #c4b9cd; text-underline-offset: .2em; }
+    .ecc-media-international p:last-child { margin: 0; color: #605b65; font-size: .75rem; }
+    .ecc-media-video-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .7rem; margin: 2rem 0 1rem; }
+    .ecc-media-video-heading h3 { margin: 0; color: #242128; font-size: 1.1rem; font-weight: 600; }
+    .ecc-media-video-heading > span { color: #605b65; font-size: .75rem; }
+    .ecc-media-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; padding: 0; margin: 0; list-style: none; }
+    .ecc-media-videos li { min-width: 0; }
+    .ecc-media-videos a { display: flex; align-items: center; gap: .85rem; height: 100%; padding: 1rem; border: 1px solid #d7d0c7; border-radius: 12px; background: #faf8f2; color: #242128; text-decoration: none; }
+    .ecc-media-videos a:hover { background: #efebe3; border-color: #b7a8c0; }
+    .ecc-media-video-thumbnail { display: block; width: 88px; height: 66px; flex: 0 0 88px; object-fit: contain; border-radius: 5px; background: #18171b; }
+    @media(max-width:420px) { .ecc-media-videos a.ecc-media-featured-video { display: grid; grid-template-columns: minmax(0,1fr) auto; }.ecc-media-featured-video .ecc-media-video-thumbnail { grid-column: 1 / -1; width: 100%; height: 130px; } }
+    .ecc-media-play { display: flex; justify-content: center; align-items: center; flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; background: #e6ddec; color: #594269; font-size: .7rem; }
+    .ecc-media-videos strong { display: block; color: #242128; font-size: .86rem; font-weight: 600; line-height: 1.4; }
+    .ecc-media-videos small { display: block; margin-top: .35rem; color: #605b65; font-size: .73rem; line-height: 1.4; }
+    .ecc-media-arrow { margin-left: auto; color: #655668; }
+    .ecc-media-archive { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; align-items: center; margin: 1.5rem 0 0; padding: 1.2rem; border: 1px solid #d7d0c7; border-radius: 16px; background: #efebe3; }
+    .ecc-media-archive > img { width: 100%; height: auto; max-height: 310px; object-fit: contain; border: 1px solid #d7d0c7; border-radius: 8px; }
+    .ecc-media-archive figcaption { min-width: 0; }
+    .ecc-media-archive h3 { margin: 0 0 .8rem; color: #242128; font-size: 1.3rem; line-height: 1.3; }
+    .ecc-media-archive figcaption > p:not(.ecc-media-eyebrow) { color: #605b65; font-size: .85rem; line-height: 1.65; }
+    .ecc-media-archive a { display: inline-block; padding: .5rem 0; color: #594269; font-size: .82rem; font-weight: 600; line-height: 1.5; text-underline-offset: .2em; }
+    .ecc-media a:hover { color: #44334e; }
+    .ecc-media a:focus-visible { outline: 3px solid #715588; outline-offset: 4px; border-radius: 3px; }
+    @media (max-width: 760px) {
+      .ecc-affiliations { padding: 1.25rem .75rem; }
+      .ecc-affiliation-list { gap: .8rem 1.1rem; }
+      .ecc-affiliation-list li { font-size: .78rem; }
+      .ecc-media-features, .ecc-media-videos, .ecc-media-international, .ecc-media-archive { grid-template-columns: minmax(0, 1fr); }
+      .ecc-media-international { gap: .8rem; }
+      .ecc-media-masthead, .ecc-media-feature-body { padding: 1.15rem; }
+      .ecc-media-feature footer { padding: 1rem 1.15rem; }
+      .ecc-media-archive { gap: 1.1rem; }
+    }
+  
+    html { overflow-anchor: none; }
+    .distribution-report { margin-top: .65rem; border: 1px solid #ffffff25; border-radius: 12px; background: #11111b; color: #eee8f0; overflow: hidden; }
+    .package-downloads { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .package-downloads > a { display: flex; align-items: baseline; flex-wrap: wrap; gap: .35rem .8rem; padding: .65rem 1.2rem; color: #f4eff3; text-decoration: none; }
+    .package-downloads > a:first-child { border-right: 1px solid #ffffff20; }
+    .package-downloads strong { font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .package-downloads span { color: #c6bdcc; font-size: .75rem; }
+    .distribution-report .acquisition-methodology { margin: .8rem 1.2rem .4rem; color: #c7bdce; font-size: .75rem; line-height: 1.65; }
+    .acquisition-methods { border-top: 1px solid #ffffff20; }
+    .acquisition-methods summary { padding: .85rem 1.2rem; cursor: pointer; color: #ebc1b5; font-size: .82rem; font-weight: 600; }
+    .acquisition-methods summary > span { float: right; color: #bfb5c6; font-size: .72rem; font-weight: 400; }
+    .acquisition-table-wrap { overflow-x: auto; padding: 0 1.2rem; }
+    .acquisition-methods table { width: 100%; min-width: 580px; border-collapse: collapse; text-align: left; font-size: .76rem; line-height: 1.55; }
+    .acquisition-methods caption { padding: .6rem 0 1rem; text-align: left; color: #c7bdce; }
+    .acquisition-methods th,.acquisition-methods td { padding: .8rem .7rem .8rem 0; border-bottom: 1px solid #ffffff20; vertical-align: top; }
+    .acquisition-methods thead th { color: #eee8f0; font-weight: 600; }
+    .acquisition-methods tbody th { width: 23%; color: #eee8f0; font-weight: 500; }
+    .acquisition-methods td { color: #c7bdce; }
+    .acquisition-methods td:nth-child(2) { width: 27%; color: #eee8f0; font-variant-numeric: tabular-nums; }
+    .acquisition-methods a { color: #ebc1b5; }
+    .distribution-report .acquisition-note { margin: 1rem 1.2rem; color: #bfb5c6; font-size: .72rem; line-height: 1.65; }
+    @media(max-width:800px) { .distribution-report { order: 3; } }
+    @media(max-width:600px) { .package-downloads > a { padding: .65rem .8rem; }.acquisition-methods summary { padding: .85rem .8rem; }.acquisition-methods summary > span { float: none; display: block; margin-top: .3rem; } }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ECC",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "description": "Open-source agentic engineering toolkit with skills, Plan Canvas, unified memory, compute workflows and AgentShield.",
+    "url": "https://ecc.tools",
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "name": "Free",
+        "description": "Public-repo GitHub App onboarding and reviewable repo guidance"
+      },
+      {
+        "@type": "Offer",
+        "price": "19",
+        "priceCurrency": "USD",
+        "name": "Pro",
+        "description": "Private repo coverage, active-seat pricing, pooled usage, and deeper review for connected installations"
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise",
+        "description": "Enterprise governance, policy packs, auditability, rollout support, and procurement help"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Affaan Mustafa",
+      "url": "https://affaanmustafa.com"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/affaan-m/ECC"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{"@type":"Question","name":"What is ECC?","acceptedAnswer":{"@type":"Answer","text":"ECC is an open-source collection of skills, agents, hooks and workflow tools for coding agents. Start with the pieces your project needs, keep them in version control, and use them in your existing harness."}},{"@type":"Question","name":"How does the GitHub App work?","acceptedAnswer":{"@type":"Answer","text":"Connect the repositories you choose to the ECC GitHub App. It uses repository history to prepare reviewable guidance for your team. Review the requested GitHub permissions before installing; your existing pull-request review remains part of the workflow."}},{"@type":"Question","name":"What does AgentShield check?","acceptedAnswer":{"@type":"Answer","text":"AgentShield inspects agent configuration and workflow surfaces for risks such as prompt injection, unsafe permissions and exposed secrets. A scan is a review aid, not a guarantee that a repository or agent is safe. Review the scanner and the scope you select before running it."}},{"@type":"Question","name":"What is included in the open-source toolkit?","acceptedAnswer":{"@type":"Answer","text":"ECC is MIT-licensed and includes skills, agents, hooks, Plan Canvas, unified memory and compute workflows. Use them from the open-source repository. The GitHub App has separate Free, Pro and Enterprise plans; paid rollout and support are scoped with your team."}}]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ECC",
+    "url": "https://ecc.tools",
+    "description": "Agentic engineering tools for planning, memory, compute, security and repository workflows",
+    "publisher": {
+      "@type": "Person",
+      "name": "Affaan Mustafa",
+      "url": "https://affaanmustafa.com"
+    }
+  }
+  </script>
+</head><body><a href="#main-content" class="skip-to-content">Skip to content</a><div class="page-wrapper">
+    <header class="header">
+      <div class="header-inner">
+        <a href="/" class="header-brand">
+          <span class="header-logo" aria-hidden="true"><img src="/favicon.svg?v=ecc-mark" width="96" height="96" alt=""></span>
+          <span class="header-wordmark">
+            <span class="header-title">ECC</span>
+          </span>
+        </a>
+        <button class="header-menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav class="header-nav" id="site-nav" aria-label="Primary">
+          <a href="/app">Tools</a>
+          <a href="/skills">Skills</a>
+          <a href="/platforms">Platforms</a>
+          <a href="/security">Security</a>
+          <a href="/consulting">Consulting</a>
+          <a href="/pricing">Pricing</a>
+          <a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="github-count" aria-label="ECC on GitHub, 257,250 stars as of September 13, 2026" title="GitHub stars · September 13, 2026"><img src="/brands/github.svg" width="17" height="17" alt="">257k</a>
+          <a href="https://github.com/apps/ecc-tools" target="_blank" rel="noopener" class="header-install-link" aria-label="App Install: ECC GitHub App"><img src="/brands/github.svg" width="17" height="17" alt="">App Install</a>
+          
+        </nav>
+      </div>
+    </header><div class="header-spacer" aria-hidden="true"></div>
+  
+<main id="main-content">
+  <section id="hero" class="conversion-section hero-section" aria-labelledby="hero-title">
+    <picture class="hero-art" aria-hidden="true"><source type="image/webp" srcset="/media/ecc-soft-abstract-800.webp 800w, /media/ecc-soft-abstract-1672.webp 1672w" sizes="100vw"><img src="/media/ecc-soft-abstract-1672.webp" width="1672" height="941" alt="" fetchpriority="high"></picture>
+    <div class="conversion-inner hero-layout">
+      <div class="hero-content">
+        <p class="conversion-eyebrow">The #1 agentic engineering toolkit</p>
+        <h1 id="hero-title">The operating layer <em>for agent harnesses.</em></h1>
+        <p class="hero-copy">Skills, memory, planning and security. Give your coding agents a shared way to work, across the tools you use.</p>
+        <div class="hero-actions"><a class="button" href="https://github.com/apps/ecc-tools" target="_blank" rel="noopener">Install GitHub App <span aria-hidden="true">↗</span></a><a class="button secondary" href="#control-plane">Explore the tools <span aria-hidden="true">→</span></a></div>
+        <div class="install-block"><span class="diagram-label">Guided setup · Claude Code, Codex &amp; Kimi</span><div class="install-line"><span aria-hidden="true">$</span><code id="install-command">npx ecc-universal install --guided</code><button type="button" class="copy-command" aria-label="Copy installation command" hidden>Copy</button></div><span class="copy-status" role="status" aria-live="polite"></span></div>
+      </div>
+
+    </div>
+    <div class="conversion-inner hero-tools"><p class="tool-setup-label">Install ECC in your coding tool</p><ul class="ecc-tool-logos" aria-label="ECC installation and setup by coding tool">
+    <li><a href="https://github.com/affaan-m/ECC#claude-code-details"><span class="ecc-tool-mark"><img class="ecc-tool-wordmark" src="/brands/claude.svg" alt="Claude" width="573" height="125" loading="lazy"></span><span>Claude Code</span><small>Native plugin</small></a></li>
+    <li><a href="https://github.com/affaan-m/ECC/blob/main/.codex-plugin/README.md#installation"><span class="ecc-tool-mark"><img src="/brands/openai.svg" alt="OpenAI company mark" width="100" height="100" loading="lazy"></span><span>Codex</span><small>Native plugin</small></a></li>
+    <li><a href="https://github.com/affaan-m/ECC#other-agents-and-editors"><span class="ecc-tool-mark"><img src="/brands/cursor.svg" alt="Cursor" width="512" height="512" loading="lazy"></span><span>Cursor</span><small>Managed adapter</small></a></li>
+    <li><a href="https://github.com/affaan-m/ECC/blob/main/.opencode/README.md#option-1-npm-package"><span class="ecc-tool-mark"><img class="ecc-tool-wordmark" src="/brands/opencode.svg" alt="OpenCode" width="234" height="42" loading="lazy"></span><span>OpenCode</span><small>Managed adapter</small></a></li>
+    <li><a href="https://github.com/affaan-m/ECC/blob/main/.kimi/README.md#manual-install"><span class="ecc-tool-mark"><img src="/brands/kimi.png" alt="Kimi" width="112" height="112" loading="lazy"></span><span>Kimi Code</span><small>Project setup</small></a></li>
+    <li><a href="https://github.com/apps/ecc-tools"><span class="ecc-tool-mark"><img src="/brands/github.svg" alt="GitHub" width="24" height="24" loading="lazy"></span><span>GitHub</span><small>Repository workflow</small></a></li>
+  </ul></div>
+    <div class="conversion-inner distribution" aria-label="ECC distribution snapshot">
+      <a href="https://github.com/affaan-m/ECC"><strong>257,250</strong><span>GitHub stars* <span aria-hidden="true">↗</span></span></a>
+      <a href="#distribution-methods"><strong>673,617</strong><span>Git clone events · 14 days <span aria-hidden="true">↘</span></span></a>
+      <a href="https://www.skills.sh/affaan-m/ecc"><strong>805.5K</strong><span>Skill installs on skills.sh* <span aria-hidden="true">↗</span></span></a>
+      <a href="https://api.ecc.tools/badge/installs"><strong>6,184</strong><span>GitHub App installs* <span aria-hidden="true">↗</span></span></a>
+    </div>
+    <div class="conversion-inner distribution-report">
+    <div class="package-downloads" aria-label="npm package downloads, August 14 through September 12, 2026">
+      <a href="https://api.npmjs.org/downloads/point/2026-08-14:2026-09-12/ecc-universal"><strong>21,962</strong><span>ecc-universal npm downloads · 30 days* <span aria-hidden="true">↗</span></span></a>
+      <a href="https://api.npmjs.org/downloads/point/2026-08-14:2026-09-12/ecc-agentshield"><strong>30,535</strong><span>AgentShield npm downloads · 30 days* <span aria-hidden="true">↗</span></span></a>
+    </div>
+    <details class="acquisition-methods" id="distribution-methods">
+      <summary>Every installation method <span>* Sources &amp; methodology</span></summary>
+      <p class="acquisition-methodology">* Snapshot: <time datetime="2026-09-13">September 13, 2026</time>. Clone window: August 29–September 11. npm window: August 14–September 12 (30 days). npm counts are API-reported totals with reporting gaps; no estimates have been added. Skill installs count individual skills, and these channels overlap.</p>
+      <div class="acquisition-table-wrap" tabindex="0" role="region" aria-label="Installation method measurements">
+        <table><caption>ECC acquisition snapshot · September 13, 2026</caption><thead><tr><th scope="col">Method</th><th scope="col">Reported measurement</th><th scope="col">Window and coverage</th></tr></thead><tbody>
+          <tr><th scope="row">Git clone</th><td>673,617 clone events<br>90,216 window-level unique cloners</td><td>August 29–September 11, 2026. Owner-verified <a href="https://docs.github.com/en/rest/metrics/traffic#get-repository-clones">GitHub traffic</a>; clone operations do not establish completed installs.</td></tr>
+          <tr><th scope="row"><a href="https://www.npmjs.com/package/ecc-universal">ecc-universal</a></th><td>21,962 npm downloads</td><td>August 14–September 12. Includes npm-based acquisition through npm, pnpm, Yarn, Bun and execution helpers; no separate client or harness split.</td></tr>
+          <tr><th scope="row"><a href="https://www.npmjs.com/package/ecc-agentshield">ecc-agentshield</a></th><td>30,535 npm downloads</td><td>August 14–September 12. Package download events, including repeat downloads and automation.</td></tr>
+          <tr><th scope="row"><a href="https://www.skills.sh/affaan-m/ecc">Skills CLI / skills.sh</a></th><td>805.5K skill installs</td><td>Provider-displayed cumulative count, rounded. Individual skill installs, not full-toolkit installs or unique developers.</td></tr>
+          <tr><th scope="row"><a href="https://api.ecc.tools/badge/installs">GitHub App</a></th><td>6,184 installs</td><td>Current first-party install stock. It can decrease when installations are removed.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/affaan-m/ECC/blob/main/.claude-plugin/marketplace.json">Claude Code plugin</a></th><td>Verified installation route</td><td>No standalone native install count verified. Plugin acquisition may overlap repository downloads.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/affaan-m/ECC/blob/main/.agents/plugins/marketplace.json">Codex plugin</a></th><td>Verified marketplace route</td><td>No standalone native install count verified. Legacy sync and repo-local configuration also have no separate activation count.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/affaan-m/ECC/releases">Uploaded release packages</a></th><td>2,600 .tgz downloads</td><td>Cumulative: 1,607 for v2.0.0 and 993 for v2.0.0-rc.1. Video and image assets excluded.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/affaan-m/ECC/blob/main/README.md">Manual installs and harness adapters</a></th><td>Shared acquisition routes</td><td>Clone/install scripts, file copies and adapter setup can overlap GitHub or npm counts. No per-harness successful-install total verified.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/affaan-m/ECC">Source ZIPs and raw files</a></th><td>Count unavailable</td><td>GitHub's autogenerated archives and individual file copies are not measured by uploaded release-asset counters.</td></tr>
+          <tr><th scope="row"><a href="https://github.com/marketplace/actions/agentshield-security-scan">AgentShield GitHub Action</a></th><td>Verified execution route</td><td>No independent execution or adoption total verified; package acquisition can overlap npm.</td></tr>
+        </tbody></table>
+      </div>
+      <p class="acquisition-note">These channels overlap, so their counts are not added together. npm totals are the API-reported values; shared zero-day reporting gaps remain, with no estimated downloads added. A missing native plugin counter means unknown, not zero.</p>
+    </details>
+  </div>
+  </section>
+  <section class="ecc-affiliations" aria-labelledby="ecc-affiliations-title">
+    <h2 id="ecc-affiliations-title">Used by engineers at</h2>
+    <ul class="ecc-affiliation-list">
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-tesla.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span><span>Tesla</span></li>
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-xai.svg" alt="" width="727" height="779" loading="lazy" decoding="async"></span><span>xAI</span></li>
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-godaddy.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span><span>GoDaddy</span></li>
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-bytedance.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span><span>ByteDance</span></li>
+      <li class="ecc-affiliation-skydio"><img src="/brands/engineers-skydio.svg" alt="Skydio" width="534" height="144" loading="lazy" decoding="async"></li>
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-amazon.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span><span>Amazon</span></li>
+      <li><span class="ecc-affiliation-mark"><img src="/brands/engineers-digitalocean.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span><span>DigitalOcean</span></li>
+    </ul>
+    <p class="ecc-affiliations-more">and many others</p>
+  </section>
+
+  <section id="demo" class="conversion-section " aria-labelledby="demo-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">The GitHub App</p><h2 id="demo-title">Your repo. Your working practices.</h2></div><div class="demo-layout"><div class="demo-frame"><video controls preload="none" playsinline poster="/media/ecc-github-app-demo-poster.jpg" aria-label="ECC GitHub App workflow demonstration"><source src="/media/ecc-github-app-demo-720p.mp4" type="video/mp4">Your browser does not support this video.</video></div><div class="demo-caption"><div class="product-brand"><img src="/favicon.svg?v=ecc-mark" width="96" height="96" alt="" loading="lazy"><p>ECC for GitHub</p></div><h3>Turn project history into guidance.</h3><p>Connect a repository, review the practices the App finds, and keep useful guidance with your code.</p><a class="text-link" href="https://github.com/apps/ecc-tools" target="_blank" rel="noopener">Explore the GitHub App ↗</a><p class="media-note">Prefer a local setup? <a href="https://github.com/affaan-m/ECC">Start with the open-source toolkit.</a></p></div></div></div></section>
+
+  <section id="layers" class="conversion-section " aria-labelledby="layers-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">Inside the toolkit</p><h2 id="layers-title">Useful from the first task.</h2></div><div class="workflow-links"><a href="https://github.com/affaan-m/ECC/blob/main/agents/code-reviewer.md"><span class="workflow-kind">Agent</span><h3>Review a change.</h3><p>A code reviewer with a repeatable process.</p><span class="text-link">Read the agent ↗</span></a><a href="https://github.com/affaan-m/ECC/tree/main/skills/security-review"><span class="workflow-kind">Skill</span><h3>Check the security surface.</h3><p>Work through permissions, inputs and exposed secrets.</p><span class="text-link">Open the skill ↗</span></a><a href="https://github.com/affaan-m/ECC/tree/main/skills/continuous-learning-v2"><span class="workflow-kind">Learning</span><h3>Keep what works.</h3><p>Review recurring lessons before promoting them.</p><span class="text-link">Explore the workflow ↗</span></a></div></div></section>
+
+  <section id="control-plane" class="conversion-section " aria-labelledby="control-plane-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">Planning & coordination</p><h2 id="control-plane-title">See the work. Shape what happens next.</h2></div><div class="product-stage"><article class="product-feature"><div class="demo-frame"><video controls preload="none" playsinline poster="/media/ecc-plan-canvas-poster.jpg" aria-label="Plan Canvas annotation and review demonstration"><source src="/media/ecc-plan-canvas-demo.mp4" type="video/mp4">Your browser does not support this video.</video></div><div class="product-feature-copy"><p class="product-type">Plan Canvas</p><h3>Point to the part you mean.</h3><p>Annotate a plan in your browser. Send feedback to your agent, then review the revision in place.</p><a class="text-link" href="https://github.com/affaan-m/ECC/tree/main/skills/plan-canvas">Use Plan Canvas ↗</a></div></article><article class="product-feature"><a class="product-capture-link" href="/app#control-pane"><img src="/media/control-pane-demo.jpg" width="1280" height="720" alt="Control Pane displaying agent sessions from a local demonstration database" loading="lazy" decoding="async"></a><div class="product-feature-copy"><p class="product-type">Control Pane</p><h3>A view across your sessions.</h3><p>Inspect sessions, worktrees and overlapping work in the local operator interface.</p><a class="text-link" href="/app#control-pane">Explore Control Pane →</a><small>Local interface · demonstration data</small></div></article></div></div></section>
+
+  <section id="learning" class="conversion-section " aria-labelledby="learning-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">Context & compute</p><h2 id="learning-title">Carry the work forward.</h2></div><div class="memory-compute"><article class="memory-feature"><div><p class="product-type">Unified Memory</p><h3>The next agent can pick up the thread.</h3><p>Save a handoff, search project context and read it from another harness. Available through the CLI and MCP.</p><a class="text-link" href="/app#memory">See memory in practice →</a></div><pre class="product-command"><code>ecc memory init --scope project
+ecc memory handoff --from codex --target claude --title "Continue the rollout" --body-file handoff.md
+ecc memory search "rollout" --target-harness claude</code></pre></article><article class="compute-feature"><img src="/sponsors/ito-markets.svg" width="140" height="40" alt="Itô" loading="lazy"><div><h3>Compute, in your workflow.</h3><p>Sign in, find GPUs and inspect runtime status with the Itô compute skill.</p><a class="text-link" href="https://github.com/affaan-m/ECC/tree/main/skills/ito-compute">Explore compute workflows ↗</a></div></article></div></div></section>
+
+  <section id="agentshield" class="conversion-section " aria-labelledby="agentshield-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">AgentShield</p><h2 id="agentshield-title">Understand what your agents can reach.</h2></div><div class="security-layout"><div class="security-copy"><div class="product-brand"><img src="/media/agentshield-brand.png" width="1024" height="1024" alt="AgentShield" loading="lazy"><p>Security for the agent harness</p></div><p>Inspect configurations, permissions, hooks and MCP connections. Open the findings, understand the risk, and decide what to change.</p><div class="hero-actions"><a class="button secondary" href="/security">Explore AgentShield →</a><a class="text-link" href="https://x.com/affaan/status/2033263813387223421">Read the security guide ↗</a></div></div><div class="original-demo" data-agentshield-player>
+    <div class="original-demo-cover">
+      <img src="/media/agentshield-brand.png" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+      <div><p class="media-kicker">AgentShield in action</p><h3>See the scanner at work.</h3><p>The original hackathon demonstration.</p></div>
+      <button type="button" class="media-play" hidden aria-label="Play AgentShield demonstration">Play the demo <span aria-hidden="true">▷</span></button>
+    </div>
+    <p class="media-source"><a href="https://www.youtube.com/watch?v=fC0Z_CjEYLU" target="_blank" rel="noopener">Watch the original video on YouTube ↗</a><span>3 minutes · Historical demo</span></p>
+  </div></div></div></section>
+
+  <section id="pricing" class="conversion-section light-section" aria-labelledby="pricing-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">Plans</p><h2 id="pricing-title">Start with the toolkit. Grow from there.</h2></div><div class="pricing-grid"><article class="price-card"><span class="card-number">Open source</span><h3>Free to build with.</h3><div class="price">$0</div><p>Open-source skills, agents, and commands for your local workflows.</p><a class="button secondary" href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener">Get the toolkit <span aria-hidden="true">↗</span></a></article><article class="price-card price-card-featured"><span class="card-number">GitHub App / Pro</span><h3>For repository workflows.</h3><div class="price">$19<span>/ active seat / month</span></div><p>Private repository coverage and deeper GitHub App guidance.</p><a class="button" href="/pricing">Compare App plans <span aria-hidden="true">→</span></a></article><article class="price-card"><span class="card-number">Enterprise</span><h3>Built around your team.</h3><div class="price price-contact">Let's talk.</div><p>Rollout, training, and security support scoped to your organization.</p><a class="button secondary" href="/enterprise#inquiry">Tell us what you need <span aria-hidden="true">→</span></a></article></div><p class="pricing-footnote">The open-source toolkit is separate from GitHub App plans. <a href="/pricing">See plan details.</a></p></div></section>
+
+  <section id="community" class="conversion-section " aria-labelledby="community-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">Built in the open</p><h2 id="community-title">People making ECC their own.</h2></div><div class="community-intro"><p>From local models to research workflows. Notes from developers using and adapting ECC.</p><div class="inline-links"><a href="https://github.com/affaan-m/ECC">GitHub ↗</a><a href="https://discord.gg/36yGMHGFbR">Discord ↗</a></div></div><div class="developer-stories"><figure><blockquote>“The model stays on track, checks its work, fixes the code without you having to ask it,”</blockquote><figcaption><img class="reviewer-avatar" src="https://github.com/jabbor.png?size=80" width="36" height="36" alt="" loading="lazy" decoding="async"><a href="https://github.com/affaan-m/ECC/discussions/740">@jabbor <span aria-hidden="true">↗</span></a><span>Building with a local model · March 21, 2026</span></figcaption></figure><figure><blockquote>“The &quot;write the method down as an operational prompt&quot; form itself is something I learned from your repo.”</blockquote><figcaption><img class="reviewer-avatar" src="https://github.com/kengo006.png?size=80" width="36" height="36" alt="" loading="lazy" decoding="async"><a href="https://github.com/affaan-m/ECC/discussions/2499">@kengo006 <span aria-hidden="true">↗</span></a><span>Adapting ECC for research · July 11, 2026</span></figcaption></figure><figure><blockquote>“It’s been an incredible resource for understanding agentic workflows in Claude Code.”</blockquote><figcaption><img class="reviewer-avatar" src="https://github.com/imdcyuanzhan.png?size=80" width="36" height="36" alt="" loading="lazy" decoding="async"><a href="https://github.com/affaan-m/ECC/discussions/849">@imdcyuanzhan <span aria-hidden="true">↗</span></a><span>Learning agentic workflows · March 24, 2026</span></figcaption></figure></div><p class="review-context">Personal experiences, with the full discussion and feedback linked above. <a href="https://x.com/nicos_ai/status/2060766377670013188">Also covered by Nico on X ↗</a></p><figure class="ecc-engineering-feedback">
+    <div><p class="ecc-feedback-eyebrow">From engineering teams</p>
+      <p class="ecc-feedback-context">An Amazon engineering leader was asking principal engineers to use ECC.</p>
+      <blockquote>“His engineer thought that a team of 10 to 15 people were working on it.”</blockquote>
+    </div>
+    <figcaption><img src="/brands/engineers-amazon.svg" alt="" width="28" height="28" loading="lazy" decoding="async"><div><strong>Amazon engineering feedback</strong><span>Relayed privately to the founder · August 2026</span></div></figcaption>
+  </figure><div class="sponsors"><div class="sponsor-heading"><p class="diagram-label">Supported by</p><a class="text-link" href="https://github.com/sponsors/affaan-m">Become a sponsor ↗</a></div><div class="sponsor-partner-row" aria-label="Current sponsors"><a href="https://www.coderabbit.ai"><img src="https://github.com/coderabbitai.png?size=160" alt="CodeRabbit" loading="lazy" decoding="async"></a><a href="https://www.greptile.com/go/ecc"><img src="https://github.com/greptileai.png?size=160" alt="Greptile" loading="lazy" decoding="async"></a><a href="https://www.moonshot.ai"><img src="/sponsors/kimi.svg" alt="Moonshot AI | Kimi" loading="lazy" decoding="async"></a><a href="https://itomarkets.com"><img class="sponsor-ito" src="/brands/ito-standalone.png" width="1797" height="1097" alt="Itô" loading="lazy" decoding="async"></a><a href="https://serpapi.com/github-ecc"><img class="sponsor-serpapi" src="/brands/serpapi-logo-dark-mode.svg" width="1764" height="439" alt="SerpApi" loading="lazy" decoding="async"></a></div><p class="past-sponsors">Past sponsors: Atlas Cloud.</p></div><div class="talk-preview"><a href="/consulting" class="talk-preview-photo"><img src="/talks/bytedance-gallery-5369.jpg" width="1200" height="800" alt="Affaan speaking during the ByteDance technical session" loading="lazy" decoding="async"></a><div><p class="product-type">Work with Affaan</p><h3>An operating layer for your dev team.</h3><p>Technical sessions at Skydio and ByteDance. Workshops, implementation and security reviews for the way your team works.</p><a class="button secondary" href="/consulting">Talks &amp; consulting →</a></div></div><section class="ecc-media" id="media-coverage" aria-labelledby="ecc-media-title">
+    <header class="ecc-media-heading">
+      <p class="ecc-media-eyebrow">Community coverage</p>
+      <h2 id="ecc-media-title">ECC, from another perspective.</h2>
+      <p>Tutorials, walkthroughs and independent takes from the people exploring ECC.</p>
+    </header>
+    <div class="ecc-media-features">
+      <article class="ecc-media-feature ecc-media-feature-guide">
+        <div class="ecc-media-masthead"><span>DataCamp</span><span class="ecc-media-type">Article</span></div>
+        <div class="ecc-media-feature-body">
+          <p class="ecc-media-kicker">The framework, explained</p>
+          <h3><a href="https://www.datacamp.com/tutorial/everything-claude-code">Everything Claude Code (ECC): The Open-Source Agent Framework for Claude Code</a></h3>
+          <p>Dario Radečić walks through the architecture, setup and tradeoffs of building with ECC.</p>
+        </div>
+        <footer><time datetime="2026-06-29">June 29, 2026</time><span aria-hidden="true">Read the guide ↗</span></footer>
+      </article>
+      <article class="ecc-media-feature ecc-media-feature-review">
+        <div class="ecc-media-masthead"><span>AI Dive</span><span class="ecc-media-type">Article + video</span></div>
+        <div class="ecc-media-feature-body">
+          <p class="ecc-media-kicker">A closer, critical look</p>
+          <h3><a href="https://aidive.dev/videos/ecc-what-to-steal/">5 Things To Steal From Everything Claude Code</a></h3>
+          <p>A selective-install review: useful pieces to take, context costs to consider, and what to leave behind.</p>
+        </div>
+        <footer><time datetime="2026-09-08">September 8, 2026</time><span aria-hidden="true">Read the review ↗</span></footer>
+      </article>
+    </div>
+    <article class="ecc-media-international">
+      <div><p class="ecc-media-eyebrow">Tencent Cloud Developer Community</p><span class="ecc-media-type">Chinese-language article</span></div>
+      <div><h3><a href="https://cloud.tencent.com/developer/article/2624689" lang="zh-Hans">【硬核安利】Anthropic 黑客松冠军的“秘密武器”：Everything Claude Code 深度解析</a></h3><p>Hu Qi · <time datetime="2026-01-28">January 28, 2026</time></p></div>
+    </article>
+    <div class="ecc-media-video-heading"><h3>Watch the community walkthroughs</h3><span>YouTube</span></div>
+    <ul class="ecc-media-videos">
+      <li><a class="ecc-media-featured-video" href="https://www.youtube.com/watch?v=aX8Y183qDpY&amp;t=100s"><img class="ecc-media-video-thumbnail" src="https://i.ytimg.com/vi/aX8Y183qDpY/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span><strong>ECC: Give Your AI Coder an Engineering Process</strong><small>The Next New Thing · Watch from 1:40</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a class="ecc-media-featured-video" href="https://www.youtube.com/watch?v=Mio6wD5uyCg"><img class="ecc-media-video-thumbnail" src="https://i.ytimg.com/vi/Mio6wD5uyCg/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span><strong>Everything Claude Code — The #1 Claude Code GitHub Repo</strong><small>Andrew Korshak · Video</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://www.youtube.com/watch?v=tvmTmPal6ik"><span class="ecc-media-play" aria-hidden="true">▶</span><span><strong>ECC workflows and resources</strong><small>Prism Labs · Video</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a class="ecc-media-featured-video" href="https://www.youtube.com/watch?v=jPuJ9vUwxxM"><img class="ecc-media-video-thumbnail" src="https://i.ytimg.com/vi/jPuJ9vUwxxM/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span><strong>Everything Claude Code: The #1 Claude Code Plugin</strong><small>Software Engineer Meets AI · Video</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://www.youtube.com/watch?v=BJRzYsZBghc"><span class="ecc-media-play" aria-hidden="true">▶</span><span><strong>Exploring ECC with Claude Code and Codex</strong><small>Codedigipt · Video</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PLf3JVZFJxjWs"><span class="ecc-media-play" aria-hidden="true">▶</span><span><strong>ECC Harness 2026</strong><small>Abd Shomad · Playlist</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://www.youtube.com/watch?v=iu9-gpYgdrI"><span class="ecc-media-play" aria-hidden="true">▶</span><span><strong>Five things to take from ECC</strong><small>AI Dive · Video</small></span><span class="ecc-media-arrow" aria-hidden="true">↗</span></a></li>
+    </ul>
+    <figure class="ecc-media-archive">
+      <img src="/media/github-trending-sep-6.jpg" alt="Archived GitHub Trending screenshot from September 6, 2026, including ECC" loading="lazy" decoding="async">
+      <figcaption><p class="ecc-media-eyebrow">From the archive · <time datetime="2026-09-06">September 6, 2026</time></p><h3>A moment on GitHub Trending.</h3><p>ECC alongside other open-source projects in Nam Nguyễn’s September 6 coverage.</p><a href="https://www.youtube.com/results?search_query=ECC+Hermes+Agent+AI+Skills+GitHub+Trending+Sep+6+Nam+Nguyen">Find Nam Nguyễn’s coverage on YouTube <span aria-hidden="true">↗</span></a></figcaption>
+    </figure>
+  </section></div></section>
+
+  <section id="faq" class="conversion-section " aria-labelledby="faq-title"><div class="conversion-inner"><div class="section-heading"><p class="conversion-eyebrow">A few details</p><h2 id="faq-title">Questions before you begin.</h2></div><div class="faq-list"><details id="faq-ecc" class="faq-item"><summary>What is ECC?<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>ECC is an open-source collection of skills, agents, hooks and workflow tools for coding agents. Start with the pieces your project needs, keep them in version control, and use them in your existing harness.</p><a href="https://github.com/affaan-m/ECC">Explore the open-source project <span aria-hidden="true">→</span></a></div></details><details id="faq-app" class="faq-item"><summary>How does the GitHub App work?<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>Connect the repositories you choose to the ECC GitHub App. It uses repository history to prepare reviewable guidance for your team. Review the requested GitHub permissions before installing; your existing pull-request review remains part of the workflow.</p><a href="https://github.com/apps/ecc-tools">Review the GitHub App <span aria-hidden="true">→</span></a></div></details><details id="faq-security" class="faq-item"><summary>What does AgentShield check?<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>AgentShield inspects agent configuration and workflow surfaces for risks such as prompt injection, unsafe permissions and exposed secrets. A scan is a review aid, not a guarantee that a repository or agent is safe. Review the scanner and the scope you select before running it.</p><a href="/security">Explore AgentShield <span aria-hidden="true">→</span></a></div></details><details id="faq-pricing" class="faq-item"><summary>What is included in the open-source toolkit?<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>ECC is MIT-licensed and includes skills, agents, hooks, Plan Canvas, unified memory and compute workflows. Use them from the open-source repository. The GitHub App has separate Free, Pro and Enterprise plans; paid rollout and support are scoped with your team.</p><a href="/pricing">Compare the plans <span aria-hidden="true">→</span></a></div></details></div><div class="closing-cta"><div><p class="diagram-label">Next step</p><h3>Put better working practices in place.</h3></div><div class="hero-actions"><a class="button" href="https://github.com/apps/ecc-tools" target="_blank" rel="noopener">Install GitHub App <span aria-hidden="true">↗</span></a><a class="button secondary" href="/enterprise#inquiry">Talk to us <span aria-hidden="true">→</span></a></div></div></div></section>
+</main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="header-logo" aria-hidden="true"><img src="/favicon.svg?v=ecc-mark" width="96" height="96" alt=""></span>
+          <span class="header-wordmark">
+            <span class="header-title">ECC</span>
+          </span>
+        </div>
+        <p class="footer-brand-copy">
+          The #1 agentic engineering toolkit. Build with ECC, secure your workflows with AgentShield, and bring the same practices to your team.
+        </p>
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h4>Product</h4>
+            <a href="https://github.com/apps/ecc-tools" target="_blank" rel="noopener">Install App</a>
+            <a href="/app">Explore the tools</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/account">Account &amp; billing</a>
+            <a href="/enterprise">Enterprise</a>
+            <a href="/status">Status</a>
+          </div>
+          <div class="footer-section">
+            <h4>Explore</h4>
+            <a href="/platforms">Platforms</a>
+            <a href="/skills">Skills</a>
+            <a href="/security">AgentShield</a>
+            <a href="/consulting">Consulting</a>
+            <a href="https://discord.gg/36yGMHGFbR" target="_blank" rel="noopener">Community</a>
+          </div>
+          <div class="footer-section">
+            <h4>Open Source</h4>
+            <a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener">ECC OSS Repo</a>
+            <a href="https://github.com/affaan-m/agentshield" target="_blank" rel="noopener">AgentShield Repo</a>
+            <a href="https://www.npmjs.com/package/ecc-universal" target="_blank" rel="noopener">ecc-universal</a>
+            <a href="/changelog">Changelog</a>
+          </div>
+          <div class="footer-section">
+            <h4>Company</h4>
+            <a href="https://affaanmustafa.com" target="_blank" rel="noopener">Affaan Mustafa</a>
+            <a href="https://x.com/affaan" target="_blank" rel="noopener">Updates on X</a>
+            <a href="https://github.com/ECC-Tools/ECC-website" target="_blank" rel="noopener">Website Source</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">&copy; 2026 Affaan Mustafa. Open source under MIT.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+  (function() {
+    'use strict';
+
+    var header = document.querySelector('.header');
+    function syncHeader() { if (header) header.classList.toggle('is-scrolled', window.scrollY > 24); }
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    syncHeader();
+
+    var button = document.querySelector('.header-menu-btn');
+    var nav = document.getElementById('site-nav');
+    if (!button || !nav || typeof window === 'undefined') return;
+
+    var desktopQuery = window.matchMedia('(min-width: 1101px)');
+
+    function setMenuState(isOpen, restoreFocus) {
+      button.classList.toggle('open', isOpen);
+      nav.classList.toggle('open', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+
+      if (desktopQuery.matches) {
+        nav.removeAttribute('aria-hidden');
+        document.body.classList.remove('menu-open');
+      } else {
+        nav.setAttribute('aria-hidden', String(!isOpen));
+        document.body.classList.toggle('menu-open', isOpen);
+      }
+
+      if (!isOpen && restoreFocus) {
+        button.focus();
+      }
+    }
+
+    function syncForViewport() {
+      if (desktopQuery.matches) {
+        setMenuState(false, false);
+        nav.removeAttribute('aria-hidden');
+      } else {
+        nav.setAttribute('aria-hidden', button.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+      }
+    }
+
+    button.addEventListener('click', function() {
+      setMenuState(button.getAttribute('aria-expanded') !== 'true', false);
+    });
+
+    nav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (!desktopQuery.matches) {
+          setMenuState(false, false);
+        }
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      if (
+        !desktopQuery.matches &&
+        button.getAttribute('aria-expanded') === 'true' &&
+        target instanceof Element &&
+        !target.closest('.header-nav') &&
+        !target.closest('.header-menu-btn')
+      ) {
+        setMenuState(false, false);
+      }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false, true);
+      }
+    });
+
+    if (typeof desktopQuery.addEventListener === 'function') {
+      desktopQuery.addEventListener('change', syncForViewport);
+    } else if (typeof desktopQuery.addListener === 'function') {
+      desktopQuery.addListener(syncForViewport);
+    }
+
+    syncForViewport();
+  })();
+  </script>
+  <script>
+  (() => {
+    document.querySelectorAll('[data-agentshield-player]').forEach((player) => {
+      const button = player.querySelector('.media-play');
+      const cover = player.querySelector('.original-demo-cover');
+      if (!button || !cover) return;
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const frame = document.createElement('iframe');
+        frame.src = 'https://www.youtube-nocookie.com/embed/fC0Z_CjEYLU?autoplay=1&rel=0';
+        frame.title = 'AgentShield original scanner demonstration';
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.allowFullscreen = true;
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        cover.replaceWith(frame);
+        frame.focus();
+      }, { once: true });
+    });
+  })();
+  </script>
+<script>
+(() => {
+  const button = document.querySelector('.copy-command');
+  const status = document.querySelector('.copy-status');
+  if (!button || !status || !navigator.clipboard || !window.isSecureContext) return;
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('npx ecc-universal install --guided');
+      status.textContent = 'Installation command copied.';
+    } catch {
+      status.textContent = 'Select the command above to copy it.';
+    }
+  });
+})();
+</script>
+</body></html>
