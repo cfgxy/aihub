@@ -93,7 +93,7 @@ describe("AI Research Skills 条目入库（RUYI-111）", () => {
   });
 });
 
-/** 使用 imageCredit 图注（原创插图或官方视觉合成卡片）而非外部来源图注的条目；RUYI-127 新增十条资源，RUYI-137 新增四条资源，RUYI-142 新增十条资源，RUYI-147 新增六条资源，RUYI-156 新增四条资源，RUYI-160 新增五条资源，RUYI-162 新增六条资源。 */
+/** 使用 imageCredit 图注（原创插图或官方视觉合成卡片）而非外部来源图注的条目；RUYI-127 新增十条资源，RUYI-137 新增四条资源，RUYI-142 新增十条资源，RUYI-147 新增六条资源，RUYI-156 新增四条资源，RUYI-160 新增五条资源，RUYI-162 新增六条资源，RUYI-164 新增六条资源，RUYI-166 新增十条资源。 */
 const originalArtSlugs = [
   "ai-research-skills", "gmail-creator-pro", "papergraph-mcp", "computer-use-mcp",
   "anything2explainer", "short-video-generator-ai", "tokentab", "bang-motion",
@@ -106,6 +106,7 @@ const originalArtSlugs = [
   "gongwen-gbt9704-skill", "pcb-skill", "motion-web", "skillbox", "jev-review",
   "agent-skills", "weknora", "jianying-headless", "easel", "huashu-report", "blitzstrike",
   "taste-skill", "world-monitor", "appllama-skills", "ai-data-extractor", "orcareplay", "gap-trap",
+  "zcode", "cua", "claude-financial-services", "agent-native", "autoclip", "geo-sleuth", "guizang-product-video-skill", "post-production-skill", "clipmivoai-tools", "open-glean",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];

@@ -88,6 +88,26 @@ const required = [
   "media/orcareplay.png",
   "r/gap-trap/index.html",
   "media/gap-trap.png",
+  "r/zcode/index.html",
+  "media/zcode.png",
+  "r/cua/index.html",
+  "media/cua.png",
+  "r/claude-financial-services/index.html",
+  "media/claude-financial-services.png",
+  "r/agent-native/index.html",
+  "media/agent-native.png",
+  "r/autoclip/index.html",
+  "media/autoclip.png",
+  "r/geo-sleuth/index.html",
+  "media/geo-sleuth.png",
+  "r/guizang-product-video-skill/index.html",
+  "media/guizang-product-video-skill.png",
+  "r/post-production-skill/index.html",
+  "media/post-production-skill.png",
+  "r/clipmivoai-tools/index.html",
+  "media/clipmivoai-tools.png",
+  "r/open-glean/index.html",
+  "media/open-glean.png",
 ];
 
 for (const file of required) {
@@ -477,6 +497,45 @@ for (const entry of dailyEntries164) {
   }
 }
 
+// RUYI-166：本批 5 条 APP、4 条 SKILL 与 1 条 MCP 使用编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries166 = [
+  { slug: "zcode", install: null, mustInclude: ["5,426", "CCSwitch", "成熟度未知"] },
+  { slug: "cua", install: null, mustInclude: ["25,597", "权限边界"] },
+  { slug: "claude-financial-services", install: "作为 Claude Cowork 插件安装，或通过 Claude Managed Agents API 部署（官方 README 两种接入方式）。", mustInclude: ["Cowork", "非投资建议"] },
+  { slug: "agent-native", install: null, mustInclude: ["Builder.io", "许可证未声明"] },
+  { slug: "autoclip", install: null, mustInclude: ["anything2explainer", "版权由用户自查"] },
+  { slug: "geo-sleuth", install: "npx skills add Oldcircle/geo-sleuth", mustInclude: ["233 星", "合规使用"] },
+  { slug: "guizang-product-video-skill", install: "npx skills add https://github.com/op7418/guizang-product-video-skill --skill guizang-product-video-skill", mustInclude: ["AGPL-3.0", "video-shotcraft"] },
+  { slug: "post-production-skill", install: "mkdir -p ~/.codex/skills &amp;&amp; cp -R post-production-skill ~/.codex/skills/sd-2-5-retro-vfx", mustInclude: ["Seedance 2.5", "许可证未声明"] },
+  { slug: "clipmivoai-tools", install: "npm install -g https://github.com/BarneyD66/clipmivo-tools/releases/download/v0.1.1/clipmivo-mcp-0.1.8.tgz", mustInclude: ["OpenAPI", "账号余额计费"] },
+  { slug: "open-glean", install: null, mustInclude: ["Hydra DB", "稳定性未知"] },
+];
+const mcpWithConfig166 = ["clipmivoai-tools"];
+for (const entry of dailyEntries166) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig166.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -553,6 +612,7 @@ const originalArtSlugs = [
   ...dailyEntries160.map((entry) => entry.slug),
   ...dailyEntries162.map((entry) => entry.slug),
   ...dailyEntries164.map((entry) => entry.slug),
+  ...dailyEntries166.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
