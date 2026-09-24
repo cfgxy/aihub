@@ -64,6 +64,18 @@ const required = [
   "media/motion-web.png",
   "media/skillbox.png",
   "media/jev-review.png",
+  "r/agent-skills/index.html",
+  "r/weknora/index.html",
+  "r/jianying-headless/index.html",
+  "r/easel/index.html",
+  "r/huashu-report/index.html",
+  "r/blitzstrike/index.html",
+  "media/agent-skills.png",
+  "media/weknora.png",
+  "media/jianying-headless.png",
+  "media/easel.png",
+  "media/huashu-report.png",
+  "media/blitzstrike.png",
   "r/taste-skill/index.html",
   "media/taste-skill.png",
   "r/world-monitor/index.html",
@@ -413,6 +425,43 @@ for (const entry of dailyEntries160) {
   }
 }
 
+// RUYI-162：本批 2 条 APP、3 条 SKILL 与 1 条 MCP（含配置块）使用编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries162 = [
+  { slug: "agent-skills", install: "npx skills add addyosmani/agent-skills", mustInclude: ["96,882", "反合理化表", "验证不可协商", "Hyrum"] },
+  { slug: "weknora", install: null, mustInclude: ["27,364", "ReAct Agent", "Tencent 附加条款", "内网"] },
+  { slug: "jianying-headless", install: "git clone https://github.com/mcncarl/jianying-headless.git &amp;&amp; cd jianying-headless &amp;&amp; python3 tools/build_native_codec.py", mustInclude: ["1,481", "11.5.0", "Apple Silicon", "非商业使用许可"] },
+  { slug: "easel", install: null, mustInclude: ["1,238", "六维画像", "Apache-2.0", "账号风控"] },
+  { slug: "huashu-report", install: "git clone https://github.com/alchaincyf/huashu-report ~/.claude/skills/huashu-report", mustInclude: ["409", "42 份", "四角色", "中文语境行文习惯需自行校对"] },
+  { slug: "blitzstrike", install: "npx -y blitzstrike install", mustInclude: ["637", "scope_check", "CVSS v3.1", "仅限授权测试"] },
+];
+const mcpWithConfig162 = ["blitzstrike"];
+for (const entry of dailyEntries162) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig162.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-164：本批 3 条 SKILL 与 3 条 APP 使用编辑卡片，须保留事实边界及对应获取入口。
 const dailyEntries164 = [
   { slug: "taste-skill", install: "npx skills add https://github.com/Leonxlnx/taste-skill", mustInclude: ["反 slop", "设计品味", "Kimi（Moonshot AI）", "MIT"] },
@@ -561,6 +610,7 @@ const originalArtSlugs = [
   ...dailyEntries147.map((entry) => entry.slug),
   ...dailyEntries156.map((entry) => entry.slug),
   ...dailyEntries160.map((entry) => entry.slug),
+  ...dailyEntries162.map((entry) => entry.slug),
   ...dailyEntries164.map((entry) => entry.slug),
   ...dailyEntries166.map((entry) => entry.slug),
 ];
