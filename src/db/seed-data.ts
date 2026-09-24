@@ -626,4 +626,66 @@ serena init`,
 }`,
     updatedAt: "2026-09-19",
   },
+  {
+    name: "agent-skills", slug: "agent-skills", type: "skill", category: "development",
+    summary: "生产级 AI 编码 agent 工程技能集：全生命周期命令、专家评审 persona 与跨 agent 可移植。",
+    description: "agent-skills 是 Google 工程师 Addy Osmani 维护的生产级 AI 编码 agent 技能集，把资深工程师在真实项目中的工作流、质量门禁与最佳实践打包成 AI agent 可以一致执行的技能库。它覆盖从需求定义、规划、构建、验证、评审到上线的完整开发生命周期：提供 9 个对应生命周期各阶段的斜杠命令（/spec、/plan、/build、/test、/review、/ship 等）和共 25 个技能（24 个生命周期技能 + 1 个元技能），并会根据正在进行的任务自动激活对应技能——设计 API 时触发 api-and-interface-design，构建 UI 时触发 frontend-ui-engineering。截至 2026-09-20 快照，仓库获 96,882 星、周增 3,051 星，居 skill 类前列；最近 push 为 09-18。每个技能不是一段泛泛建议，而是带步骤、检查点与证据要求的结构化工作流：内置「反合理化表」逐条反驳 agent 常见的跳步借口（如「测试以后再补」），并以「验证不可协商」收尾——测试通过、构建输出、运行时数据才算证据。技能集融入 Google 工程文化：API 设计中的 Hyrum's Law、测试金字塔与 Beyonce Rule、代码评审的变更尺寸规范、trunk-based 开发、CI/CD 的 Shift Left 与特性开关等。通过开源 skills CLI 一条命令即可装入 70+ agent（Claude Code、Cursor、Codex、Copilot、Cline 等）：npx skills add addyosmani/agent-skills。",
+    tags: ["社区出品", "开源", "MIT", "SKILL", "工程技能", "代码评审", "测试驱动", "Addy Osmani"],
+    officialUrl: "https://github.com/addyosmani/agent-skills", sourceUrl: "https://github.com/addyosmani/agent-skills",
+    installGuide: `npx skills add addyosmani/agent-skills`,
+    updatedAt: "2026-09-22",
+  },
+  {
+    name: "WeKnora", slug: "weknora", type: "app", category: "others",
+    summary: "腾讯开源 LLM 知识平台：文档转可检索 RAG、ReAct 自主推理 agent、自维护 Wiki 知识库。",
+    description: "WeKnora 是腾讯开源的 LLM 知识框架，面向企业级文档理解、语义检索与自主推理，围绕三大核心能力组织：基于 RAG 的快速问答负责日常查询；ReAct Agent 自主编排知识检索、MCP 工具、租户技能目录、会话持久沙箱与联网搜索，处理复杂多步任务；Wiki 模式让 agent 把原始文档蒸馏成自维护、互链的 Markdown 知识库，配交互式知识图谱、手动编辑、版本历史与一键回滚，另有跨会话长期记忆。该项目 2025-07 创建，本期为热度回升而非新发布：截至 2026-09-20 快照，仓库获 27,364 星、周增 4,703 星，为本周 AI 项目星增最高之一。工程化能力覆盖全链路：支持 PDF、Word、Excel、图片等 10+ 文档格式，可从飞书知识库、GitLab、Notion、语雀、钉钉文档等来源自动同步；问答可经企业微信、飞书、Slack、Telegram 等 IM 渠道直达；兼容 OpenAI、DeepSeek、Qwen、混元、Gemini 等 20+ 模型供应商，向量库支持 pgvector、Elasticsearch、Milvus、Qdrant；提供工作区四级 RBAC、作用域 API Key 与 Langfuse 全链路可观测，支持本地/私有云 Docker/K8s 部署、数据主权自持。许可证（2026-09-22 采集）：仓库 README 徽章与 LICENSE 文件均标注 MIT，LICENSE 实为含第三方组件例外说明的 Tencent 附加条款版（GitHub 机器检测显示 Other）；官方安全提示要求生产部署置于内网/私有网络、避免直接暴露公网。",
+    tags: ["官方出品", "开源", "MIT", "APP", "知识库", "RAG", "企业搜索", "腾讯"],
+    officialUrl: "https://github.com/Tencent/WeKnora", sourceUrl: "https://github.com/Tencent/WeKnora",
+    installGuide: `git clone https://github.com/Tencent/WeKnora.git && cd WeKnora && cp .env.example .env && docker compose pull && docker compose up -d`,
+    updatedAt: "2026-09-22",
+  },
+  {
+    name: "jianying-headless", slug: "jianying-headless", type: "skill", category: "creative-design",
+    summary: "面向剪映专业版（macOS）的本地自动化：结构化计划生成可编辑草稿、隔离编辑、原生引擎导出 MP4。",
+    description: "jianying-headless 是面向剪映专业版（macOS）的本地自动化工具，让 AI agent 以无界面方式驱动剪映：用结构化 JSON 剪辑计划生成原生可编辑草稿，在独立副本中修改多轨工程（不覆盖原项目），再调用本机剪映引擎把验证过的快照导出为 H.264/AAC MP4。核心流程为「素材与剪辑计划 → 可编辑剪映草稿 → 原生引擎导出」，提供 Python 命令行与配套 Agent Skill 双入口，定位 AI 视频工作流的工程交接、批量草稿生成与 agent 辅助剪辑。截至 2026-09-20 快照，仓库获 1,481 星（09-15 新建，5 天破 1,400），push 09-19。项目对环境与版本的校验非常严格：目前适配剪映专业版 11.5.0（兼容 11.4.2），要求 Apple Silicon Mac、macOS 26.0+、Python 3.9+、FFmpeg 与 Xcode 命令行工具；doctor 命令核对剪映版本、组件身份与工具链，未知版本或不匹配组件会被直接拒绝。导出在隔离进程中运行，默认不联网、不读取账号数据；剪映官方引擎、账号数据、原始素材库与效果资源不随源码分发。许可证（2026-09-22 采集）：原创部分采用「个人学习和非商业使用许可」，商业使用需取得作者书面授权，非 MIT/Apache-2.0 整包授权；维护持续性与剪映草稿格式兼容风险待观察。",
+    tags: ["社区出品", "私有源预览", "非商业许可", "SKILL", "剪映", "视频创作", "macOS", "AI 剪辑"],
+    officialUrl: "https://github.com/mcncarl/jianying-headless", sourceUrl: "https://github.com/mcncarl/jianying-headless",
+    installGuide: `git clone https://github.com/mcncarl/jianying-headless.git && cd jianying-headless && python3 tools/build_native_codec.py`,
+    updatedAt: "2026-09-22",
+  },
+  {
+    name: "Easel", slug: "easel", type: "app", category: "others",
+    summary: "浙大 REAL 实验室开源社媒内容工作台：发现、策划、创作、发布、归因五层闭环，画像驱动多平台适配。",
+    description: "Easel 是浙江大学 REAL 实验室开源的社交媒体内容工作台，把 OpenClaw Agent、账号画像、112 项内容技能与真实媒体工具接在一起：agent 不止回答「应该怎么做」，而是直接把内容做出来、归档并按需发布。工作流分五层——发现（聚合微博、抖音、知乎、B 站等平台热榜与垂类趋势、竞品动态）、策划（选题矩阵、标题与 Hook、分镜脚本、内容日历）、创作（文案、卡片、海报、配音、视频）、发布（多平台格式适配与真实发布）、归因（回收播放与互动数据，把有效经验沉淀回账号画像）。截至 2026-09-20 快照，仓库获 1,238 星（08-28 新建），push 09-19。它强调「画像驱动，而不是一次性生成」：每个账号有独立的六维画像（定位、风格、受众、平台、偏好与红线、长期记忆），跨平台、跨会话持续使用；同一份母版内容可改写成小红书卡片、短视频、知乎长文等不同平台形态并遵循各自格式与字数要求。目前支持小红书、抖音、快手、知乎、B 站、微信视频号六个平台的登录、适配与发布，提供 Web 工作台与 CLI 双入口。风险提示：社媒平台自动化操作存在各平台合规风险；README 官方提示对小红书谨慎自动发布——平台可能检测自动化操作并触发验证、限流或账号风控，建议使用预览与发布前检查、由用户确认后手动发布。",
+    tags: ["社区出品", "开源", "Apache-2.0", "APP", "社交媒体", "内容创作", "多平台发布", "浙大 REAL"],
+    officialUrl: "https://github.com/ZJU-REAL/Easel", sourceUrl: "https://github.com/ZJU-REAL/Easel",
+    installGuide: `git clone https://github.com/ZJU-REAL/Easel.git && cd Easel && bash setup.sh`,
+    updatedAt: "2026-09-22",
+  },
+  {
+    name: "huashu-report", slug: "huashu-report", type: "skill", category: "docs-office",
+    summary: "机构级研究报告 Agent Skill：规范从 42 份顶级机构报告反向提炼，四角色流水线产出行业报告与白皮书。",
+    description: "huashu-report 是一个「做机构级研究报告」的 Agent Skill，让 agent 按顶级机构的成稿规范产出行业报告、白皮书、年度调研、数据洞察与论文。它的规范不是凭空设计，而是从 2026 年 8 月下载的 42 份顶级机构报告 PDF（Stanford HAI、McKinsey、BCG、OpenAI、Anthropic、PwC、Deloitte、世界银行等，其中 41 份进入量化统计）反向拆解提炼而来——量化结论例如：正文 40/41 份使用近黑色文字、图表标题写结论而非主题、顶级报告都有「预先反驳自己」的段落。截至 2026-09-20 快照，仓库获 409 星（08-31 新建），push 09-14。技能内部是一条四角色流水线：研究员、编辑、信息设计师、数据可视化师依次工作，覆盖六种报告原型的骨架选型、行文规范（口径标注、hedge 技巧、三层增值）、视觉系统（字号阶、网格、配色方向库、8 种图型模式库）与「数据表/生成器/渲染器」三文件生产架构；附带 chart.py 内联 SVG 图表库与 render.py 渲染自检。纯文本加三个 Python 文件、无外部服务依赖，说「做一份 XX 的调研报告」即可触发。README 自述限制：单篇文章、PPT、演示稿不适用；规范源自英文机构报告，中文语境行文习惯需自行校对；样本框偏 AI 与科技主题。",
+    tags: ["社区出品", "开源", "MIT", "SKILL", "研究报告", "白皮书", "数据可视化", "行业分析"],
+    officialUrl: "https://github.com/alchaincyf/huashu-report", sourceUrl: "https://github.com/alchaincyf/huashu-report",
+    installGuide: `git clone https://github.com/alchaincyf/huashu-report ~/.claude/skills/huashu-report`,
+    updatedAt: "2026-09-22",
+  },
+  {
+    name: "Blitz Strike", slug: "blitzstrike", type: "mcp", category: "development-code",
+    summary: "把结构化渗透测试方法论打包为 MCP 服务器：侦察枚举、可达性追踪与实测验证三层流程，仅限授权测试。",
+    description: "Blitz Strike 是一个把结构化渗透测试方法论打包为 MCP 服务器的开源工具（TypeScript/Bun 编写），供 Claude、Cursor、Gemini 等 MCP 客户端以单次调用执行授权安全评估。核心理念是「扫描命中只是假设，实测验证才是结论」：三层方法论中 BLITZ 负责侦察与攻击面枚举，EAGLE-EYE 做静态分析与数据流追踪（source-to-sink 可达性判断），STRIKE 负责实时验证、测试范围强制执行与报告前确认。截至 2026-09-20 快照，仓库获 637 星（09-12 新建），push 09-19。工程配套完整：内置 130 个安全工具的知识库、317+ 份深度工具手册与 17 个评估剧本；报告阶段支持 CVSS v3.1 评分计算、发现去重、生成带 SHA-256 哈希的 Markdown/JSON 报告与覆盖矩阵；scope_check 在测试前强制校验授权范围（禁止 DoS、支持排除项），并支持负责任披露身份标识。安装零门槛：npx -y blitzstrike doctor 做环境检查，install 自动注册到检测到的 agent CLI。仅限授权测试用途：未经系统所有者明确许可不得对任何系统使用，收录仅作工具信息介绍，使用须遵守授权与当地法律；README 所载基准指标为项目方自述，未经独立验证。",
+    tags: ["社区出品", "开源", "MIT", "MCP", "安全测试", "渗透测试", "授权评估", "Red Team"],
+    officialUrl: "https://github.com/shinthink/blitzstrike", sourceUrl: "https://github.com/shinthink/blitzstrike",
+    installGuide: `npx -y blitzstrike install`,
+    configText: `{
+  "mcpServers": {
+    "blitzstrike": {
+      "command": "blitzstrike",
+      "args": ["serve", "--mcp"]
+    }
+  }
+}`,
+    updatedAt: "2026-09-22",
+  },
 ];
