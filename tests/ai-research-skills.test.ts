@@ -105,6 +105,7 @@ const originalArtSlugs = [
   "hyperframes", "humanizer", "openmaic", "context-mode",
   "gongwen-gbt9704-skill", "pcb-skill", "motion-web", "skillbox", "jev-review",
   "agent-skills", "weknora", "jianying-headless", "easel", "huashu-report", "blitzstrike",
+  "taste-skill", "world-monitor", "appllama-skills", "ai-data-extractor", "orcareplay", "gap-trap",
 ];
 /** 其中同时配置 Feature 图位（双图）的条目。 */
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];

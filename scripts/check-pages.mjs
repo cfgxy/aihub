@@ -76,6 +76,18 @@ const required = [
   "media/easel.png",
   "media/huashu-report.png",
   "media/blitzstrike.png",
+  "r/taste-skill/index.html",
+  "media/taste-skill.png",
+  "r/world-monitor/index.html",
+  "media/world-monitor.png",
+  "r/appllama-skills/index.html",
+  "media/appllama-skills.png",
+  "r/ai-data-extractor/index.html",
+  "media/ai-data-extractor.png",
+  "r/orcareplay/index.html",
+  "media/orcareplay.png",
+  "r/gap-trap/index.html",
+  "media/gap-trap.png",
 ];
 
 for (const file of required) {
@@ -430,6 +442,41 @@ for (const entry of dailyEntries162) {
   }
 }
 
+// RUYI-164：本批 3 条 SKILL 与 3 条 APP 使用编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries164 = [
+  { slug: "taste-skill", install: "npx skills add https://github.com/Leonxlnx/taste-skill", mustInclude: ["反 slop", "设计品味", "Kimi（Moonshot AI）", "MIT"] },
+  { slug: "world-monitor", install: null, mustInclude: ["地缘监测", "基础设施追踪", "AGPL-3.0", "worldmonitor.app"] },
+  { slug: "appllama-skills", install: "npx skills@latest add appllama/appllama-skills", mustInclude: ["畅销应用", "活跃度偏弱", "appllama.io", "MIT"] },
+  { slug: "ai-data-extractor", install: null, mustInclude: ["Claude Code", "Windsurf", "保管责任在用户", "MIT"] },
+  { slug: "orcareplay", install: null, mustInclude: ["回放", "分叉", "脱敏", "Apache-2.0"] },
+  { slug: "gap-trap", install: "npx skills add pliablepixels/gap-trap", mustInclude: ["门控", "vibe coding", "pliablepixels.github.io/gap-trap", "MIT"] },
+];
+const mcpWithConfig164 = [];
+for (const entry of dailyEntries164) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig164.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -505,6 +552,7 @@ const originalArtSlugs = [
   ...dailyEntries156.map((entry) => entry.slug),
   ...dailyEntries160.map((entry) => entry.slug),
   ...dailyEntries162.map((entry) => entry.slug),
+  ...dailyEntries164.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
