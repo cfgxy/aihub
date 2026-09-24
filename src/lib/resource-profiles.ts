@@ -990,18 +990,18 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
 
   "taste-skill": {
     image: "/media/taste-skill.png",
-    imageAlt: "Taste Skill 精选卡片：官方 OG 词标「The Anti-Slop Frontend Framework for AI Agents」配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageAlt: "Taste Skill 精选卡片：官方渠道视觉配统一版式，左侧 SKILL 徽章与「创意与设计」分类标注、一句话价值与 MIT 许可证标注",
     imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
     overview: [
-      "Taste Skill 是一套给 AI agent「好品味」的前端技能集，定位直截了当：阻止 agent 生成平庸、通用、千篇一律的界面。在用 AI 产出前端的场景里，功能跑通之后真正拉开差距的是审美与细节，这个项目把「设计品味」当作一种可注入 agent 的能力来交付。",
-      "核心能力覆盖三件事：在 agent 生成前端时施加反 slop 界面约束，以 SKILL 形式注入设计品味，并支持按具体项目的审美取向校准。官方提供独立网站 tasteskill.dev，安装走官方 README 给出的 npx skills add 命令。效果主观，需按项目调校；README 含 Kimi（Moonshot AI）赞助位，引用素材时注意识别性引用边界；具体技能清单与版本号以官方仓库 README 为准。MIT 开源、免费。",
+      "Taste Skill 是一个为 AI 注入「品味」的技能包，目标是抑制模板化、平庸的「AI 味」输出，让生成内容带有审美判断；品味范围覆盖文章、文案写作与界面设计两类场景。项目保持活跃（2026-09-20 有推送，进入 GitHub Trending 2026-09-22 JavaScript 日榜），累计 89,268 星（2026-09-23 快照值）。",
+      "与在库 Humanizer（去除 AI 写作痕迹）为不同产品、不同官方站点：Taste-Skill 范围更宽、以审美判断注入为主，两者可并存。官方提供独立网站 tasteskill.dev，安装走官方 npx skills add 命令。效果主观、暂无量化评测，需按项目调校；README 含 Kimi（Moonshot AI）赞助位，引用素材时注意识别性引用边界（沿用 RUYI-164 期核验记录，现状以官方仓库为准）。MIT 开源、免费。",
     ],
     highlights: [
-      "反 slop 界面约束：在 agent 生成前端时阻止平庸、通用的界面产出",
-      "品味注入：以 SKILL 形式为 AI agent 提供前端设计品味",
-      "按项目校准：效果可与具体项目的审美取向对齐调校",
+      "审美判断注入：为 agent 增加品味维度的判断依据",
+      "抑制模板化输出：针对「AI 味」的模板化、平庸生成结果做约束",
+      "写作与设计双场景：品味范围覆盖文章、文案与界面设计",
     ],
-    bestFor: "前端开发者、用 agent 生成 UI 的团队与独立开发者。",
+    bestFor: "用 AI 产出文章、文案与界面的创作者，苦于「AI 味」平庸输出的使用者。",
   },
   "world-monitor": {
     image: "/media/world-monitor.png",
@@ -1227,6 +1227,52 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
       "连接应用 + 检索 + 回答带来源引用",
     ],
     bestFor: "想要自托管企业知识问答（Glean 开源替代）的中小团队。",
+  },
+  "ecc": {
+    image: "/media/ecc.png",
+    imageAlt: "ECC 精选卡片：官方 Hero 视觉配统一版式，左侧 APP 徽章与「辅助工具」分类标注、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "ECC 是一套面向编码 Agent 的 harness 性能优化系统，把技能、本能、记忆与安全机制整合在同一框架之下，帮助开发者与团队系统性地提升编码 Agent 的实际表现。项目保持活跃（2026-09-21 有代码推送，列 fossy.dev 2026-09-21 日榜第 1），星数 ★265,247（GitHub 2026-09-23 快照值）。",
+      "与在库 Agent 本体类条目（Codex、Kilo Code、Hermes Agent 等）定位互补：ECC 不替代 Agent，而是围绕 harness 配置做优化的「优化层」，覆盖技能、本能、记忆、安全与研究优先开发等维度。对 Agent 配置改动较深，权限边界未知，采用前请自行评估影响面。",
+      "官方站点为 ecc.tools，安装走官方 npx ecc-universal 引导式设置（支持 Claude Code/Codex/Kimi Code 插件配置）。MIT 开源；GitHub App 免费安装，官方 Pro 托管的私有仓库方案自 $19/席/月起（官网 pricing 口径，README 快照 2026-09-24）。",
+    ],
+    highlights: [
+      "harness 技能优化：围绕编码 Agent 的技能配置做系统性调优",
+      "本能与记忆一体化：将本能触发与记忆机制纳入 harness 统一管理",
+      "安全与研究优先开发：内置安全维度，以研究优先方式驱动配置迭代",
+    ],
+    bestFor: "重度使用 Claude Code、Codex、Cursor 等编码 Agent、希望优化 harness 配置的开发者与团队。",
+  },
+  "deepseek-reasonix": {
+    image: "/media/deepseek-reasonix.png",
+    imageAlt: "DeepSeek-Reasonix 精选卡片：官网 OG 主标语区白底面板配统一版式，左侧 APP 徽章与「终端编码 Agent」定位标注、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "DeepSeek-Reasonix 是 DeepSeek 原生的终端编码 Agent，面向在终端里以 DeepSeek 模型完成日常编码的开发者；核心设计点是长会话的前缀缓存稳定性，以改善长会话下的使用成本（模型 API 费用另计）。项目保持活跃（2026-09-22 有代码推送，进入 GitHub Trending 2026-09-22 Go 日榜），星数 ★35,676（GitHub 2026-09-23 快照值）。",
+      "需要特别说明：这是第三方项目，并非 DeepSeek 官方出品，与 DeepSeek 官方无隶属关系。当前目录在库条目中尚无 DeepSeek 专用编码 Agent，本条差异化明确，适合作为 DeepSeek 终端编码工作流的候选选项。官网 reasonix.io，安装走官方 npm 原生二进制（npm i -g reasonix）。MIT 开源。",
+    ],
+    highlights: [
+      "DeepSeek 原生终端编码：在终端内以 DeepSeek 模型完成日常编码任务",
+      "长会话缓存稳定性：为长会话场景做前缀缓存稳定性设计，成本更友好",
+      "开源实现：MIT License 开源，代码可查阅",
+    ],
+    bestFor: "在终端以 DeepSeek 模型做日常编码的开发者。",
+  },
+  "book-to-skill": {
+    image: "/media/book-to-skill.png",
+    imageAlt: "book-to-skill 精选卡片：官方仓库 banner（Booklin 形象与书页方块主视觉）配统一版式，左侧 SKILL 徽章与「技术书转技能」定位标注、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "book-to-skill 提供「书籍 → 技能」的转换路径：一键把技术书 PDF 转成 Claude Code 技能，让开发者在编码过程中随时查阅书中内容，把学习资料直接接入编码工作流。项目保持活跃（2026-09-22 有代码推送，进入 GitHub Trending 2026-09-22 Python 日榜），星数 ★31,981（GitHub 2026-09-23 快照值）。",
+      "「把技术书变成 Agent 可随时引用的参考」这一形态，在当前目录中暂无同类条目，学习与编码工作流的结合点较新。安装走官方 npx skills add 命令。项目为个人项目，维护持续性未知，采用时请留意其更新情况。MIT 开源。",
+    ],
+    highlights: [
+      "PDF 转技能：一键把技术书 PDF 转成 Claude Code 技能",
+      "编码中随查随用：转换后的技能可在编码工作时随时引用书中内容",
+      "学习资料工作流化：把静态书籍资料接入 Agent 编码工作流",
+    ],
+    bestFor: "想把技术书变成 Agent 可随时引用参考的开发者与学习者。",
   },
 };
 

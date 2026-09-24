@@ -108,6 +108,12 @@ const required = [
   "media/clipmivoai-tools.png",
   "r/open-glean/index.html",
   "media/open-glean.png",
+  "r/ecc/index.html",
+  "r/deepseek-reasonix/index.html",
+  "r/book-to-skill/index.html",
+  "media/ecc.png",
+  "media/deepseek-reasonix.png",
+  "media/book-to-skill.png",
 ];
 
 for (const file of required) {
@@ -597,6 +603,39 @@ for (const entry of dailyEntries127) {
   }
 }
 
+// RUYI-168：本批 2 条 APP 与 1 条 SKILL 使用编辑卡片（taste-skill 为在库条目替换更新，口径沿用 dailyEntries164）。
+// APP 详情页模板不渲染安装复制块（安装命令保留在 seed installGuide 与正文），install 置 null 走无复制块断言。
+const dailyEntries168 = [
+  { slug: "ecc", install: null, mustInclude: ["harness", "★265,247", "ecc.tools", "$19/席/月", "MIT"] },
+  { slug: "deepseek-reasonix", install: null, mustInclude: ["并非 DeepSeek 官方", "reasonix.io", "★35,676", "MIT"] },
+  { slug: "book-to-skill", install: "npx skills add virgiliojr94/book-to-skill", mustInclude: ["技术书", "★31,981", "个人项目", "MIT"] },
+];
+const mcpWithConfig168 = [];
+for (const entry of dailyEntries168) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig168.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // Feature 图位是双图原创插图条目专属，其余详情页不得因此出现空图位。
 const featureArtSlugs = ["ai-research-skills", "gmail-creator-pro"];
 // 原创插图条目用 imageCredit 图注，不得生成外部图片来源。
@@ -613,6 +652,7 @@ const originalArtSlugs = [
   ...dailyEntries162.map((entry) => entry.slug),
   ...dailyEntries164.map((entry) => entry.slug),
   ...dailyEntries166.map((entry) => entry.slug),
+  ...dailyEntries168.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
