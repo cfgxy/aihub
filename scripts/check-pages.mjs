@@ -64,6 +64,10 @@ const required = [
   "media/motion-web.png",
   "media/skillbox.png",
   "media/jev-review.png",
+  "r/github-agentic-workflows/index.html",
+  "r/radar/index.html",
+  "media/github-agentic-workflows.png",
+  "media/radar.png",
 ];
 
 for (const file of required) {
@@ -381,6 +385,39 @@ for (const entry of dailyEntries160) {
   }
 }
 
+// RUYI-170：本批 2 条（应用 1 / MCP 1），事实口径以 Owner 2026-09-24 批准后的文案与编辑卡片为准。
+const dailyEntries170 = [
+  { slug: "github-agentic-workflows", install: null, mustInclude: ["GitHub 官方出品", "quickstart", "事件驱动", "MIT", "gh extension install"] },
+  { slug: "radar", install: "curl -fsSL https://get.radarhq.io | sh &amp;&amp; kubectl radar", mustInclude: ["单二进制", "内置 MCP server", "Secret", "RBAC", "Product Hunt"] },
+];
+const mcpWithConfig170 = ["radar"];
+for (const entry of dailyEntries170) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig170.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  } else if (html.includes("MCP 配置")) {
+    throw new Error(`${entry.slug} 出现不应存在的 MCP 配置块`);
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -455,6 +492,7 @@ const originalArtSlugs = [
   ...dailyEntries147.map((entry) => entry.slug),
   ...dailyEntries156.map((entry) => entry.slug),
   ...dailyEntries160.map((entry) => entry.slug),
+  ...dailyEntries170.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

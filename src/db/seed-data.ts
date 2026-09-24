@@ -626,4 +626,30 @@ serena init`,
 }`,
     updatedAt: "2026-09-19",
   },
+  {
+    name: "GitHub Agentic Workflows", slug: "github-agentic-workflows", type: "app", category: "companion-tools",
+    summary: "GitHub 官方仓库级 Agentic 工作流：以 CLI 扩展把 AI Agent 编入 GitHub 自动化，事件驱动作用于仓库本身。",
+    description: "GitHub Agentic Workflows（gh-aw）是 GitHub 官方出品的开源项目，把 AI Agent 编入仓库自动化：以 GitHub CLI 扩展安装后，按官方 quickstart 选择 AI 引擎、添加示例工作流，即可让 Agent 通过 GitHub Actions 以事件驱动方式参与仓库自身的工程活动。与常见的本地单机 Agent 工具不同，它作用于仓库本身，「Agent×仓库自动化」是目录中此前空白的形态。项目处于活跃演进中：2026-09-23 有代码推送，登上 bonfy/github-trending 2026-09-23 归档 Go 榜，GitHub 星标 5,174（2026-09-24 快照值）。开源 MIT、免费使用；Agent 自动操作仓库需要配套权限管控，接入前应评估工作流的权限范围，项目仍演进中。",
+    tags: ["官方出品", "开源", "MIT", "GitHub", "Agentic 工作流", "自动化"],
+    officialUrl: "https://github.com/github/gh-aw", sourceUrl: "https://github.com/github/gh-aw",
+    installGuide: "gh extension install github/gh-aw",
+    updatedAt: "2026-09-24",
+  },
+  {
+    name: "Radar", slug: "radar", type: "mcp", category: "cloud-infrastructure",
+    summary: "单二进制开源 Kubernetes UI：零集群安装，内置 MCP server 让 AI Agent 直接检查、调查并操作集群。",
+    description: "Radar 是以单二进制形态分发的开源 Kubernetes UI：零集群安装、无依赖、无 agent、无 CRD，在本机直接对接 Kubernetes API，提供拓扑、资源、Helm、GitOps、流量、审计与升级影响等视图，支持 GKE、EKS、AKS、minikube、kind、k3s 等符合标准的集群，也可用 Helm 部署 in-cluster 供团队共享访问。它的差异化在于内置 MCP server——AI Agent 可通过 MCP 检查（inspect）、调查（investigate）并操作（operate）集群，把「看集群」与「让 Agent 参与排障」收进同一个工具。安全设计明确：Secret 数据永不暴露、环境变量值脱敏、日志输出清洗 API key 与 token；重启、扩缩容、apply、回滚等写操作需客户端确认并受 Kubernetes RBAC 约束，诊断默认只读。",
+    tags: ["社区出品", "开源", "Apache-2.0", "MCP", "Kubernetes", "可观测性", "集群诊断"],
+    officialUrl: "https://radarhq.io", sourceUrl: "https://github.com/skyhook-io/radar",
+    installGuide: "curl -fsSL https://get.radarhq.io | sh && kubectl radar",
+    configText: `{
+  "mcpServers": {
+    "radar": {
+      "type": "http",
+      "url": "http://localhost:9280/mcp"
+    }
+  }
+}`,
+    updatedAt: "2026-09-24",
+  },
 ];

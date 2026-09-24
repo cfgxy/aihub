@@ -897,7 +897,38 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "希望在 Claude Code、Codex、Cursor 中获得持续代码质量审查的开发者与工程团队。",
   },
-
+  "github-agentic-workflows": {
+    image: "/media/github-agentic-workflows.png",
+    imageAlt: "GitHub Agentic Workflows 精选卡片：GitHub 官方 org 标识配统一深色版式，左侧 APP·辅助工具徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "GitHub Agentic Workflows（gh-aw）是 GitHub 官方出品的开源项目，把 AI Agent 编入仓库自动化：以 GitHub CLI 扩展安装后，按官方 quickstart 选择 AI 引擎、添加示例工作流，即可让 Agent 通过 GitHub Actions 以事件驱动方式参与仓库自身的工程活动。与常见的本地单机 Agent 工具不同，它作用于仓库本身，「Agent×仓库自动化」是目录中此前空白的形态。",
+      "项目处于活跃演进中：2026-09-23 有代码推送，登上 bonfy/github-trending 2026-09-23 归档 Go 榜，GitHub 星标 5,174（2026-09-24 快照值）。开源 MIT、免费使用；Agent 自动操作仓库需要配套权限管控，接入前应评估工作流的权限范围，项目仍演进中。",
+      "获取方式：一条命令安装 CLI 扩展 gh extension install github/gh-aw，随后跟随官方 quickstart（github.github.com/gh-aw/setup/quick-start/）完成引擎选择与首个工作流。",
+    ],
+    highlights: [
+      "GitHub 官方仓库级 Agentic 工作流，Agent 编入 GitHub 自动化",
+      "事件驱动、作用于仓库本身，区别于本地单机 Agent 工具",
+      "开源 MIT、社区活跃，09-23 有推送并登 bonfy Go 榜",
+    ],
+    bestFor: "想在 GitHub 仓库自动化中安全接入 AI Agent 的开发团队。",
+  },
+  radar: {
+    image: "/media/radar.png",
+    imageAlt: "Radar 精选卡片：官网官方矢量雷达图标（祖母绿 accent）配统一深色版式，左侧 MCP·云与基础设施徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Radar 是以单二进制形态分发的开源 Kubernetes UI：零集群安装、无依赖、无 agent、无 CRD，在本机直接对接 Kubernetes API，提供拓扑、资源、Helm、GitOps、流量、审计与升级影响等视图，支持 GKE、EKS、AKS、minikube、kind、k3s 等符合标准的集群，也可用 Helm 部署 in-cluster 供团队共享访问。",
+      "它的差异化在于内置 MCP server——AI Agent 可通过 MCP 检查（inspect）、调查（investigate）并操作（operate）集群，把「看集群」与「让 Agent 参与排障」收进同一个工具。安全设计明确：Secret 数据永不暴露、环境变量值脱敏、日志输出清洗 API key 与 token；重启、扩缩容、apply、回滚等写操作需客户端确认并受 Kubernetes RBAC 约束，诊断默认只读。",
+      "项目活跃：2026-09-23 有代码推送，获 Product Hunt 日榜 Top Post，GitHub 星标 3,454（2026-09-24 快照值）。开源 Apache-2.0、单二进制免费使用；连接生产集群时建议按最小权限配置 RBAC。安装一条命令（curl -fsSL https://get.radarhq.io | sh 后 kubectl radar，亦可 brew install skyhook-io/tap/radar），MCP server 随启动默认开启，AI 工具通过 HTTP 端点 http://localhost:9280/mcp 接入。",
+    ],
+    highlights: [
+      "单二进制 Kubernetes UI，零集群安装、无 agent、无 CRD",
+      "内置 MCP server：AI Agent 可检查、调查并操作集群",
+      "Secret 不暴露、写操作经确认并受 RBAC 约束，诊断默认只读",
+    ],
+    bestFor: "K8s 运维与开发者，以及想让 Agent 参与集群排障的团队。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
