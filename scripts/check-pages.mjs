@@ -108,6 +108,26 @@ const required = [
   "media/clipmivoai-tools.png",
   "r/open-glean/index.html",
   "media/open-glean.png",
+  "r/deepseek-harness/index.html",
+  "media/deepseek-harness.png",
+  "r/impeccable/index.html",
+  "media/impeccable.png",
+  "r/cli-anything/index.html",
+  "media/cli-anything.png",
+  "r/codebase-memory-mcp/index.html",
+  "media/codebase-memory-mcp.png",
+  "r/claude-code-templates/index.html",
+  "media/claude-code-templates.png",
+  "r/strands-harness-sdk/index.html",
+  "media/strands-harness-sdk.png",
+  "r/teamai-cli/index.html",
+  "media/teamai-cli.png",
+  "r/substrate/index.html",
+  "media/substrate.png",
+  "r/treg/index.html",
+  "media/treg.png",
+  "r/panwatch/index.html",
+  "media/panwatch.png",
 ];
 
 for (const file of required) {
@@ -536,6 +556,45 @@ for (const entry of dailyEntries166) {
   }
 }
 
+// RUYI-188：本批 7 条 APP、2 条 SKILL 与 1 条 MCP 使用编辑卡片，须保留事实边界及对应获取入口。
+const dailyEntries188 = [
+  { slug: "deepseek-harness", install: null, mustInclude: ["235,055", "Everything is a Plugin", "MIT"] },
+  { slug: "impeccable", install: "npx impeccable install", mustInclude: ["24 个命令", "61 条检测规则", "Apache-2.0"] },
+  { slug: "cli-anything", install: null, mustInclude: ["HKUDS", "CLI-Hub", "Apache-2.0"] },
+  { slug: "codebase-memory-mcp", install: "npm install -g codebase-memory-mcp@latest", mustInclude: ["158 种", "知识图谱", "MIT"] },
+  { slug: "claude-code-templates", install: null, mustInclude: ["100+ 智能体", "与 Anthropic 无隶属关系", "MIT"] },
+  { slug: "strands-harness-sdk", install: null, mustInclude: ["任意模型、任意云", "WeKnora", "Apache-2.0"] },
+  { slug: "teamai-cli", install: "npm install -g teamai-cli", mustInclude: ["自定义条款", "LICENSE 实文不符", "WeKnora 同为腾讯出品"] },
+  { slug: "substrate", install: null, mustInclude: ["microVM", "亚秒级恢复", "Apache-2.0"] },
+  { slug: "treg", install: null, mustInclude: ["60+ 供应商", "3000+ 端点", "自托管免费"] },
+  { slug: "panwatch", install: null, mustInclude: ["TradingAgents", "不构成投资建议", "MIT"] },
+];
+const mcpWithConfig188 = ["codebase-memory-mcp"];
+for (const entry of dailyEntries188) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig188.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -613,6 +672,7 @@ const originalArtSlugs = [
   ...dailyEntries162.map((entry) => entry.slug),
   ...dailyEntries164.map((entry) => entry.slug),
   ...dailyEntries166.map((entry) => entry.slug),
+  ...dailyEntries188.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
