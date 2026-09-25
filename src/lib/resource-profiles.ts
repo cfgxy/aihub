@@ -1228,6 +1228,156 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "想要自托管企业知识问答（Glean 开源替代）的中小团队。",
   },
+  "deepseek-harness": {
+    image: "/media/deepseek-harness.png",
+    imageAlt: "DeepSeek Harness 精选卡片：GitHub 官方 Social Preview（含官方鲸鱼标）配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "DeepSeek Harness 是 DeepSeek 官方出品的智能体（Agent）运行时，围绕插件化机制组织能力——「Everything is a Plugin」，功能扩展通过插件完成。对关注智能体运行时的团队，它是观察 DeepSeek 官方 agent 技术路线的直接入口。",
+      "项目以 MIT 许可证开源，可免费使用与二次开发。项目于 2026-08-13 建仓，约 6 周 GitHub 星数即达 235,055（2026-09-25 快照），最近一次推送为 2026-09-24，是本期 GitHub 上的现象级项目；同时其发布周期尚短，接口与插件规范可能快速变化，采用时建议锁定版本、关注官方更新，运行所需模型与用量成本未知。DeepSeek 官方条目此前在库缺位，本条为插件化智能体运行时，与在库各编程 agent 条目定位不同。",
+    ],
+    highlights: [
+      "DeepSeek 官方出品的插件化智能体运行时（Everything is a Plugin）",
+      "MIT 开源，可免费使用与二次开发",
+      "约 6 周即 235,055 星（2026-09-25 快照），GitHub 现象级项目",
+    ],
+    bestFor: "关注 DeepSeek 官方 agent 技术路线、需要插件化智能体运行时的团队与开发者。",
+  },
+  "impeccable": {
+    image: "/media/impeccable.png",
+    imageAlt: "Impeccable 精选卡片：官方 OG 词标与标语配统一版式，左侧 SKILL 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Impeccable 是一套用于提升编程 agent 前端输出质量的设计语言，以技能（Skill）形式提供，包含 24 个命令与 61 条检测规则，让 AI 编程工具在生成界面时遵循统一的设计标准。对日常用 AI 写前端的开发者，它的思路是把「界面质量」从口头要求变成可执行的规则约束：设计语言给出标准，检测规则在产出环节把关。",
+      "项目以 Apache-2.0 许可证开源，免费可用。规则型技能的实际效果随目标 harness 与模型而异（未知项），建议在自己的常用环境中实测后再决定是否固化进工作流。与在库 HyperFrames、Taste Skill 同为前端质量方向，但切入点不同——本条是设计语言与检测规则，不是框架或反 slop 清单。",
+    ],
+    highlights: [
+      "24 个命令 + 61 条检测规则的前端设计语言",
+      "以 Skill 形式接入编程 agent，一条命令安装",
+      "Apache-2.0 开源，免费可用",
+    ],
+    bestFor: "日常用 AI 编程工具写前端、希望界面质量可被规则约束的开发者。",
+  },
+  "cli-anything": {
+    image: "/media/cli-anything.png",
+    imageAlt: "CLI-Anything 精选卡片：官方吉祥物主视觉配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "CLI-Anything 出自 HKUDS，目标是让任意软件都能通过命令行（CLI）被 AI agent 调用：把原本只能图形界面操作的软件封装为 agent 可用的 CLI 接口，并配套 CLI-Hub 包管理器与生成器，覆盖封装的获取与生成。",
+      "它与「截屏点按」式桌面操控是两种互补形态：本条走 CLI 化路线，以命令行这一结构化接口承载软件操作。项目以 Apache-2.0 许可证开源，免费可用。需要注意，这类工具会把本地软件的操作权限交给 agent，安全边界须由用户自行评估——建议从低风险软件开始试用，并控制 agent 的操作范围；维护持续性未知。",
+    ],
+    highlights: [
+      "让任意软件通过 CLI 被 AI agent 调用",
+      "配套 CLI-Hub 包管理器与生成器",
+      "Apache-2.0 开源，免费可用",
+    ],
+    bestFor: "想让 agent 结构化操作本地软件、偏好 CLI 化路线的开发者与自动化玩家。",
+  },
+  "codebase-memory-mcp": {
+    image: "/media/codebase-memory-mcp.png",
+    imageAlt: "Codebase Memory MCP 精选卡片：官方知识图谱界面图配统一版式，左侧 MCP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Codebase Memory MCP 是一个高性能代码智能 MCP 服务器：把整个代码库索引为持久知识图谱，覆盖 158 种编程语言，让 AI agent 具备跨文件、跨模块的全局代码理解与可持久复用的检索能力。对维护大型代码库的团队，它解决的是「agent 每次都要重新读代码」的问题：索引一次、持久复用。",
+      "项目以 MIT 许可证开源，免费可用。大型仓库上的索引资源占用与检索准确率仍是未知项，建议在真实仓库小规模试点后再扩大范围。它与在库 serena 同属代码智能赛道，但产品与仓库不同：本条以 MCP 服务器形态提供持久知识图谱。",
+    ],
+    highlights: [
+      "把代码库索引为持久知识图谱，覆盖 158 种语言",
+      "MCP 服务器形态，agent 索引一次、持久复用",
+      "MIT 开源，免费可用",
+    ],
+    bestFor: "维护大型代码库、想给 agent 持久代码理解能力的团队。",
+  },
+  "claude-code-templates": {
+    image: "/media/claude-code-templates.png",
+    imageAlt: "Claude Code Templates 精选卡片：官方品牌图配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Claude Code Templates 是一个用于一键配置与监控 Claude Code 的 CLI 模板库，内置 100+ 智能体、命令、hooks 与 MCP 集成，帮用户跳过从零配置的过程，直接套用社区沉淀的工作流模板，价值在「起点质量」：常见工作流场景都有现成模板可改。",
+      "项目以 MIT 许可证开源，免费可用。使用时须注意：社区模板质量参差，安装前应自行审查内容；该项目为社区项目，与 Anthropic 无隶属关系。在库此前无同类 Claude Code 模板集条目。",
+    ],
+    highlights: [
+      "100+ 智能体、命令、hooks 与 MCP 集成的一键配置模板库",
+      "提供 Claude Code 运行监控能力",
+      "MIT 开源，免费可用",
+    ],
+    bestFor: "想快速套用社区工作流配置 Claude Code 的开发者。",
+  },
+  "strands-harness-sdk": {
+    image: "/media/strands-harness-sdk.png",
+    imageAlt: "Strands Harness SDK 精选卡片：官方 OG 图配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Strands Harness SDK 是面向生产环境的智能体开发 SDK，支持 Python 与 TypeScript 双语言，主打「任意模型、任意云」，不绑定特定模型供应商或云平台。与偏应用的 agent 框架不同，SDK 的定位是给后端与平台工程师提供构建生产级 agent 的工程底座。",
+      "项目以 Apache-2.0 许可证开源，免费可用。项目创建于 2025 年 5 月，是本期热度回升进入日榜的老项目（老项目热度回升入选先例：WeKnora）；其生产采用案例目前未知，评估时建议结合自身场景做验证性试点。与在库 Agent-Native（应用框架）定位不同，本条是开发 SDK。",
+    ],
+    highlights: [
+      "Python / TypeScript 双语言的生产级 agent 开发 SDK",
+      "任意模型、任意云，不绑定供应商",
+      "Apache-2.0 开源，免费可用",
+    ],
+    bestFor: "构建生产级 agent 的后端与平台工程师。",
+  },
+  "teamai-cli": {
+    image: "/media/teamai-cli.png",
+    imageAlt: "teamai-cli 精选卡片：GitHub 官方 Social Preview（含腾讯官方标）配统一版式，左侧 SKILL 徽章、一句话价值与自定义许可标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "teamai-cli 是腾讯开源的命令行工具，把团队的 Prompt、Skill、规则与上下文等 AI 协作资产纳入 Git 管理与评审流程，让散落各处的「AI 资产」像代码一样版本化、可追溯、可评审。团队级 AI 资产管理在库中尚无同类条目，这是它的差异化价值。",
+      "需要特别提示：该项目的许可证为腾讯自定义条款，并非标准 SPDX 命名——有报道称其为 MIT，但与仓库 LICENSE 实文不符，以仓库 LICENSE 为准，商用细则未知；采用前建议由团队负责人或法务确认许可条款。它与在库 WeKnora 同为腾讯出品，但是不同产品。",
+    ],
+    highlights: [
+      "把 Prompt/Skill/规则/上下文纳入 Git 管理与评审",
+      "团队 AI 资产版本化、可追溯、可评审",
+      "腾讯开源，一条 npm 命令安装",
+    ],
+    bestFor: "想把团队 AI 协作资产纳入版本化管理的工程团队负责人。",
+  },
+  "substrate": {
+    image: "/media/substrate.png",
+    imageAlt: "Substrate 精选卡片：官方 Logo 配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Substrate 是一个「默认安全」的 agent 沙箱执行运行时：以 microVM 与 gVisor 沙箱隔离 agent 任务，支持亚秒级恢复，让 agent 任务的执行被约束在受控环境中。随着 agent 被授予的执行权限越来越多，「怎么跑得安全」成为基础设施层问题，Substrate 正面向这一层；agent 基础设施方向在库中尚无同类条目。",
+      "项目以 Apache-2.0 许可证开源，免费可用。项目创建于 2026 年 5 月，体量尚小，生产成熟度未知，适合先在非关键链路上评估。",
+    ],
+    highlights: [
+      "microVM / gVisor 沙箱隔离 agent 任务",
+      "亚秒级恢复",
+      "Apache-2.0 开源，默认安全设计",
+    ],
+    bestFor: "需要给 agent 任务提供安全执行环境的平台与基础设施团队。",
+  },
+  "treg": {
+    image: "/media/treg.png",
+    imageAlt: "Treg 精选卡片：官方 Hero 图配统一版式，左侧 APP 徽章、一句话价值与自定义许可标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Treg 被称为「工具版 OpenRouter」：通过一个 base URL，让 agent 调用 60+ 供应商的 3000+ 端点，把 SEO、数据增强、抓取、图像生成等外部工具能力聚合为统一入口，并支持自托管。「工具聚合注册表」形态在库中尚无同类条目。",
+      "定价分两层：自托管免费，托管目录端点按次计费。需要提示：该项目许可证为非标准 SPDX 命名，具体授权条款以仓库为准；其聚合的第三方数据源合规与计费政策可能变化，接入前建议自行确认。",
+    ],
+    highlights: [
+      "一个 base URL 调用 60+ 供应商 3000+ 端点",
+      "聚合 SEO、数据增强、抓取、图像生成等工具能力",
+      "支持自托管（免费），托管端点按次计费",
+    ],
+    bestFor: "要给 agent 统一接入大量外部工具 API 的开发者。",
+  },
+  "panwatch": {
+    image: "/media/panwatch.png",
+    imageAlt: "PanWatch（盯盘侠）精选卡片：官方产品截图配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "PanWatch（盯盘侠）是一个可自托管的 AI 盯盘助手，覆盖 A股、港股、美股三个市场的实时监控，并集成 TradingAgents 多 agent 决策引擎。它与历史候选 TradingAgents（RUYI-144，未获批）不同仓、不同品：本条是集成 TradingAgents 决策引擎的完整应用，适合想在本地自建多市场盯盘助手的个人用户。",
+      "项目以 MIT 许可证开源，免费可用。必须提示：其输出属于金融决策辅助信息，不构成投资建议；行情数据源的合规性与接口稳定性也属未知项，使用前请自行确认数据来源并控制风险。",
+    ],
+    highlights: [
+      "A股 / 港股 / 美股三市场实时监控",
+      "集成 TradingAgents 多 agent 决策引擎",
+      "自托管，MIT 开源，免费可用",
+    ],
+    bestFor: "想在本地自建多市场 AI 盯盘助手的个人用户（输出不构成投资建议）。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
