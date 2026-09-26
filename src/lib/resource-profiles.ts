@@ -1378,6 +1378,156 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "想在本地自建多市场 AI 盯盘助手的个人用户（输出不构成投资建议）。",
   },
+  "kimi-code": {
+    image: "/media/kimi-code.png",
+    imageAlt: "Kimi Code CLI 精选卡片：官方仓库演示截图配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Kimi Code CLI 是月之暗面（MoonshotAI）官方开源的终端编码 Agent，以单个二进制文件分发，安装不依赖 Node 环境。项目创建于 2026-05-22，2026-09-17 发布 v2.0 并同步推出 macOS/Windows 桌面版，旧项目 kimi-cli 已归档、由本项目替代。GitHub 2026-09-26 快照 ★7,670，最近推送 09-25，维护活跃。",
+      "它的辨识度来自「国产模型厂商官方开源编码 Agent」这一身份，以及几处工程细节：支持视频输入；可通过 /mcp-config 以对话方式完成 MCP 配置；npm 包 @moonshot-ai/kimi-code（2.1.0，MIT）提供安装通道。在目录中它与在库 Codex、Claude、ZCode 等编码智能体同类，以国产模型官方开源形成差异。",
+    ],
+    highlights: [
+      "终端编码 Agent：单二进制分发，零 Node 环境安装",
+      "v2.0 起提供 macOS / Windows 桌面版",
+      "对话式 MCP 配置（/mcp-config），支持视频输入",
+    ],
+    bestFor: "想在终端使用国产开源编码 Agent 的开发者（使用需 Kimi 账号）。",
+  },
+  "archify": {
+    image: "/media/archify.png",
+    imageAlt: "Archify 精选卡片：官方文档架构图配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Archify 让编码 Agent 产出的架构图变得「可验证」：AI 画图不再只是「看起来对」，而是走一条有中间表示、有质量门禁的流水线——typed JSON IR 经确定性编译，生成架构、时序、数据流等五类图，并通过 9 项校验以 fail-closed 方式交付。GitHub 2026-09-26 快照 ★71,604（MIT），最近推送 09-25。",
+      "增长方面，DEV Community 评测（09-14）称其为当时「当前增长最快的 agent skill」，彼时 ★61,519、周增约 10,100；技术栈日榜（09-18）记录其 24h +1,002。它支持 Cursor、Claude Code、Codex CLI、OpenCode 等编码 Agent。与在库 HyperFrames 同属 agent 出图，差异点在验证门与工程评审场景。",
+    ],
+    highlights: [
+      "typed JSON IR + 确定性编译，出图结果可验证",
+      "架构 / 时序 / 数据流等五类图，9 项校验 fail-closed 交付",
+      "支持 Cursor / Claude Code / Codex CLI / OpenCode",
+    ],
+    bestFor: "需要可验证架构图与工程评审场景的开发者、架构师。",
+  },
+  "agentgateway": {
+    image: "/media/agentgateway.png",
+    imageAlt: "AgentGateway 精选卡片：官网 OG 图配统一版式，左侧 MCP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "AgentGateway 是面向 AI Agent 与 MCP 服务器的下一代代理网关，为 agent 到模型/MCP 的流量提供统一鉴权与策略管理。项目创建于 2025-03，并非全新项目，近期热度明显上升：GitHub 2026-09-26 快照 ★5,041（Apache-2.0），最近推送 09-25，日推送活跃。",
+      "定位上它是基础设施型项目：agent 与 MCP 双代理网关，在库此前没有同类网关条目，属于空白补位。需要特别说明的是，它与 RUYI-164 期提名未获批的「Open MCP Gateway」定位相近，但为不同项目（不同名、不同仓库），收录与引用时不应混淆。",
+    ],
+    highlights: [
+      "Agent 与 MCP 双代理网关",
+      "统一鉴权",
+      "统一策略管理",
+    ],
+    bestFor: "需要统一管理 agent→模型/MCP 流量、鉴权与策略的平台团队。",
+  },
+  "wigolo": {
+    image: "/media/wigolo.png",
+    imageAlt: "Wigolo 精选卡片：官方站点社交图配统一版式，左侧 MCP 徽章、一句话价值与未知许可标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Wigolo 是一个本地优先的网络研究 MCP 服务器，把搜索（search）、抓取（fetch）、爬取（crawl）与研究（research）四类能力集于一体，且零 API key——无需逐家申请、配置搜索服务的密钥，即可让 Agent 在本地完成网络研究链路。GitHub 2026-09-26 快照 ★5,405，最近推送 09-25，项目创建于 2026-04-12。",
+      "与在库 Firecrawl Skill（托管抓取服务）场景相邻但形态不同：Wigolo 走本地运行路线。需要提醒的是，其许可证为自定义条款（未识别），本条目如实标注，商用前请自行审阅许可证原文。",
+    ],
+    highlights: [
+      "search / fetch / crawl / research 四合一网络研究",
+      "本地优先运行",
+      "零 API key，无需逐家配置搜索服务密钥",
+    ],
+    bestFor: "不想配置 API key、需要本地运行网络研究的 Agent 用户（商用前请审阅自定义许可证原文）。",
+  },
+  "openspec": {
+    image: "/media/openspec.png",
+    imageAlt: "OpenSpec 精选卡片：GitHub 官方 Social Preview 配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenSpec 是面向 AI 编码助手的规格驱动开发（Spec-Driven Development，SDD）工作流工具。项目创建于 2025-08，并非全新项目，但热度明显上升：GitHub 2026-09-26 快照 ★70,336（MIT），最近推送 09-25。",
+      "在本期目录中，它的价值在于定位空白：在库 91 条种子数据中没有 SDD 工作流类工具，OpenSpec 是该类目的第一个条目，为「用 AI 编码助手做规范驱动开发」的团队提供工作流支撑。",
+    ],
+    highlights: [
+      "规格驱动开发（SDD）工作流",
+      "面向 AI 编码助手协同使用",
+      "免费开源（MIT），在库 SDD 类目第一条",
+    ],
+    bestFor: "用 AI 编码助手做规范驱动开发（SDD）的团队。",
+  },
+  "omniroute": {
+    image: "/media/omniroute.png",
+    imageAlt: "OmniRoute 精选卡片：官方仓库界面截图配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OmniRoute 是一个 MIT 开源的模型网关：把多家模型供应商的调用收敛到单一端点。按项目自述，它聚合 359 家供应商、1200+ 模型，其中自称 150+ 免费——该组数字为官方 README 自述，未逐一核实，引用时请注意。GitHub 2026-09-26 快照 ★70,129，最近推送 09-25。",
+      "适合在多个模型之间切换、不想为每家供应商单独维护接入方式的开发者：一个端点统一切换与管理。与在库 CCSwitch（本地配置切换器）形态不同：OmniRoute 是网关，CCSwitch 是配置切换器。另需注意「免费额度聚合」可能涉及供应商服务条款的合规性，使用前应自行确认相关条款。",
+    ],
+    highlights: [
+      "单端点聚合多供应商模型（自述 359 供应商 / 1200+ 模型，未逐一核实）",
+      "供应商统一切换与管理",
+      "免费开源（MIT），OpenAI 兼容端点",
+    ],
+    bestFor: "多模型调用、想用一个端点统一切换供应商的开发者（注意免费额度聚合的条款合规性）。",
+  },
+  "opencut": {
+    image: "/media/opencut.png",
+    imageAlt: "OpenCut 精选卡片：官网 OG 图配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenCut 是开源的视频编辑器，定位为 CapCut 的开源替代。项目创建于 2025-06，GitHub 2026-09-26 快照 ★90,662（MIT），最近推送 09-24，是本期候选中星数最高的应用类条目。",
+      "在本期目录中，它与在库视频类目形成互补：在库视频工具此前均为自动化/单点工具（jianying-headless、AutoClip 等），没有通用开源编辑器，OpenCut 补上了这个位置。功能成熟度为未知项：作为已运行一年以上的项目，其实际完成度请以官方仓库当前状态自行评估。",
+    ],
+    highlights: [
+      "通用开源视频编辑器，定位 CapCut 替代",
+      "免费开源（MIT），代码开放可审计",
+      "社区规模大（GitHub 快照 ★90,662，本期应用类最高）",
+    ],
+    bestFor: "想要开源 CapCut 替代的视频创作者（功能成熟度请以官方仓库现状自行评估）。",
+  },
+  "opencreator": {
+    image: "/media/opencreator.png",
+    imageAlt: "OpenCreator 精选卡片：官方产品首页截图配统一版式，左侧 APP 徽章、一句话价值与 Apache-2.0 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenCreator 是 KrillinAI 更名转型后的新形态：面向创作者的开源 AI 工作台，官方 README 自述「Formerly KrillinAI」并标注 powered by Codex。GitHub 2026-09-26 快照 ★12,358（Apache-2.0），最近推送 09-24。",
+      "本次入选属于「重要更新」情形：从原有产品（KrillinAI）更名并转型为创作者 AI 工作台，方向变化重大。它与在库视频单点工具不重复；但新形态的功能范围与成熟度为未知项，请以官方仓库当前说明为准。",
+    ],
+    highlights: [
+      "面向创作者的开源 AI 工作台（自述 powered by Codex）",
+      "KrillinAI 官方更名转型之作（README 自述 Formerly KrillinAI）",
+      "免费开源（Apache-2.0）",
+    ],
+    bestFor: "希望把 AI 引入创作流程的创作者与团队（新形态成熟度未知）。",
+  },
+  "nasiko": {
+    image: "/media/nasiko.png",
+    imageAlt: "Nasiko 精选卡片：官方仪表盘截图配统一版式，左侧 APP 徽章、一句话价值与未知许可标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "Nasiko 是 AI Agent 的开发者控制面（Developer Control Plane），面向需要管理多个 AI Agent 的开发团队。GitHub 2026-09-26 快照 ★8,896，项目创建于 2026-02-12。「Agent 开发者控制面」这一定位在库为空白。",
+      "需要注意两点：其一，核实期间该项目最近推送为 09-14，在本期候选中略旧；其二，许可证为自定义条款（未识别），商用前请自行审阅许可证原文。",
+    ],
+    highlights: [
+      "AI Agent 开发者控制面（Developer Control Plane）定位",
+      "面向多 Agent 管理场景",
+      "GitHub 开源可获取（快照 ★8,896）",
+    ],
+    bestFor: "管理多个 AI Agent 的开发团队（自定义许可证商用前请自行审阅）。",
+  },
+  "skills": {
+    image: "/media/skills.png",
+    imageAlt: "Skills 精选卡片：官方推广图配统一版式，左侧 SKILL 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "这是 TypeScript 社区知名教育者 Matt Pocock 直接开源的个人 .agents 技能目录——一位「真实工程师」在用的工程技能集合。GitHub 2026-09-26 快照 ★269,586（MIT），最近推送 09-24，是本期候选中星数最高者；项目创建于 2026-02-03。",
+      "与在库 Superpowers 等同为技能集合，其差异化依据在报批时已如实列明并由 Owner 裁量收录。对想直接复用成熟工程技能的 AI 编码用户而言，它提供的是一个知名教育者真实使用的技能目录开源快照。",
+    ],
+    highlights: [
+      "作者个人 .agents 目录直接开源的工程技能集",
+      "来自 TypeScript 社区知名教育者的「真实工程师」技能集合",
+      "免费开源（MIT），本期全期星数最高（★269,586）",
+    ],
+    bestFor: "想直接复用成熟工程技能的 AI 编码用户。",
+  },
 };
 
 export function getResourceProfile(slug: string) {

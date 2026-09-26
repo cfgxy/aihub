@@ -128,6 +128,26 @@ const required = [
   "media/treg.png",
   "r/panwatch/index.html",
   "media/panwatch.png",
+  "r/kimi-code/index.html",
+  "media/kimi-code.png",
+  "r/archify/index.html",
+  "media/archify.png",
+  "r/agentgateway/index.html",
+  "media/agentgateway.png",
+  "r/wigolo/index.html",
+  "media/wigolo.png",
+  "r/openspec/index.html",
+  "media/openspec.png",
+  "r/omniroute/index.html",
+  "media/omniroute.png",
+  "r/opencut/index.html",
+  "media/opencut.png",
+  "r/opencreator/index.html",
+  "media/opencreator.png",
+  "r/nasiko/index.html",
+  "media/nasiko.png",
+  "r/skills/index.html",
+  "media/skills.png",
 ];
 
 for (const file of required) {
@@ -595,6 +615,44 @@ for (const entry of dailyEntries188) {
   }
 }
 
+const dailyEntries202 = [
+  { slug: "kimi-code", install: null, mustInclude: ["7,670", "kimi-cli 已归档", "MIT"] },
+  { slug: "archify", install: "npx skills add tt-a1i/archify -g", mustInclude: ["typed JSON IR", "9 项校验", "MIT"] },
+  { slug: "agentgateway", install: null, mustInclude: ["双代理网关", "Open MCP Gateway", "Apache-2.0"] },
+  { slug: "wigolo", install: "npx wigolo init", mustInclude: ["四类能力集于一体", "零 API key", "自定义条款"] },
+  { slug: "openspec", install: null, mustInclude: ["规格驱动开发", "SDD", "MIT"] },
+  { slug: "omniroute", install: null, mustInclude: ["359 家供应商", "未逐一核实", "CCSwitch"] },
+  { slug: "opencut", install: null, mustInclude: ["CapCut", "90,662", "MIT"] },
+  { slug: "opencreator", install: null, mustInclude: ["Formerly KrillinAI", "powered by Codex", "Apache-2.0"] },
+  { slug: "nasiko", install: null, mustInclude: ["开发者控制面", "8,896", "自定义条款"] },
+  { slug: "skills", install: "npx skills@latest add mattpocock/skills", mustInclude: ["Matt Pocock", ".agents", "MIT"] },
+];
+const mcpWithConfig202 = ["wigolo"];
+for (const entry of dailyEntries202) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig202.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section")) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 // RUYI-127：本批 8 条应用/SKILL 与 2 条 MCP 共用原创主图，须保留事实边界及对应获取入口。
 const dailyEntries127 = [
   { slug: "hermes-agent", install: null, mustInclude: ["Nous Research", "Token 与消息权限", "仿冒风险"] },
@@ -673,6 +731,7 @@ const originalArtSlugs = [
   ...dailyEntries164.map((entry) => entry.slug),
   ...dailyEntries166.map((entry) => entry.slug),
   ...dailyEntries188.map((entry) => entry.slug),
+  ...dailyEntries202.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");
