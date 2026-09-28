@@ -615,6 +615,40 @@ for (const entry of dailyEntries188) {
   }
 }
 
+// RUYI-243：本批 5 条均用编辑卡片官方素材，须保留事实边界及对应获取入口。
+const dailyEntries243 = [
+  { slug: "agent-desktop", install: null, mustInclude: ["1,682", "无障碍树", "早期项目"] },
+  { slug: "browserskill", install: "curl -fsSL https://raw.githubusercontent.com/Tencent/BrowserSkill/main/install.sh | sh", mustInclude: ["7,487", "Chromium 125+", "MIT"] },
+  { slug: "mobile-mcp", install: null, mustInclude: ["7,794", "无障碍树", "Mobile Next Cloud"] },
+  { slug: "buzz", install: null, mustInclude: ["34,995", "SmartScreen", "Railway"] },
+  { slug: "ai-memory", install: null, mustInclude: ["8,484", "Markdown wiki", "零 LLM 调用"] },
+];
+const mcpWithConfig243 = ["mobile-mcp"];
+for (const entry of dailyEntries243) {
+  const html = fs.readFileSync(path.join(root, "r", entry.slug, "index.html"), "utf8");
+  if (!fs.existsSync(path.join(root, "media", `${entry.slug}.png`))) {
+    throw new Error(`${entry.slug} 缺少静态主图`);
+  }
+  for (const value of [
+    "detail-visual", "核心能力", "适合谁", `media/${entry.slug}.png`, "卡片：AIHub 编辑制作",
+    'rel="noopener nofollow"', ...entry.mustInclude,
+  ]) {
+    if (!html.includes(value)) throw new Error(`${entry.slug} 详情页缺少完整内容：${value}`);
+  }
+  if (html.includes("图片来源：")) throw new Error(`${entry.slug} 卡片条目出现外部图片来源图注`);
+  if (mcpWithConfig243.includes(entry.slug)) {
+    if (!html.includes("MCP 配置") || !html.includes('data-copy="mcp-config"')) {
+      throw new Error(`${entry.slug} 详情页缺少 MCP 配置块`);
+    }
+  }
+  if (entry.install) {
+    if (!html.includes(entry.install)) throw new Error(`${entry.slug} 详情页缺少官方安装命令`);
+    if (!html.includes('data-copy="install-guide"')) throw new Error(`${entry.slug} 详情页缺少安装命令复制块`);
+  } else if (html.includes("copy-section") && !mcpWithConfig243.includes(entry.slug)) {
+    throw new Error(`${entry.slug} 应用类详情页出现不应存在的复制块`);
+  }
+}
+
 const dailyEntries202 = [
   { slug: "kimi-code", install: null, mustInclude: ["7,670", "kimi-cli 已归档", "MIT"] },
   { slug: "archify", install: "npx skills add tt-a1i/archify -g", mustInclude: ["typed JSON IR", "9 项校验", "MIT"] },
@@ -732,6 +766,7 @@ const originalArtSlugs = [
   ...dailyEntries166.map((entry) => entry.slug),
   ...dailyEntries188.map((entry) => entry.slug),
   ...dailyEntries202.map((entry) => entry.slug),
+  ...dailyEntries243.map((entry) => entry.slug),
 ];
 for (const slug of fs.readdirSync(path.join(root, "r")).filter((name) => !featureArtSlugs.includes(name))) {
   const html = fs.readFileSync(path.join(root, "r", slug, "index.html"), "utf8");

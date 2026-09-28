@@ -1017,4 +1017,53 @@ serena init`,
     installGuide: "npx skills@latest add mattpocock/skills",
     updatedAt: "2026-09-26",
   },
+  {
+    name: "agent-desktop", slug: "agent-desktop", type: "app", category: "companion-tools",
+    summary: "给任意 AI Agent 的桌面计算机操作能力：经系统无障碍树稳定操作真实应用（早期项目）。",
+    description: "agent-desktop 让任意 AI Agent 在桌面上获得可靠的计算机操作能力：通过操作系统无障碍树读取真实应用（如 Finder、Safari、系统设置、Xcode、Slack）的 UI 结构再执行操作，元素引用（ref）保持稳定、动作可安全重试，避免了纯截图加坐标方案的不确定性，也可经 CDP 桥接 Chromium 应用的网页内容。GitHub 2026-09-28 快照 ★1,682（Apache-2.0），最近推送 09-26；为单作者早期项目，功能完成度以官方文档为准。工程上是原生 Rust 单一二进制 CLI（npm 一键安装，自动下载预编译二进制），也可经 C-ABI FFI 从 Python/Swift/Go/Ruby/Node/C 进程内调用，全程输出带错误码与恢复提示的结构化 JSON；对 Slack、VS Code、Notion 等信息密集应用提供渐进式骨架遍历（浅层总览 + 定点下钻），README 口径可减少 78–96% 的 token 消耗；交互默认无副作用（headless-by-default），内置会话追踪与多 Agent 共享会话。在库桌面 computer-use 类目此前空缺，本条补位；涉及系统级权限操作，授权范围需用户自行把控。",
+    tags: ["社区出品", "开源", "Apache-2.0", "computer use", "无障碍树", "桌面自动化", "早期项目"],
+    officialUrl: "https://github.com/lahfir/agent-desktop", sourceUrl: "https://github.com/lahfir/agent-desktop",
+    updatedAt: "2026-09-28",
+  },
+  {
+    name: "BrowserSkill", slug: "browserskill", type: "skill", category: "development",
+    summary: "腾讯开源真实浏览器自动化技能：CLI+扩展双形态，让编码 Agent 直接操作用户真实浏览器做验证与操作。",
+    description: "BrowserSkill 把 AI Agent 连接到你已登录的 Chrome 或 Microsoft Edge，复用现有登录态完成读页面、填表单、走完网站流程、截长图、排查失败请求等任务；任务在独立可见的 Agent Window 中运行，遇到登录、验证码等只能由人完成的步骤可显式借用现有标签页、任务结束后归还——浏览器始终可见、可接管。GitHub 2026-09-28 快照 ★7,487（MIT），最近推送 09-27，腾讯开源。形态上是「技能包 + bsk CLI + 浏览器扩展」三件套：CLI 内置后台守护进程，技能文件教会 Agent 如何使用，扩展负责与浏览器连接；支持 Cursor、Claude Code、Codex、OpenClaw、CodeBuddy、WorkBuddy 等可执行 shell 的 Agent，DeepSeek Harness 有带原生浏览器工具的专用插件。网站调试模式可把操作与请求、响应体、控制台消息、页面变化关联取证，支持请求改写、阻断、mock 与同源重放，证据可导出 JSON 留档。在库抓取与自动化类条目（如 Firecrawl）以云端抓取/API 通道为主，本条以「技能包+扩展」形态操作用户本地真实登录态浏览器，形态不同；扩展要求 Chromium 125+，操作真实浏览器涉及登录态与个人数据，授权范围需用户自行把控。",
+    tags: ["社区出品", "开源", "MIT", "SKILL", "浏览器自动化", "真实登录态", "腾讯开源"],
+    officialUrl: "https://github.com/Tencent/BrowserSkill", sourceUrl: "https://github.com/Tencent/BrowserSkill",
+    installGuide: "curl -fsSL https://raw.githubusercontent.com/Tencent/BrowserSkill/main/install.sh | sh",
+    updatedAt: "2026-09-28",
+  },
+  {
+    name: "Mobile MCP", slug: "mobile-mcp", type: "mcp", category: "development-code",
+    summary: "把 iOS/Android 真机与模拟器操作经 MCP 暴露给 Agent，实现移动端自动导航与验证。",
+    description: "Mobile MCP 是一个 MCP 服务器（npm 包 @mobilenext/mobile-mcp），以平台无关的接口把移动自动化能力交给 Agent 与 LLM：无需分别掌握 XCUITest 或 Espresso，描述目标即可让 Agent 完成原生应用的操作、输入与验证；支持 Claude Code、Codex、Gemini、GitHub Copilot、Cline、Cursor 等 MCP 客户端，可在本地模拟器/仿真器与 USB 真机上运行，也可接 Mobile Next Cloud 直接使用云端真机（同一套工具）。GitHub 2026-09-28 快照 ★7,794（Apache-2.0），最近推送 09-23，09-26/27 日榜上榜。它默认走无障碍树驱动（不依赖视觉模型、不消耗图片 token），仅在必要时回退到截图加坐标；同一组工具覆盖完整设备控制：点击/滑动/手势、应用安装/启动/终止、截屏与录屏、硬件按键、深链、GPS 位置覆盖、剪贴板、设备日志与崩溃报告读取，还支持单次调用批量串行多步操作。本地运行需 Xcode 命令行工具与 Android Platform Tools（Node.js 20+）。在库 MCP 此前集中在开发工具、文档与数据类，无移动设备控制位，本条补齐；真机自动化依赖调试通道——iOS 需 USB 连接并信任设备、Android 需 adb 调试授权，iOS 侧能力受系统限制，具体边界以官方说明为准；Mobile Next Cloud 为官方云服务，定价未标注（未知）。",
+    tags: ["社区出品", "开源", "Apache-2.0", "MCP", "移动自动化", "iOS", "Android"],
+    officialUrl: "https://github.com/mobile-next/mobile-mcp", sourceUrl: "https://github.com/mobile-next/mobile-mcp",
+    configText: `{
+  "mcpServers": {
+    "mobile-mcp": {
+      "command": "npx",
+      "args": ["-y", "@mobilenext/mobile-mcp@latest"]
+    }
+  }
+}`,
+    updatedAt: "2026-09-28",
+  },
+  {
+    name: "Buzz", slug: "buzz", type: "app", category: "official-apps",
+    summary: "Block 开源的「hive mind」人机共享工作区：基于 Nostr 开放中继，人与多个 Agent 在同一空间协作。",
+    description: "Buzz 是 Block 开源的可自托管协作工作区，让人类成员与 AI Agent 共处同一空间：底层是一条 Nostr 中继上的事件日志，每条消息、表情回应、工作流步骤、评审批准和 Git 事件都是一条签名事件，写入同一份可检索的记录——无论作者是一个人还是一个进程，身份模型与审计轨迹完全一致。GitHub 2026-09-28 快照 ★34,995（Apache-2.0），最近推送 09-26，09-26/27 日榜连续上榜。Agent 在 Buzz 中拥有与人类成员相同的行为面：打开仓库、提交补丁、评审代码、运行工作流、编辑画布、编排其他 Agent、发起语音讨论、创建频道；每个 Agent 使用自己的密钥、拥有自己的频道成员身份和独立审计轨迹，按身份划界而不是靠权限开关。官方发布桌面客户端（macOS、Linux、Windows），自托管中继支持 Railway 一键部署。在库协作类均为单 Agent 工具，Buzz 首次补上「多 Agent + 人共享工作区」位；早期项目整体成熟度未知，Windows 安装包未签名（首次启动可能触发 SmartScreen 提示），移动端官方标注建设中，自托管需 Docker 与 Hermit 或 Rust 1.88+、Node 24+、pnpm 10+ 等工具链（README 口径），并依赖 Nostr 生态。",
+    tags: ["官方出品", "开源", "Apache-2.0", "人机协作", "Nostr", "自托管", "审计日志"],
+    officialUrl: "https://github.com/block/buzz", sourceUrl: "https://github.com/block/buzz",
+    updatedAt: "2026-09-28",
+  },
+  {
+    name: "ai-memory", slug: "ai-memory", type: "app", category: "companion-tools",
+    summary: "跨厂商 Agent 记忆交接工具：让 Claude Code、Codex 等不同 CLI Agent 之间交接工作上下文。",
+    description: "ai-memory 是面向 AI 编码 Agent 的长期记忆基础设施：在 Claude Code 中做到一半的任务，在同目录下打开 Codex 即可继续——架构背景、已失败的尝试、悬而未决的问题都无需重新解释；记忆存放在你自己运行的服务端上，跨 Agent、跨机器、跨团队成员共享，桌面上的项目可以在笔记本上接着做。GitHub 2026-09-28 快照 ★8,484（MIT），最近推送 09-27。源数据是 git 管理的纯 Markdown wiki：可以 grep、在 Obsidian 打开、手工编辑，数据库只是可随时重建的派生索引；生命周期钩子在后台静默记录真实工作过程（提示、工具调用、会话边界），入库前经过脱敏边界处理，默认路径零 LLM 调用——采集、搜索与交接都不需要 API key。README 支持矩阵列出 Claude Code、Codex、Cursor、Gemini CLI、OpenCode、Kimi Code、Kiro CLI 等 20 余个一方集成的 Agent 环境（Linux/macOS 支持，原生 Windows 为实验性）。在库暂无记忆类条目，与已提名的 Hindsight（长期记忆库）定位不同，本条主打跨 CLI 会话交接；新格式生态早期，与其他记忆方案的兼容性以官方对比说明为准，LLM 整理、向量搜索等增强能力为可选且默认关闭。",
+    tags: ["社区出品", "开源", "MIT", "Agent 记忆", "跨 Agent 交接", "Markdown wiki", "自托管"],
+    officialUrl: "https://github.com/akitaonrails/ai-memory", sourceUrl: "https://github.com/akitaonrails/ai-memory",
+    updatedAt: "2026-09-28",
+  },
 ];
