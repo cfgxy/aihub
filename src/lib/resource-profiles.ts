@@ -1603,6 +1603,51 @@ export const resourceProfiles: Record<string, ResourceProfile> = {
     ],
     bestFor: "同时使用多个 CLI Agent 的开发者；想让团队共享项目知识、又不放心把记忆交给第三方托管的自托管用户。",
   },
+  "jevgrep": {
+    image: "/media/jevgrep.png",
+    imageAlt: "jevgrep 精选卡片：官方仓库封面配统一版式，左侧 APP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "jevgrep 是一个面向 coding agent 的语义代码搜索 CLI，README 定位为「Find code by asking what it does」。开发者不再构造关键词，而是用自然语言问「这段功能在哪」，工具基于 Jev 模型判断相关性，遍历目标项目里的文件夹、文件与声明，一次性返回相关文件、阅读线索和逐字源码摘录，供 agent 直接作为工作起点。项目创建 3 天即获 1262★（快照 2026-09-29），npm 已正式发包。",
+      "工程取向明显为 agent 管道设计：结果只写 stdout、不生成报告文件，方便被上游命令直接消费；安装为一条 `npm install -g @dzhng/jevgrep`（需 Node.js 22+，支持 macOS/Linux），无需单独安装 Python、Bun 或 ripgrep。Python 与 TS/JS 代码支持声明级解析，其余文本类型走通用 fallback。README 给出 10 个 SWE-bench 任务的自测对比：与基准同解出 8/10，成本约低 30%（$7.62 → $5.44）——该数据为作者自测，采信时需注明。",
+    ],
+    highlights: [
+      "自然语言语义代码检索：一次返回相关文件、阅读线索与逐字源码摘录，把「找代码」从关键词匹配升级为「问它做什么」",
+      "声明级代码理解：Python 与 TS/JS 支持声明解析，可定位到函数/类级别，其余文本类型自动 fallback",
+      "面向 agent 的零摩擦输出：只写 stdout、不建报告文件；npm 一条命令安装，运行时依赖开箱即用",
+    ],
+    bestFor: "常在陌生代码库工作的开发者与 coding agent 用户。",
+  },
+  "system-one-connector": {
+    image: "/media/system-one-connector.png",
+    imageAlt: "System One Connector 精选卡片：官方 Logo 配统一版式，左侧 MCP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "System One Connector 是一个把 agent 宿主接入 System One 系列模型的 MCP 连接器，README 定位为「Give your AI agent direct access to models like Jev, CLM, and Laya: quick decisions with real probabilities」。与生成文本的模型不同，Jev 这类 System One 模型对命名的问题或选项返回带概率的结构化判断，结果可以直接写进 if 语句，让 agent 在「继续推进还是上报人工」这类分支上有一个快速、低成本的判断出口。项目创建 12 天获 329★（快照 2026-09-29）。",
+      "形态上刻意做了减法：Go 编写的单一静态二进制，不依赖 Node 或 Python 运行时；`evaluate setup mcp` 一条命令即可为它发现的所有受支持客户端（Claude Code、Claude Desktop、Codex、Hermes、pi）完成配置。支持 yes/no、choice、score 三种题型，每个答案都带概率——高置信可继续、低置信可上报人工；单次调用可并行提出多个问题、最多传入 500 条 records，单条失败不影响其余。README 称 Jev 通常在半秒内作答，适合被 agent 高频调用（该延迟为官方声称值，未独立验证）。",
+    ],
+    highlights: [
+      "带概率的结构化判断：yes/no / choice / score 三种题型，输出可直接写进 agent 的分支逻辑",
+      "批量并行与低延迟：一次调用并行多问题、最多 500 条 records；Jev 官方称作答通常低于半秒",
+      "多模型多宿主统一接入：Jev（TypeSafe 云或 OpenRouter）、CLM 与 Laya（均可自托管），覆盖五类 agent 宿主，一条命令完成配置",
+    ],
+    bestFor: "想给 agent 加「低延迟判断层」的 agent 工作流开发者。",
+  },
+  "openchatx-mcp": {
+    image: "/media/openchatx-mcp.png",
+    imageAlt: "OpenChatX 精选卡片：官方文档截图配统一版式，左侧 MCP 徽章、一句话价值与 MIT 许可证标注",
+    imageCredit: "卡片：AIHub 编辑制作（视觉素材来自各产品官方渠道）",
+    overview: [
+      "OpenChatX 是一个本地 agent 平台，仓库简介一句话：「Turn ChatGPT into a local agent runtime」。它通过 OpenAI 官方的 ChatGPT MCP 通道把本地工具集暴露给 ChatGPT——ChatGPT 仍是模型与规划器，本地侧提供编码级文件与 shell 工具、电脑控制、MCP 聚合、子代理等能力，让 ChatGPT 对话直接落到本机操作。项目创建 6 天获 194★（快照 2026-09-29），持续发版（414 commits）。",
+      "通道合法性是它区别于同类项目的关键：README 明确走 OpenAI 公开的 MCP 集成路径，声明不逆向 ChatGPT、不调用未公开后端接口、不复用浏览器 cookie、不拦截流量；本地 MCP 服务器经官方 tunnel-client 出站 HTTPS 连接 OpenAI Secure MCP Tunnel，无需公网入站端口。配套能力较完整：可移植 SKILL.md 的 Skills 按需加载、.mdc 规则（Always / Auto Attached / Agent Requested / Manual 四种模式）、AGENTS.md 模板、Projects 绑定现有文件夹、跨会话 Summaries 续接长任务，以及 Capability Store 与 Dashboard。提供 macOS 签名公证的 Desktop App，也可源码部署（Node.js 22.18+）。",
+    ],
+    highlights: [
+      "ChatGPT 调度本地工具链：编码级文件/shell 工具、电脑控制、子代理，把 ChatGPT 变成可动手的操作入口",
+      "MCP 聚合：把本地/远程 MCP 服务器收拢到一条官方通道连接之后统一暴露",
+      "Skills/Rules/Projects 配套体系：SKILL.md 按需加载、四模式 .mdc 规则、AGENTS.md 模板与文件夹级项目绑定",
+    ],
+    bestFor: "想把 ChatGPT 当入口调度本地工具链的重度 ChatGPT 用户。",
+  },
 };
 
 export function getResourceProfile(slug: string) {
