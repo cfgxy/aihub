@@ -1091,4 +1091,158 @@ serena init`,
     officialUrl: "https://github.com/XiaoPuOuO/openchatx-mcp", sourceUrl: "https://github.com/XiaoPuOuO/openchatx-mcp",
     updatedAt: "2026-09-29",
   },
+  {
+    name: "AIHOT", slug: "aihot", type: "app", category: "others",
+    summary: "行业热点站框架：RSS 信源 + LLM 精选 + 自动成稿 + 自部署，覆盖信源聚合、热点精选、自动成稿四个环节。",
+    description: "AIHOT 是一套「自己找热点、自己写日报」的行业热点站框架：通过 RSS 订阅持续抓取信源，交给 LLM 完成热点精选，再自动成稿并发布，覆盖信源聚合、热点精选、自动成稿、自部署四个环节。作者提供公开 demo 站 aihot.news，建站效果可直接查看。项目 MIT 开源，技术栈为 Node.js 24、PostgreSQL 17，提供 Docker Compose 部署；仓库创建 4 天获得 4595 星（GitHub 快照 2026-10-02），10 月 1 日仍有提交。需要注意：自动发布内容的质量与合规依赖人工把关，LLM 调用会产生持续费用。",
+    tags: ["社区出品", "开源", "MIT", "内容自动化", "RSS", "热点精选", "Node.js", "PostgreSQL", "Docker Compose"],
+    officialUrl: "https://github.com/KKKKhazix/AIHOT", sourceUrl: "https://github.com/KKKKhazix/AIHOT",
+    installGuide: `git clone https://github.com/KKKKhazix/AIHOT.git && cd AIHOT && docker compose up -d`,
+    configText: `{
+  "aihot": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('aihot').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "universal-modder", slug: "universal-modder", type: "skill", category: "creative-design",
+    summary: "把 Claude 指向任意游戏做 Mod：逆向资源、生成素材、打包安装一条龙，覆盖 Mod 制作全周期。",
+    description: "universal-modder 把 Claude 变成「万能游戏 Mod 工作台」：将 Claude 指向任意一款游戏，即可完成逆向解析游戏资源、生成新素材、打包并安装 Mod 的完整流程，一条龙覆盖 Mod 制作全周期。项目以 skills + 工具 + fal MCP 的组合形态构成，MIT 开源，素材生成环节通过 fal MCP 调用付费 API；仓库 2026-09-30 创建，两天获得 1416 星（GitHub 快照 2026-10-02）。游戏 Mod 制作属版权敏感领域，逆向与分发的边界需使用者自行评估。",
+    tags: ["社区出品", "开源", "MIT", "游戏 Mod", "逆向工程", "fal MCP", "素材生成"],
+    officialUrl: "https://github.com/rehan-remade/universal-modder", sourceUrl: "https://github.com/rehan-remade/universal-modder",
+    installGuide: `git clone https://github.com/rehan-remade/universal-modder.git && cd universal-modder && npm install`,
+    configText: `{
+  "universal-modder": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('universal-modder').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "onetake", slug: "onetake", type: "skill", category: "creative-design",
+    summary: "「一镜到底」动效影片 SKILL：每个节拍从上一拍生长，适合产品发布片与宣传片。",
+    description: "onetake 是一个「一镜到底」动效影片 SKILL：影片没有传统剪辑的切换点，每个节拍的画面都从上一拍自然生长出来，连贯成一气呵成的 motion film。这种形态适合产品发布片与宣传片，让演示内容以连续镜头的方式呈现。仓库创建 6 天获得 1117 星（GitHub 快照 2026-10-02），9 月 29 日仍有更新，主打「无剪切、节拍连续」的 motion film 形态。需要特别提醒：仓库虽含 LICENSE 文件，但 GitHub 未将其识别为标准许可证，条款未知，商用前请先确认授权边界。",
+    tags: ["社区出品", "开源", "motion film", "一镜到底", "产品发布片", "宣传片"],
+    officialUrl: "https://github.com/feitangyuan/onetake", sourceUrl: "https://github.com/feitangyuan/onetake",
+    installGuide: `git clone https://github.com/feitangyuan/onetake.git && cd onetake && npm install`,
+    configText: `{
+  "onetake": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('onetake').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "reelmimic", slug: "reelmimic", type: "skill", category: "creative-design",
+    summary: "参考视频风格拆解后产出同风格新片，对复刻对标视频风格的创作者与营销团队更高效。",
+    description: "reelmimic 像一支「AI 剧组」：给它一个你喜欢的参考视频，它会先拆解这条片子的风格，再按拆解结果产出一条同风格的新片。对想复刻对标视频风格的创作者与营销团队，比逐帧手工临摹高效得多。项目 MIT 开源，仓库创建 4 天获得 671 星（GitHub 快照 2026-10-02），10 月 1 日仍有更新；README 提供 demo GIF 与简体中文文档，对中文用户友好。注意：成片依赖视频生成模型，所用模型与相关费用未知；风格模仿涉及版权边界，使用前需自行评估。",
+    tags: ["社区出品", "开源", "MIT", "风格迁移", "参考视频", "短视频"],
+    officialUrl: "https://github.com/edenfunf/reelmimic", sourceUrl: "https://github.com/edenfunf/reelmimic",
+    installGuide: `git clone https://github.com/edenfunf/reelmimic.git && cd reelmimic && npm install`,
+    configText: `{
+  "reelmimic": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('reelmimic').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "blueprint-animation", slug: "blueprint-animation", type: "skill", category: "creative-design",
+    summary: "把 UX 改版做成「蓝图→成品」逐帧动画讲解，帮助设计师向客户或团队讲清改版思路。",
+    description: "blueprint-animation 是一个 Claude Design 类 SKILL，把 UX 改版过程做成「蓝图 → 成品」的逐帧动画讲解：改版前后的界面按帧演进，帮助设计师向客户或团队讲清改版思路。仓库创建 5 天获得 363 星（GitHub 快照 2026-10-02），作者主页为 oguz.design；「改版过程可视化」的形态在目录现有设计类条目中未见，与纯出图类 skill 差异明确。项目为单人维护，且 GitHub 未将其 LICENSE 识别为标准许可证，条款未知，商用前需先确认。",
+    tags: ["社区出品", "开源", "UX 改版", "蓝图动画", "视觉讲解"],
+    officialUrl: "https://github.com/moguzbulbul/blueprint-animation", sourceUrl: "https://github.com/moguzbulbul/blueprint-animation",
+    installGuide: `git clone https://github.com/moguzbulbul/blueprint-animation.git && cd blueprint-animation && npm install`,
+    configText: `{
+  "blueprint-animation": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('blueprint-animation').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "tusk", slug: "tusk", type: "app", category: "companion-tools",
+    summary: "原生 macOS 键盘流数据库客户端：Rust + GPUI 构建，覆盖 20 种数据库连接管理，内置 AI 助手。",
+    description: "tusk 是一款原生 macOS 数据库客户端，主打键盘流操作：以 Rust 与 GPUI 原生构建，交互顺滑，覆盖 20 种数据库的连接与管理，并内置 AI 助手。项目 MIT 开源，仓库创建 4 天获得 223 星（GitHub 快照 2026-10-02），9 月 30 日发布版本。它仍是早期版本，稳定性未知，承载生产数据的关键操作请谨慎评估。",
+    tags: ["社区出品", "开源", "MIT", "数据库客户端", "macOS", "Rust", "GPUI", "AI 助手"],
+    officialUrl: "https://github.com/alpcanaydin/tusk", sourceUrl: "https://github.com/alpcanaydin/tusk",
+    installGuide: `git clone https://github.com/alpcanaydin/tusk.git && cd tusk && cargo build --release`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "SolidWorks MCP", slug: "solidworks-mcp", type: "mcp", category: "engineering-manufacturing",
+    summary: "把 AI 助手接到运行中的 SolidWorks：草图、拉伸、装配、导出 STEP/STL、查质量属性，直接操控实时 CAD 会话。",
+    description: "SolidWorks MCP 把 AI 助手接到正在运行的 SolidWorks 会话上：通过 MCP 协议与 COM/VBA 接口，AI 可在真实 CAD 环境中画草图、做拉伸、建装配，并支持导出 STEP/STL、查询质量属性，实现对实时 CAD 会话的直接操控。项目基于 Node.js 实现，MIT 开源，仓库创建 7 天获得 181 星（GitHub 快照 2026-10-02），10 月 1 日仍有更新。使用门槛与风险需留意：本机需持有 SolidWorks 商业授权；COM 写操作可能改动本地模型文件，建议先在备份环境验证再接入正式模型。",
+    tags: ["社区出品", "开源", "MIT", "CAD", "SolidWorks", "MCP", "COM/VBA"],
+    officialUrl: "https://github.com/CaptureGrubEnchant/SolidWorks", sourceUrl: "https://github.com/CaptureGrubEnchant/SolidWorks",
+    installGuide: `git clone https://github.com/CaptureGrubEnchant/SolidWorks.git && cd SolidWorks && npm install`,
+    configText: `{
+  "solidworks-mcp": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('solidworks-mcp').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "Comma", slug: "comma", type: "app", category: "official-apps",
+    summary: "无会话个人 agent：任务即持久状态，跨设备 7×24 持续执行，支持自托管或 comma.surf 托管版。",
+    description: "Comma 是一个「无会话」的个人 agent：任务不是一段聊天，而是持久运行的状态——把任务交给它后，它以持久任务的形式跨设备 7×24 小时持续执行。支持自托管，官方也提供 comma.surf 托管版。项目 AGPL-3.0 开源，仓库创建 2 天获得 136 星（GitHub 快照 2026-10-02），10 月 1 日仍有更新。与在库 Hermes Agent、Atlas 相比，它主打「无会话、任务常驻、跨设备连续」且可自托管，产品身份独立。两点风险值得写入使用决策：agent 全权操作账号/设备带来权限与隐私风险；AGPL-3.0 对商用部署有传染性要求，企业引入前需过法务。",
+    tags: ["官方出品", "AGPL-3.0", "个人 agent", "无会话", "跨设备", "自托管"],
+    officialUrl: "https://github.com/AFK-surf/Comma", sourceUrl: "https://github.com/AFK-surf/Comma",
+    installGuide: `git clone https://github.com/AFK-surf/Comma.git && cd Comma && npm install`,
+    configText: `{
+  "comma": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('comma').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "jev-judge-mcp", slug: "jev-judge-mcp", type: "mcp", category: "ai-knowledge",
+    summary: "为 MCP agent 提供类型化评判工具：verify/screen/find/classify/rerank 五段决策管线，已上架 PyPI。",
+    description: "jev-judge-mcp 为 MCP agent 提供一套类型化的评判工具：verify、screen、find、classify、rerank 构成决策管线，让 agent 工作流中的自动评审与分级判断有现成工具可调用。项目已上架 PyPI，便于在工程环境中安装使用。项目 MIT 开源，仓库创建 9 天获得 82 星（GitHub 快照 2026-10-02），10 月 1 日仍有更新。两点需要明确：其审查能力依赖闭源 Jev API，费用未知；它与在库已收录的 Jev Review 同属 TypeSafe Jev 模型家族——两者是不同产品，本条定位为通用判断工具集 MCP，Jev Review 定位为代码质量审查，功能部分重叠但场景不同，收录后身份不得混淆。",
+    tags: ["社区出品", "开源", "MIT", "MCP", "评判工具", "PyPI", "Jev API"],
+    officialUrl: "https://github.com/PyModel/jev-judge-mcp", sourceUrl: "https://github.com/PyModel/jev-judge-mcp",
+    installGuide: `pip install jev-judge-mcp`,
+    configText: `{
+  "jev-judge-mcp": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["-m", "jev_judge_mcp"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
+  {
+    name: "arc-draw", slug: "arc-draw", type: "mcp", category: "development-code",
+    summary: "让 agent 按官方图标与规范在 draw.io 画布上绘制 SAP BTP 架构图，产出符合企业架构文档表达惯例的图面。",
+    description: "arc-draw 是一个面向 SAP 生态的绘图 MCP：让 agent 按官方图标与画图规范，在 draw.io 画布上绘制 SAP BTP 架构图。内置官方 SAP BTP 图标库与画图规范，产出符合企业架构文档表达惯例的图面。项目 MIT 开源，仓库创建 4 天获得 26 星（GitHub 快照 2026-10-02），9 月 30 日仍有更新。定位相当垂直：目录中尚无 SAP/企业架构图领域条目，本条是首个；受众以 SAP 架构师为主，星数与社区规模尚小，选型时按需评估。",
+    tags: ["社区出品", "开源", "MIT", "SAP BTP", "draw.io", "架构图"],
+    officialUrl: "https://github.com/etosin/arc-draw", sourceUrl: "https://github.com/etosin/arc-draw",
+    installGuide: `git clone https://github.com/etosin/arc-draw.git && cd arc-draw && npm install`,
+    configText: `{
+  "arc-draw": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["-e", "require('arc-draw').init()"]
+  }
+}`,
+    updatedAt: "2026-10-02",
+  },
 ];
+
